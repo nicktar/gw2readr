@@ -1,6 +1,5 @@
 package de.getsetsociety.gw2readr.item.recipes.interfaces;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
@@ -48,6 +47,8 @@ public interface IBaseRecipe {
 	public abstract Integer getId();
 
 	public abstract void setLanguage(Language language);
+
+	public abstract Language getLanguage();
 
 
 }

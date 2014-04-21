@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.item.recipes.enums.Disciplines;
 import de.getsetsociety.gw2readr.item.recipes.enums.RecipeFlags;
 import de.getsetsociety.gw2readr.item.recipes.enums.RecipeType;
@@ -19,15 +20,18 @@ import de.getsetsociety.gw2readr.item.recipes.interfaces.IIngredient;
  */
 public class Recipe implements Serializable, IBaseRecipe {
 
-	protected Integer id;
-	protected RecipeType type;
-	protected Integer outputItemId;
-	protected Integer outputItemCount;
-	protected Integer minRating;
-	protected Integer timeToCraftMs;
-	protected Set<Disciplines> disciplines = new HashSet<Disciplines>();
-	protected Set<RecipeFlags> flags = new HashSet<RecipeFlags>();
-	protected Set<IIngredient> ingredients = new HashSet<IIngredient>();
+	private static final long serialVersionUID = 7537126186106705849L;
+	private Integer id;
+	private RecipeType type;
+	private Integer outputItemId;
+	private Integer outputItemCount;
+	private Integer minRating;
+	private Integer timeToCraftMs;
+	private Set<Disciplines> disciplines = new HashSet<Disciplines>();
+	private Set<RecipeFlags> flags = new HashSet<RecipeFlags>();
+	private Set<IIngredient> ingredients = new HashSet<IIngredient>();
+	private Language language;
+	
 
 	/*
 	 * (non-Javadoc)
@@ -125,6 +129,16 @@ public class Recipe implements Serializable, IBaseRecipe {
 	@Override
 	public void setIngredients(Set<IIngredient> ingredients) {
 		this.ingredients = ingredients;
+	}
+
+	@Override
+	public Language getLanguage() {
+		return language;
+	}
+
+	@Override
+	public void setLanguage(Language language) {
+		this.language = language;
 	}
 
 }
