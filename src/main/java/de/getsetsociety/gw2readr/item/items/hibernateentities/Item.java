@@ -20,6 +20,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
+import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.item.items.enums.RestrictionType;
@@ -51,6 +52,7 @@ public class Item implements Serializable, IBaseItem {
 	private Set<ItemFlags> flags = new HashSet<ItemFlags>();
 	private String description;
 	private Set<RestrictionType> restrictions = new HashSet<>();
+	private Language language;
 
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.entities.IBaseItem#getId()
@@ -357,5 +359,17 @@ public class Item implements Serializable, IBaseItem {
 	@Override
 	public void setRestrictions(Set<RestrictionType> restrictions) {
 		this.restrictions = restrictions;
+	}
+
+	@Override
+	@Column
+	@Enumerated(EnumType.ORDINAL)
+	public Language getLanguage() {
+		return language;
+	}
+
+	@Override
+	public void setLanguage(Language language) {
+		this.language = language;
 	}
 }

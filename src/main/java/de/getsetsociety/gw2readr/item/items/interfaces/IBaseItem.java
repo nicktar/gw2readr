@@ -1,8 +1,8 @@
 package de.getsetsociety.gw2readr.item.items.interfaces;
 
-import java.util.Map;
 import java.util.Set;
 
+import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.item.items.enums.RestrictionType;
@@ -74,5 +74,9 @@ public interface IBaseItem {
 	public abstract Set<RestrictionType> getRestrictions();
 
 	public abstract void setRestrictions(Set<RestrictionType> restrictions);
+	
+	public abstract Language getLanguage();
+	
+	public abstract void setLanguage(Language language);
 
 }

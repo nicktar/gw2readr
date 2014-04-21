@@ -10,6 +10,7 @@ import javax.persistence.Persistence;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.item.allitems.json.AllItems;
 import de.getsetsociety.gw2readr.item.items.HibernateItemEntityFactory;
 import de.getsetsociety.gw2readr.item.items.hibernateentities.Item;
@@ -40,7 +41,7 @@ public class InitialReader {
 				try {
 					if (em.find(Item.class, i) == null) {
 
-						content = ContentLoader.getItemUrlContent(String.valueOf(i));
+						content = ContentLoader.getItemUrlContent(String.valueOf(i), Language.English);
 						ItemJson<? extends Item> item = mapper.readValue(content, ItemJson.class);
 						IBaseItem entity = item.getEntity();
 						em.persist(entity);

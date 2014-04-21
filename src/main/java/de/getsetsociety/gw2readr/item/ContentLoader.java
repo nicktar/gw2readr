@@ -8,10 +8,12 @@ import java.net.URL;
 
 import org.apache.wicket.util.io.IOUtils;
 
+import de.getsetsociety.gw2readr.general.enums.Language;
+
 public class ContentLoader {
 	
-	public static String getItemUrlContent(String id) throws MalformedURLException,IOException {
-		return readFromUrl("item_details.json?item_id=" + id);
+	public static String getItemUrlContent(String id, Language language) throws MalformedURLException,IOException {
+		return readFromUrl(String.format("item_details.json?item_id=%s&lang=%s", id, language));
 	}
 
 	public static String getItemsUrlContent() throws MalformedURLException,IOException {

@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.item.items.enums.RestrictionType;
@@ -159,6 +160,10 @@ public abstract class ItemJson <T extends IBaseItem> implements IEntityWrapper<T
 	@JsonProperty("flags")
 	public Set<ItemFlags> getFlags() {
 		return getEntity().getFlags();
+	}
+	
+	public void setLanguage(Language language) {
+		getEntity().setLanguage(language);
 	}
 
 }
