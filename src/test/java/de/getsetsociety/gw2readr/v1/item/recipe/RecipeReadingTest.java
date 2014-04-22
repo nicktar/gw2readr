@@ -18,7 +18,7 @@ import de.getsetsociety.gw2readr.v1.item.ContentLoader;
 import de.getsetsociety.gw2readr.v1.item.allrecipes.json.AllRecipesReader;
 import de.getsetsociety.gw2readr.v1.item.recipes.enums.Disciplines;
 import de.getsetsociety.gw2readr.v1.item.recipes.enums.RecipeType;
-import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IBaseRecipe;
+import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IRecipe;
 import de.getsetsociety.gw2readr.v1.item.recipes.json.RecipeJson;
 
 public class RecipeReadingTest {
@@ -40,7 +40,7 @@ public class RecipeReadingTest {
 			fail("Unexpected Exception");
 		}
 		assertNotNull(recipeJson);
-		IBaseRecipe recipe = recipeJson.getEntity();
+		IRecipe recipe = recipeJson.getEntity();
 		assertEquals(Integer.valueOf(2940), recipe.getId());
 		assertEquals(RecipeType.Dessert, recipe.getType());
 		assertEquals(Integer.valueOf(12314), recipe.getOutputItemId());

@@ -26,7 +26,7 @@
 			<property name="hibernate.archive.autodetection" value="class" />
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-			<property name="hibernate.connection.password" value="gw2readr" />
+			<property name="hibernate.connection.password" value="armory" />
 			<property name="hibernate.connection.url" value="jdbc:mysql://cyclops:3306/armory" />
 			<property name="hibernate.connection.username" value="armory" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
