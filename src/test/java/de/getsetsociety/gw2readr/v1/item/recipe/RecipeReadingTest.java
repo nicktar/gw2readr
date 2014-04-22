@@ -1,4 +1,4 @@
-package de.getsetsociety.gw2readr.item.recipe;
+package de.getsetsociety.gw2readr.v1.item.recipe;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -14,12 +14,12 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.getsetsociety.gw2readr.item.ContentLoader;
-import de.getsetsociety.gw2readr.item.allrecipes.json.AllRecipesReader;
-import de.getsetsociety.gw2readr.item.recipes.enums.Disciplines;
-import de.getsetsociety.gw2readr.item.recipes.enums.RecipeType;
-import de.getsetsociety.gw2readr.item.recipes.interfaces.IBaseRecipe;
-import de.getsetsociety.gw2readr.item.recipes.json.RecipeJson;
+import de.getsetsociety.gw2readr.v1.item.ContentLoader;
+import de.getsetsociety.gw2readr.v1.item.allrecipes.json.AllRecipesReader;
+import de.getsetsociety.gw2readr.v1.item.recipes.enums.Disciplines;
+import de.getsetsociety.gw2readr.v1.item.recipes.enums.RecipeType;
+import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IBaseRecipe;
+import de.getsetsociety.gw2readr.v1.item.recipes.json.RecipeJson;
 
 public class RecipeReadingTest {
 

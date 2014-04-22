@@ -1,12 +1,13 @@
-package de.getsetsociety.gw2readr.item.allrecipes;
+package de.getsetsociety.gw2readr.v1.item.allrecipes;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
 import java.util.List;
 
 import org.junit.Test;
 
-import de.getsetsociety.gw2readr.item.allrecipes.json.AllRecipesReader;
+import de.getsetsociety.gw2readr.v1.item.allrecipes.json.AllRecipesReader;
 
 public class AllRecipesSmokeTest {
 	

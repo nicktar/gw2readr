@@ -4,23 +4,22 @@
 
 	<persistence-unit name="de.getsetsociety.gw2readr">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.Armor</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.AttributeModifier</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.BackItem</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.Bag</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.Buff</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.Consumable</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.Container</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.CraftingMaterial</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.Gizmo</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.InfixUpgrade</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.InfusionSlot</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.Item</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.MiniPet</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.Trinket</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.Trophy</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.UpgradeComponent</class>
-		<class>de.getsetsociety.gw2readr.item.items.hibernateentities.Weapon</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Armor</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.AttributeModifier</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.BackItem</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Bag</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Buff</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Consumable</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Container</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.CraftingMaterial</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Gizmo</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.InfixUpgrade</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Item</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.MiniPet</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Trinket</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Trophy</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.UpgradeComponent</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Weapon</class>
 
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>

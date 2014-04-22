@@ -1,6 +1,9 @@
-package  de.getsetsociety.gw2readr.item;
+package  de.getsetsociety.gw2readr.v1.item;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -13,20 +16,20 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.getsetsociety.gw2readr.item.allitems.json.AllItems;
-import de.getsetsociety.gw2readr.item.items.ItemReader;
-import de.getsetsociety.gw2readr.item.items.enums.DamageType;
-import de.getsetsociety.gw2readr.item.items.enums.ItemFlags;
-import de.getsetsociety.gw2readr.item.items.enums.Rarity;
-import de.getsetsociety.gw2readr.item.items.enums.WeaponType;
-import de.getsetsociety.gw2readr.item.items.interfaces.IArmor;
-import de.getsetsociety.gw2readr.item.items.interfaces.IBag;
-import de.getsetsociety.gw2readr.item.items.interfaces.IConsumable;
-import de.getsetsociety.gw2readr.item.items.interfaces.ICraftingMaterial;
-import de.getsetsociety.gw2readr.item.items.interfaces.IInfixUpgrade;
-import de.getsetsociety.gw2readr.item.items.interfaces.IWeapon;
-import de.getsetsociety.gw2readr.item.items.json.ItemJson;
-import  de.getsetsociety.gw2readr.item.ContentLoader;
+import de.getsetsociety.gw2readr.general.enums.Language;
+import de.getsetsociety.gw2readr.v1.item.allitems.json.AllItems;
+import de.getsetsociety.gw2readr.v1.item.items.ItemReader;
+import de.getsetsociety.gw2readr.v1.item.items.enums.DamageType;
+import de.getsetsociety.gw2readr.v1.item.items.enums.ItemFlags;
+import de.getsetsociety.gw2readr.v1.item.items.enums.Rarity;
+import de.getsetsociety.gw2readr.v1.item.items.enums.WeaponType;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBag;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IConsumable;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.ICraftingMaterial;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IWeapon;
+import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
 
 public class TestJsonReading {
 	
@@ -115,7 +118,7 @@ public class TestJsonReading {
 		for (Integer i: mapper.readValue(ContentLoader.getItemsUrlContent(), AllItems.class).getItems()) {
 			start = start || i.equals(49386);
 			if(start) {
-				content = ContentLoader.getItemUrlContent(String.valueOf(i));
+				content = ContentLoader.getItemUrlContent(String.valueOf(i), Language.English);
 			
 				ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 				assertTrue(displayMap(item.getAdditionalProperties()), item.getAdditionalProperties().isEmpty());
