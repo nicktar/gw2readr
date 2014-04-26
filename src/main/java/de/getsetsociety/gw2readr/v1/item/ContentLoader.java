@@ -36,6 +36,14 @@ public class ContentLoader {
 		return readFromUrl("build.json");
 	}
 
+	public static String getColorsUrlContent() throws MalformedURLException, IOException {
+		return getColorsUrlContent(Language.English);
+	}
+
+	public static String getColorsUrlContent(Language language) throws MalformedURLException, IOException {
+		return readFromUrl("colors.json?lang=" + language);
+	}
+
 	private static String readFromUrl(String urlpart) throws MalformedURLException, IOException {
 		URL url = new URL("https", "api.guildwars2.com","/v1/" + urlpart);
 		StringWriter writer = new StringWriter();

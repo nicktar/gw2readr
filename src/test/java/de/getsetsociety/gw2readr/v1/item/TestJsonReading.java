@@ -21,6 +21,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
+import de.getsetsociety.gw2readr.v1.colors.AllColorsReader;
+import de.getsetsociety.gw2readr.v1.colors.json.ColorsJson;
 import de.getsetsociety.gw2readr.v1.item.allitems.json.AllItems;
 import de.getsetsociety.gw2readr.v1.item.items.HibernateItemEntityFactory;
 import de.getsetsociety.gw2readr.v1.item.items.ItemReader;
@@ -163,5 +165,12 @@ public class TestJsonReading {
 			em.persist((UpgradeComponent)i);
 		}
 		
+	}
+	
+	@Test
+	public void testReadingColors() {
+		AllColorsReader ar = new AllColorsReader();
+		ColorsJson allColors = ar.readAllColors();
+		assertNotNull(allColors);
 	}
 }
