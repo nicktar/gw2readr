@@ -18,6 +18,8 @@ import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrophy;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IUpgradeComponent;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IWeapon;
+import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IIngredient;
+import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IRecipe;
 
 public interface IItemEntityFactory {
 
