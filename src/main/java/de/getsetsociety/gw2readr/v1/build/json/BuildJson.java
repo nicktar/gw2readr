@@ -11,16 +11,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BuildJson {
 
-	private Integer build_id;
+	private Integer buildId;
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
 	@JsonProperty("build_id")
-	public Integer getBuild_id() {
-		return build_id;
+	public Integer getBuildId() {
+		return buildId;
 	}
 
-	public void setBuild_id(Integer build_id) {
-		this.build_id = build_id;
+	public void setBuildId(Integer buildId) {
+		this.buildId = buildId;
 	}
 
 	@JsonAnyGetter
