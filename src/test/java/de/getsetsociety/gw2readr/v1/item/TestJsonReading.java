@@ -10,6 +10,10 @@ import java.net.MalformedURLException;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -18,13 +22,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v1.item.allitems.json.AllItems;
+import de.getsetsociety.gw2readr.v1.item.items.HibernateItemEntityFactory;
 import de.getsetsociety.gw2readr.v1.item.items.ItemReader;
 import de.getsetsociety.gw2readr.v1.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v1.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v1.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v1.item.items.enums.WeaponType;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Item;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.UpgradeComponent;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBag;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBaseItem;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IConsumable;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ICraftingMaterial;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
@@ -137,5 +145,23 @@ public class TestJsonReading {
 			retValue.append("Map entry: ").append(e.getKey()).append(" - ").append(e.getValue()).append("\n");
 		}
 		return retValue.toString();
+	}
+	
+	@Test
+	public void testReadintItem24586() {
+		ItemReader ir = new ItemReader();
+		EntityFactoryProvider.setItemEntityFactory(new HibernateItemEntityFactory());
+		IBaseItem i = ir.readItem(24589);
+		assertTrue(i.getDescription().length() < 512);
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("de.getsetsociety.gw2readr");
+
+		EntityManager em = emf.createEntityManager();
+		
+		if (em.find(UpgradeComponent.class, 24589) != null) {
+			em.merge((UpgradeComponent)i);
+		} else {
+			em.persist((UpgradeComponent)i);
+		}
+		
 	}
 }

@@ -7,9 +7,10 @@ import org.apache.log4j.Logger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
-import de.getsetsociety.gw2readr.v1.item.items.entities.Item;
-import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
 import de.getsetsociety.gw2readr.v1.item.ContentLoader;
+import de.getsetsociety.gw2readr.v1.item.items.entities.Item;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBaseItem;
+import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
 
 public class ItemReader {
 
@@ -26,12 +27,12 @@ public class ItemReader {
 		}
 	}}
 
-	public Item readItem(Integer id) {
+	public IBaseItem readItem(Integer id) {
 		return readItem(id, Language.English);
 	}
 
 	@SuppressWarnings("unchecked")
-	public Item readItem(Integer id, Language language) {
+	public IBaseItem readItem(Integer id, Language language) {
 		ItemJson<? extends Item> item = null;
 		try {
 			String content = ContentLoader.getItemUrlContent(String.valueOf(id), language);
@@ -41,8 +42,13 @@ public class ItemReader {
 		} catch (IOException e) {
 			logger.error("Caught Exception", e);
 		}
+		
+		IBaseItem item2 = null;
+		if (item != null) {
+			item2 = item.getEntity();
+		}
 
-		return item != null ? item.getEntity() : null;
+		return item2;
 	}
 
 }

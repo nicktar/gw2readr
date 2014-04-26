@@ -1,6 +1,7 @@
 package de.getsetsociety.gw2readr.v1.item.recipes;
 
 import java.io.IOException;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 
@@ -30,13 +31,21 @@ public class RecipeReader {
 		return readRecipe(id, Language.English);
 	}
 
-	private IRecipe readRecipe(Integer id, Language language) {
+	public IRecipe readRecipe(Integer id, Language language) {
 		RecipeJson recipe = null;
 		try {
-			String content = ContentLoader.getItemUrlContent(String.valueOf(id), language);
+			String content = ContentLoader.getRecipeUrlContent(String.valueOf(id), language);
 
 			recipe = mapper.readValue(content, RecipeJson.class);
 			recipe.setLanguage(language);
+			if (!recipe.getAdditionalProperties().isEmpty()) {
+				System.out.println("Additional Information of : " + content);
+				for (Entry<String, Object> e: recipe.getAdditionalProperties().entrySet()) {
+					System.out.print(e.getKey());
+					System.out.print(": ");
+					System.out.println(e.getValue());
+				}
+			}
 		} catch (IOException e) {
 			logger.error("Caught exception", e);
 		}

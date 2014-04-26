@@ -22,15 +22,15 @@ public class AllRecipesReader {
 	}}
 
 	public List<Integer> readAllRecipes() {
-		AllRecipes allItems = null;
+		AllRecipes allRecipes = null;
 		try {
 			String content = ContentLoader.getRecipesUrlContent();
 
-			allItems = mapper.readValue(content, AllRecipes.class);
+			allRecipes = mapper.readValue(content, AllRecipes.class);
 		} catch (IOException e) {
 		}
 
-		return allItems != null ? allItems.getRecipes() : null;
+		return allRecipes != null ? allRecipes.getRecipes() : null;
 	}
 
 }

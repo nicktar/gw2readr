@@ -10,7 +10,9 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
+import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.json.IEntityWrapper;
+import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
 import de.getsetsociety.gw2readr.v1.item.recipes.entities.Recipe;
 import de.getsetsociety.gw2readr.v1.item.recipes.enums.Disciplines;
 import de.getsetsociety.gw2readr.v1.item.recipes.enums.RecipeFlags;
@@ -21,7 +23,7 @@ import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IIngredient;
 public class RecipeJson implements IEntityWrapper<IRecipe> {
 
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-	private IRecipe entity = new Recipe();
+	private IRecipe entity = EntityFactoryProvider.getRecipeEntityFactory().newRecipe();
 
 	@JsonProperty("recipe_id")
 	public Integer getId() {
@@ -108,8 +110,12 @@ public class RecipeJson implements IEntityWrapper<IRecipe> {
 	}
 	
 	@JsonProperty("ingredients")
-	public Set<IIngredient> getIngredients() {
-		return getEntity().getIngredients();
+	public Set<IngredientJson> getIngredients() {
+		Set<IngredientJson> retValue = new HashSet<IngredientJson>();
+		for (IIngredient i: getEntity().getIngredients()) {
+			retValue.add(new IngredientJson(i));
+		}
+		return retValue;
 	}
 
 	@JsonProperty("ingredients")

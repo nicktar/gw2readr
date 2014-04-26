@@ -2,17 +2,27 @@ package de.getsetsociety.gw2readr.v1.item.recipes.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.json.IEntityWrapper;
+import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
 import de.getsetsociety.gw2readr.v1.item.recipes.entities.Ingredient;
 import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IIngredient;
 
 public class IngredientJson implements IEntityWrapper<IIngredient> {
 	
-	private IIngredient entity = new Ingredient();
+	private final IIngredient entity;
 
 	@Override
 	public IIngredient getEntity() {
 		return entity;
+	}
+	
+	public IngredientJson() {
+		entity = EntityFactoryProvider.getRecipeEntityFactory().newIngredient();
+	}
+	
+	public IngredientJson(IIngredient ingredient) {
+		entity = ingredient;
 	}
 	
 	@JsonProperty("item_id")
