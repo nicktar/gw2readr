@@ -28,6 +28,10 @@ public class ContentLoader {
 		return readFromUrl("recipe_details.json?recipe_id=" + id);
 	}
 
+	public static String getRecipeUrlContent(String id, Language language) throws MalformedURLException,IOException {
+		return readFromUrl(String.format("recipe_details.json?recipe_id=%s&lang=%s", id, language));
+	}
+
 	private static String readFromUrl(String urlpart) throws MalformedURLException, IOException {
 		URL url = new URL("https", "api.guildwars2.com","/v1/" + urlpart);
 		StringWriter writer = new StringWriter();
