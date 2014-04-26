@@ -12,7 +12,7 @@ import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class InfixUpgradeJson implements IEntityWrapper<IInfixUpgrade>{
 	
-	private IInfixUpgrade entity =EntityFactoryProvider.getFactory().newInfixUpgrade();
+	private IInfixUpgrade entity =EntityFactoryProvider.getItemEntityFactory().newInfixUpgrade();
 	
  	@JsonProperty("attributes")
    	public List<AttributeModifierJson> getAttributes() {

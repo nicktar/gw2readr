@@ -14,7 +14,7 @@ import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class ToolJson extends ItemJson<ITool> {
 
-	private ITool item = EntityFactoryProvider.getFactory().newTool();
+	private ITool item = EntityFactoryProvider.getItemEntityFactory().newTool();
 
 	@Override
 	public ITool getEntity() {

@@ -12,7 +12,7 @@ public class AttributeModifierJson implements IEntityWrapper<IAttributeModifier>
 	private final IAttributeModifier entity;
 	
 	public AttributeModifierJson() {
-		entity = EntityFactoryProvider.getFactory().newAttributeModifier();
+		entity = EntityFactoryProvider.getItemEntityFactory().newAttributeModifier();
 	}
 	
 	public AttributeModifierJson(IAttributeModifier am) {

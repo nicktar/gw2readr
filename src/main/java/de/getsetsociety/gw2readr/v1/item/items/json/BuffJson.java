@@ -10,7 +10,7 @@ public class BuffJson implements IEntityWrapper<IBuff>{
 	private final IBuff entity;
 	
 	public BuffJson() {
-		entity = EntityFactoryProvider.getFactory().newBuff();
+		entity = EntityFactoryProvider.getItemEntityFactory().newBuff();
 	}
 	
 	public BuffJson(IBuff buff) {

@@ -13,7 +13,7 @@ import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class GatheringJson extends ItemJson<IGathering> {
 
-	private IGathering item = EntityFactoryProvider.getFactory().newGathering();
+	private IGathering item = EntityFactoryProvider.getItemEntityFactory().newGathering();
 
 	@Override
 	public IGathering getEntity() {

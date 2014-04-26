@@ -12,7 +12,7 @@ import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class BagJson extends ItemJson<IBag> {
 	
-	private IBag item = EntityFactoryProvider.getFactory().newBag();
+	private IBag item = EntityFactoryProvider.getItemEntityFactory().newBag();
 
 	@Override
 	public IBag getEntity() {

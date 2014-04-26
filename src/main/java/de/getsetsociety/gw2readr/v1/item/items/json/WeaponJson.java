@@ -16,7 +16,7 @@ import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class WeaponJson extends ItemJson<IWeapon> {
 
-	private IWeapon item = EntityFactoryProvider.getFactory().newWeapon();
+	private IWeapon item = EntityFactoryProvider.getItemEntityFactory().newWeapon();
 
 	
 	@JsonProperty("weapon")

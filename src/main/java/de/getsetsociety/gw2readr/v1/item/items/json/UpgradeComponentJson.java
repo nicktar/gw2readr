@@ -17,7 +17,7 @@ import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class UpgradeComponentJson extends ItemJson<IUpgradeComponent> {
 
-	private IUpgradeComponent item = EntityFactoryProvider.getFactory().newUpgradeComponent();
+	private IUpgradeComponent item = EntityFactoryProvider.getItemEntityFactory().newUpgradeComponent();
 
 	@Override
 	public IUpgradeComponent getEntity() {

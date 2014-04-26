@@ -13,7 +13,7 @@ import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class ContainerJson extends ItemJson<IContainer> {
 
-	private IContainer item = EntityFactoryProvider.getFactory().newContainer();
+	private IContainer item = EntityFactoryProvider.getItemEntityFactory().newContainer();
 
 	@Override
 	public IContainer getEntity() {

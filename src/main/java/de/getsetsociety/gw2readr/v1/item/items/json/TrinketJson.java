@@ -15,7 +15,7 @@ import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class TrinketJson extends ItemJson<ITrinket> {
 
-	private ITrinket item = EntityFactoryProvider.getFactory().newTrinklet();
+	private ITrinket item = EntityFactoryProvider.getItemEntityFactory().newTrinklet();
 
 	@Override
 	public ITrinket getEntity() {

@@ -14,7 +14,7 @@ import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class BackItemJson extends ItemJson<IBackItem> {
 
-	private IBackItem item = EntityFactoryProvider.getFactory().newBackItem();
+	private IBackItem item = EntityFactoryProvider.getItemEntityFactory().newBackItem();
 
 	
 	@JsonProperty("back")

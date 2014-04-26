@@ -15,7 +15,7 @@ import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class ArmorJson extends ItemJson<IArmor> {
 
-	private IArmor item = EntityFactoryProvider.getFactory().newArmor();
+	private IArmor item = EntityFactoryProvider.getItemEntityFactory().newArmor();
 
 	@Override
 	public IArmor getEntity() {

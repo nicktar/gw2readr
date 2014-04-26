@@ -13,7 +13,7 @@ import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class GizmoJson extends ItemJson<IGizmo> {
 
-	private IGizmo item = EntityFactoryProvider.getFactory().newGizmo();
+	private IGizmo item = EntityFactoryProvider.getItemEntityFactory().newGizmo();
 
 	@Override
 	public IGizmo getEntity() {

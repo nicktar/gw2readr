@@ -14,7 +14,7 @@ import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class ConsumableJson extends ItemJson<IConsumable> {
 
-	private IConsumable item = EntityFactoryProvider.getFactory().newConsumable();
+	private IConsumable item = EntityFactoryProvider.getItemEntityFactory().newConsumable();
 
 	@Override
 	public IConsumable getEntity() {

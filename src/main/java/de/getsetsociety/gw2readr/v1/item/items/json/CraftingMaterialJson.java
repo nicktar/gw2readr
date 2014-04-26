@@ -6,7 +6,7 @@ import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class CraftingMaterialJson extends ItemJson<ICraftingMaterial> {
 
-    private ICraftingMaterial item = EntityFactoryProvider.getFactory().newCraftingMaterial();
+    private ICraftingMaterial item = EntityFactoryProvider.getItemEntityFactory().newCraftingMaterial();
 
 	@Override
 	public ICraftingMaterial getEntity() {
