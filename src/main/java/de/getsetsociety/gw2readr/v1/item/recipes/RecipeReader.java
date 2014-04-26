@@ -38,12 +38,10 @@ public class RecipeReader {
 
 			recipe = mapper.readValue(content, RecipeJson.class);
 			recipe.setLanguage(language);
-			if (!recipe.getAdditionalProperties().isEmpty()) {
-				System.out.println("Additional Information of : " + content);
+			if (logger.isDebugEnabled() && !recipe.getAdditionalProperties().isEmpty()) {
+				logger.debug("Additional Information of : " + content);
 				for (Entry<String, Object> e: recipe.getAdditionalProperties().entrySet()) {
-					System.out.print(e.getKey());
-					System.out.print(": ");
-					System.out.println(e.getValue());
+					logger.debug(e.getKey() + ": " +  e.getValue());
 				}
 			}
 		} catch (IOException e) {
