@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ColorsJson {
 
-	private Map<Integer, ColorJson> colors;
+	private Map<Integer, ColorJson> colors = new HashMap<Integer, ColorJson>();
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
 	@JsonProperty("colors")
