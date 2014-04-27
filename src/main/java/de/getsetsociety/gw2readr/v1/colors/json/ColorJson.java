@@ -10,29 +10,52 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ColorJson {
+import de.getsetsociety.gw2readr.v1.colors.interfaces.IColor;
+import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
-	private String name;
-	private RgbColorJson baseRgb;
+public class ColorJson {
+	
+	private IColor entity = EntityFactoryProvider.getColorsEntityFactory().newColor();
+
 	private BaseMaterialJson leather;
 	private BaseMaterialJson cloth;
 	private BaseMaterialJson metal;
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	
+	public ColorJson() {
+		if (entity.getLeather() == null) {
+			entity.setLeather(EntityFactoryProvider.getColorsEntityFactory().newBaseMaterial());
+		} 
+		if (entity.getMetal() == null) {
+			entity.setMetal(EntityFactoryProvider.getColorsEntityFactory().newBaseMaterial());
+		}
+		if (entity.getCloth() == null) {
+			entity.setCloth(EntityFactoryProvider.getColorsEntityFactory().newBaseMaterial());
+		}
+		leather = new BaseMaterialJson(entity.getLeather());
+		metal = new BaseMaterialJson(entity.getMetal());
+		cloth = new BaseMaterialJson(entity.getCloth());
+	}
+	
+	public IColor getEntity() {
+		return entity;
+	}
 
 	@JsonProperty("name")
 	public String getName() {
-		return name;
+		return entity.getName();
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		entity.setName(name);
 	}
 
 	@JsonProperty("base_rgb")
 	public List<Integer> getBaseRgb() {
 		List<Integer> rgbList;
-		if (baseRgb != null) {
-			rgbList = Arrays.asList(new Integer[] { baseRgb.getRed(), baseRgb.getGreen(), baseRgb.getBlue() });
+		if (entity.getBaseRgb() != null) {
+			rgbList = Arrays.asList(new Integer[] 
+					{ entity.getBaseRgb().getRed(), entity.getBaseRgb().getGreen(), entity.getBaseRgb().getBlue() });
 		} else {
 			rgbList = Collections.emptyList();
 		}
@@ -41,9 +64,9 @@ public class ColorJson {
 
 	public void setBaseRgb(List<Integer> rgb) {
 		if (rgb == null) {
-			baseRgb = null;
+			entity.setBaseRgb(null);
 		} else if (rgb.size() == 3) {
-			baseRgb = new RgbColorJson(rgb.get(0), rgb.get(1), rgb.get(2));
+			entity.setBaseRgb(EntityFactoryProvider.getColorsEntityFactory().newRgbColor(rgb.get(0), rgb.get(1), rgb.get(2)));
 		} else {
 			throw new IllegalArgumentException("setBaseRgb may only be called with null or a List with a size of three.");
 		}
@@ -55,7 +78,7 @@ public class ColorJson {
 	}
 
 	public void setLeather(BaseMaterialJson leather) {
-		this.leather = leather;
+		this.leather = new BaseMaterialJson(leather.getEntity());
 	}
 
 	@JsonProperty("cloth")
@@ -64,7 +87,7 @@ public class ColorJson {
 	}
 
 	public void setCloth(BaseMaterialJson cloth) {
-		this.cloth = cloth;
+		this.cloth = new BaseMaterialJson(cloth.getEntity());
 	}
 
 	@JsonProperty("metal")
@@ -73,7 +96,7 @@ public class ColorJson {
 	}
 
 	public void setMetal(BaseMaterialJson metal) {
-		this.metal = metal;
+		this.metal = new BaseMaterialJson(metal.getEntity());
 	}
 
 	@JsonAnyGetter

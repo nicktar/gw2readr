@@ -39,7 +39,7 @@ public class BuildReader {
 		} catch (IOException e) {
 			logger.error("Caught exception", e);
 		}
-		return build != null? build.getBuild_id(): -1;
+		return build != null? build.getBuildId(): -1;
 	}
 
 }

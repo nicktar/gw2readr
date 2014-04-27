@@ -1,81 +1,83 @@
 package de.getsetsociety.gw2readr.v1.colors.json;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Generated;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import de.getsetsociety.gw2readr.v1.colors.interfaces.IBaseMaterial;
+import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BaseMaterialJson {
-
-	private Integer brightness;
-	private Double contrast;
-	private Integer hue;
-	private Double saturation;
-	private Double lightness;
-	private RgbColorJson rgb;
+	
+	private final IBaseMaterial entity;
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	
+	public BaseMaterialJson(IBaseMaterial entity) {
+		this.entity = entity;
+	}
+	
+	IBaseMaterial getEntity() {
+		return entity;
+	}
 
 	@JsonProperty("brightness")
 	public Integer getBrightness() {
-		return brightness;
+		return entity.getBrightness();
 	}
 
 	public void setBrightness(Integer brightness) {
-		this.brightness = brightness;
+		entity.setBrightness(brightness);;
 	}
 
 	@JsonProperty("contrast")
 	public Double getContrast() {
-		return contrast;
+		return entity.getContrast();
 	}
 
 	public void setContrast(Double contrast) {
-		this.contrast = contrast;
+		entity.setContrast(contrast);
 	}
 
 	@JsonProperty("hue")
 	public Integer getHue() {
-		return hue;
+		return entity.getHue();
 	}
 
 	public void setHue(Integer hue) {
-		this.hue = hue;
+		entity.setHue(hue);
 	}
 
 	@JsonProperty("saturation")
 	public Double getSaturation() {
-		return saturation;
+		return entity.getSaturation();
 	}
 
 	public void setSaturation(Double saturation) {
-		this.saturation = saturation;
+		entity.setSaturation(saturation);
 	}
 
 	@JsonProperty("lightness")
 	public Double getLightness() {
-		return lightness;
+		return entity.getLightness();
 	}
 
 	public void setLightness(Double lightness) {
-		this.lightness = lightness;
+		entity.setLightness(lightness);
 	}
 
 	@JsonProperty("rgb")
 	public List<Integer> getRgb() {
 		List<Integer> rgbList;
-		if (rgb != null) {
-			rgbList = Arrays.asList(new Integer[] { rgb.getRed(), rgb.getGreen(), rgb.getBlue() });
+		if (entity.getRgb() != null) {
+			rgbList = Arrays.asList(new Integer[] { entity.getRgb().getRed(), entity.getRgb().getGreen(), entity.getRgb().getBlue() });
 		} else {
 			rgbList = Collections.emptyList();
 		}
@@ -84,9 +86,9 @@ public class BaseMaterialJson {
 
 	public void setRgb(List<Integer> rgb) {
 		if (rgb == null) {
-			this.rgb = null;
+			entity.setRgb(null);
 		} else if (rgb.size() == 3) {
-			this.rgb = new RgbColorJson(rgb.get(0), rgb.get(1), rgb.get(2));
+			entity.setRgb(EntityFactoryProvider.getColorsEntityFactory().newRgbColor(rgb.get(0), rgb.get(1), rgb.get(2)));
 		} else {
 			throw new IllegalArgumentException("setRgb may only be called with null or a List with a size of three.");
 		}

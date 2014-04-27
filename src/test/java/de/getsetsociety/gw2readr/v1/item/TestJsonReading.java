@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v1.colors.AllColorsReader;
-import de.getsetsociety.gw2readr.v1.colors.json.ColorsJson;
+import de.getsetsociety.gw2readr.v1.colors.interfaces.IColor;
 import de.getsetsociety.gw2readr.v1.item.allitems.json.AllItems;
 import de.getsetsociety.gw2readr.v1.item.items.HibernateItemEntityFactory;
 import de.getsetsociety.gw2readr.v1.item.items.ItemReader;
@@ -30,7 +30,6 @@ import de.getsetsociety.gw2readr.v1.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v1.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v1.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v1.item.items.enums.WeaponType;
-import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Item;
 import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.UpgradeComponent;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBag;
@@ -170,7 +169,7 @@ public class TestJsonReading {
 	@Test
 	public void testReadingColors() {
 		AllColorsReader ar = new AllColorsReader();
-		ColorsJson allColors = ar.readAllColors();
+		Map<Integer, IColor> allColors = ar.readAllColors();
 		assertNotNull(allColors);
 	}
 }
