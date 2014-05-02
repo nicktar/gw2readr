@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.getsetsociety.gw2readr.v1.item.ContentLoader;
+import de.getsetsociety.gw2readr.general.ContentLoader;
 
 public class AllRecipesReader {
 

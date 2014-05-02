@@ -14,7 +14,7 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.getsetsociety.gw2readr.v1.item.ContentLoader;
+import de.getsetsociety.gw2readr.general.ContentLoader;
 import de.getsetsociety.gw2readr.v1.item.allrecipes.json.AllRecipesReader;
 import de.getsetsociety.gw2readr.v1.item.recipes.enums.Disciplines;
 import de.getsetsociety.gw2readr.v1.item.recipes.enums.RecipeType;

@@ -7,10 +7,10 @@ import org.apache.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import de.getsetsociety.gw2readr.general.ContentLoader;
 import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IRecipe;
 import de.getsetsociety.gw2readr.v1.item.recipes.json.RecipeJson;
-import de.getsetsociety.gw2readr.v1.item.ContentLoader;
 
 public class RecipeReader {
 

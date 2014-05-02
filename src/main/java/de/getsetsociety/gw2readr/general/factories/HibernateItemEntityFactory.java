@@ -1,23 +1,23 @@
-package de.getsetsociety.gw2readr.v1.item.items;
+package de.getsetsociety.gw2readr.general.factories;
 
-import de.getsetsociety.gw2readr.v1.item.items.entities.Armor;
-import de.getsetsociety.gw2readr.v1.item.items.entities.AttributeModifier;
-import de.getsetsociety.gw2readr.v1.item.items.entities.BackItem;
-import de.getsetsociety.gw2readr.v1.item.items.entities.Bag;
-import de.getsetsociety.gw2readr.v1.item.items.entities.Buff;
-import de.getsetsociety.gw2readr.v1.item.items.entities.Consumable;
-import de.getsetsociety.gw2readr.v1.item.items.entities.Container;
-import de.getsetsociety.gw2readr.v1.item.items.entities.CraftingMaterial;
-import de.getsetsociety.gw2readr.v1.item.items.entities.Gathering;
-import de.getsetsociety.gw2readr.v1.item.items.entities.Gizmo;
-import de.getsetsociety.gw2readr.v1.item.items.entities.InfixUpgrade;
-import de.getsetsociety.gw2readr.v1.item.items.entities.InfusionSlot;
-import de.getsetsociety.gw2readr.v1.item.items.entities.MiniPet;
-import de.getsetsociety.gw2readr.v1.item.items.entities.Tool;
-import de.getsetsociety.gw2readr.v1.item.items.entities.Trinket;
-import de.getsetsociety.gw2readr.v1.item.items.entities.Trophy;
-import de.getsetsociety.gw2readr.v1.item.items.entities.UpgradeComponent;
-import de.getsetsociety.gw2readr.v1.item.items.entities.Weapon;
+import de.getsetsociety.gw2readr.general.factories.interfaces.IItemEntityFactory;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Armor;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.AttributeModifier;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.BackItem;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Bag;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Buff;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Consumable;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Container;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.CraftingMaterial;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Gathering;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Gizmo;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.InfixUpgrade;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.MiniPet;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Tool;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Trinket;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Trophy;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.UpgradeComponent;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Weapon;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBackItem;
@@ -29,7 +29,6 @@ import de.getsetsociety.gw2readr.v1.item.items.interfaces.ICraftingMaterial;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IGathering;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IGizmo;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfusionSlot;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IMiniPet;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITool;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
@@ -37,7 +36,7 @@ import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrophy;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IUpgradeComponent;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IWeapon;
 
-public class ItemEntityFactory implements IItemEntityFactory {
+public class HibernateItemEntityFactory implements IItemEntityFactory {
 
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newArmor()
@@ -126,7 +125,6 @@ public class ItemEntityFactory implements IItemEntityFactory {
 	public IInfixUpgrade newInfixUpgrade() {
 		return new InfixUpgrade();
 	}
-
 
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newMiniPet()

@@ -6,8 +6,8 @@ import org.apache.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import de.getsetsociety.gw2readr.general.ContentLoader;
 import de.getsetsociety.gw2readr.general.enums.Language;
-import de.getsetsociety.gw2readr.v1.item.ContentLoader;
 import de.getsetsociety.gw2readr.v1.item.items.entities.Item;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBaseItem;
 import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;

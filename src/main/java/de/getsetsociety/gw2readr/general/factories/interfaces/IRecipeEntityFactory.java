@@ -1,4 +1,4 @@
-package de.getsetsociety.gw2readr.v1.item.recipes;
+package de.getsetsociety.gw2readr.general.factories.interfaces;
 
 import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IIngredient;
 import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IRecipe;

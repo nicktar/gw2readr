@@ -1,4 +1,4 @@
-package de.getsetsociety.gw2readr.v1.item.items;
+package de.getsetsociety.gw2readr.general.factories.interfaces;
 
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;

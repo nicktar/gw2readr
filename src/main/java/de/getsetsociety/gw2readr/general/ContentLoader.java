@@ -1,4 +1,4 @@
-package  de.getsetsociety.gw2readr.v1.item;
+package  de.getsetsociety.gw2readr.general;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,6 +42,10 @@ public class ContentLoader {
 
 	public static String getColorsUrlContent(Language language) throws MalformedURLException, IOException {
 		return readFromUrl("colors.json?lang=" + language);
+	}
+
+	public static String getFilessUrlContent() throws MalformedURLException, IOException {
+		return readFromUrl("files.json");
 	}
 
 	private static String readFromUrl(String urlpart) throws MalformedURLException, IOException {

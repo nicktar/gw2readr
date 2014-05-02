@@ -5,9 +5,9 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import de.getsetsociety.gw2readr.general.ContentLoader;
 import de.getsetsociety.gw2readr.v1.item.items.entities.Item;
 import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
-import de.getsetsociety.gw2readr.v1.item.ContentLoader;
 
 public class AllItemsReader {
 

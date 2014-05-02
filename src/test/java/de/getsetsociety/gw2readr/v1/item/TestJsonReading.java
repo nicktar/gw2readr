@@ -20,11 +20,14 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import de.getsetsociety.gw2readr.general.ContentLoader;
 import de.getsetsociety.gw2readr.general.enums.Language;
+import de.getsetsociety.gw2readr.general.factories.HibernateItemEntityFactory;
 import de.getsetsociety.gw2readr.v1.colors.AllColorsReader;
 import de.getsetsociety.gw2readr.v1.colors.interfaces.IColor;
+import de.getsetsociety.gw2readr.v1.files.FilesReader;
+import de.getsetsociety.gw2readr.v1.files.interfaces.IFileInfo;
 import de.getsetsociety.gw2readr.v1.item.allitems.json.AllItems;
-import de.getsetsociety.gw2readr.v1.item.items.HibernateItemEntityFactory;
 import de.getsetsociety.gw2readr.v1.item.items.ItemReader;
 import de.getsetsociety.gw2readr.v1.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v1.item.items.enums.ItemFlags;
@@ -171,5 +174,13 @@ public class TestJsonReading {
 		AllColorsReader ar = new AllColorsReader();
 		Map<Integer, IColor> allColors = ar.readAllColors();
 		assertNotNull(allColors);
+	}
+	
+	@Test
+	public void testReadingFileInfos() {
+		FilesReader fir = new FilesReader();
+		Map<String, IFileInfo> allFiles = fir.readFiles();
+		assertNotNull(allFiles);
+		assertFalse(allFiles.isEmpty());
 	}
 }

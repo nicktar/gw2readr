@@ -1,14 +1,14 @@
-package de.getsetsociety.gw2readr.v1.colors;
+package de.getsetsociety.gw2readr.general.factories;
 
-import de.getsetsociety.gw2readr.v1.colors.entities.BaseMaterial;
-import de.getsetsociety.gw2readr.v1.colors.entities.Color;
-import de.getsetsociety.gw2readr.v1.colors.entities.RgbColor;
+import de.getsetsociety.gw2readr.general.factories.interfaces.IColorsEntityFactory;
+import de.getsetsociety.gw2readr.v1.colors.hibernateentities.BaseMaterial;
+import de.getsetsociety.gw2readr.v1.colors.hibernateentities.Color;
+import de.getsetsociety.gw2readr.v1.colors.hibernateentities.RgbColor;
 import de.getsetsociety.gw2readr.v1.colors.interfaces.IBaseMaterial;
 import de.getsetsociety.gw2readr.v1.colors.interfaces.IColor;
-import de.getsetsociety.gw2readr.v1.colors.interfaces.IColorsEntityFactory;
 import de.getsetsociety.gw2readr.v1.colors.interfaces.IRgbColor;
 
-public class ColorsEntityFactory implements IColorsEntityFactory {
+public class ColorsHibernateEntityFactory implements IColorsEntityFactory {
 	
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.v1.colors.IColorsEntityFactory#newBaseMaterial()
