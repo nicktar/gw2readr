@@ -6,7 +6,7 @@ import java.io.StringWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.apache.wicket.util.io.IOUtils;
+import org.apache.commons.io.IOUtils;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
 
