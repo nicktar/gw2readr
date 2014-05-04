@@ -1,11 +1,8 @@
-package  de.getsetsociety.gw2readr.v1.item;
+package  de.getsetsociety.gw2readr.general.factories;
 
-import de.getsetsociety.gw2readr.general.factories.ColorsEntityFactory;
-import de.getsetsociety.gw2readr.general.factories.FileInfoEntityFactory;
-import de.getsetsociety.gw2readr.general.factories.ItemEntityFactory;
-import de.getsetsociety.gw2readr.general.factories.RecipeEntityFactory;
 import de.getsetsociety.gw2readr.general.factories.interfaces.IColorsEntityFactory;
 import de.getsetsociety.gw2readr.general.factories.interfaces.IFileInfoEntityFactory;
+import de.getsetsociety.gw2readr.general.factories.interfaces.IGuildDetailsFactory;
 import de.getsetsociety.gw2readr.general.factories.interfaces.IItemEntityFactory;
 import de.getsetsociety.gw2readr.general.factories.interfaces.IRecipeEntityFactory;
 
@@ -15,7 +12,12 @@ public class EntityFactoryProvider {
 	private static IRecipeEntityFactory recipeEntityFactory = new RecipeEntityFactory();
 	private static IColorsEntityFactory colorsEntityFactory = new ColorsEntityFactory();
 	private static IFileInfoEntityFactory fileInfoEntityFactory = new FileInfoEntityFactory();
+	private static IGuildDetailsFactory guildDetailsFactory = new GuildDetailsFactory();
 
+	private EntityFactoryProvider() {
+		//only static 
+	}
+	
 	/**
 	 * @return the fileInfoEntityFactory
 	 */
@@ -30,10 +32,6 @@ public class EntityFactoryProvider {
 		EntityFactoryProvider.fileInfoEntityFactory = fileInfoEntityFactory;
 	}
 
-	private EntityFactoryProvider() {
-		//only static 
-	}
-	
 	/**
 	 * @return the ItemEntityFactory
 	 */
@@ -74,6 +72,20 @@ public class EntityFactoryProvider {
 	 */
 	public static void setColorsEntityFactory(IColorsEntityFactory colorsEntityFactory) {
 		EntityFactoryProvider.colorsEntityFactory = colorsEntityFactory;
+	}
+
+	/**
+	 * @return the guildDetailsFactory
+	 */
+	public static IGuildDetailsFactory getGuildDetailsFactory() {
+		return guildDetailsFactory;
+	}
+
+	/**
+	 * @param guildDetailsFactory the guildDetailsFactory to set
+	 */
+	public static void setGuildDetailsFactory(IGuildDetailsFactory guildDetailsFactory) {
+		EntityFactoryProvider.guildDetailsFactory = guildDetailsFactory;
 	}
 
 	

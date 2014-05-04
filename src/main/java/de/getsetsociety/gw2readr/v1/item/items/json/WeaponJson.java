@@ -9,10 +9,10 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v1.item.items.enums.WeaponType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IWeapon;
-import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class WeaponJson extends ItemJson<IWeapon> {
 

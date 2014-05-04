@@ -2,8 +2,8 @@ package de.getsetsociety.gw2readr.v1.item.items.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBuff;
-import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class BuffJson implements IEntityWrapper<IBuff>{
 

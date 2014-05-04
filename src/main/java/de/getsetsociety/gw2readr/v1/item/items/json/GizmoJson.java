@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.enums.GizmoType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IGizmo;
-import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class GizmoJson extends ItemJson<IGizmo> {
 

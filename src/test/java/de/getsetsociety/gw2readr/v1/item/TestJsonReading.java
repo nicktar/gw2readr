@@ -22,6 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.getsetsociety.gw2readr.general.ContentLoader;
 import de.getsetsociety.gw2readr.general.enums.Language;
+import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.general.factories.HibernateItemEntityFactory;
 import de.getsetsociety.gw2readr.v1.colors.AllColorsReader;
 import de.getsetsociety.gw2readr.v1.colors.interfaces.IColor;

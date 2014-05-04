@@ -10,10 +10,10 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.enums.UpgradeComponentFlag;
 import de.getsetsociety.gw2readr.v1.item.items.enums.UpgradeComponentType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IUpgradeComponent;
-import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class UpgradeComponentJson extends ItemJson<IUpgradeComponent> {
 

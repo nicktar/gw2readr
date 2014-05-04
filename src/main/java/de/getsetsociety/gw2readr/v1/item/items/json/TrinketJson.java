@@ -9,9 +9,9 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.enums.TrinketType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
-import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class TrinketJson extends ItemJson<ITrinket> {
 

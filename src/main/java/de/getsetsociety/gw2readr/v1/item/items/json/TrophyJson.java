@@ -1,8 +1,8 @@
 
 package de.getsetsociety.gw2readr.v1.item.items.json;
 
+import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrophy;
-import de.getsetsociety.gw2readr.v1.item.EntityFactoryProvider;
 
 public class TrophyJson extends ItemJson<ITrophy> {
 
