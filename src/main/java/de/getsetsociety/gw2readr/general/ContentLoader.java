@@ -44,8 +44,12 @@ public class ContentLoader {
 		return readFromUrl("colors.json?lang=" + language);
 	}
 
-	public static String getFilessUrlContent() throws MalformedURLException, IOException {
+	public static String getFilesUrlContent() throws MalformedURLException, IOException {
 		return readFromUrl("files.json");
+	}
+
+	public static String getWorldsUrlContent(Language language) throws MalformedURLException, IOException {
+		return readFromUrl("world_names.json?lang=" + language);
 	}
 
 	private static String readFromUrl(String urlpart) throws MalformedURLException, IOException {

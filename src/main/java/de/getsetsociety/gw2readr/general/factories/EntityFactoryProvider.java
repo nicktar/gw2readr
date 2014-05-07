@@ -5,6 +5,7 @@ import de.getsetsociety.gw2readr.general.factories.interfaces.IFileInfoEntityFac
 import de.getsetsociety.gw2readr.general.factories.interfaces.IGuildDetailsFactory;
 import de.getsetsociety.gw2readr.general.factories.interfaces.IItemEntityFactory;
 import de.getsetsociety.gw2readr.general.factories.interfaces.IRecipeEntityFactory;
+import de.getsetsociety.gw2readr.general.factories.interfaces.IWorldEntityFactory;
 
 public class EntityFactoryProvider {
 	
@@ -13,6 +14,7 @@ public class EntityFactoryProvider {
 	private static IColorsEntityFactory colorsEntityFactory = new ColorsEntityFactory();
 	private static IFileInfoEntityFactory fileInfoEntityFactory = new FileInfoEntityFactory();
 	private static IGuildDetailsFactory guildDetailsFactory = new GuildDetailsFactory();
+	private static IWorldEntityFactory worldEntityFactory = new WorldEntityFactory();
 
 	private EntityFactoryProvider() {
 		//only static 
@@ -86,6 +88,14 @@ public class EntityFactoryProvider {
 	 */
 	public static void setGuildDetailsFactory(IGuildDetailsFactory guildDetailsFactory) {
 		EntityFactoryProvider.guildDetailsFactory = guildDetailsFactory;
+	}
+
+	public static IWorldEntityFactory getWorldEntityFactory() {
+		return worldEntityFactory;
+	}
+
+	public static void setWorldEntityFactory(IWorldEntityFactory worldEntityFactory) {
+		EntityFactoryProvider.worldEntityFactory = worldEntityFactory;
 	}
 
 	

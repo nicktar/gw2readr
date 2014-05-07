@@ -38,7 +38,7 @@ public class FilesReader {
 		Map<String, Map<String, Object>> tempFiles = null;
 		Map<String, IFileInfo> files = new HashMap<String, IFileInfo>();
 		try {
-			String content = ContentLoader.getFilessUrlContent();
+			String content = ContentLoader.getFilesUrlContent();
 			tempFiles = mapper.readValue(content, LinkedHashMap.class); 
 			for (Entry<String, Map<String, Object>> e: tempFiles.entrySet()) {
 				IFileInfo file = EntityFactoryProvider.getFileInfoEntityFactory().newFileInfo();
