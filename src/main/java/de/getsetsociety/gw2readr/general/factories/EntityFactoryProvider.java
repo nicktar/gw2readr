@@ -1,6 +1,7 @@
 package  de.getsetsociety.gw2readr.general.factories;
 
 import de.getsetsociety.gw2readr.general.factories.interfaces.IColorsEntityFactory;
+import de.getsetsociety.gw2readr.general.factories.interfaces.IContinentEntityFactory;
 import de.getsetsociety.gw2readr.general.factories.interfaces.IFileInfoEntityFactory;
 import de.getsetsociety.gw2readr.general.factories.interfaces.IGuildDetailsFactory;
 import de.getsetsociety.gw2readr.general.factories.interfaces.IItemEntityFactory;
@@ -15,6 +16,7 @@ public class EntityFactoryProvider {
 	private static IFileInfoEntityFactory fileInfoEntityFactory = new FileInfoEntityFactory();
 	private static IGuildDetailsFactory guildDetailsFactory = new GuildDetailsFactory();
 	private static IWorldEntityFactory worldEntityFactory = new WorldEntityFactory();
+	private static IContinentEntityFactory continentEntityFactory = new ContinentEntityFactory();
 
 	private EntityFactoryProvider() {
 		//only static 
@@ -96,6 +98,20 @@ public class EntityFactoryProvider {
 
 	public static void setWorldEntityFactory(IWorldEntityFactory worldEntityFactory) {
 		EntityFactoryProvider.worldEntityFactory = worldEntityFactory;
+	}
+
+	/**
+	 * @return the continentEntityFactory
+	 */
+	public static IContinentEntityFactory getContinentEntityFactory() {
+		return continentEntityFactory;
+	}
+
+	/**
+	 * @param continentEntityFactory the continentEntityFactory to set
+	 */
+	public static void setContinentEntityFactory(IContinentEntityFactory continentEntityFactory) {
+		EntityFactoryProvider.continentEntityFactory = continentEntityFactory;
 	}
 
 	

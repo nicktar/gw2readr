@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 
 public class JsonResources {
 
-	private static final String BUNDLE_NAME = "de.getsetsociety.gw2readr.v1.json.properties";
+	private static final String BUNDLE_NAME = "de.getsetsociety.gw2readr.v1.json";
 
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
 

@@ -1,6 +1,6 @@
 package de.getsetsociety.gw2readr.v1.map.continents.json;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,59 +10,84 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
+import de.getsetsociety.gw2readr.v1.map.continents.interfaces.IContinent;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ContinentJson {
 
-	private String name;
-	private List<Integer> continentDims = new ArrayList<Integer>();
-	private Integer minZoom;
-	private Integer maxZoom;
-	private List<Integer> floors = new ArrayList<Integer>();
+	private IContinent entity;
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+	/**
+	 * 
+	 */
+	public ContinentJson() {
+		this.entity = EntityFactoryProvider.getContinentEntityFactory().newContinent();
+	}
+
+	/**
+	 * @param entity
+	 */
+	public ContinentJson(IContinent entity) {
+		this.entity = entity;
+	}
+	
+	public IContinent getEntity() {
+		return entity;
+	}
 
 	@JsonProperty("name")
 	public String getName() {
-		return name;
+		return entity.getName();
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		entity.setName(name);;
 	}
 
 	@JsonProperty("continent_dims")
 	public List<Integer> getContinentDims() {
-		return continentDims;
+		return Arrays.asList(new Integer[] {entity.getContinentXDim(), entity.getContinentYDim()});
 	}
 
 	public void setContinentDims(List<Integer> continentDims) {
-		this.continentDims = continentDims;
+		if (continentDims == null) {
+			entity.setContinentXDim(null);
+			entity.setContinentYDim(null);
+		} else if (continentDims.size() == 2) {
+			entity.setContinentXDim(continentDims.get(0));
+			entity.setContinentYDim(continentDims.get(1));
+		} else {
+			throw new IllegalArgumentException("continentDims has to contain exactly 2 values, has " + continentDims.size());
+		}
 	}
 
 	@JsonProperty("min_zoom")
 	public Integer getMinZoom() {
-		return minZoom;
+		return entity.getMinZoom();
 	}
 
 	public void setMinZoom(Integer minZoom) {
-		this.minZoom = minZoom;
+		entity.setMinZoom(minZoom);;
 	}
 
 	@JsonProperty("max_zoom")
 	public Integer getMaxZoom() {
-		return maxZoom;
+		return entity.getMaxZoom();
 	}
 
 	public void setMax_zoom(Integer maxZoom) {
-		this.maxZoom = maxZoom;
+		entity.setMaxZoom(maxZoom);;
 	}
 
 	@JsonProperty("floors")
 	public List<Integer> getFloors() {
-		return floors;
+		return entity.getFloors();
 	}
 
 	public void setFloors(List<Integer> floors) {
-		this.floors = floors;
+		entity.setFloors(floors);;
 	}
 
 	@JsonAnyGetter
