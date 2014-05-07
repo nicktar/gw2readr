@@ -17,6 +17,10 @@ public class GuildJson {
 	private IGuild entity = EntityFactoryProvider.getGuildDetailsFactory().newGuild();
 
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	
+	public IGuild getEntity() {
+		return entity;
+	}
 
 	@JsonProperty("guild_id")
 	public String getGuildId() {

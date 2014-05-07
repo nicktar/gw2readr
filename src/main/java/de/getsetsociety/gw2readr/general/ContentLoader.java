@@ -7,6 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
 
@@ -52,6 +53,22 @@ public class ContentLoader {
 		return readFromUrl("world_names.json?lang=" + language);
 	}
 
+	public static String readContinentsUrlContent() throws MalformedURLException, IOException {
+		return readFromUrl("continents.json");
+	}
+
+	public static String readGuildUrlContent(String guildId, String guildName) throws MalformedURLException, IOException {
+		StringBuilder urlpart = new StringBuilder("guild_details.json");
+		if (StringUtils.isNoneBlank(guildId)) {
+			urlpart.append("?guild_id=").append(guildId);
+		} else if (StringUtils.isNoneBlank(guildName)) {
+			urlpart.append("?guild_name=").append(guildId);
+		} else {
+			throw new IllegalArgumentException("One of guildId or guildName has to be supplied and be not empty or blank.");
+		}
+		return readFromUrl(urlpart.toString());
+	}
+
 	private static String readFromUrl(String urlpart) throws MalformedURLException, IOException {
 		URL url = new URL("https", "api.guildwars2.com","/v1/" + urlpart);
 		StringWriter writer = new StringWriter();
@@ -59,4 +76,5 @@ public class ContentLoader {
 		String content = writer.toString();
 		return content;
 	}
+	
 }
