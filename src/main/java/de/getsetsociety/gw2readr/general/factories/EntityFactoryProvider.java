@@ -7,6 +7,7 @@ import de.getsetsociety.gw2readr.general.factories.interfaces.IGuildDetailsFacto
 import de.getsetsociety.gw2readr.general.factories.interfaces.IItemEntityFactory;
 import de.getsetsociety.gw2readr.general.factories.interfaces.IRecipeEntityFactory;
 import de.getsetsociety.gw2readr.general.factories.interfaces.IWorldEntityFactory;
+import de.getsetsociety.gw2readr.general.factories.interfaces.IWvWEntityFactory;
 
 public class EntityFactoryProvider {
 	
@@ -17,6 +18,7 @@ public class EntityFactoryProvider {
 	private static IGuildDetailsFactory guildDetailsFactory = new GuildDetailsFactory();
 	private static IWorldEntityFactory worldEntityFactory = new WorldEntityFactory();
 	private static IContinentEntityFactory continentEntityFactory = new ContinentEntityFactory();
+	private static IWvWEntityFactory wvwEntityFactory = new WvWEntityFactory();
 
 	private EntityFactoryProvider() {
 		//only static 
@@ -112,6 +114,14 @@ public class EntityFactoryProvider {
 	 */
 	public static void setContinentEntityFactory(IContinentEntityFactory continentEntityFactory) {
 		EntityFactoryProvider.continentEntityFactory = continentEntityFactory;
+	}
+
+	public static IWvWEntityFactory getWvwEntityFactory() {
+		return wvwEntityFactory;
+	}
+
+	public static void setWvwEntityFactory(IWvWEntityFactory wvwEntityFactory) {
+		EntityFactoryProvider.wvwEntityFactory = wvwEntityFactory;
 	}
 
 	
