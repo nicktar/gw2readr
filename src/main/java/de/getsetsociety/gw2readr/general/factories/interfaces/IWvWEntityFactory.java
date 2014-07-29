@@ -1,8 +1,14 @@
 package de.getsetsociety.gw2readr.general.factories.interfaces;
 
+import de.getsetsociety.gw2readr.v1.wvw.matches.interfaces.IWvWMatch;
+import de.getsetsociety.gw2readr.v1.wvw.matches.interfaces.IWvWMatches;
 import de.getsetsociety.gw2readr.v1.wvw.objectivenames.interfaces.IWvWObjectiveName;
 
 public interface IWvWEntityFactory {
 
-	public IWvWObjectiveName newObjectiveName();
+	public IWvWObjectiveName newWvWObjectiveName();
+
+	public abstract IWvWMatch newWvWMatch();
+
+	public abstract IWvWMatches newWvWMatches();
 }

@@ -13,7 +13,7 @@ import de.getsetsociety.gw2readr.v1.wvw.objectivenames.interfaces.IWvWObjectiveN
 public class WvWObjectiveNamesJson {
 
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-	private final IWvWObjectiveName entity = EntityFactoryProvider.getWvwEntityFactory().newObjectiveName();
+	private final IWvWObjectiveName entity = EntityFactoryProvider.getWvWEntityFactory().newWvWObjectiveName();
 
 	@JsonProperty("id")
 	public String getId() {

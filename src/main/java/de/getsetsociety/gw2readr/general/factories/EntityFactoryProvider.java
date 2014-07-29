@@ -116,12 +116,12 @@ public class EntityFactoryProvider {
 		EntityFactoryProvider.continentEntityFactory = continentEntityFactory;
 	}
 
-	public static IWvWEntityFactory getWvwEntityFactory() {
+	public static IWvWEntityFactory getWvWEntityFactory() {
 		return wvwEntityFactory;
 	}
 
-	public static void setWvwEntityFactory(IWvWEntityFactory wvwEntityFactory) {
-		EntityFactoryProvider.wvwEntityFactory = wvwEntityFactory;
+	public static void setWvWEntityFactory(IWvWEntityFactory wvWEntityFactory) {
+		EntityFactoryProvider.wvwEntityFactory = wvWEntityFactory;
 	}
 
 	

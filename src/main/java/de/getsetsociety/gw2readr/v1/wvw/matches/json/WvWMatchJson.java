@@ -5,77 +5,77 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
+import de.getsetsociety.gw2readr.v1.wvw.matches.interfaces.IWvWMatch;
 
 public class WvWMatchJson {
 
-	private String wvwMatchId;
-	private Integer redWorldId;
-	private Integer blueWorldId;
-	private Integer greenWorldId;
-	private String startTime;
-	private String endTime;
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	private final IWvWMatch entity;
+	
+	public WvWMatchJson() {
+		entity = EntityFactoryProvider.getWvWEntityFactory().newWvWMatch();
+	}
 
-	@JsonProperty("wvw_match_id")
-	public String getWvwMatchId() {
-		return wvwMatchId;
+	public WvWMatchJson(IWvWMatch entity) {
+		this.entity = entity;
 	}
 
 	@JsonProperty("wvw_match_id")
+	public String getWvwMatchId() {
+		return entity.getWvwMatchId();
+	}
+
 	public void setWvwMatchId(String wvwMatchId) {
-		this.wvwMatchId = wvwMatchId;
+		entity.setWvwMatchId(wvwMatchId);
 	}
 
 	@JsonProperty("red_world_id")
 	public Integer getRedWorldId() {
-		return redWorldId;
+		return entity.getRedWorldId();
 	}
 
-	@JsonProperty("red_world_id")
 	public void setRedWorldId(Integer redWorldId) {
-		this.redWorldId = redWorldId;
+		entity.setRedWorldId(redWorldId);
 	}
 
 	@JsonProperty("blue_world_id")
 	public Integer getBlueWorldId() {
-		return blueWorldId;
+		return entity.getBlueWorldId();
 	}
 
-	@JsonProperty("blue_world_id")
 	public void setBlueWorldId(Integer blueWorldId) {
-		this.blueWorldId = blueWorldId;
+		entity.setBlueWorldId(blueWorldId);
 	}
 
 	@JsonProperty("green_world_id")
 	public Integer getGreenWorldId() {
-		return greenWorldId;
+		return entity.getGreenWorldId();
 	}
 
 	@JsonProperty("green_world_id")
 	public void setGreenWorldId(Integer greenWorldId) {
-		this.greenWorldId = greenWorldId;
+		entity.setGreenWorldId(greenWorldId);
 	}
 
-	@JsonProperty("start_time")
 	public String getStartTime() {
-		return startTime;
+		return entity.getStartTime();
 	}
 
 	@JsonProperty("start_time")
 	public void setStartTime(String startTime) {
-		this.startTime = startTime;
+		entity.setStartTime(startTime);
 	}
 
-	@JsonProperty("end_time")
 	public String getEndTime() {
-		return endTime;
+		return entity.getEndTime();
 	}
 
 	@JsonProperty("end_time")
 	public void setEndTime(String endTime) {
-		this.endTime = endTime;
+		entity.setEndTime(endTime);
 	}
 
 	@JsonAnyGetter
@@ -86,6 +86,10 @@ public class WvWMatchJson {
 	@JsonAnySetter
 	public void setAdditionalProperty(String name, Object value) {
 		this.additionalProperties.put(name, value);
+	}
+
+	public IWvWMatch getEntity() {
+		return entity;
 	}
 
 }
