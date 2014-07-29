@@ -7,28 +7,30 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
+import de.getsetsociety.gw2readr.v1.wvw.objectivenames.interfaces.IWvWObjectiveName;
+
 public class WvWObjectiveNamesJson {
 
-	private String id;
-	private String name;
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	private final IWvWObjectiveName entity = EntityFactoryProvider.getWvwEntityFactory().newObjectiveName();
 
 	@JsonProperty("id")
 	public String getId() {
-		return id;
+		return entity.getId();
 	}
 
 	public void setId(String id) {
-		this.id = id;
+		entity.setId(id);
 	}
 
 	@JsonProperty("name")
 	public String getName() {
-		return name;
+		return entity.getName();
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		entity.setName(name);
 	}
 
 	@JsonAnyGetter
