@@ -6,20 +6,6 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.dialect.MySQLDialect;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
-import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Armor;
-import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.AttributeModifier;
-import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.BackItem;
-import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Bag;
-import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Buff;
-import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Consumable;
-import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Container;
-import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.CraftingMaterial;
-import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Gizmo;
-import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.InfixUpgrade;
-import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.MiniPet;
-import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Trinket;
-import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Trophy;
-import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Weapon;
 import de.getsetsociety.gw2readr.v1.item.recipes.hibernateentities.Ingredient;
 import de.getsetsociety.gw2readr.v1.item.recipes.hibernateentities.Recipe;
 

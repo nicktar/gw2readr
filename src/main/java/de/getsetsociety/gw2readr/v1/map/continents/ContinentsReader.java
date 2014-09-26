@@ -1,7 +1,6 @@
 package de.getsetsociety.gw2readr.v1.map.continents;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;

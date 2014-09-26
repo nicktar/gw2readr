@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
-import de.getsetsociety.gw2readr.v1.wvw.matches.entities.WvWMatch;
 import de.getsetsociety.gw2readr.v1.wvw.matches.interfaces.IWvWMatch;
 import de.getsetsociety.gw2readr.v1.wvw.matches.interfaces.IWvWMatches;
 

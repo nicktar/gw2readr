@@ -7,8 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
-
 import de.getsetsociety.gw2readr.v1.guilds.interfaces.IGuild;
 import de.getsetsociety.gw2readr.v1.guilds.interfaces.IGuildEmblem;
 

@@ -5,7 +5,6 @@ package de.getsetsociety.gw2readr.v1.item.items.hibernateentities;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.CollectionTable;

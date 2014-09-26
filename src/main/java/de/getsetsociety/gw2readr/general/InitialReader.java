@@ -16,12 +16,10 @@ import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.general.factories.HibernateItemEntityFactory;
 import de.getsetsociety.gw2readr.general.factories.HibernateRecipeEntityFactory;
 import de.getsetsociety.gw2readr.v1.item.allitems.json.AllItems;
-import de.getsetsociety.gw2readr.v1.item.allrecipes.json.AllRecipesReader;
 import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Item;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBaseItem;
 import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
 import de.getsetsociety.gw2readr.v1.item.recipes.RecipeReader;
-import de.getsetsociety.gw2readr.v1.item.recipes.hibernateentities.Recipe;
 
 public class InitialReader {
 

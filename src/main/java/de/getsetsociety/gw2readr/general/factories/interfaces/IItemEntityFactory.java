@@ -11,15 +11,12 @@ import de.getsetsociety.gw2readr.v1.item.items.interfaces.ICraftingMaterial;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IGathering;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IGizmo;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfusionSlot;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IMiniPet;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITool;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrophy;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IUpgradeComponent;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IWeapon;
-import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IIngredient;
-import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IRecipe;
 
 public interface IItemEntityFactory {
 

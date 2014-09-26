@@ -1,6 +1,5 @@
 package de.getsetsociety.gw2readr.v1.colors.interfaces;
 
-import de.getsetsociety.gw2readr.v1.colors.hibernateentities.RgbColor;
 
 public interface IBaseMaterial {
 

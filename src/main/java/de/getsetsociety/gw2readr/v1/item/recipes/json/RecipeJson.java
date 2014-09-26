@@ -12,13 +12,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.json.IEntityWrapper;
-import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
-import de.getsetsociety.gw2readr.v1.item.recipes.entities.Recipe;
 import de.getsetsociety.gw2readr.v1.item.recipes.enums.Disciplines;
 import de.getsetsociety.gw2readr.v1.item.recipes.enums.RecipeFlags;
 import de.getsetsociety.gw2readr.v1.item.recipes.enums.RecipeType;
-import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IRecipe;
 import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IIngredient;
+import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IRecipe;
 
 public class RecipeJson implements IEntityWrapper<IRecipe> {
 
