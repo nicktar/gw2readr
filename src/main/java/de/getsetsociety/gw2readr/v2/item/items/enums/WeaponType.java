@@ -22,5 +22,6 @@ public enum WeaponType {
 	Warhorn,
 	TwoHandedToy,
 	Toy,
-	LargeBundle
+	LargeBundle,
+	SmallBundle
 }
