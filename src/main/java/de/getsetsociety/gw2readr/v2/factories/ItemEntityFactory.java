@@ -1,39 +1,39 @@
 package de.getsetsociety.gw2readr.v2.factories;
 
-import de.getsetsociety.gw2readr.v2.factories.interfaces.IItemEntityFactory;
 import de.getsetsociety.gw2readr.v1.item.items.entities.Armor;
-import de.getsetsociety.gw2readr.v2.item.items.entities.AttributeModifier;
-import de.getsetsociety.gw2readr.v1.item.items.entities.BackItem;
 import de.getsetsociety.gw2readr.v1.item.items.entities.Bag;
-import de.getsetsociety.gw2readr.v2.item.items.entities.Buff;
 import de.getsetsociety.gw2readr.v1.item.items.entities.Consumable;
 import de.getsetsociety.gw2readr.v1.item.items.entities.Container;
 import de.getsetsociety.gw2readr.v1.item.items.entities.CraftingMaterial;
 import de.getsetsociety.gw2readr.v1.item.items.entities.Gathering;
 import de.getsetsociety.gw2readr.v1.item.items.entities.Gizmo;
-import de.getsetsociety.gw2readr.v2.item.items.entities.InfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.entities.MiniPet;
 import de.getsetsociety.gw2readr.v1.item.items.entities.Tool;
 import de.getsetsociety.gw2readr.v1.item.items.entities.Trinket;
 import de.getsetsociety.gw2readr.v1.item.items.entities.Trophy;
 import de.getsetsociety.gw2readr.v1.item.items.entities.UpgradeComponent;
-import de.getsetsociety.gw2readr.v2.item.items.entities.Weapon;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IAttributeModifier;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBackItem;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBag;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBuff;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IConsumable;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IContainer;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ICraftingMaterial;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IGathering;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IGizmo;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IMiniPet;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITool;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrophy;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IUpgradeComponent;
+import de.getsetsociety.gw2readr.v2.factories.interfaces.IItemEntityFactory;
+import de.getsetsociety.gw2readr.v2.item.items.entities.AttributeModifier;
+import de.getsetsociety.gw2readr.v2.item.items.entities.BackItem;
+import de.getsetsociety.gw2readr.v2.item.items.entities.Buff;
+import de.getsetsociety.gw2readr.v2.item.items.entities.InfixUpgrade;
+import de.getsetsociety.gw2readr.v2.item.items.entities.Weapon;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IAttributeModifier;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBackItem;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBuff;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IWeapon;
 
 public class ItemEntityFactory implements IItemEntityFactory {
@@ -45,7 +45,7 @@ public class ItemEntityFactory implements IItemEntityFactory {
 	public IArmor newArmor() {
 		return new Armor();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newAttributeModifier()
 	 */
@@ -53,7 +53,7 @@ public class ItemEntityFactory implements IItemEntityFactory {
 	public IAttributeModifier newAttributeModifier() {
 		return new AttributeModifier();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newBackItem()
 	 */
@@ -61,7 +61,7 @@ public class ItemEntityFactory implements IItemEntityFactory {
 	public IBackItem newBackItem() {
 		return new BackItem();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newBag()
 	 */
@@ -69,7 +69,7 @@ public class ItemEntityFactory implements IItemEntityFactory {
 	public IBag newBag() {
 		return new Bag();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newBuff()
 	 */
@@ -77,7 +77,7 @@ public class ItemEntityFactory implements IItemEntityFactory {
 	public IBuff newBuff() {
 		return new Buff();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newConsumable()
 	 */
@@ -85,7 +85,7 @@ public class ItemEntityFactory implements IItemEntityFactory {
 	public IConsumable newConsumable() {
 		return new Consumable();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newContainer()
 	 */
@@ -93,7 +93,7 @@ public class ItemEntityFactory implements IItemEntityFactory {
 	public IContainer newContainer() {
 		return new Container();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newCraftingMaterial()
 	 */
@@ -101,7 +101,7 @@ public class ItemEntityFactory implements IItemEntityFactory {
 	public ICraftingMaterial newCraftingMaterial() {
 		return new CraftingMaterial();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newGizmo()
 	 */
@@ -109,7 +109,7 @@ public class ItemEntityFactory implements IItemEntityFactory {
 	public IGizmo newGizmo() {
 		return new Gizmo();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newGathering()
 	 */
@@ -117,7 +117,7 @@ public class ItemEntityFactory implements IItemEntityFactory {
 	public IGathering newGathering() {
 		return new Gathering();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newInfixUpgrade()
 	 */
@@ -134,7 +134,7 @@ public class ItemEntityFactory implements IItemEntityFactory {
 	public IMiniPet newMiniPet() {
 		return new MiniPet();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newTrinklet()
 	 */
@@ -142,7 +142,7 @@ public class ItemEntityFactory implements IItemEntityFactory {
 	public ITrinket newTrinklet() {
 		return new Trinket();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newTrophy()
 	 */
@@ -150,7 +150,7 @@ public class ItemEntityFactory implements IItemEntityFactory {
 	public ITrophy newTrophy() {
 		return new Trophy();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newUpgradeComponent()
 	 */
@@ -158,7 +158,7 @@ public class ItemEntityFactory implements IItemEntityFactory {
 	public IUpgradeComponent newUpgradeComponent() {
 		return new UpgradeComponent();
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newWeapon()
 	 */

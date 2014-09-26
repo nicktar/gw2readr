@@ -22,7 +22,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBaseItem;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include= JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
 	//	@Type(value = CraftingMaterialJson.class, name = "CraftingMaterial"),
-	@Type(value = WeaponJson.class, name = "Weapon")
+	@Type(value = WeaponJson.class, name = "Weapon"),
 	//	@Type(value = ConsumableJson.class, name ="Consumable"),
 	//	@Type(value = ArmorJson.class, name="Armor"),
 	//	@Type(value = BagJson.class, name="Bag"),
@@ -34,7 +34,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBaseItem;
 	//	@Type(value = UpgradeComponentJson.class, name="UpgradeComponent"),
 	//	@Type(value = MiniPetJson.class, name="MiniPet"),
 	//	@Type(value = ToolJson.class, name="Tool"),
-	//	@Type(value = BackItemJson.class, name="Back")
+	@Type(value = BackItemJson.class, name="Back")
 })
 public abstract class ItemJson<T extends IBaseItem> implements IEntityWrapper<T> {
 
