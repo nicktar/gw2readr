@@ -11,8 +11,8 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.colors.interfaces.IBaseMaterial;
+import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BaseMaterialJson {

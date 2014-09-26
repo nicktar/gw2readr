@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
+import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
 

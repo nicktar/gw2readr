@@ -12,9 +12,9 @@ import javax.persistence.PersistenceException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
-import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
-import de.getsetsociety.gw2readr.general.factories.HibernateItemEntityFactory;
-import de.getsetsociety.gw2readr.general.factories.HibernateRecipeEntityFactory;
+import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
+import de.getsetsociety.gw2readr.v1.factories.HibernateItemEntityFactory;
+import de.getsetsociety.gw2readr.v1.factories.HibernateRecipeEntityFactory;
 import de.getsetsociety.gw2readr.v1.item.allitems.json.AllItems;
 import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Item;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBaseItem;

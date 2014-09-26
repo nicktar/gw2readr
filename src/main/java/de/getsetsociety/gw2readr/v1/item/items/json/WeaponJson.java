@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
+import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v1.item.items.enums.WeaponType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IWeapon;
@@ -18,7 +18,7 @@ public class WeaponJson extends ItemJson<IWeapon> {
 
 	private IWeapon item = EntityFactoryProvider.getItemEntityFactory().newWeapon();
 
-	
+
 	@JsonProperty("weapon")
 	public void setWeaponDetails(WeaponDetailsJson details) {
 		item.setDamageType(details.getDamageType());
@@ -118,11 +118,11 @@ public class WeaponJson extends ItemJson<IWeapon> {
 		public InfixUpgradeJson getInfixUpgrade() {
 			return infixUpgrade;
 		}
-		
+
 		public void setInfixUpgrade(InfixUpgradeJson infixUpgrade) {
 			this.infixUpgrade = infixUpgrade;
 		}
-		
+
 		@JsonAnyGetter
 		public Map<String, Object> getAdditionalProperties() {
 			return this.additionalProperties;

@@ -3,7 +3,7 @@ package de.getsetsociety.gw2readr.v1.item.items.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
+import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.enums.Attribute;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
 

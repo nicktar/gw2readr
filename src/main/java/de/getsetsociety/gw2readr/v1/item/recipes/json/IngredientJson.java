@@ -2,7 +2,7 @@ package de.getsetsociety.gw2readr.v1.item.recipes.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import de.getsetsociety.gw2readr.general.factories.EntityFactoryProvider;
+import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.json.IEntityWrapper;
 import de.getsetsociety.gw2readr.v1.item.recipes.interfaces.IIngredient;
 
