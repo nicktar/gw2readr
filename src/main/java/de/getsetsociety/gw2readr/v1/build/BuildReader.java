@@ -27,8 +27,9 @@ public class BuildReader {
 
 	public Integer readBuild() {
 		BuildJson build = null;
+		String content = null;
 		try {
-			String content = ContentLoader.getBuildUrlContent();
+			content = ContentLoader.getBuildUrlContent();
 			build = mapper.readValue(content, BuildJson.class); 
 			if (logger.isDebugEnabled() && !build.getAdditionalProperties().isEmpty()) {
 				logger.debug("Additional Information of : " + content);
