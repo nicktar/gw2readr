@@ -25,6 +25,7 @@ import de.getsetsociety.gw2readr.v2.item.items.enums.WeaponType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.WightClass;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBackItem;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBag;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBuff;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IConsumable;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IContainer;
@@ -33,6 +34,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradeComponent;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IWeapon;
 import de.getsetsociety.gw2readr.v2.item.items.json.ArmorJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.BackItemJson;
+import de.getsetsociety.gw2readr.v2.item.items.json.BagJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ConsumableJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ContainerJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
@@ -382,8 +384,8 @@ public class TestItems {
             fail("Unexpected Exception");
         }
         assertEquals("Zephyrite Rescue Pack", entity.getName());
-        assertEquals("Double-click to receive the following items: 1 Speed Booster, 1 Zephyrite Color Swatch: Red, 15 Black Lion Keys, 1 Aviator Cap Skin, 250 Piles of Sand.", entity
-                .getDescription());
+        assertEquals("Double-click to receive the following items: 1 Speed Booster, 1 Zephyrite Color Swatch: Red, 15 Black Lion Keys, 1 Aviator Cap Skin, 250 Piles of Sand.",
+                entity.getDescription());
         assertEquals(Integer.valueOf(0), entity.getLevel());
         assertEquals(Rarity.Rare, entity.getRarity());
         assertEquals(Integer.valueOf(129), entity.getVendorValue());
@@ -401,7 +403,47 @@ public class TestItems {
         assertTrue((entity.getRestrictions().isEmpty()));
         assertEquals("https://render.guildwars2.com/file/B80BE438007179E12B18B5EBDFCB1C61E2605DD6/824921.png", entity.getIcon());
         assertEquals(ContainerType.Default, entity.getContainerType());
+    }
 
+    @Test
+    public void testBag8932() {
+        String content = "{\"name\":\"Starter Backpack\",\"description\":\"A 20 slot bag for beginning characters.\","
+                + "\"type\":\"Bag\",\"level\":0,\"rarity\":\"Basic\",\"vendor_value\":11,"
+                + "\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],"
+                + "\"flags\":[\"NoSell\",\"SoulbindOnAcquire\",\"SoulBindOnUse\"],\"restrictions\":[],\"id\":8932,"
+                + "\"icon\":\"https://render.guildwars2.com/file/80E36806385691D4C0910817EF2A6C2006AEE353/61755.png\","
+                + "\"details\":{\"no_sell_or_sort\":false,\"size\":20}}";
+        IBag entity = null;
+        try {
+            ItemJson item = mapper.readValue(content, ItemJson.class);
+            assertNotNull(item);
+            assertTrue("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof BagJson);
+            entity = ((BagJson) item).getEntity();
+            assertNotNull(entity);
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("Unexpected Exception");
+        }
+        assertEquals("Starter Backpack", entity.getName());
+        assertEquals("A 20 slot bag for beginning characters.", entity.getDescription());
+        assertEquals(Integer.valueOf(0), entity.getLevel());
+        assertEquals(Rarity.Basic, entity.getRarity());
+        assertEquals(Integer.valueOf(11), entity.getVendorValue());
+        assertEquals(Integer.valueOf(8932), entity.getId());
+        assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
+        assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
+        assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
+        assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
+        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire,
+                ItemFlags.SoulBindOnUse });
+        assertEquals(flags.size(), entity.getFlags().size());
+        assertTrue(flags.containsAll(entity.getFlags()));
+        assertTrue((entity.getRestrictions().isEmpty()));
+        assertEquals("https://render.guildwars2.com/file/80E36806385691D4C0910817EF2A6C2006AEE353/61755.png", entity.getIcon());
+        assertFalse(entity.isNoSellOrSort());
+        assertEquals(Integer.valueOf(20), entity.getSize());
     }
 
 }
