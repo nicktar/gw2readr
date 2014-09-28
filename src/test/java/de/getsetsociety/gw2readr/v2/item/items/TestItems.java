@@ -20,6 +20,7 @@ import de.getsetsociety.gw2readr.v2.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.GizmoType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v2.item.items.enums.Rarity;
+import de.getsetsociety.gw2readr.v2.item.items.enums.ToolType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.TrinketType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.UpgradeComponentFlag;
 import de.getsetsociety.gw2readr.v2.item.items.enums.UpgradeComponentType;
@@ -33,6 +34,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IConsumable;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IContainer;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ICraftingMaterial;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IGizmo;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITool;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrinket;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrophy;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradeComponent;
@@ -45,6 +47,7 @@ import de.getsetsociety.gw2readr.v2.item.items.json.ContainerJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.CraftingMaterialJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.GizmoJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
+import de.getsetsociety.gw2readr.v2.item.items.json.ToolJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.TrinketJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.TrophyJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.UpgradeComponentJson;
@@ -86,8 +89,8 @@ public class TestItems {
         assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
         assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
         assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
         assertEquals(1, entity.getFlags().size());
         assertTrue("Item Should be 'SoulbindOnUse'", entity.getFlags().contains(ItemFlags.SoulBindOnUse));
         assertTrue(entity.getRestrictions().isEmpty());
@@ -157,8 +160,8 @@ public class TestItems {
         assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
         assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
         assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
         assertEquals(2, entity.getFlags().size());
         assertTrue("Item Should be 'SoulbindOnUse'", entity.getFlags().contains(ItemFlags.SoulBindOnUse));
         assertTrue("Item Should be 'SoulbindOnAquire'", entity.getFlags().contains(ItemFlags.SoulbindOnAcquire));
@@ -208,8 +211,8 @@ public class TestItems {
         assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
         assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
         assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
         assertEquals(1, entity.getFlags().size());
         assertTrue("Item Should be 'NotUpgradeable'", entity.getFlags().contains(ItemFlags.NotUpgradeable));
         assertTrue(entity.getRestrictions().isEmpty());
@@ -256,8 +259,8 @@ public class TestItems {
         assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
         assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
         assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
         assertEquals(3, entity.getFlags().size());
         assertTrue("Item Should be 'NoSell'", entity.getFlags().contains(ItemFlags.NoSell));
         assertTrue("Item Should be 'SoulbindOnAcquire'", entity.getFlags().contains(ItemFlags.SoulbindOnAcquire));
@@ -302,8 +305,8 @@ public class TestItems {
         assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
         assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
         assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
         assertTrue(entity.getRestrictions().isEmpty());
         assertEquals(Integer.valueOf(24654), entity.getId());
         assertEquals("https://render.guildwars2.com/file/656ABB62BBEC39BC24D002FBE19EFCE953ABEDCD/221036.png", entity.getIcon());
@@ -360,8 +363,8 @@ public class TestItems {
         assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
         assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
         assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
         List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoSalvage,
                 ItemFlags.NoSell, ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse });
         assertEquals(flags.size(), entity.getFlags().size());
@@ -402,8 +405,8 @@ public class TestItems {
         assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
         assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
         assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
         List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoMysticForge,
                 ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.AccountBindOnUse });
         assertEquals(flags.size(), entity.getFlags().size());
@@ -442,8 +445,8 @@ public class TestItems {
         assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
         assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
         assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
         List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire,
                 ItemFlags.SoulBindOnUse });
         assertEquals(flags.size(), entity.getFlags().size());
@@ -482,8 +485,8 @@ public class TestItems {
         assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
         assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
         assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
         assertTrue(entity.getFlags().isEmpty());
         assertTrue((entity.getRestrictions().isEmpty()));
         assertEquals("https://render.guildwars2.com/file/9C5457B024D9152906D808A53BFF67539BB94FA0/219396.png", entity.getIcon());
@@ -519,8 +522,8 @@ public class TestItems {
         assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
         assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
         assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
         List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.HideSuffix });
         assertEquals(flags.size(), entity.getFlags().size());
         assertTrue(flags.containsAll(entity.getFlags()));
@@ -568,8 +571,8 @@ public class TestItems {
         assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
         assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
         assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
         List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.NoSalvage, ItemFlags.NoSell });
         assertEquals(flags.size(), entity.getFlags().size());
         assertTrue(flags.containsAll(entity.getFlags()));
@@ -609,8 +612,8 @@ public class TestItems {
         assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
         assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
         assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
-        assertTrue("Item should be available in WvW", entity.getAvailableInPvPLobby());
+        assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
+        assertTrue("Item should be available in PvP Lobby", entity.getAvailableInPvPLobby());
         List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell,
                 ItemFlags.AccountBindOnUse });
         assertEquals(flags.size(), entity.getFlags().size());
@@ -618,6 +621,50 @@ public class TestItems {
         assertTrue((entity.getRestrictions().isEmpty()));
         assertEquals("https://render.guildwars2.com/file/207BDD31BC494A07A0A1691705079100066D3F2F/414998.png", entity.getIcon());
         assertEquals(GizmoType.ContainerKey, entity.getGizmoType());
+    }
+
+    @Test
+    public void testTool19986() {
+        String content = "{\"name\":\"Black Lion Salvage Kit\","
+                + "\"description\":\"Double-click then select an item in your inventory to salvage for crafting materials. "
+                + "100% chance of recovering upgrades. 50% chance to get rarer materials.\",\"type\":\"Tool\","
+                + "\"level\":0,\"rarity\":\"Exotic\",\"vendor_value\":0,"
+                + "\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Pvp\",\"PvpLobby\",\"Wvw\"],"
+                + "\"flags\":[\"AccountBound\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\"],"
+                + "\"restrictions\":[],\"id\":19986,"
+                + "\"icon\":\"https://render.guildwars2.com/file/2204EE5D7B1F7BEE9261CBAE3BF1DB5B027EE607/66551.png\","
+                + "\"details\":{\"type\":\"Salvage\",\"charges\":25}}";
+        ITool entity = null;
+        try {
+            ItemJson item = mapper.readValue(content, ItemJson.class);
+            assertNotNull(item);
+            assertTrue("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof ToolJson);
+            entity = ((ToolJson) item).getEntity();
+            assertNotNull(entity);
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("Unexpected Exception");
+        }
+        assertEquals("Black Lion Salvage Kit", entity.getName());
+        assertEquals("Double-click then select an item in your inventory to salvage for crafting materials. 100% chance of recovering upgrades. 50% chance to get rarer materials.", entity.getDescription());
+        assertEquals(Integer.valueOf(0), entity.getLevel());
+        assertEquals(Rarity.Exotic, entity.getRarity());
+        assertEquals(Integer.valueOf(0), entity.getVendorValue());
+        assertEquals(Integer.valueOf(19986), entity.getId());
+        assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
+        assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
+        assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
+        assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
+        assertTrue("Item should be available in PvP", entity.getAvailableInPvP());
+        assertTrue("Item should be available in PvP Lobby", entity.getAvailableInPvPLobby());
+        List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell,
+                ItemFlags.AccountBindOnUse });
+        assertEquals(flags.size(), entity.getFlags().size());
+        assertTrue(flags.containsAll(entity.getFlags()));
+        assertTrue((entity.getRestrictions().isEmpty()));
+        assertEquals("https://render.guildwars2.com/file/2204EE5D7B1F7BEE9261CBAE3BF1DB5B027EE607/66551.png", entity.getIcon());
+        assertEquals(ToolType.Salvage, entity.getToolType());
+        assertEquals(Integer.valueOf(25), entity.getCharges());
     }
 
 }

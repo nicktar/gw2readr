@@ -33,7 +33,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBaseItem;
         // @Type(value = GatheringJson.class, name="Gathering"),
         @Type(value = UpgradeComponentJson.class, name = "UpgradeComponent"),
         // @Type(value = MiniPetJson.class, name="MiniPet"),
-        // @Type(value = ToolJson.class, name="Tool"),
+        @Type(value = ToolJson.class, name = "Tool"),
         @Type(value = BackItemJson.class, name = "Back") })
 public abstract class ItemJson<T extends IBaseItem> implements IEntityWrapper<T> {
 
