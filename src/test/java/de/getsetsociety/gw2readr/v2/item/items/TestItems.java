@@ -17,6 +17,7 @@ import de.getsetsociety.gw2readr.v2.item.items.enums.Attribute;
 import de.getsetsociety.gw2readr.v2.item.items.enums.ConsumableType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.ContainerType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.DamageType;
+import de.getsetsociety.gw2readr.v2.item.items.enums.GizmoType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v2.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v2.item.items.enums.TrinketType;
@@ -31,6 +32,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBuff;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IConsumable;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IContainer;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ICraftingMaterial;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IGizmo;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrinket;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrophy;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradeComponent;
@@ -41,6 +43,7 @@ import de.getsetsociety.gw2readr.v2.item.items.json.BagJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ConsumableJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ContainerJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.CraftingMaterialJson;
+import de.getsetsociety.gw2readr.v2.item.items.json.GizmoJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.TrinketJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.TrophyJson;
@@ -572,6 +575,49 @@ public class TestItems {
         assertTrue(flags.containsAll(entity.getFlags()));
         assertTrue((entity.getRestrictions().isEmpty()));
         assertEquals("https://render.guildwars2.com/file/AB0317DF5B0E1BA47436A5420248660765154C08/62864.png", entity.getIcon());
+    }
+
+    @Test
+    public void testGizmo19980() {
+        String content = "{\"name\":\"Black Lion Chest Key\","
+                + "\"description\":\"This key will unlock one Black Lion Chest containing random Gem Store merchandise, "
+                + "including some rare items not sold separately.\\n\\n Black Lion Chests can be found randomly on enemies "
+                + "or bought from the trading post.\",\"type\":\"Gizmo\",\"level\":0,\"rarity\":\"Fine\","
+                + "\"vendor_value\":0,\"game_types\":[\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],"
+                + "\"flags\":[\"AccountBound\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\"],"
+                + "\"restrictions\":[],\"id\":19980,"
+                + "\"icon\":\"https://render.guildwars2.com/file/207BDD31BC494A07A0A1691705079100066D3F2F/414998.png\","
+                + "\"details\":{\"type\":\"ContainerKey\"}}";
+        IGizmo entity = null;
+        try {
+            ItemJson item = mapper.readValue(content, ItemJson.class);
+            assertNotNull(item);
+            assertTrue("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof GizmoJson);
+            entity = ((GizmoJson) item).getEntity();
+            assertNotNull(entity);
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("Unexpected Exception");
+        }
+        assertEquals("Black Lion Chest Key", entity.getName());
+        assertEquals("This key will unlock one Black Lion Chest containing random Gem Store merchandise, including some rare items not sold separately.\n\n Black Lion Chests can be found randomly on enemies or bought from the trading post.", entity.getDescription());
+        assertEquals(Integer.valueOf(0), entity.getLevel());
+        assertEquals(Rarity.Fine, entity.getRarity());
+        assertEquals(Integer.valueOf(0), entity.getVendorValue());
+        assertEquals(Integer.valueOf(19980), entity.getId());
+        assertFalse("Item should not be available in Activity", entity.getAvailableInActivity());
+        assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
+        assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
+        assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
+        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
+        assertTrue("Item should be available in WvW", entity.getAvailableInPvPLobby());
+        List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell,
+                ItemFlags.AccountBindOnUse });
+        assertEquals(flags.size(), entity.getFlags().size());
+        assertTrue(flags.containsAll(entity.getFlags()));
+        assertTrue((entity.getRestrictions().isEmpty()));
+        assertEquals("https://render.guildwars2.com/file/207BDD31BC494A07A0A1691705079100066D3F2F/414998.png", entity.getIcon());
+        assertEquals(GizmoType.ContainerKey, entity.getGizmoType());
     }
 
 }
