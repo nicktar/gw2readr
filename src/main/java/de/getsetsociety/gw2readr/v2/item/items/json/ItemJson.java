@@ -31,7 +31,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBaseItem;
 	//	@Type(value = TrinketJson.class, name="Trinket"),
 	//	@Type(value = GizmoJson.class, name="Gizmo"),
 	//	@Type(value = GatheringJson.class, name="Gathering"),
-	//	@Type(value = UpgradeComponentJson.class, name="UpgradeComponent"),
+	@Type(value = UpgradeComponentJson.class, name="UpgradeComponent"),
 	//	@Type(value = MiniPetJson.class, name="MiniPet"),
 	//	@Type(value = ToolJson.class, name="Tool"),
 	@Type(value = BackItemJson.class, name="Back")

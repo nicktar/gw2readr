@@ -9,7 +9,7 @@ import de.getsetsociety.gw2readr.v1.item.items.interfaces.IMiniPet;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITool;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrophy;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IUpgradeComponent;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradeComponent;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IAttributeModifier;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBackItem;
