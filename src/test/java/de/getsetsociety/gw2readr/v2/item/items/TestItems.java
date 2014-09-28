@@ -34,6 +34,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IConsumable;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IContainer;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ICraftingMaterial;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IGizmo;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IMiniPet;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITool;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrinket;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrophy;
@@ -47,6 +48,7 @@ import de.getsetsociety.gw2readr.v2.item.items.json.ContainerJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.CraftingMaterialJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.GizmoJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
+import de.getsetsociety.gw2readr.v2.item.items.json.MiniPetJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ToolJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.TrinketJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.TrophyJson;
@@ -665,6 +667,44 @@ public class TestItems {
         assertEquals("https://render.guildwars2.com/file/2204EE5D7B1F7BEE9261CBAE3BF1DB5B027EE607/66551.png", entity.getIcon());
         assertEquals(ToolType.Salvage, entity.getToolType());
         assertEquals(Integer.valueOf(25), entity.getCharges());
+    }
+
+    @Test
+    public void testMiniPet20117() {
+        String content = "{\"name\":\"Mini Bandit Bruiser\","
+                + "\"description\":\"Double-click to summon this miniature to follow you around. "
+                + "Only one miniature may be in use at a time.\",\"type\":\"MiniPet\",\"level\":0,\"rarity\":\"Masterwork\","
+                + "\"vendor_value\":100,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],"
+                + "\"flags\":[\"NoSell\"],\"restrictions\":[],\"id\":20117,"
+                + "\"icon\":\"https://render.guildwars2.com/file/D3F3C5BA926B0990FC30C0AAD37A3D57190B0B08/66056.png\"}";
+        IMiniPet entity = null;
+        try {
+            ItemJson item = mapper.readValue(content, ItemJson.class);
+            assertNotNull(item);
+            assertTrue("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof MiniPetJson);
+            entity = ((MiniPetJson) item).getEntity();
+            assertNotNull(entity);
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("Unexpected Exception");
+        }
+        assertEquals("Mini Bandit Bruiser", entity.getName());
+        assertEquals("Double-click to summon this miniature to follow you around. Only one miniature may be in use at a time.", entity.getDescription());
+        assertEquals(Integer.valueOf(0), entity.getLevel());
+        assertEquals(Rarity.Masterwork, entity.getRarity());
+        assertEquals(Integer.valueOf(100), entity.getVendorValue());
+        assertEquals(Integer.valueOf(20117), entity.getId());
+        assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
+        assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
+        assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
+        assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
+        assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
+        assertTrue("Item should be available in PvP Lobby", entity.getAvailableInPvPLobby());
+        List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.NoSell });
+        assertEquals(flags.size(), entity.getFlags().size());
+        assertTrue(flags.containsAll(entity.getFlags()));
+        assertTrue((entity.getRestrictions().isEmpty()));
+        assertEquals("https://render.guildwars2.com/file/D3F3C5BA926B0990FC30C0AAD37A3D57190B0B08/66056.png", entity.getIcon());
     }
 
 }
