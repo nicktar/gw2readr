@@ -138,7 +138,7 @@ public class FailingItemsTest0076 {
     @Test
     public void testItem19998() {
         try {
-            ItemJson item = mapper.readValue("{\"name\":\"Dye Pack\",\"description\":\"Each dye box contains 7 random dyes (5 common and 2 uncommon or rare). \n\nDyes can be unlocked for unlimited uses to color armor on all characters. Dye bottles can also be recycled in the mystic forge.\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Masterwork\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Pvp\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":19998,\"icon\":\"https://render.guildwars2.com/file/09206A087606CFC674AC19E1E5CCADB6B3302061/66601.png\",\"details\":{\"type\":\"GiftBox\"}}", ItemJson.class);
+            ItemJson item = mapper.readValue("{\"name\":\"Dye Pack\",\"description\":\"Each dye box contains 7 random dyes (5 common and 2 uncommon or rare). \\n\\nDyes can be unlocked for unlimited uses to color armor on all characters. Dye bottles can also be recycled in the mystic forge.\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Masterwork\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Pvp\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":19998,\"icon\":\"https://render.guildwars2.com/file/09206A087606CFC674AC19E1E5CCADB6B3302061/66601.png\",\"details\":{\"type\":\"GiftBox\"}}", ItemJson.class);
             assertNotNull(item);
         } catch (IOException e) {
             e.printStackTrace();
