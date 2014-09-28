@@ -137,10 +137,10 @@ public class TestItems {
         try {
             ItemJson item = mapper.readValue(content, ItemJson.class);
             assertNotNull(item);
-            assertTrue("Expecting BackJson, got " + item.getClass().getCanonicalName(), item instanceof BackItemJson);
+            assertTrue("Expecting BackItemJson, got " + item.getClass().getCanonicalName(), item instanceof BackItemJson);
             entity = ((BackItemJson) item).getEntity();
             assertNotNull(entity);
-            assertTrue(item.getAdditionalProperties().isEmpty());
+            assertTrue(item.getAdditionalProperties().size() + " unassigned values found", item.getAdditionalProperties().isEmpty());
         } catch (IOException e) {
             fail("Unexpected Exception");
         }
@@ -161,7 +161,7 @@ public class TestItems {
         assertTrue("Item Should be 'SoulbindOnAquire'", entity.getFlags().contains(ItemFlags.SoulbindOnAcquire));
         assertTrue(entity.getRestrictions().isEmpty());
         assertEquals(Integer.valueOf(57), entity.getId());
-        ;
+        assertNull(entity.getSecondarySuffixItemId());
         assertEquals("https://render.guildwars2.com/file/6CF800ACB923E42F6CA40832C80694C7E0E9CB4D/61005.png", entity.getIcon());
         assertTrue(entity.getInfusionSlots().isEmpty());
         assertEquals(2, entity.getInfixUpgrade().getAttributes().size());
@@ -192,7 +192,7 @@ public class TestItems {
             assertTrue("Expecting ArmorJson, got " + item.getClass().getCanonicalName(), item instanceof ArmorJson);
             entity = ((ArmorJson) item).getEntity();
             assertNotNull(entity);
-            assertTrue(item.getAdditionalProperties().isEmpty());
+            assertTrue(item.getAdditionalProperties().size() + " unassigned values found", item.getAdditionalProperties().isEmpty());
         } catch (IOException e) {
             fail("Unexpected Exception");
         }
@@ -224,6 +224,7 @@ public class TestItems {
         assertEquals(ArmorType.Coat, entity.getArmorType());
         assertEquals(WightClass.Medium, entity.getWightClass());
         assertEquals(Integer.valueOf(25), entity.getDefense());
+        assertNull(entity.getSecondarySuffixItemId());
     }
 
     @Test

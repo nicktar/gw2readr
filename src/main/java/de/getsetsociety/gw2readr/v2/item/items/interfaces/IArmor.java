@@ -8,28 +8,32 @@ import de.getsetsociety.gw2readr.v2.item.items.enums.WightClass;
 
 public interface IArmor extends IBaseItem {
 
-	public abstract ArmorType getArmorType();
+    public abstract ArmorType getArmorType();
 
-	public abstract void setArmorType(ArmorType armorType);
+    public abstract void setArmorType(ArmorType armorType);
 
-	public abstract WightClass getWightClass();
+    public abstract WightClass getWightClass();
 
-	public abstract void setWightClass(WightClass wightClass);
+    public abstract void setWightClass(WightClass wightClass);
 
-	public abstract Integer getDefense();
+    public abstract Integer getDefense();
 
-	public abstract void setDefense(Integer defense);
+    public abstract void setDefense(Integer defense);
 
-	public abstract Set<InfusionSlotType> getInfusionSlots();
+    public abstract Set<InfusionSlotType> getInfusionSlots();
 
-	public abstract void setInfusionSlots(Set<InfusionSlotType> infusionSlots);
+    public abstract void setInfusionSlots(Set<InfusionSlotType> infusionSlots);
 
-	public abstract Integer getSuffixItemId();
+    public abstract Integer getSuffixItemId();
 
-	public abstract void setSuffixItemId(Integer suffixItemId);
+    public abstract void setSuffixItemId(Integer suffixItemId);
 
-	public abstract IInfixUpgrade getInfixUpgrade();
+    public abstract Integer getSecondarySuffixItemId();
 
-	public abstract void setInfixUpgrade(IInfixUpgrade infixUpgrade);
+    public abstract void setSecondarySuffixItemId(Integer secondarySuffixItemId);
+
+    public abstract IInfixUpgrade getInfixUpgrade();
+
+    public abstract void setInfixUpgrade(IInfixUpgrade infixUpgrade);
 
 }
