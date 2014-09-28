@@ -19,6 +19,7 @@ import de.getsetsociety.gw2readr.v2.item.items.enums.ContainerType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v2.item.items.enums.Rarity;
+import de.getsetsociety.gw2readr.v2.item.items.enums.TrinketType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.UpgradeComponentFlag;
 import de.getsetsociety.gw2readr.v2.item.items.enums.UpgradeComponentType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.WeaponType;
@@ -30,6 +31,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBuff;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IConsumable;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IContainer;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ICraftingMaterial;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrinket;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrophy;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradeComponent;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IWeapon;
@@ -40,6 +42,7 @@ import de.getsetsociety.gw2readr.v2.item.items.json.ConsumableJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ContainerJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.CraftingMaterialJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
+import de.getsetsociety.gw2readr.v2.item.items.json.TrinketJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.TrophyJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.UpgradeComponentJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.WeaponJson;
@@ -482,4 +485,55 @@ public class TestItems {
         assertTrue((entity.getRestrictions().isEmpty()));
         assertEquals("https://render.guildwars2.com/file/9C5457B024D9152906D808A53BFF67539BB94FA0/219396.png", entity.getIcon());
     }
+
+    @Test
+    public void testTrinket13267() {
+        String content = "{\"name\":\"Turquoise Copper Amulet\",\"description\":\"\",\"type\":\"Trinket\",\"level\":20,"
+                + "\"rarity\":\"Fine\",\"vendor_value\":48,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],"
+                + "\"flags\":[\"HideSuffix\"],\"restrictions\":[],\"id\":13267,"
+                + "\"icon\":\"https://render.guildwars2.com/file/BA77541A56E7F639CCC5A379F4662EA2C55420BE/340120.png\","
+                + "\"details\":{\"type\":\"Amulet\",\"infusion_slots\":[],\"infix_upgrade\":"
+                + "{\"attributes\":[{\"attribute\":\"Vitality\",\"modifier\":12}]},\"suffix_item_id\":24465,"
+                + "\"secondary_suffix_item_id\":\"\"}}";
+        ITrinket entity = null;
+        try {
+            ItemJson item = mapper.readValue(content, ItemJson.class);
+            assertNotNull(item);
+            assertTrue("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof TrinketJson);
+            entity = ((TrinketJson) item).getEntity();
+            assertNotNull(entity);
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("Unexpected Exception");
+        }
+        assertEquals("Turquoise Copper Amulet", entity.getName());
+        assertEquals("", entity.getDescription());
+        assertEquals(Integer.valueOf(20), entity.getLevel());
+        assertEquals(Rarity.Fine, entity.getRarity());
+        assertEquals(Integer.valueOf(48), entity.getVendorValue());
+        assertEquals(Integer.valueOf(13267), entity.getId());
+        assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
+        assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
+        assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
+        assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
+        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.HideSuffix });
+        assertEquals(flags.size(), entity.getFlags().size());
+        assertTrue(flags.containsAll(entity.getFlags()));
+        assertTrue((entity.getRestrictions().isEmpty()));
+        assertEquals("https://render.guildwars2.com/file/BA77541A56E7F639CCC5A379F4662EA2C55420BE/340120.png", entity.getIcon());
+        assertEquals(TrinketType.Amulet, entity.getTrinketType());
+        assertTrue(entity.getInfusionSlots().isEmpty());
+        AttributeModifier am = new AttributeModifier();
+        am.setAttribute(Attribute.Vitality);
+        am.setModifier(12);
+        assertNotNull(entity.getInfixUpgrade());
+        assertNotNull(entity.getInfixUpgrade().getAttributes());
+        assertEquals(1, entity.getInfixUpgrade().getAttributes().size());
+        assertTrue(entity.getInfixUpgrade().getAttributes().contains(am));
+        assertEquals(Integer.valueOf(24465), entity.getSuffixItemId());
+        assertNull(entity.getSecondarySuffixItemId());
+    }
+
 }
