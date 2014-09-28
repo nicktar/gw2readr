@@ -3,6 +3,7 @@ package de.getsetsociety.gw2readr.v2.item.items;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+
 import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,7 +13,7 @@ import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
 public class FailingItemsTest0081 {
 
     private static ObjectMapper mapper = new ObjectMapper();
-    
+
     @Test
     public void testItem20317() {
         try {
@@ -104,7 +105,7 @@ public class FailingItemsTest0081 {
     @Test
     public void testItem20760() {
         try {
-            ItemJson item = mapper.readValue("{\"name\":\"Tradesman's Package\",\"description\":\"Double-click to open. Contains:\n• Merchant Express\n• Trading Post Express\n• Bank Access Express\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Masterwork\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoMysticForge\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":20760,\"icon\":\"https://render.guildwars2.com/file/D2220C0E96E928071992400BBC650AB4070B97DE/598604.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
+            ItemJson item = mapper.readValue("{\"name\":\"Tradesman's Package\",\"description\":\"Double-click to open. Contains:\\n• Merchant Express\\n• Trading Post Express\\n• Bank Access Express\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Masterwork\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoMysticForge\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":20760,\"icon\":\"https://render.guildwars2.com/file/D2220C0E96E928071992400BBC650AB4070B97DE/598604.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
             assertNotNull(item);
         } catch (IOException e) {
             e.printStackTrace();
@@ -115,7 +116,7 @@ public class FailingItemsTest0081 {
     @Test
     public void testItem20761() {
         try {
-            ItemJson item = mapper.readValue("{\"name\":\"Air Rider Package\",\"description\":\"Double-click to open. Contains:\n• Riding Broom\n• Aviator Cap\n• Riding Pants\n• Riding Gloves\n• Riding Boots\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Masterwork\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoMysticForge\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":20761,\"icon\":\"https://render.guildwars2.com/file/F0CF7372955EAF6EB857ABA3463818C1F8FE7531/598606.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
+            ItemJson item = mapper.readValue("{\"name\":\"Air Rider Package\",\"description\":\"Double-click to open. Contains:\\n• Riding Broom\\n• Aviator Cap\\n• Riding Pants\\n• Riding Gloves\\n• Riding Boots\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Masterwork\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoMysticForge\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":20761,\"icon\":\"https://render.guildwars2.com/file/F0CF7372955EAF6EB857ABA3463818C1F8FE7531/598606.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
             assertNotNull(item);
         } catch (IOException e) {
             e.printStackTrace();
@@ -126,7 +127,7 @@ public class FailingItemsTest0081 {
     @Test
     public void testItem20764() {
         try {
-            ItemJson item = mapper.readValue("{\"name\":\"Recovery Package\",\"description\":\"Double-click to open. Contains:\n• Revive Orb\n• Instant Repair Canister\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Masterwork\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoMysticForge\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":20764,\"icon\":\"https://render.guildwars2.com/file/27BC3DBD022559C0BEEA0AA65CCF773037019108/598605.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
+            ItemJson item = mapper.readValue("{\"name\":\"Recovery Package\",\"description\":\"Double-click to open. Contains:\\n• Revive Orb\\n• Instant Repair Canister\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Masterwork\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoMysticForge\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":20764,\"icon\":\"https://render.guildwars2.com/file/27BC3DBD022559C0BEEA0AA65CCF773037019108/598605.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
             assertNotNull(item);
         } catch (IOException e) {
             e.printStackTrace();
@@ -137,7 +138,7 @@ public class FailingItemsTest0081 {
     @Test
     public void testItem20794() {
         try {
-            ItemJson item = mapper.readValue("{\"name\":\"Loot Bag\",\"description\":\"This box gives one random item.\nDouble-click to open.\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Rare\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[\"NoSell\",\"SoulbindOnAcquire\",\"SoulBindOnUse\"],\"restrictions\":[],\"id\":20794,\"icon\":\"https://render.guildwars2.com/file/7C544ABA635A78AC9F5B5DD14A99A5F5DC0B2AD3/66600.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
+            ItemJson item = mapper.readValue("{\"name\":\"Loot Bag\",\"description\":\"This box gives one random item.\\nDouble-click to open.\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Rare\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[\"NoSell\",\"SoulbindOnAcquire\",\"SoulBindOnUse\"],\"restrictions\":[],\"id\":20794,\"icon\":\"https://render.guildwars2.com/file/7C544ABA635A78AC9F5B5DD14A99A5F5DC0B2AD3/66600.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
             assertNotNull(item);
         } catch (IOException e) {
             e.printStackTrace();
@@ -170,7 +171,7 @@ public class FailingItemsTest0081 {
     @Test
     public void testItem20799() {
         try {
-            ItemJson item = mapper.readValue("{\"name\":\"Crystal\",\"description\":\"Used by the Mystic Forge.\n<c=@flavor>\\\"Zommoros loves crystals\\\"</c>\",\"type\":\"Trophy\",\"level\":0,\"rarity\":\"Basic\",\"vendor_value\":6,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":20799,\"icon\":\"https://render.guildwars2.com/file/045C05C2F83A59FC4B6F15073465C5D3040E4DF5/65674.png\"}", ItemJson.class);
+            ItemJson item = mapper.readValue("{\"name\":\"Crystal\",\"description\":\"Used by the Mystic Forge.\\n<c=@flavor>\\\"Zommoros loves crystals\\\"</c>\",\"type\":\"Trophy\",\"level\":0,\"rarity\":\"Basic\",\"vendor_value\":6,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":20799,\"icon\":\"https://render.guildwars2.com/file/045C05C2F83A59FC4B6F15073465C5D3040E4DF5/65674.png\"}", ItemJson.class);
             assertNotNull(item);
         } catch (IOException e) {
             e.printStackTrace();
