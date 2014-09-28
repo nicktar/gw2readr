@@ -3,6 +3,7 @@ package de.getsetsociety.gw2readr.v2.item.items;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+
 import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,7 +13,7 @@ import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
 public class FailingItemsTest0076 {
 
     private static ObjectMapper mapper = new ObjectMapper();
-    
+
     @Test
     public void testItem19972() {
         try {
@@ -60,7 +61,7 @@ public class FailingItemsTest0076 {
     @Test
     public void testItem19976() {
         try {
-            ItemJson item = mapper.readValue("{\"name\":\"Mystic Coin\",\"description\":\"Coins are used to create high level weapons at the mystic forge in Lion's Arch. \nPart of Zommoros' favorite trades.\",\"type\":\"Trophy\",\"level\":0,\"rarity\":\"Rare\",\"vendor_value\":50,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[\"NoSalvage\",\"NoSell\"],\"restrictions\":[],\"id\":19976,\"icon\":\"https://render.guildwars2.com/file/AB0317DF5B0E1BA47436A5420248660765154C08/62864.png\"}", ItemJson.class);
+            ItemJson item = mapper.readValue("{\"name\":\"Mystic Coin\",\"description\":\"Coins are used to create high level weapons at the mystic forge in Lion's Arch. \\nPart of Zommoros' favorite trades.\",\"type\":\"Trophy\",\"level\":0,\"rarity\":\"Rare\",\"vendor_value\":50,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[\"NoSalvage\",\"NoSell\"],\"restrictions\":[],\"id\":19976,\"icon\":\"https://render.guildwars2.com/file/AB0317DF5B0E1BA47436A5420248660765154C08/62864.png\"}", ItemJson.class);
             assertNotNull(item);
         } catch (IOException e) {
             e.printStackTrace();
@@ -93,7 +94,7 @@ public class FailingItemsTest0076 {
     @Test
     public void testItem19980() {
         try {
-            ItemJson item = mapper.readValue("{\"name\":\"Black Lion Chest Key\",\"description\":\"This key will unlock one Black Lion Chest containing random Gem Store merchandise, including some rare items not sold separately.\n\n Black Lion Chests can be found randomly on enemies or bought from the trading post.\",\"type\":\"Gizmo\",\"level\":0,\"rarity\":\"Fine\",\"vendor_value\":0,\"game_types\":[\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":19980,\"icon\":\"https://render.guildwars2.com/file/207BDD31BC494A07A0A1691705079100066D3F2F/414998.png\",\"details\":{\"type\":\"ContainerKey\"}}", ItemJson.class);
+            ItemJson item = mapper.readValue("{\"name\":\"Black Lion Chest Key\",\"description\":\"This key will unlock one Black Lion Chest containing random Gem Store merchandise, including some rare items not sold separately.\\n\\n Black Lion Chests can be found randomly on enemies or bought from the trading post.\",\"type\":\"Gizmo\",\"level\":0,\"rarity\":\"Fine\",\"vendor_value\":0,\"game_types\":[\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":19980,\"icon\":\"https://render.guildwars2.com/file/207BDD31BC494A07A0A1691705079100066D3F2F/414998.png\",\"details\":{\"type\":\"ContainerKey\"}}", ItemJson.class);
             assertNotNull(item);
         } catch (IOException e) {
             e.printStackTrace();
