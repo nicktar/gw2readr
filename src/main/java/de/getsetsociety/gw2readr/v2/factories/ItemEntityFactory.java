@@ -1,7 +1,5 @@
 package de.getsetsociety.gw2readr.v2.factories;
 
-import de.getsetsociety.gw2readr.v1.item.items.entities.Gathering;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IGathering;
 import de.getsetsociety.gw2readr.v2.factories.interfaces.IItemEntityFactory;
 import de.getsetsociety.gw2readr.v2.item.items.entities.Armor;
 import de.getsetsociety.gw2readr.v2.item.items.entities.AttributeModifier;
@@ -11,6 +9,7 @@ import de.getsetsociety.gw2readr.v2.item.items.entities.Buff;
 import de.getsetsociety.gw2readr.v2.item.items.entities.Consumable;
 import de.getsetsociety.gw2readr.v2.item.items.entities.Container;
 import de.getsetsociety.gw2readr.v2.item.items.entities.CraftingMaterial;
+import de.getsetsociety.gw2readr.v2.item.items.entities.Gathering;
 import de.getsetsociety.gw2readr.v2.item.items.entities.Gizmo;
 import de.getsetsociety.gw2readr.v2.item.items.entities.InfixUpgrade;
 import de.getsetsociety.gw2readr.v2.item.items.entities.MiniPet;
@@ -27,6 +26,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBuff;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IConsumable;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IContainer;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ICraftingMaterial;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IGathering;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IGizmo;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IMiniPet;

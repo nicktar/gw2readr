@@ -14,68 +14,77 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBackItem;
 
 public class BackItemJson extends ItemJson<IBackItem> {
 
-	private IBackItem item = EntityFactoryProvider.getItemEntityFactory().newBackItem();
+    private IBackItem item = EntityFactoryProvider.getItemEntityFactory().newBackItem();
 
+    @JsonProperty("details")
+    public void setWeaponDetails(WeaponDetailsJson details) {
+        for (InfusionSlotJson detail : details.getInfusionSlots()) {
+            item.getInfusionSlots().addAll(detail.getFlags());
+        }
+        item.setSuffixItemId(details.getSuffixItemId());
+        item.setSecondarySuffixItemId(details.getSecondarySuffixItemId());
+        item.setInfixUpgrade(details.getInfixUpgrade().getEntity());
+        getAdditionalProperties().putAll(details.getAdditionalProperties());
+    }
 
-	@JsonProperty("details")
-	public void setWeaponDetails(WeaponDetailsJson details) {
-		for (InfusionSlotJson detail: details.getInfusionSlots()) {
-			item.getInfusionSlots().addAll(detail.getFlags());
-		}
-		item.setSuffixItemId(details.getSuffixItemId());
-		item.setInfixUpgrade(details.getInfixUpgrade().getEntity());
-		getAdditionalProperties().putAll(details.getAdditionalProperties());
-	}
+    @Override
+    public IBackItem getEntity() {
+        return item;
+    }
 
-	@Override
-	public IBackItem getEntity() {
-		return item;
-	}
+    public class WeaponDetailsJson {
 
-	public class WeaponDetailsJson {
+        private List<InfusionSlotJson> infusionSlots = new ArrayList<>();
+        private Integer suffixItemId;
+        private Integer secondarySuffixItemId;
+        private InfixUpgradeJson infixUpgrade = new InfixUpgradeJson();
+        private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-		private List<InfusionSlotJson> infusionSlots = new ArrayList<>();
-		private Integer suffixItemId;
-		private InfixUpgradeJson infixUpgrade = new InfixUpgradeJson();
-		private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+        @JsonProperty("infusion_slots")
+        public List<InfusionSlotJson> getInfusionSlots() {
+            return infusionSlots;
+        }
 
+        public void setInfusionSlots(List<InfusionSlotJson> infusionSlots) {
+            this.infusionSlots = infusionSlots;
+        }
 
-		@JsonProperty("infusion_slots")
-		public List<InfusionSlotJson> getInfusionSlots() {
-			return infusionSlots;
-		}
+        @JsonProperty("suffix_item_id")
+        public Integer getSuffixItemId() {
+            return suffixItemId;
+        }
 
-		public void setInfusionSlots(List<InfusionSlotJson> infusionSlots) {
-			this.infusionSlots = infusionSlots;
-		}
+        public void setSuffixItemId(Integer suffix_item_id) {
+            this.suffixItemId = suffix_item_id;
+        }
 
-		@JsonProperty("suffix_item_id")
-		public Integer getSuffixItemId() {
-			return suffixItemId;
-		}
+        @JsonProperty("infix_upgrade")
+        public InfixUpgradeJson getInfixUpgrade() {
+            return infixUpgrade;
+        }
 
-		public void setSuffixItemId(Integer suffix_item_id) {
-			this.suffixItemId = suffix_item_id;
-		}
+        public void setInfixUpgrade(InfixUpgradeJson infixUpgrade) {
+            this.infixUpgrade = infixUpgrade;
+        }
 
-		@JsonProperty("infix_upgrade")
-		public InfixUpgradeJson getInfixUpgrade() {
-			return infixUpgrade;
-		}
+        @JsonProperty("secondary_suffix_item_id")
+        public Integer getSecondarySuffixItemId() {
+            return secondarySuffixItemId;
+        }
 
-		public void setInfixUpgrade(InfixUpgradeJson infixUpgrade) {
-			this.infixUpgrade = infixUpgrade;
-		}
+        public void setSecondarySuffixItemId(Integer secondarySuffixItemId) {
+            this.secondarySuffixItemId = secondarySuffixItemId;
+        }
 
-		@JsonAnyGetter
-		public Map<String, Object> getAdditionalProperties() {
-			return this.additionalProperties;
-		}
+        @JsonAnyGetter
+        public Map<String, Object> getAdditionalProperties() {
+            return this.additionalProperties;
+        }
 
-		@JsonAnySetter
-		public void setAdditionalProperty(String name, Object value) {
-			this.additionalProperties.put(name, value);
-		}
+        @JsonAnySetter
+        public void setAdditionalProperty(String name, Object value) {
+            this.additionalProperties.put(name, value);
+        }
 
-	}
+    }
 }
