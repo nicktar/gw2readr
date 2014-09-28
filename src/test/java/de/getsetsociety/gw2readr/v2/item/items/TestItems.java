@@ -29,6 +29,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBag;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBuff;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IConsumable;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IContainer;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.ICraftingMaterial;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrophy;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradeComponent;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IWeapon;
@@ -37,6 +38,7 @@ import de.getsetsociety.gw2readr.v2.item.items.json.BackItemJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.BagJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ConsumableJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ContainerJson;
+import de.getsetsociety.gw2readr.v2.item.items.json.CraftingMaterialJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.TrophyJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.UpgradeComponentJson;
@@ -446,4 +448,38 @@ public class TestItems {
         assertEquals(Integer.valueOf(20), entity.getSize());
     }
 
+    @Test
+    public void testCraftingMaterial12128() {
+        String content = "{\"name\":\"Omnomberry\",\"description\":\"Ingredient\",\"type\":\"CraftingMaterial\","
+                + "\"level\":80,\"rarity\":\"Basic\",\"vendor_value\":9,"
+                + "\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[],\"restrictions\":[],"
+                + "\"id\":12128,"
+                + "\"icon\":\"https://render.guildwars2.com/file/9C5457B024D9152906D808A53BFF67539BB94FA0/219396.png\"}";
+        ICraftingMaterial entity = null;
+        try {
+            ItemJson item = mapper.readValue(content, ItemJson.class);
+            assertNotNull(item);
+            assertTrue("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof CraftingMaterialJson);
+            entity = ((CraftingMaterialJson) item).getEntity();
+            assertNotNull(entity);
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("Unexpected Exception");
+        }
+        assertEquals("Omnomberry", entity.getName());
+        assertEquals("Ingredient", entity.getDescription());
+        assertEquals(Integer.valueOf(80), entity.getLevel());
+        assertEquals(Rarity.Basic, entity.getRarity());
+        assertEquals(Integer.valueOf(9), entity.getVendorValue());
+        assertEquals(Integer.valueOf(12128), entity.getId());
+        assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
+        assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
+        assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
+        assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
+        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        assertTrue(entity.getFlags().isEmpty());
+        assertTrue((entity.getRestrictions().isEmpty()));
+        assertEquals("https://render.guildwars2.com/file/9C5457B024D9152906D808A53BFF67539BB94FA0/219396.png", entity.getIcon());
+    }
 }
