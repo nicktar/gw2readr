@@ -15,6 +15,7 @@ import de.getsetsociety.gw2readr.v2.item.items.entities.Buff;
 import de.getsetsociety.gw2readr.v2.item.items.enums.ArmorType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.Attribute;
 import de.getsetsociety.gw2readr.v2.item.items.enums.ConsumableType;
+import de.getsetsociety.gw2readr.v2.item.items.enums.ContainerType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v2.item.items.enums.Rarity;
@@ -26,12 +27,14 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBackItem;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBuff;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IConsumable;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IContainer;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrophy;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradeComponent;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IWeapon;
 import de.getsetsociety.gw2readr.v2.item.items.json.ArmorJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.BackItemJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ConsumableJson;
+import de.getsetsociety.gw2readr.v2.item.items.json.ContainerJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.TrophyJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.UpgradeComponentJson;
@@ -355,6 +358,50 @@ public class TestItems {
         assertTrue(flags.containsAll(entity.getFlags()));
         assertTrue((entity.getRestrictions().isEmpty()));
         assertEquals("https://render.guildwars2.com/file/0FF3F1E574DCDEFA2CC60E04B22BF5291273EDC3/62856.png", entity.getIcon());
+    }
+
+    @Test
+    public void testContainer8468() {
+        String content = "{\"name\":\"Zephyrite Rescue Pack\",\"description\":"
+                + "\"Double-click to receive the following items: 1 Speed Booster, 1 Zephyrite Color Swatch: Red, "
+                + "15 Black Lion Keys, 1 Aviator Cap Skin, 250 Piles of Sand.\",\"type\":\"Container\",\"level\":0,"
+                + "\"rarity\":\"Rare\",\"vendor_value\":129,\"game_types\":[\"Dungeon\",\"Pve\",\"Wvw\"],"
+                + "\"flags\":[\"AccountBound\",\"NoMysticForge\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\"],"
+                + "\"restrictions\":[],\"id\":8468,"
+                + "\"icon\":\"https://render.guildwars2.com/file/B80BE438007179E12B18B5EBDFCB1C61E2605DD6/824921.png\","
+                + "\"details\":{\"type\":\"Default\"}}";
+        IContainer entity = null;
+        try {
+            ItemJson item = mapper.readValue(content, ItemJson.class);
+            assertNotNull(item);
+            assertTrue("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof ContainerJson);
+            entity = ((ContainerJson) item).getEntity();
+            assertNotNull(entity);
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("Unexpected Exception");
+        }
+        assertEquals("Zephyrite Rescue Pack", entity.getName());
+        assertEquals("Double-click to receive the following items: 1 Speed Booster, 1 Zephyrite Color Swatch: Red, 15 Black Lion Keys, 1 Aviator Cap Skin, 250 Piles of Sand.", entity
+                .getDescription());
+        assertEquals(Integer.valueOf(0), entity.getLevel());
+        assertEquals(Rarity.Rare, entity.getRarity());
+        assertEquals(Integer.valueOf(129), entity.getVendorValue());
+        assertEquals(Integer.valueOf(8468), entity.getId());
+        assertFalse("Item should not be available in Activity", entity.getAvailableInActivity());
+        assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
+        assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
+        assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
+        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoMysticForge,
+                ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.AccountBindOnUse });
+        assertEquals(flags.size(), entity.getFlags().size());
+        assertTrue(flags.containsAll(entity.getFlags()));
+        assertTrue((entity.getRestrictions().isEmpty()));
+        assertEquals("https://render.guildwars2.com/file/B80BE438007179E12B18B5EBDFCB1C61E2605DD6/824921.png", entity.getIcon());
+        assertEquals(ContainerType.Default, entity.getContainerType());
+
     }
 
 }

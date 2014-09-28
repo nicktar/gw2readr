@@ -25,7 +25,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBaseItem;
         @Type(value = WeaponJson.class, name = "Weapon"), @Type(value = ConsumableJson.class, name = "Consumable"),
         @Type(value = ArmorJson.class, name = "Armor"),
         // @Type(value = BagJson.class, name="Bag"),
-        // @Type(value = ContainerJson.class, name="Container"),
+        @Type(value = ContainerJson.class, name="Container"),
         @Type(value = TrophyJson.class, name = "Trophy"),
         // @Type(value = TrinketJson.class, name="Trinket"),
         // @Type(value = GizmoJson.class, name="Gizmo"),
