@@ -26,12 +26,14 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBackItem;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBuff;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IConsumable;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrophy;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradeComponent;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IWeapon;
 import de.getsetsociety.gw2readr.v2.item.items.json.ArmorJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.BackItemJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ConsumableJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
+import de.getsetsociety.gw2readr.v2.item.items.json.TrophyJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.UpgradeComponentJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.WeaponJson;
 
@@ -314,6 +316,45 @@ public class TestItems {
         assertTrue("Item shouldn't have attributes.", entity.getInfixUpgrade().getAttributes().isEmpty());
         assertTrue("Item shouldn't have Flags.", entity.getFlags().isEmpty());
         assertEquals("of Destroyer Slaying", entity.getSuffix());
+    }
+
+    @Test
+    public void testTrophy8123() {
+        String content = "{\"name\":\"Race Track Voucher\",\"description\":"
+                + "\"Redeem this for your winnings by talking to Tigg.\",\"type\":\"Trophy\",\"level\":0,"
+                + "\"rarity\":\"Exotic\",\"vendor_value\":50,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],"
+                + "\"flags\":[\"AccountBound\",\"NoSalvage\",\"NoSell\",\"NotUpgradeable\",\"AccountBindOnUse\"],"
+                + "\"restrictions\":[],\"id\":8123,"
+                + "\"icon\":\"https://render.guildwars2.com/file/0FF3F1E574DCDEFA2CC60E04B22BF5291273EDC3/62856.png\"}";
+        ITrophy entity = null;
+        try {
+            ItemJson item = mapper.readValue(content, ItemJson.class);
+            assertNotNull(item);
+            assertTrue("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof TrophyJson);
+            entity = ((TrophyJson) item).getEntity();
+            assertNotNull(entity);
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("Unexpected Exception");
+        }
+        assertEquals("Race Track Voucher", entity.getName());
+        assertEquals("Redeem this for your winnings by talking to Tigg.", entity.getDescription());
+        assertEquals(Integer.valueOf(0), entity.getLevel());
+        assertEquals(Rarity.Exotic, entity.getRarity());
+        assertEquals(Integer.valueOf(50), entity.getVendorValue());
+        assertEquals(Integer.valueOf(8123), entity.getId());
+        assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
+        assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
+        assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
+        assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
+        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoSalvage,
+                ItemFlags.NoSell, ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse });
+        assertEquals(flags.size(), entity.getFlags().size());
+        assertTrue(flags.containsAll(entity.getFlags()));
+        assertTrue((entity.getRestrictions().isEmpty()));
+        assertEquals("https://render.guildwars2.com/file/0FF3F1E574DCDEFA2CC60E04B22BF5291273EDC3/62856.png", entity.getIcon());
     }
 
 }
