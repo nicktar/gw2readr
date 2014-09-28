@@ -536,4 +536,42 @@ public class TestItems {
         assertNull(entity.getSecondarySuffixItemId());
     }
 
+    @Test
+    public void testTrophy19976() {
+        String content = "{\"name\":\"Mystic Coin\","
+                + "\"description\":\"Coins are used to create high level weapons at the mystic forge in Lion's Arch. \\n"
+                + "Part of Zommoros' favorite trades.\",\"type\":\"Trophy\",\"level\":0,\"rarity\":\"Rare\","
+                + "\"vendor_value\":50,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],"
+                + "\"flags\":[\"NoSalvage\",\"NoSell\"],\"restrictions\":[],\"id\":19976,"
+                + "\"icon\":\"https://render.guildwars2.com/file/AB0317DF5B0E1BA47436A5420248660765154C08/62864.png\"}";
+        ITrophy entity = null;
+        try {
+            ItemJson item = mapper.readValue(content, ItemJson.class);
+            assertNotNull(item);
+            assertTrue("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof TrophyJson);
+            entity = ((TrophyJson) item).getEntity();
+            assertNotNull(entity);
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("Unexpected Exception");
+        }
+        assertEquals("Mystic Coin", entity.getName());
+        assertEquals("Coins are used to create high level weapons at the mystic forge in Lion's Arch. \nPart of Zommoros' favorite trades.", entity.getDescription());
+        assertEquals(Integer.valueOf(0), entity.getLevel());
+        assertEquals(Rarity.Rare, entity.getRarity());
+        assertEquals(Integer.valueOf(50), entity.getVendorValue());
+        assertEquals(Integer.valueOf(19976), entity.getId());
+        assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
+        assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
+        assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
+        assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
+        assertFalse("Item should not be available in WvW", entity.getAvailableInPvP());
+        assertFalse("Item should not be available in WvW", entity.getAvailableInPvPLobby());
+        List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.NoSalvage, ItemFlags.NoSell });
+        assertEquals(flags.size(), entity.getFlags().size());
+        assertTrue(flags.containsAll(entity.getFlags()));
+        assertTrue((entity.getRestrictions().isEmpty()));
+        assertEquals("https://render.guildwars2.com/file/AB0317DF5B0E1BA47436A5420248660765154C08/62864.png", entity.getIcon());
+    }
+
 }
