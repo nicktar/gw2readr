@@ -3,6 +3,7 @@ package de.getsetsociety.gw2readr.v2.item.items;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+
 import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,7 +13,7 @@ import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
 public class FailingItemsTest0292 {
 
     private static ObjectMapper mapper = new ObjectMapper();
-    
+
     @Test
     public void testItem65635() {
         try {
@@ -225,7 +226,7 @@ public class FailingItemsTest0292 {
     @Test
     public void testItem66323() {
         try {
-            ItemJson item = mapper.readValue("{\"name\":\"Musical Lute\",\"description\":\"Double-click to change your skill bar, allowing you to play music for all those nearby.\n\nCannot be used in combat.\",\"type\":\"Gizmo\",\"level\":0,\"rarity\":\"Rare\",\"vendor_value\":0,\"game_types\":[\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"HideSuffix\",\"NoMysticForge\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\",\"NoUnderwater\"],\"restrictions\":[],\"id\":66323,\"icon\":\"https://render.guildwars2.com/file/EB163F2BB848193BC6D9E5092C4E1FFEB63057DE/819605.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
+            ItemJson item = mapper.readValue("{\"name\":\"Musical Lute\",\"description\":\"Double-click to change your skill bar, allowing you to play music for all those nearby.\\n\\nCannot be used in combat.\",\"type\":\"Gizmo\",\"level\":0,\"rarity\":\"Rare\",\"vendor_value\":0,\"game_types\":[\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"HideSuffix\",\"NoMysticForge\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\",\"NoUnderwater\"],\"restrictions\":[],\"id\":66323,\"icon\":\"https://render.guildwars2.com/file/EB163F2BB848193BC6D9E5092C4E1FFEB63057DE/819605.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
             assertNotNull(item);
         } catch (IOException e) {
             e.printStackTrace();
@@ -247,7 +248,7 @@ public class FailingItemsTest0292 {
     @Test
     public void testItem66349() {
         try {
-            ItemJson item = mapper.readValue("{\"name\":\"WvW Spring Tournament 2014 Reward Chest (Unlocked)\",\"description\":\"Contains rewards based on your world's performance in the previous WvW season.\nDouble-click to open.\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Exotic\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoMysticForge\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":66349,\"icon\":\"https://render.guildwars2.com/file/6BA91E0A08689B40B09ECC3FB3C4589493E6C167/603245.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
+            ItemJson item = mapper.readValue("{\"name\":\"WvW Spring Tournament 2014 Reward Chest (Unlocked)\",\"description\":\"Contains rewards based on your world's performance in the previous WvW season.\\nDouble-click to open.\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Exotic\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoMysticForge\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":66349,\"icon\":\"https://render.guildwars2.com/file/6BA91E0A08689B40B09ECC3FB3C4589493E6C167/603245.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
             assertNotNull(item);
         } catch (IOException e) {
             e.printStackTrace();
@@ -258,7 +259,7 @@ public class FailingItemsTest0292 {
     @Test
     public void testItem66350() {
         try {
-            ItemJson item = mapper.readValue("{\"name\":\"WvW Spring Tournament 2014 Reward Chest (Unlocked)\",\"description\":\"Contains rewards based on your world's performance in the previous WvW season.\nDouble-click to open.\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Exotic\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoMysticForge\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":66350,\"icon\":\"https://render.guildwars2.com/file/6BA91E0A08689B40B09ECC3FB3C4589493E6C167/603245.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
+            ItemJson item = mapper.readValue("{\"name\":\"WvW Spring Tournament 2014 Reward Chest (Unlocked)\",\"description\":\"Contains rewards based on your world's performance in the previous WvW season.\\nDouble-click to open.\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Exotic\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoMysticForge\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":66350,\"icon\":\"https://render.guildwars2.com/file/6BA91E0A08689B40B09ECC3FB3C4589493E6C167/603245.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
             assertNotNull(item);
         } catch (IOException e) {
             e.printStackTrace();
@@ -269,7 +270,7 @@ public class FailingItemsTest0292 {
     @Test
     public void testItem66351() {
         try {
-            ItemJson item = mapper.readValue("{\"name\":\"WvW Spring Tournament 2014 Reward Chest (Unlocked)\",\"description\":\"Contains rewards based on your world's performance in the previous WvW season.\nDouble-click to open.\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Exotic\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoMysticForge\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":66351,\"icon\":\"https://render.guildwars2.com/file/6BA91E0A08689B40B09ECC3FB3C4589493E6C167/603245.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
+            ItemJson item = mapper.readValue("{\"name\":\"WvW Spring Tournament 2014 Reward Chest (Unlocked)\",\"description\":\"Contains rewards based on your world's performance in the previous WvW season.\\nDouble-click to open.\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Exotic\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoMysticForge\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":66351,\"icon\":\"https://render.guildwars2.com/file/6BA91E0A08689B40B09ECC3FB3C4589493E6C167/603245.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
             assertNotNull(item);
         } catch (IOException e) {
             e.printStackTrace();

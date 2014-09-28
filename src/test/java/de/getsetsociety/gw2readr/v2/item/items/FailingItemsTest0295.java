@@ -3,6 +3,7 @@ package de.getsetsociety.gw2readr.v2.item.items;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+
 import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,7 +13,7 @@ import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
 public class FailingItemsTest0295 {
 
     private static ObjectMapper mapper = new ObjectMapper();
-    
+
     @Test
     public void testItem66656() {
         try {
@@ -104,7 +105,7 @@ public class FailingItemsTest0295 {
     @Test
     public void testItem66671() {
         try {
-            ItemJson item = mapper.readValue("{\"name\":\"Exquisite Ambrite Jewel\",\"description\":\"Double-click to apply to an accessory, amulet, or ring with an unused upgrade slot.\",\"type\":\"UpgradeComponent\",\"level\":80,\"rarity\":\"Exotic\",\"vendor_value\":264,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[\"AccountBound\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":66671,\"icon\":\"https://render.guildwars2.com/file/B9CD5EE8F59703DB0E4B70EA0D1D127C0FFA5F1B/831512.png\",\"details\":{\"type\":\"Default\",\"flags\":[\"Trinket\"],\"infusion_upgrade_flags\":[],\"infix_upgrade\":{\"buff\":{\"skill_id\":24611,\"description\":\"+25 Toughness\n+15 Healing\n+15 Vitality\"},\"attributes\":[]},\"suffix\":\"of Ambrite\"}}", ItemJson.class);
+            ItemJson item = mapper.readValue("{\"name\":\"Exquisite Ambrite Jewel\",\"description\":\"Double-click to apply to an accessory, amulet, or ring with an unused upgrade slot.\",\"type\":\"UpgradeComponent\",\"level\":80,\"rarity\":\"Exotic\",\"vendor_value\":264,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[\"AccountBound\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":66671,\"icon\":\"https://render.guildwars2.com/file/B9CD5EE8F59703DB0E4B70EA0D1D127C0FFA5F1B/831512.png\",\"details\":{\"type\":\"Default\",\"flags\":[\"Trinket\"],\"infusion_upgrade_flags\":[],\"infix_upgrade\":{\"buff\":{\"skill_id\":24611,\"description\":\"+25 Toughness\\\n+15 Healing\\\n+15 Vitality\"},\"attributes\":[]},\"suffix\":\"of Ambrite\"}}", ItemJson.class);
             assertNotNull(item);
         } catch (IOException e) {
             e.printStackTrace();
@@ -280,7 +281,7 @@ public class FailingItemsTest0295 {
     @Test
     public void testItem66912() {
         try {
-            ItemJson item = mapper.readValue("{\"name\":\"Ley Line Infused Clay Pot\",\"description\":\"Double-click to plant a Mysterious Seed in this pot.\n\n<c=@flavor>Everything needed to germinate a very special seed is in this pot now.<c>\",\"type\":\"Gizmo\",\"level\":0,\"rarity\":\"Exotic\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":66912,\"icon\":\"https://render.guildwars2.com/file/633E9308CB9B4C6DF51454BA10A3C77155342A80/849432.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
+            ItemJson item = mapper.readValue("{\"name\":\"Ley Line Infused Clay Pot\",\"description\":\"Double-click to plant a Mysterious Seed in this pot.\\\n\\\n<c=@flavor>Everything needed to germinate a very special seed is in this pot now.<c>\",\"type\":\"Gizmo\",\"level\":0,\"rarity\":\"Exotic\",\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":66912,\"icon\":\"https://render.guildwars2.com/file/633E9308CB9B4C6DF51454BA10A3C77155342A80/849432.png\",\"details\":{\"type\":\"Default\"}}", ItemJson.class);
             assertNotNull(item);
         } catch (IOException e) {
             e.printStackTrace();
