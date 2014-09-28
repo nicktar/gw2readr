@@ -707,4 +707,48 @@ public class TestItems {
         assertEquals("https://render.guildwars2.com/file/D3F3C5BA926B0990FC30C0AAD37A3D57190B0B08/66056.png", entity.getIcon());
     }
 
+    @Test
+    public void testContainer20313() {
+        String content = "{\"name\":\"Black Lion Chest (Unlocked)\","
+                + "\"description\":\"Contains a random booster plus two more random items from the Black Lion Trading "
+                + "Company warehouse.\\nThese may include weapon tickets redeemable for unique skins and other rare items "
+                + "not available anywhere else.\",\"type\":\"Container\",\"level\":0,\"rarity\":\"Fine\","
+                + "\"vendor_value\":0,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],"
+                + "\"flags\":[\"AccountBound\",\"NoSell\",\"AccountBindOnUse\"],"
+                + "\"restrictions\":[],\"id\":20313,"
+                + "\"icon\":\"https://render.guildwars2.com/file/48E4CEEAEEF8F3419A63D4F6295AB77136B86656/711974.png\","
+                + "\"details\":{\"type\":\"OpenUI\"}}";
+        IContainer entity = null;
+        try {
+            ItemJson item = mapper.readValue(content, ItemJson.class);
+            assertNotNull(item);
+            assertTrue("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof ContainerJson);
+            entity = ((ContainerJson) item).getEntity();
+            assertNotNull(entity);
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("Unexpected Exception");
+        }
+        assertEquals("Black Lion Chest (Unlocked)", entity.getName());
+        assertEquals("Contains a random booster plus two more random items from the Black Lion Trading Company warehouse.\nThese may include weapon tickets redeemable for unique skins and other rare items not available anywhere else.",
+                entity.getDescription());
+        assertEquals(Integer.valueOf(0), entity.getLevel());
+        assertEquals(Rarity.Fine, entity.getRarity());
+        assertEquals(Integer.valueOf(0), entity.getVendorValue());
+        assertEquals(Integer.valueOf(20313), entity.getId());
+        assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
+        assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
+        assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
+        assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
+        assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
+        assertTrue("Item should be available in PvP Lobby", entity.getAvailableInPvPLobby());
+        List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoSell,
+                ItemFlags.AccountBindOnUse });
+        assertEquals(flags.size(), entity.getFlags().size());
+        assertTrue(flags.containsAll(entity.getFlags()));
+        assertTrue((entity.getRestrictions().isEmpty()));
+        assertEquals("https://render.guildwars2.com/file/48E4CEEAEEF8F3419A63D4F6295AB77136B86656/711974.png", entity.getIcon());
+        assertEquals(ContainerType.OpenUI, entity.getContainerType());
+    }
+
 }
