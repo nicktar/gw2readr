@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.getsetsociety.gw2readr.general.ContentLoader;
 import de.getsetsociety.gw2readr.general.enums.Language;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfixUpgrade;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.colors.AllColorsReader;
 import de.getsetsociety.gw2readr.v1.colors.interfaces.IColor;
 import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
@@ -70,7 +70,7 @@ public class TestJsonReading {
 		IWeapon o = (IWeapon)reader.readItem(38875);
 		assertEquals(DamageType.Physical, o.getDamageType());
 		assertEquals(Integer.valueOf(0), o.getDefense());
-		IInfixUpgrade upgrade = o.getInfixUpgrade();
+		IBaseInfixUpgrade upgrade = o.getInfixUpgrade();
 		assertEquals(null, upgrade.getBuff());
 		assertTrue(upgrade.getAttributes().isEmpty());
 		assertTrue(o.getInfusionSlots().isEmpty());

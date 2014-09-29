@@ -3,7 +3,7 @@ package de.getsetsociety.gw2readr.v1.item.items.entities;
 import java.util.HashSet;
 import java.util.Set;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfixUpgrade;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBackItem;
 
@@ -11,7 +11,7 @@ public class BackItem extends Item implements IBackItem {
 
 	private static final long serialVersionUID = 3090458230052660395L;
 	private Set<InfusionSlotType> infusionSlots = new HashSet<InfusionSlotType>();
-	private IInfixUpgrade infixUpgrade;
+	private IBaseInfixUpgrade infixUpgrade;
 	private Integer suffixItemId;
 
 	/* (non-Javadoc)
@@ -34,7 +34,7 @@ public class BackItem extends Item implements IBackItem {
 	 * @see de.getsetsociety.gw2readr.entities.IBackItem#getInfixUpgrade()
 	 */
 	@Override
-	public IInfixUpgrade getInfixUpgrade() {
+	public IBaseInfixUpgrade getInfixUpgrade() {
 		return infixUpgrade;
 	}
 
@@ -42,7 +42,7 @@ public class BackItem extends Item implements IBackItem {
 	 * @see de.getsetsociety.gw2readr.entities.IBackItem#setInfixUpgrade(de.getsetsociety.armory.entities.InfixUpgrade)
 	 */
 	@Override
-	public void setInfixUpgrade(IInfixUpgrade infixUpgrade) {
+	public void setInfixUpgrade(IBaseInfixUpgrade infixUpgrade) {
 		this.infixUpgrade = infixUpgrade;
 	}
 

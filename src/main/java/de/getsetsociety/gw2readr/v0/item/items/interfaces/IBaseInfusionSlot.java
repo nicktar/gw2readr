@@ -4,7 +4,7 @@ import java.util.List;
 
 import de.getsetsociety.gw2readr.v1.item.items.enums.InfusionSlotType;
 
-public interface IInfusionSlot {
+public interface IBaseInfusionSlot {
 
 	public abstract List<InfusionSlotType> getFlags();
 

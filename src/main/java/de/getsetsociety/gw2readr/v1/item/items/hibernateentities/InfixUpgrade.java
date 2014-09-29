@@ -13,18 +13,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IAttributeModifier;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBuff;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfixUpgrade;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseAttributeModifier;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseBuff;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.enums.Attribute;
 
 @Table
 @Entity
-public class InfixUpgrade implements IInfixUpgrade<Attribute> {
+public class InfixUpgrade implements IBaseInfixUpgrade<Attribute> {
 
 	private Integer id;
-	private List<IAttributeModifier<Attribute>> attributes = new ArrayList<>();
-	private IBuff buff;
+	private List<IBaseAttributeModifier<Attribute>> attributes = new ArrayList<>();
+	private IBaseBuff buff;
 
 	@Id
 	@Column
@@ -40,14 +40,14 @@ public class InfixUpgrade implements IInfixUpgrade<Attribute> {
 	 */
 	@Override
 	@OneToMany(cascade=CascadeType.ALL, targetEntity=AttributeModifier.class)
-	public List<IAttributeModifier<Attribute>> getAttributes(){
+	public List<IBaseAttributeModifier<Attribute>> getAttributes(){
 		return this.attributes;
 	}
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.entities.IInfixUpgrade#setAttributes(java.util.List)
 	 */
 	@Override
-	public void setAttributes(List<IAttributeModifier<Attribute>> attributes){
+	public void setAttributes(List<IBaseAttributeModifier<Attribute>> attributes){
 		this.attributes = attributes;
 	}
 
@@ -56,14 +56,14 @@ public class InfixUpgrade implements IInfixUpgrade<Attribute> {
 	 */
 	@Override
 	@ManyToOne(targetEntity=Buff.class, cascade=CascadeType.ALL)
-	public IBuff getBuff() {
+	public IBaseBuff getBuff() {
 		return buff;
 	}
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.entities.IInfixUpgrade#setBuff(de.getsetsociety.armory.items.IBuff)
 	 */
 	@Override
-	public void setBuff(IBuff buff) {
+	public void setBuff(IBaseBuff buff) {
 		this.buff = buff;
 	}
 }

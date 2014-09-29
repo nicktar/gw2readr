@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBuff;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseBuff;
 import de.getsetsociety.gw2readr.v2.item.items.entities.AttributeModifier;
 import de.getsetsociety.gw2readr.v2.item.items.entities.Buff;
 import de.getsetsociety.gw2readr.v2.item.items.enums.ArmorType;
@@ -324,7 +324,7 @@ public class TestItems {
 				.containsAll(upgradeComponentFlags));
 		assertTrue(entity.getInfusionUpgradeFlags().isEmpty());
 		assertNotNull(entity.getInfixUpgrade());
-		IBuff buff = entity.getInfixUpgrade().getBuff();
+		IBaseBuff buff = entity.getInfixUpgrade().getBuff();
 		assertNotNull(buff);
 		assertTrue(buff instanceof Buff);
 		assertEquals(Integer.valueOf(9343), buff.getSkillId());

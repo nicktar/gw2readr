@@ -8,12 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IAttributeModifier;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseAttributeModifier;
 import de.getsetsociety.gw2readr.v1.item.items.enums.Attribute;
 
 @Table
 @Entity
-public class AttributeModifier implements IAttributeModifier<Attribute> {
+public class AttributeModifier implements IBaseAttributeModifier<Attribute> {
 
 	private Integer id;
 	private Attribute attribute;

@@ -2,7 +2,7 @@ package de.getsetsociety.gw2readr.v1.item.items.interfaces;
 
 import java.util.Set;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfixUpgrade;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.enums.InfusionSlotType;
 
 public interface IBackItem extends IBaseItem {
@@ -11,9 +11,9 @@ public interface IBackItem extends IBaseItem {
 
 	public abstract void setInfusionSlots(Set<InfusionSlotType> infusionSlots);
 
-	public abstract IInfixUpgrade getInfixUpgrade();
+	public abstract IBaseInfixUpgrade getInfixUpgrade();
 
-	public abstract void setInfixUpgrade(IInfixUpgrade infixUpgrade);
+	public abstract void setInfixUpgrade(IBaseInfixUpgrade infixUpgrade);
 
 	public abstract Integer getSuffixItemId();
 

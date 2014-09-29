@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfixUpgrade;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v1.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v1.item.items.enums.WeaponType;
@@ -29,7 +29,7 @@ public class Weapon extends Item implements IWeapon {
 	private static final long serialVersionUID = 5968065106961929839L;
 	private DamageType damageType;
 	private Integer defense;
-	private IInfixUpgrade infixUpgrade;
+	private IBaseInfixUpgrade infixUpgrade;
 	private Set<InfusionSlotType> infusionSlots = new HashSet<InfusionSlotType>();
 	private Integer maxPower;
 	private Integer minPower;
@@ -76,7 +76,7 @@ public class Weapon extends Item implements IWeapon {
 	 */
 	@Override
 	@OneToOne(orphanRemoval=true, targetEntity=InfixUpgrade.class, cascade=CascadeType.ALL)
-	public IInfixUpgrade getInfixUpgrade() {
+	public IBaseInfixUpgrade getInfixUpgrade() {
 		return infixUpgrade;
 	}
 
@@ -84,7 +84,7 @@ public class Weapon extends Item implements IWeapon {
 	 * @see de.getsetsociety.gw2readr.entities.IWeapon2#setInfixUpgrade(de.getsetsociety.armory.entities.InfixUpgrade)
 	 */
 	@Override
-	public void setInfixUpgrade(IInfixUpgrade infixUpgrade) {
+	public void setInfixUpgrade(IBaseInfixUpgrade infixUpgrade) {
 		this.infixUpgrade = infixUpgrade;
 	}
 

@@ -1,9 +1,9 @@
 package de.getsetsociety.gw2readr.v2.item.items.entities;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IAttributeModifier;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseAttributeModifier;
 import de.getsetsociety.gw2readr.v2.item.items.enums.Attribute;
 
-public class AttributeModifier implements IAttributeModifier<Attribute> {
+public class AttributeModifier implements IBaseAttributeModifier<Attribute> {
 
 	private Attribute attribute;
 	private Integer modifier;

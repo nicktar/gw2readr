@@ -2,18 +2,18 @@ package de.getsetsociety.gw2readr.v2.item.items.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBuff;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseBuff;
 import de.getsetsociety.gw2readr.v2.factories.EntityFactoryProvider;
 
-public class BuffJson implements IEntityWrapper<IBuff>{
+public class BuffJson implements IEntityWrapper<IBaseBuff>{
 
-	private final IBuff entity;
+	private final IBaseBuff entity;
 
 	public BuffJson() {
 		entity = EntityFactoryProvider.getItemEntityFactory().newBuff();
 	}
 
-	public BuffJson(IBuff buff) {
+	public BuffJson(IBaseBuff buff) {
 		entity = buff;
 	}
 
@@ -36,7 +36,7 @@ public class BuffJson implements IEntityWrapper<IBuff>{
 	}
 
 	@Override
-	public IBuff getEntity() {
+	public IBaseBuff getEntity() {
 		return entity;
 	}
 

@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfixUpgrade;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v1.item.items.enums.TrinketType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
@@ -28,7 +28,7 @@ public class Trinket extends Item implements ITrinket {
 	private static final long serialVersionUID = -7895269575167289085L;
 	private TrinketType trinketType;
 	private Set<InfusionSlotType> infusionSlots = new HashSet<InfusionSlotType>();
-	private IInfixUpgrade infixUpgrade;
+	private IBaseInfixUpgrade infixUpgrade;
 	private Integer suffixItemId;
 
 	/* (non-Javadoc)
@@ -74,7 +74,7 @@ public class Trinket extends Item implements ITrinket {
 	 */
 	@Override
 	@OneToOne(orphanRemoval=true, targetEntity=InfixUpgrade.class, cascade=CascadeType.ALL)
-	public IInfixUpgrade getInfixUpgrade() {
+	public IBaseInfixUpgrade getInfixUpgrade() {
 		return infixUpgrade;
 	}
 
@@ -82,7 +82,7 @@ public class Trinket extends Item implements ITrinket {
 	 * @see de.getsetsociety.gw2readr.entities.ITrinket#setInfixUpgrade(de.getsetsociety.armory.entities.InfixUpgrade)
 	 */
 	@Override
-	public void setInfixUpgrade(IInfixUpgrade infixUpgrade) {
+	public void setInfixUpgrade(IBaseInfixUpgrade infixUpgrade) {
 		this.infixUpgrade = infixUpgrade;
 	}
 

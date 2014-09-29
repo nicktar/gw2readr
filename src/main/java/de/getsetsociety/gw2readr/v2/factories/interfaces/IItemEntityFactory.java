@@ -1,8 +1,8 @@
 package de.getsetsociety.gw2readr.v2.factories.interfaces;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IAttributeModifier;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBuff;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfixUpgrade;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseAttributeModifier;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseBuff;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
 import de.getsetsociety.gw2readr.v2.item.items.enums.Attribute;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBackItem;
@@ -24,13 +24,13 @@ public interface IItemEntityFactory {
 
 	public abstract IArmor newArmor();
 
-	public abstract IAttributeModifier<Attribute> newAttributeModifier();
+	public abstract IBaseAttributeModifier<Attribute> newAttributeModifier();
 
 	public abstract IBackItem newBackItem();
 
 	public abstract IBag newBag();
 
-	public abstract IBuff newBuff();
+	public abstract IBaseBuff newBuff();
 
 	public abstract IConsumable newConsumable();
 
@@ -44,7 +44,7 @@ public interface IItemEntityFactory {
 
 	public abstract IGathering newGathering();
 
-	public abstract IInfixUpgrade<Attribute> newInfixUpgrade();
+	public abstract IBaseInfixUpgrade<Attribute> newInfixUpgrade();
 
 	public abstract IMiniPet newMiniPet();
 

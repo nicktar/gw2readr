@@ -3,7 +3,7 @@ package de.getsetsociety.gw2readr.v1.item.items.entities;
 import java.util.HashSet;
 import java.util.Set;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfixUpgrade;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.enums.ArmorType;
 import de.getsetsociety.gw2readr.v1.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v1.item.items.enums.WeightClass;
@@ -17,7 +17,7 @@ public class Armor extends Item implements IArmor {
 	private Integer defense;
 	private Set<InfusionSlotType> infusionSlots = new HashSet<InfusionSlotType>();
 	private Integer suffixItemId;
-	private IInfixUpgrade infixUpgrade;
+	private IBaseInfixUpgrade infixUpgrade;
 
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.entities.IArmor#getArmorType()
@@ -103,7 +103,7 @@ public class Armor extends Item implements IArmor {
 	 * @see de.getsetsociety.gw2readr.entities.IArmor#getInfixUpgrade()
 	 */
 	@Override
-	public IInfixUpgrade getInfixUpgrade() {
+	public IBaseInfixUpgrade getInfixUpgrade() {
 		return infixUpgrade;
 	}
 
@@ -111,7 +111,7 @@ public class Armor extends Item implements IArmor {
 	 * @see de.getsetsociety.gw2readr.entities.IArmor#setInfixUpgrade(de.getsetsociety.armory.entities.InfixUpgrade)
 	 */
 	@Override
-	public void setInfixUpgrade(IInfixUpgrade infixUpgrade) {
+	public void setInfixUpgrade(IBaseInfixUpgrade infixUpgrade) {
 		this.infixUpgrade = infixUpgrade;
 	}
 

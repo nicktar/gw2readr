@@ -1,8 +1,8 @@
 package de.getsetsociety.gw2readr.v1.factories;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IAttributeModifier;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBuff;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfixUpgrade;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseAttributeModifier;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseBuff;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.factories.interfaces.IItemEntityFactory;
 import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Armor;
 import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.AttributeModifier;
@@ -50,7 +50,7 @@ public class HibernateItemEntityFactory implements IItemEntityFactory {
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newAttributeModifier()
 	 */
 	@Override
-	public IAttributeModifier newAttributeModifier() {
+	public IBaseAttributeModifier newAttributeModifier() {
 		return new AttributeModifier();
 	}
 
@@ -74,7 +74,7 @@ public class HibernateItemEntityFactory implements IItemEntityFactory {
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newBuff()
 	 */
 	@Override
-	public IBuff newBuff() {
+	public IBaseBuff newBuff() {
 		return new Buff();
 	}
 
@@ -122,7 +122,7 @@ public class HibernateItemEntityFactory implements IItemEntityFactory {
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newInfixUpgrade()
 	 */
 	@Override
-	public IInfixUpgrade newInfixUpgrade() {
+	public IBaseInfixUpgrade newInfixUpgrade() {
 		return new InfixUpgrade();
 	}
 
