@@ -1,10 +1,8 @@
 package de.getsetsociety.gw2readr.v2.item.items.interfaces;
 
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseCraftingMaterial;
 
-public interface ICraftingMaterial extends IBaseItem {
 
-	public abstract String getDescription();
-
-	public abstract void setDescription(String description);
+public interface ICraftingMaterial extends IBaseItem, IBaseCraftingMaterial {
 
 }
