@@ -15,80 +15,80 @@ import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
 
 public class TrinketJson extends ItemJson<ITrinket> {
 
-	private ITrinket item = EntityFactoryProvider.getItemEntityFactory().newTrinklet();
+    private ITrinket item = EntityFactoryProvider.getItemEntityFactory().newTrinklet();
 
-	@Override
-	public ITrinket getEntity() {
-		return item;
-	}
-	
-	@JsonProperty("trinket")
-	public void setTrinketDetails(TrinketDetails details) {
-		item.setTrinketType(details.getType());
-		for (InfusionSlotJson detail: details.getInfusionSlots()) {
-			item.getInfusionSlots().addAll(detail.getFlags());
-		}
-		item.setSuffixItemId(details.getSuffixItemId());
-		item.setInfixUpgrade(details.getInfixUpgrade().getEntity());
+    @Override
+    public ITrinket getEntity() {
+        return item;
+    }
 
-		getAdditionalProperties().putAll(details.getAdditionalProperties());
-	}
+    @JsonProperty("trinket")
+    public void setTrinketDetails(TrinketDetails details) {
+        item.setTrinketType(details.getType());
+        for (InfusionSlotJson detail : details.getInfusionSlots()) {
+            item.getInfusionSlots().addAll(detail.getFlags());
+        }
+        item.setSuffixItemId(details.getSuffixItemId());
+        item.setInfixUpgrade(details.getInfixUpgrade().getEntity());
 
-	public static class TrinketDetails {
+        getAdditionalProperties().putAll(details.getAdditionalProperties());
+    }
 
-		private TrinketType type;
-		private List<InfusionSlotJson> infusionSlots = new ArrayList<>();
-		private Integer suffixItemId;
-		private InfixUpgradeJson infixUpgrade = new InfixUpgradeJson();
+    public static class TrinketDetails {
 
-		private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+        private TrinketType type;
+        private List<InfusionSlotJson> infusionSlots = new ArrayList<>();
+        private Integer suffixItemId;
+        private InfixUpgradeJson infixUpgrade = new InfixUpgradeJson();
 
-		@JsonProperty("type")
-		public TrinketType getType() {
-			return type;
-		}
+        private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-		public void setType(String type) {
-			this.type = TrinketType.valueOf(type);
-		}
+        @JsonProperty("type")
+        public TrinketType getType() {
+            return type;
+        }
 
-		@JsonProperty("infusion_slots")
-		public List<InfusionSlotJson> getInfusionSlots() {
-			return infusionSlots;
-		}
+        public void setType(String type) {
+            this.type = TrinketType.valueOf(type);
+        }
 
-		public void setInfusionSlots(List<InfusionSlotJson> infusionSlots) {
-			this.infusionSlots = infusionSlots;
-		}
+        @JsonProperty("infusion_slots")
+        public List<InfusionSlotJson> getInfusionSlots() {
+            return infusionSlots;
+        }
 
-		@JsonProperty("suffix_item_id")
-		public Integer getSuffixItemId() {
-			return suffixItemId;
-		}
+        public void setInfusionSlots(List<InfusionSlotJson> infusionSlots) {
+            this.infusionSlots = infusionSlots;
+        }
 
-		public void setSuffixItemId(Integer suffix_item_id) {
-			this.suffixItemId = suffix_item_id;
-		}
+        @JsonProperty("suffix_item_id")
+        public Integer getSuffixItemId() {
+            return suffixItemId;
+        }
 
-		@JsonProperty("infix_upgrade")
-		public InfixUpgradeJson getInfixUpgrade() {
-			return infixUpgrade;
-		}
-		
-		public void setInfixUpgrade(InfixUpgradeJson infixUpgrade) {
-			this.infixUpgrade = infixUpgrade;
-		}
+        public void setSuffixItemId(Integer suffix_item_id) {
+            this.suffixItemId = suffix_item_id;
+        }
 
-		@JsonAnyGetter
-		public Map<String, Object> getAdditionalProperties() {
-			return this.additionalProperties;
-		}
+        @JsonProperty("infix_upgrade")
+        public InfixUpgradeJson getInfixUpgrade() {
+            return infixUpgrade;
+        }
 
-		@JsonAnySetter
-		public void setAdditionalProperty(String name, Object value) {
-			this.additionalProperties.put(name, value);
-		}	
-		
-	}
+        public void setInfixUpgrade(InfixUpgradeJson infixUpgrade) {
+            this.infixUpgrade = infixUpgrade;
+        }
+
+        @JsonAnyGetter
+        public Map<String, Object> getAdditionalProperties() {
+            return this.additionalProperties;
+        }
+
+        @JsonAnySetter
+        public void setAdditionalProperty(String name, Object value) {
+            this.additionalProperties.put(name, value);
+        }
+
+    }
 
 }
