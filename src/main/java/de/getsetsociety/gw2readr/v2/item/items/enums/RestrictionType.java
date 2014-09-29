@@ -8,5 +8,6 @@ public enum RestrictionType {
 	Sylvari,
 	Guardian,
 	Warrior,
-	Mesmer
-} 
+	Mesmer,
+	Ranger
+}
