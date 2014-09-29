@@ -1,6 +1,8 @@
 package de.getsetsociety.gw2readr.v1.item.items.enums;
 
-public enum DamageType {
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IDamageType;
+
+public enum DamageType implements IDamageType {
 	Physical,
 	Fire,
 	Ice,

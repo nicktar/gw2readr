@@ -1,6 +1,8 @@
 package de.getsetsociety.gw2readr.v1.item.items.enums;
 
-public enum WeaponType {
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IWeaponType;
+
+public enum WeaponType implements IWeaponType {
 	Axe,
 	Dagger,
 	Focus,
