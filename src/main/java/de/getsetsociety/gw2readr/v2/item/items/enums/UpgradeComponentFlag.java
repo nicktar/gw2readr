@@ -1,6 +1,8 @@
 package de.getsetsociety.gw2readr.v2.item.items.enums;
 
-public enum UpgradeComponentFlag {
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IUpgradeComponentFlag;
+
+public enum UpgradeComponentFlag implements IUpgradeComponentFlag {
 	HeavyArmor,
 	MediumArmor,
 	LightArmor,
