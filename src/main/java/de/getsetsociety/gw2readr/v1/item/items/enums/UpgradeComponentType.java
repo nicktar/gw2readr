@@ -1,8 +1,10 @@
 package de.getsetsociety.gw2readr.v1.item.items.enums;
 
-public enum UpgradeComponentType {
-	Rune,
-	Sigil,
-	Default,
-	Gem
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IUpgradeComponentType;
+
+public enum UpgradeComponentType implements IUpgradeComponentType {
+    Rune,
+    Sigil,
+    Default,
+    Gem
 }
