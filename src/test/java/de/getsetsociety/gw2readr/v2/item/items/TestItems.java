@@ -39,6 +39,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IGathering;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IGizmo;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IMiniPet;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITool;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrait;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrinket;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrophy;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradeComponent;
@@ -54,6 +55,7 @@ import de.getsetsociety.gw2readr.v2.item.items.json.GizmoJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.MiniPetJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ToolJson;
+import de.getsetsociety.gw2readr.v2.item.items.json.TraitJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.TrinketJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.TrophyJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.UpgradeComponentJson;
@@ -77,7 +79,7 @@ public class TestItems {
 				+ ",\"secondary_suffix_item_id\":\"\"}}";
 		IWeapon entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting WeaponJson, got " + item.getClass().getCanonicalName(), item instanceof WeaponJson);
 			entity = ((WeaponJson) item).getEntity();
@@ -102,7 +104,6 @@ public class TestItems {
 		assertTrue("Item Should be 'SoulbindOnUse'", entity.getFlags().contains(ItemFlags.SoulBindOnUse));
 		assertTrue(entity.getRestrictions().isEmpty());
 		assertEquals(Integer.valueOf(28445), entity.getId());
-		;
 		assertEquals("https://render.guildwars2.com/file/C6110F52DF5AFE0F00A56F9E143E9732176DDDE9/65015.png", entity.getIcon());
 		assertEquals(WeaponType.LongBow, entity.getWeaponType());
 		assertEquals(DamageType.Physical, entity.getDamageType());
@@ -136,7 +137,7 @@ public class TestItems {
 				+ "{\"attribute\":\"Toughness\",\"modifier\":3}]},\"secondary_suffix_item_id\":\"\"}}";
 		IBackItem entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting BackItemJson, got " + item.getClass().getCanonicalName(), item instanceof BackItemJson);
 			entity = ((BackItemJson) item).getEntity();
@@ -188,7 +189,7 @@ public class TestItems {
 				+ "[{\"attribute\":\"Power\",\"modifier\":4}]},\"secondary_suffix_item_id\":\"\"}}";
 		IArmor entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting ArmorJson, got " + item.getClass().getCanonicalName(), item instanceof ArmorJson);
 			entity = ((ArmorJson) item).getEntity();
@@ -239,7 +240,7 @@ public class TestItems {
 				+ "\"details\":{\"type\":\"Food\"}}";
 		IConsumable entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting ConsumableJson, got " + item.getClass().getCanonicalName(), item instanceof ConsumableJson);
 			entity = ((ConsumableJson) item).getEntity();
@@ -285,7 +286,7 @@ public class TestItems {
 				+ "\"attributes\":[]},\"suffix\":\"of Destroyer Slaying\"}}";
 		IUpgradeComponent entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting ConsumableJson, got " + item.getClass().getCanonicalName(), item instanceof UpgradeComponentJson);
 			entity = ((UpgradeComponentJson) item).getEntity();
@@ -343,7 +344,7 @@ public class TestItems {
 				+ "\"icon\":\"https://render.guildwars2.com/file/0FF3F1E574DCDEFA2CC60E04B22BF5291273EDC3/62856.png\"}";
 		ITrophy entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof TrophyJson);
 			entity = ((TrophyJson) item).getEntity();
@@ -385,7 +386,7 @@ public class TestItems {
 				+ "\"details\":{\"type\":\"Default\"}}";
 		IContainer entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting ContainerJson, got " + item.getClass().getCanonicalName(), item instanceof ContainerJson);
 			entity = ((ContainerJson) item).getEntity();
@@ -427,7 +428,7 @@ public class TestItems {
 				+ "\"details\":{\"no_sell_or_sort\":false,\"size\":20}}";
 		IBag entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting BagJson, got " + item.getClass().getCanonicalName(), item instanceof BagJson);
 			entity = ((BagJson) item).getEntity();
@@ -468,7 +469,7 @@ public class TestItems {
 				+ "\"icon\":\"https://render.guildwars2.com/file/9C5457B024D9152906D808A53BFF67539BB94FA0/219396.png\"}";
 		ICraftingMaterial entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting CraftingMaterialJson, got " + item.getClass().getCanonicalName(), item instanceof CraftingMaterialJson);
 			entity = ((CraftingMaterialJson) item).getEntity();
@@ -506,7 +507,7 @@ public class TestItems {
 				+ "\"secondary_suffix_item_id\":\"\"}}";
 		ITrinket entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting TrinketJson, got " + item.getClass().getCanonicalName(), item instanceof TrinketJson);
 			entity = ((TrinketJson) item).getEntity();
@@ -556,7 +557,7 @@ public class TestItems {
 				+ "\"icon\":\"https://render.guildwars2.com/file/AB0317DF5B0E1BA47436A5420248660765154C08/62864.png\"}";
 		ITrophy entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof TrophyJson);
 			entity = ((TrophyJson) item).getEntity();
@@ -598,7 +599,7 @@ public class TestItems {
 				+ "\"details\":{\"type\":\"ContainerKey\"}}";
 		IGizmo entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting GizmoJson, got " + item.getClass().getCanonicalName(), item instanceof GizmoJson);
 			entity = ((GizmoJson) item).getEntity();
@@ -642,7 +643,7 @@ public class TestItems {
 				+ "\"details\":{\"type\":\"Salvage\",\"charges\":25}}";
 		ITool entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting ToolJson, got " + item.getClass().getCanonicalName(), item instanceof ToolJson);
 			entity = ((ToolJson) item).getEntity();
@@ -684,7 +685,7 @@ public class TestItems {
 				+ "\"icon\":\"https://render.guildwars2.com/file/D3F3C5BA926B0990FC30C0AAD37A3D57190B0B08/66056.png\"}";
 		IMiniPet entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting MiniPetJson, got " + item.getClass().getCanonicalName(), item instanceof MiniPetJson);
 			entity = ((MiniPetJson) item).getEntity();
@@ -726,7 +727,7 @@ public class TestItems {
 				+ "\"details\":{\"type\":\"OpenUI\"}}";
 		IContainer entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting ContainerJson, got " + item.getClass().getCanonicalName(), item instanceof ContainerJson);
 			entity = ((ContainerJson) item).getEntity();
@@ -769,7 +770,7 @@ public class TestItems {
 				+ "\"details\":{\"type\":\"Foraging\"}}";
 		IGathering entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting GatheringJson, got " + item.getClass().getCanonicalName(), item instanceof GatheringJson);
 			entity = ((GatheringJson) item).getEntity();
@@ -814,7 +815,7 @@ public class TestItems {
 				+ "\"details\":{\"type\":\"Default\"}}";
 		IContainer entity = null;
 		try {
-			ItemJson item = mapper.readValue(content, ItemJson.class);
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
 			assertTrue("Expecting ContainerJson, got " + item.getClass().getCanonicalName(), item instanceof ContainerJson);
 			entity = ((ContainerJson) item).getEntity();
@@ -846,5 +847,47 @@ public class TestItems {
 		assertEquals("https://render.guildwars2.com/file/1B9503F466E464B34620340FEC65CFE7BBC69231/534278.png", entity.getIcon());
 		assertEquals(ContainerType.Default, entity.getContainerType());
 	}
+
+	@Test
+	public void testTrait65841() {
+		String content = "{\"name\":\"Trait Guide [Prismatic Understanding]\",\"type\":\"Trait\",\"level\":0,"
+				+ "\"rarity\":\"Rare\",\"vendor_value\":0,\"game_types\":[\"Dungeon\",\"Pve\",\"Pvp\",\"PvpLobby\",\"Wvw\"],"
+				+ "\"flags\":[\"AccountBound\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[\"Mesmer\"],"
+				+ "\"id\":65841,"
+				+ "\"icon\":\"https://render.guildwars2.com/file/2DFB4EDF0408A8604100BB6A510D215CE637B03C/780409.png\"}";
+		ITrait entity = null;
+		try {
+			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
+			assertNotNull(item);
+			assertTrue("Expecting TraitJson, got " + item.getClass().getCanonicalName(), item instanceof TraitJson);
+			entity = ((TraitJson) item).getEntity();
+			assertNotNull(entity);
+			assertTrue(item.getAdditionalProperties().isEmpty());
+		} catch (IOException e) {
+			e.printStackTrace();
+			fail("Unexpected Exception");
+		}
+		assertEquals("Trait Guide [Prismatic Understanding]", entity.getName());
+		assertNull(entity.getDescription());
+		assertEquals(Integer.valueOf(0), entity.getLevel());
+		assertEquals(Rarity.Rare, entity.getRarity());
+		assertEquals(Integer.valueOf(0), entity.getVendorValue());
+		assertEquals(Integer.valueOf(65841), entity.getId());
+		assertFalse("Item should not be available in Activity", entity.getAvailableInActivity());
+		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
+		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
+		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
+		assertTrue("Item should be available in PvP", entity.getAvailableInPvP());
+		assertTrue("Item should be available in PvP Lobby", entity.getAvailableInPvPLobby());
+		List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoSalvage,
+				ItemFlags.AccountBindOnUse });
+		assertEquals(flags.size(), entity.getFlags().size());
+		assertTrue(flags.containsAll(entity.getFlags()));
+		List<RestrictionType> restrictions = Arrays.asList(new RestrictionType[] {RestrictionType.Mesmer});
+		assertEquals(restrictions.size(), entity.getRestrictions().size());
+		assertTrue(restrictions.containsAll(entity.getRestrictions()));
+		assertEquals("https://render.guildwars2.com/file/2DFB4EDF0408A8604100BB6A510D215CE637B03C/780409.png", entity.getIcon());
+	}
+
 
 }
