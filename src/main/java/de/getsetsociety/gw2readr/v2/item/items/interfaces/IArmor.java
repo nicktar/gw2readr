@@ -1,39 +1,23 @@
 package de.getsetsociety.gw2readr.v2.item.items.interfaces;
 
-import java.util.Set;
-
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseArmor;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v2.item.items.enums.ArmorType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.WightClass;
 
-public interface IArmor extends IBaseItem {
+public interface IArmor extends IBaseItem, IBaseArmor<ArmorType, InfusionSlotType> {
 
-    public abstract ArmorType getArmorType();
+	public abstract WightClass getWightClass();
 
-    public abstract void setArmorType(ArmorType armorType);
+	public abstract void setWightClass(WightClass wightClass);
 
-    public abstract WightClass getWightClass();
+	public abstract Integer getSecondarySuffixItemId();
 
-    public abstract void setWightClass(WightClass wightClass);
+	public abstract void setSecondarySuffixItemId(Integer secondarySuffixItemId);
 
-    public abstract Integer getDefense();
+	public abstract IInfixUpgrade getInfixUpgrade();
 
-    public abstract void setDefense(Integer defense);
-
-    public abstract Set<InfusionSlotType> getInfusionSlots();
-
-    public abstract void setInfusionSlots(Set<InfusionSlotType> infusionSlots);
-
-    public abstract Integer getSuffixItemId();
-
-    public abstract void setSuffixItemId(Integer suffixItemId);
-
-    public abstract Integer getSecondarySuffixItemId();
-
-    public abstract void setSecondarySuffixItemId(Integer secondarySuffixItemId);
-
-    public abstract IInfixUpgrade getInfixUpgrade();
-
-    public abstract void setInfixUpgrade(IInfixUpgrade infixUpgrade);
+	public abstract void setInfixUpgrade(IInfixUpgrade infixUpgrade);
 
 }

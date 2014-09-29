@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBuff;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBuff;
 
 @Entity
 @Table

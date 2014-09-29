@@ -3,11 +3,11 @@ package de.getsetsociety.gw2readr.v1.item.items.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.enums.ArmorType;
 import de.getsetsociety.gw2readr.v1.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v1.item.items.enums.WightClass;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
 
 public class Armor extends Item implements IArmor {
 

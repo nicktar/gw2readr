@@ -3,10 +3,10 @@ package de.getsetsociety.gw2readr.v2.item.items.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v2.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.WeaponType;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IWeapon;
 
 public class Weapon extends Item implements IWeapon {

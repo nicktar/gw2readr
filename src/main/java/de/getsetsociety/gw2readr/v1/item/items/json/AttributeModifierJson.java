@@ -3,19 +3,19 @@ package de.getsetsociety.gw2readr.v1.item.items.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IAttributeModifier;
 import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.enums.Attribute;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
 
-public class AttributeModifierJson implements IEntityWrapper<IAttributeModifier>{
+public class AttributeModifierJson implements IEntityWrapper<IAttributeModifier<Attribute>>{
 
-	private final IAttributeModifier entity;
-	
+	private final IAttributeModifier<Attribute> entity;
+
 	public AttributeModifierJson() {
 		entity = EntityFactoryProvider.getItemEntityFactory().newAttributeModifier();
 	}
-	
-	public AttributeModifierJson(IAttributeModifier am) {
+
+	public AttributeModifierJson(IAttributeModifier<Attribute> am) {
 		entity = am;
 	}
 
@@ -37,8 +37,9 @@ public class AttributeModifierJson implements IEntityWrapper<IAttributeModifier>
 	public void setModifier(Integer modifier) {
 		entity.setModifier(modifier);
 	}
-	
-	public IAttributeModifier getEntity() {
+
+	@Override
+	public IAttributeModifier<Attribute> getEntity() {
 		return entity;
 	}
 }

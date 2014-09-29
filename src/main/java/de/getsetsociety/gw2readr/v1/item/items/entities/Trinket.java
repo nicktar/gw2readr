@@ -3,9 +3,9 @@ package de.getsetsociety.gw2readr.v1.item.items.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v1.item.items.enums.TrinketType;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
 
 public class Trinket extends Item implements ITrinket {
