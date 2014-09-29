@@ -1,14 +1,8 @@
 package de.getsetsociety.gw2readr.v1.item.items.interfaces;
 
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseBag;
 
-public interface IBag extends IBaseItem{
 
-	public abstract boolean isNoSellOrSort();
-
-	public abstract void setNoSellOrSort(boolean noSellOrSort);
-
-	public abstract Integer getSize();
-
-	public abstract void setSize(Integer size);
+public interface IBag extends IBaseItem, IBaseBag {
 
 }
