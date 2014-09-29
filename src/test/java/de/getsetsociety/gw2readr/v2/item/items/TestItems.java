@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBuff;
 import de.getsetsociety.gw2readr.v2.item.items.entities.AttributeModifier;
 import de.getsetsociety.gw2readr.v2.item.items.entities.Buff;
 import de.getsetsociety.gw2readr.v2.item.items.enums.ArmorType;
@@ -27,11 +28,10 @@ import de.getsetsociety.gw2readr.v2.item.items.enums.TrinketType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.UpgradeComponentFlag;
 import de.getsetsociety.gw2readr.v2.item.items.enums.UpgradeComponentType;
 import de.getsetsociety.gw2readr.v2.item.items.enums.WeaponType;
-import de.getsetsociety.gw2readr.v2.item.items.enums.WightClass;
+import de.getsetsociety.gw2readr.v2.item.items.enums.WeightClass;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBackItem;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBag;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBuff;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IConsumable;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IContainer;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ICraftingMaterial;
@@ -224,7 +224,7 @@ public class TestItems {
 		assertTrue(entity.getInfixUpgrade().getAttributes().contains(attributeModifier1));
 		assertNull(entity.getSuffixItemId());
 		assertEquals(ArmorType.Coat, entity.getArmorType());
-		assertEquals(WightClass.Medium, entity.getWightClass());
+		assertEquals(WeightClass.Medium, entity.getWeightClass());
 		assertEquals(Integer.valueOf(25), entity.getDefense());
 		assertNull(entity.getSecondarySuffixItemId());
 	}

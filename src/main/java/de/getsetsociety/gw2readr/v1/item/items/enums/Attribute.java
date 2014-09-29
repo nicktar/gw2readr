@@ -1,6 +1,8 @@
 package de.getsetsociety.gw2readr.v1.item.items.enums;
 
-public enum Attribute {
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IAttribute;
+
+public enum Attribute implements IAttribute {
 	Power,
 	Precision,
 	Toughness,

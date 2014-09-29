@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import de.getsetsociety.gw2readr.v2.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v2.item.items.enums.ArmorType;
-import de.getsetsociety.gw2readr.v2.item.items.enums.WightClass;
+import de.getsetsociety.gw2readr.v2.item.items.enums.WeightClass;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
 
 public class ArmorJson extends ItemJson<IArmor> {
@@ -25,7 +25,7 @@ public class ArmorJson extends ItemJson<IArmor> {
     @JsonProperty("details")
     public void setArmorDetails(ArmorDetailsJson details) {
         item.setArmorType(details.getArmorType());
-        item.setWightClass(details.getWightClass());
+        item.setWeightClass(details.getWightClass());
         item.setDefense(details.getDefense());
         for (InfusionSlotJson detail : details.getInfusionSlots()) {
             item.getInfusionSlots().addAll(detail.getFlags());
@@ -38,7 +38,7 @@ public class ArmorJson extends ItemJson<IArmor> {
     public static class ArmorDetailsJson {
 
         private ArmorType armorType;
-        private WightClass wightClass;
+        private WeightClass wightClass;
         private Integer defense;
         private List<InfusionSlotJson> infusionSlots;
         private Integer suffixItemId;
@@ -56,11 +56,11 @@ public class ArmorJson extends ItemJson<IArmor> {
         }
 
         @JsonProperty("weight_class")
-        public WightClass getWightClass() {
+        public WeightClass getWightClass() {
             return wightClass;
         }
 
-        public void setWightClass(WightClass wightClass) {
+        public void setWightClass(WeightClass wightClass) {
             this.wightClass = wightClass;
         }
 

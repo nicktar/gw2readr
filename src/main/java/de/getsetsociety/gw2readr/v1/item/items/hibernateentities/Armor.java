@@ -15,11 +15,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.enums.ArmorType;
 import de.getsetsociety.gw2readr.v1.item.items.enums.InfusionSlotType;
-import de.getsetsociety.gw2readr.v1.item.items.enums.WightClass;
+import de.getsetsociety.gw2readr.v1.item.items.enums.WeightClass;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
 
 @Entity
 @Table
@@ -28,7 +28,7 @@ public class Armor extends Item implements IArmor {
 
 	private static final long serialVersionUID = 8450275854880660075L;
 	private ArmorType armorType;
-	private WightClass wightClass;
+	private WeightClass wightClass;
 	private Integer defense;
 	private Set<InfusionSlotType> infusionSlots = new HashSet<InfusionSlotType>();
 	private Integer suffixItemId;
@@ -58,7 +58,7 @@ public class Armor extends Item implements IArmor {
 	@Column
 	@Override
 	@Enumerated(EnumType.ORDINAL)
-	public WightClass getWightClass() {
+	public WeightClass getWeightClass() {
 		return wightClass;
 	}
 
@@ -66,7 +66,7 @@ public class Armor extends Item implements IArmor {
 	 * @see de.getsetsociety.gw2readr.entities.IArmor#setWightClass(de.getsetsociety.armory.enums.WightClass)
 	 */
 	@Override
-	public void setWightClass(WightClass wightClass) {
+	public void setWeightClass(WeightClass wightClass) {
 		this.wightClass = wightClass;
 	}
 

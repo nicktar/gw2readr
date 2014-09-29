@@ -13,22 +13,23 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBuff;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IAttributeModifier;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBuff;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfixUpgrade;
+import de.getsetsociety.gw2readr.v1.item.items.enums.Attribute;
 
 @Table
 @Entity
-public class InfixUpgrade implements IInfixUpgrade {
-	
-	private Integer id;
-   	private List<IAttributeModifier> attributes = new ArrayList<>();
-   	private IBuff buff; 
+public class InfixUpgrade implements IInfixUpgrade<Attribute> {
 
-   	@Id
-   	@Column
-   	@GeneratedValue
-   	public Integer getId() {
+	private Integer id;
+	private List<IAttributeModifier<Attribute>> attributes = new ArrayList<>();
+	private IBuff buff;
+
+	@Id
+	@Column
+	@GeneratedValue
+	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
@@ -37,19 +38,19 @@ public class InfixUpgrade implements IInfixUpgrade {
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.entities.IInfixUpgrade#getAttributes()
 	 */
-   	@Override
-   	@OneToMany(cascade=CascadeType.ALL, targetEntity=AttributeModifier.class)
-	public List<IAttributeModifier> getAttributes(){
+	@Override
+	@OneToMany(cascade=CascadeType.ALL, targetEntity=AttributeModifier.class)
+	public List<IAttributeModifier<Attribute>> getAttributes(){
 		return this.attributes;
 	}
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.entities.IInfixUpgrade#setAttributes(java.util.List)
 	 */
 	@Override
-	public void setAttributes(List<IAttributeModifier> attributes){
+	public void setAttributes(List<IAttributeModifier<Attribute>> attributes){
 		this.attributes = attributes;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.entities.IInfixUpgrade#getBuff()
 	 */

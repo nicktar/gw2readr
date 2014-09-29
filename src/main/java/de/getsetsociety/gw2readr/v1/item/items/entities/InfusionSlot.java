@@ -3,8 +3,8 @@ package de.getsetsociety.gw2readr.v1.item.items.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfusionSlot;
 import de.getsetsociety.gw2readr.v1.item.items.enums.InfusionSlotType;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfusionSlot;
 
 public class InfusionSlot implements IInfusionSlot {
 
