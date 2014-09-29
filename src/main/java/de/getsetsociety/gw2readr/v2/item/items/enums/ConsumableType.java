@@ -1,6 +1,8 @@
 package de.getsetsociety.gw2readr.v2.item.items.enums;
 
-public enum ConsumableType {
+import de.getsetsociety.gw2readr.v2.item.items.enums.IConsumableType;
+
+public enum ConsumableType implements IConsumableType {
 	Unlock,
 	Transmutation,
 	Food,
