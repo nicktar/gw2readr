@@ -13,18 +13,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseAttributeModifier;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseBuff;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
-import de.getsetsociety.gw2readr.v1.item.items.enums.Attribute;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBuff;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
 
 @Table
 @Entity
-public class InfixUpgrade implements IBaseInfixUpgrade<Attribute> {
+public class InfixUpgrade implements IInfixUpgrade {
 
 	private Integer id;
-	private List<IBaseAttributeModifier<Attribute>> attributes = new ArrayList<>();
-	private IBaseBuff buff;
+	private List<IAttributeModifier> attributes = new ArrayList<>();
+	private IBuff buff;
 
 	@Id
 	@Column
@@ -40,14 +39,14 @@ public class InfixUpgrade implements IBaseInfixUpgrade<Attribute> {
 	 */
 	@Override
 	@OneToMany(cascade=CascadeType.ALL, targetEntity=AttributeModifier.class)
-	public List<IBaseAttributeModifier<Attribute>> getAttributes(){
+	public List<IAttributeModifier> getAttributes(){
 		return this.attributes;
 	}
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.entities.IInfixUpgrade#setAttributes(java.util.List)
 	 */
 	@Override
-	public void setAttributes(List<IBaseAttributeModifier<Attribute>> attributes){
+	public void setAttributes(List<IAttributeModifier> attributes){
 		this.attributes = attributes;
 	}
 
@@ -56,14 +55,14 @@ public class InfixUpgrade implements IBaseInfixUpgrade<Attribute> {
 	 */
 	@Override
 	@ManyToOne(targetEntity=Buff.class, cascade=CascadeType.ALL)
-	public IBaseBuff getBuff() {
+	public IBuff getBuff() {
 		return buff;
 	}
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.entities.IInfixUpgrade#setBuff(de.getsetsociety.armory.items.IBuff)
 	 */
 	@Override
-	public void setBuff(IBaseBuff buff) {
+	public void setBuff(IBuff buff) {
 		this.buff = buff;
 	}
 }

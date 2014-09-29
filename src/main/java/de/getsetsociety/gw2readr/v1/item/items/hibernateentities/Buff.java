@@ -6,11 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseBuff;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBuff;
 
 @Entity
 @Table
-public class Buff implements IBaseBuff {
+public class Buff implements IBuff {
 
 	private Integer id;
 	private Integer skillId;

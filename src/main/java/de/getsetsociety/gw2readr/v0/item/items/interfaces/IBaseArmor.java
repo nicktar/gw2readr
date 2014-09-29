@@ -7,7 +7,8 @@ import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IAttribute;
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IInfusionSlotType;
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IWeightClass;
 
-public interface IBaseArmor<T extends IArmorType, U extends IInfusionSlotType, V extends IWeightClass, W extends IAttribute> extends IBaseItem {
+public interface IBaseArmor<T extends IArmorType, U extends IInfusionSlotType, V extends IWeightClass,
+W extends IAttribute, S extends IBaseInfixUpgrade> extends IBaseItem {
 
 	public abstract T getArmorType();
 
@@ -25,9 +26,9 @@ public interface IBaseArmor<T extends IArmorType, U extends IInfusionSlotType, V
 
 	public abstract void setInfusionSlots(Set<U> infusionSlots);
 
-	public abstract IBaseInfixUpgrade<W> getInfixUpgrade();
+	public abstract S getInfixUpgrade();
 
-	public abstract void setInfixUpgrade(IBaseInfixUpgrade<W> infixUpgrade);
+	public abstract void setInfixUpgrade(S infixUpgrade);
 
 	public abstract V getWeightClass();
 

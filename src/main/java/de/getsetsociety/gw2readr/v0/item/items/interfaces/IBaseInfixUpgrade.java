@@ -4,14 +4,14 @@ import java.util.List;
 
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IAttribute;
 
-public interface IBaseInfixUpgrade<T extends IAttribute> {
+public interface IBaseInfixUpgrade<T extends IAttribute, U extends IBaseBuff, V extends IBaseAttributeModifier<T>> {
 
-	public abstract List<IBaseAttributeModifier<T>> getAttributes();
+	public abstract List<V> getAttributes();
 
-	public abstract void setAttributes(List<IBaseAttributeModifier<T>> attributes);
+	public abstract void setAttributes(List<V> attributes);
 
-	public abstract IBaseBuff getBuff();
+	public abstract U getBuff();
 
-	public abstract void setBuff(IBaseBuff buff);
+	public abstract void setBuff(U buff);
 
 }

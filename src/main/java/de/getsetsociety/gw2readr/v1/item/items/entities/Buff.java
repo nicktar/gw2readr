@@ -1,9 +1,10 @@
 package de.getsetsociety.gw2readr.v1.item.items.entities;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseBuff;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBuff;
 
 
-public class Buff implements IBaseBuff {
+
+public class Buff implements IBuff {
 
 	private Integer skillId;
 	private String description;

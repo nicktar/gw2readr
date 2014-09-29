@@ -1,8 +1,5 @@
 package de.getsetsociety.gw2readr.v1.factories;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseAttributeModifier;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseBuff;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.factories.interfaces.IItemEntityFactory;
 import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Armor;
 import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.AttributeModifier;
@@ -22,13 +19,16 @@ import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Trophy;
 import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.UpgradeComponent;
 import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Weapon;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBackItem;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBag;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBuff;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IConsumable;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IContainer;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ICraftingMaterial;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IGathering;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IGizmo;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IMiniPet;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITool;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
@@ -50,7 +50,7 @@ public class HibernateItemEntityFactory implements IItemEntityFactory {
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newAttributeModifier()
 	 */
 	@Override
-	public IBaseAttributeModifier newAttributeModifier() {
+	public IAttributeModifier newAttributeModifier() {
 		return new AttributeModifier();
 	}
 
@@ -74,7 +74,7 @@ public class HibernateItemEntityFactory implements IItemEntityFactory {
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newBuff()
 	 */
 	@Override
-	public IBaseBuff newBuff() {
+	public IBuff newBuff() {
 		return new Buff();
 	}
 
@@ -122,7 +122,7 @@ public class HibernateItemEntityFactory implements IItemEntityFactory {
 	 * @see de.getsetsociety.gw2readr.IEntityFactory#newInfixUpgrade()
 	 */
 	@Override
-	public IBaseInfixUpgrade newInfixUpgrade() {
+	public IInfixUpgrade newInfixUpgrade() {
 		return new InfixUpgrade();
 	}
 

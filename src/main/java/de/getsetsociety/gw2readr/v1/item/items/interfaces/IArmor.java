@@ -6,6 +6,6 @@ import de.getsetsociety.gw2readr.v1.item.items.enums.Attribute;
 import de.getsetsociety.gw2readr.v1.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v1.item.items.enums.WeightClass;
 
-public interface IArmor extends IBaseItem, IBaseArmor<ArmorType, InfusionSlotType, WeightClass, Attribute> {
+public interface IArmor extends IBaseItem, IBaseArmor<ArmorType, InfusionSlotType, WeightClass, Attribute, IInfixUpgrade> {
 
 }

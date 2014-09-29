@@ -6,19 +6,18 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseAttributeModifier;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
 import de.getsetsociety.gw2readr.v2.factories.EntityFactoryProvider;
-import de.getsetsociety.gw2readr.v2.item.items.enums.Attribute;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IAttributeModifier;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IInfixUpgrade;
 
-public class InfixUpgradeJson implements IEntityWrapper<IBaseInfixUpgrade<Attribute>> {
+public class InfixUpgradeJson implements IEntityWrapper<IInfixUpgrade> {
 
-	private IBaseInfixUpgrade<Attribute> entity =EntityFactoryProvider.getItemEntityFactory().newInfixUpgrade();
+	private IInfixUpgrade entity =EntityFactoryProvider.getItemEntityFactory().newInfixUpgrade();
 
 	@JsonProperty("attributes")
 	public List<AttributeModifierJson> getAttributes() {
 		List<AttributeModifierJson> jsonAttributes = new ArrayList<>();
-		for (IBaseAttributeModifier<Attribute> am: entity.getAttributes()) {
+		for (IAttributeModifier am: entity.getAttributes()) {
 			jsonAttributes.add(new AttributeModifierJson(am));
 		}
 		return jsonAttributes;
@@ -42,7 +41,7 @@ public class InfixUpgradeJson implements IEntityWrapper<IBaseInfixUpgrade<Attrib
 	}
 
 	@Override
-	public IBaseInfixUpgrade<Attribute> getEntity() {
+	public IInfixUpgrade getEntity() {
 		return entity;
 	}
 }
