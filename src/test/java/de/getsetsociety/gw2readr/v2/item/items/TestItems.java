@@ -65,6 +65,11 @@ public class TestItems {
 
 	private static ObjectMapper mapper = new ObjectMapper();
 
+	/**
+	 * Tests readability of the demo Json-Reply found on the wiki
+	 * Object is a Weapon (Lvl.44 Masterwork Longbow, worth 120 coins, power 385-452 with Power(62) and
+	 * Precision(44) stats, no infusions, no restrictions, no secondary suffix)
+	 */
 	@Test
 	public void testDemoJson() {
 		String content = "{\"name\":\"Strong Soft Wood Longbow of Fire\",\"description\":\"\","
@@ -124,6 +129,11 @@ public class TestItems {
 		assertNull(entity.getSecondarySuffixItemId());
 	}
 
+	/**
+	 * Tests the readability of Item 57
+	 * The Object is a BackItem (Lvl.0 Basic Soullbound on Aquire and on use Back Item, worth 16 coins
+	 * with Vitality(4) and Toughness(3) stats)
+	 */
 	@Test
 	public void testReadingBackItem57() {
 		String content = "{\"name\":\"Hearty Back Brace\",\"description\":\"This equipment goes under armor and "
@@ -179,6 +189,11 @@ public class TestItems {
 
 	}
 
+	/**
+	 * Tests readability of Item 70
+	 * The object is an Armor (Lvl.0 Basic Medium Coat with defense 25 worth 6 coins with Power(4) stats
+	 * that's not upgradeable)
+	 */
 	@Test
 	public void testReadingArmor70() {
 		String content = "{\"name\":\"Mighty Studded Coat\",\"type\":\"Armor\",\"level\":0,\"rarity\":\"Basic\","
@@ -214,7 +229,6 @@ public class TestItems {
 		assertTrue("Item Should be 'NotUpgradeable'", entity.getFlags().contains(ItemFlags.NotUpgradeable));
 		assertTrue(entity.getRestrictions().isEmpty());
 		assertEquals(Integer.valueOf(70), entity.getId());
-		;
 		assertEquals("https://render.guildwars2.com/file/5050F9A0AAA5324F0501B7944876F0FA29DCEB97/61008.png", entity.getIcon());
 		assertTrue(entity.getInfusionSlots().isEmpty());
 		assertEquals(1, entity.getInfixUpgrade().getAttributes().size());
@@ -229,8 +243,13 @@ public class TestItems {
 		assertNull(entity.getSecondarySuffixItemId());
 	}
 
+	/**
+	 * Tests the readability of Item 2
+	 * The object is a Consumable (Lvl. 0 Basic Assassin Pill that can't be sold, is soul bound on aquire and on use
+	 * and of type Food
+	 */
 	@Test
-	public void testConsumable() {
+	public void testConsumable2() {
 		String content = "{\"name\":\"Assassin Pill\",\"description\":\"Take this pill to participate in the next round of Assassin\","
 				+ "\"type\":\"Consumable\",\"level\":0,\"rarity\":\"Basic\",\"vendor_value\":0,"
 				+ "\"game_types\":[\"Dungeon\",\"Pve\",\"Wvw\"],"
@@ -254,6 +273,7 @@ public class TestItems {
 		assertEquals(Integer.valueOf(0), entity.getLevel());
 		assertEquals(Rarity.Basic, entity.getRarity());
 		assertEquals(Integer.valueOf(0), entity.getVendorValue());
+		assertEquals(Integer.valueOf(2), entity.getId());
 		assertFalse("Item should not be available in Activity", entity.getAvailableInActivity());
 		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
 		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
@@ -267,7 +287,6 @@ public class TestItems {
 
 		assertTrue(entity.getRestrictions().isEmpty());
 		assertEquals(Integer.valueOf(2), entity.getId());
-		;
 		assertEquals("https://render.guildwars2.com/file/ED903431B97968C79AEC7FB21535FC015DBB0BBA/60981.png", entity.getIcon());
 		assertEquals(ConsumableType.Food, entity.getConsumableType());
 	}
