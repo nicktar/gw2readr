@@ -6,9 +6,9 @@ import org.junit.Test;
 
 public class ContentLoaderTest {
 
-    @Test
-    public void testMaskingControlSequences() {
-        assertEquals("\\n", ContentLoader.maskControlSequences("\n"));
-    }
+	@Test
+	public void testMaskingControlSequences() {
+		assertEquals("\\n", ContentLoader.maskControlSequences("\n"));
+	}
 
 }
