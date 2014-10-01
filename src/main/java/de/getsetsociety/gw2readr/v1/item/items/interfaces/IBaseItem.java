@@ -2,9 +2,9 @@ package de.getsetsociety.gw2readr.v1.item.items.interfaces;
 
 import java.util.Set;
 
-import de.getsetsociety.gw2readr.v1.item.items.enums.ItemFlags;
-import de.getsetsociety.gw2readr.v1.item.items.enums.Rarity;
-import de.getsetsociety.gw2readr.v1.item.items.enums.RestrictionType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
+import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
+import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 
 public interface IBaseItem extends de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseItem {
 

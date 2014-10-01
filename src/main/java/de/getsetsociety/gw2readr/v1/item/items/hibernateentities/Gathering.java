@@ -7,7 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import de.getsetsociety.gw2readr.v1.item.items.enums.GatheringType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.GatheringType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IGathering;
 
 @Entity

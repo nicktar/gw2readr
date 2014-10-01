@@ -16,7 +16,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
-import de.getsetsociety.gw2readr.v1.item.items.enums.InfusionSlotType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBackItem;
 
 @Entity

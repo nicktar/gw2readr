@@ -1,6 +1,6 @@
 package de.getsetsociety.gw2readr.v1.item.items.entities;
 
-import de.getsetsociety.gw2readr.v1.item.items.enums.ContainerType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ContainerType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IContainer;
 
 public class Container extends Item implements IContainer {

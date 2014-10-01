@@ -1,20 +1,21 @@
 package de.getsetsociety.gw2readr.v1.item.items.hibernateentities;
 
+import static org.junit.Assert.*;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.junit.Test;
 
-import de.getsetsociety.gw2readr.v1.item.items.enums.UpgradeComponentFlag;
-import static org.junit.Assert.*;
+import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentFlag;
 
 public class LoadItem21134Test {
-	
+
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("de.getsetsociety.gw2readr");
 
 	private EntityManager em = emf.createEntityManager();
-	
+
 	@Test
 	public void testLoading() {
 		UpgradeComponent uc = em.find(UpgradeComponent.class, 21134);
@@ -25,7 +26,7 @@ public class LoadItem21134Test {
 		}
 	}
 
-	
+
 	@Test
 	public void testEnum() {
 		for (UpgradeComponentFlag uc: UpgradeComponentFlag.values()) {

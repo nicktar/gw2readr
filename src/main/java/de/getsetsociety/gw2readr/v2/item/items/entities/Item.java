@@ -8,9 +8,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
-import de.getsetsociety.gw2readr.v2.item.items.enums.ItemFlags;
-import de.getsetsociety.gw2readr.v2.item.items.enums.Rarity;
-import de.getsetsociety.gw2readr.v2.item.items.enums.RestrictionType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
+import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
+import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBaseItem;
 
 /**

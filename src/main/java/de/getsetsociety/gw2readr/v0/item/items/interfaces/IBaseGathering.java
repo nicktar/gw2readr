@@ -1,11 +1,11 @@
 package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IGatheringType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.GatheringType;
 
-public interface IBaseGathering<T extends IGatheringType> {
+public interface IBaseGathering {
 
-	public abstract T getGatheringType();
+	public abstract GatheringType getGatheringType();
 
-	public abstract void setGatheringType(T gatheringsType);
+	public abstract void setGatheringType(GatheringType gatheringsType);
 
 }

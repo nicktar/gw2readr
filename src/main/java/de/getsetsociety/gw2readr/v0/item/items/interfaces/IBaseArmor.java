@@ -2,17 +2,15 @@ package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
 import java.util.Set;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IArmorType;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IAttribute;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IInfusionSlotType;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IWeightClass;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
 
-public interface IBaseArmor<T extends IArmorType, U extends IInfusionSlotType, V extends IWeightClass,
-W extends IAttribute, S extends IBaseInfixUpgrade> extends IBaseItem {
+public interface IBaseArmor<S extends IBaseInfixUpgrade<? extends IBaseBuff, ? extends IBaseAttributeModifier>> extends IBaseItem {
 
-	public abstract T getArmorType();
+	public abstract ArmorType getArmorType();
 
-	public abstract void setArmorType(T armorType);
+	public abstract void setArmorType(ArmorType armorType);
 
 	public abstract Integer getDefense();
 
@@ -22,17 +20,17 @@ W extends IAttribute, S extends IBaseInfixUpgrade> extends IBaseItem {
 
 	public abstract void setSuffixItemId(Integer suffixItemId);
 
-	public abstract Set<U> getInfusionSlots();
+	public abstract Set<InfusionSlotType> getInfusionSlots();
 
-	public abstract void setInfusionSlots(Set<U> infusionSlots);
+	public abstract void setInfusionSlots(Set<InfusionSlotType> infusionSlots);
 
 	public abstract S getInfixUpgrade();
 
 	public abstract void setInfixUpgrade(S infixUpgrade);
 
-	public abstract V getWeightClass();
+	public abstract WeightClass getWeightClass();
 
-	public abstract void setWeightClass(V wightClass);
+	public abstract void setWeightClass(WeightClass wightClass);
 
 
 

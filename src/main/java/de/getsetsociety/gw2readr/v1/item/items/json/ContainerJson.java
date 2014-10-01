@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
-import de.getsetsociety.gw2readr.v1.item.items.enums.ContainerType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ContainerType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IContainer;
 
 public class ContainerJson extends ItemJson<IContainer> {

@@ -1,6 +1,6 @@
 package de.getsetsociety.gw2readr.v2.item.items.entities;
 
-import de.getsetsociety.gw2readr.v2.item.items.enums.GatheringType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.GatheringType;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IGathering;
 
 public class Gathering extends Item implements IGathering {

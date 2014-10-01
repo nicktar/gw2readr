@@ -2,30 +2,29 @@ package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
 import java.util.Set;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IAttribute;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IUpgradeComponentFlag;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IUpgradeComponentType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentFlag;
+import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentType;
 
-public interface IBaseUpgradeComponentFlag<T extends IUpgradeComponentType, U extends IUpgradeComponentFlag, V extends IBaseInfixUpgrade<? extends IAttribute, ? extends IBaseBuff, ? extends IBaseAttributeModifier<?>>> {
+public interface IBaseUpgradeComponentFlag<V extends IBaseInfixUpgrade<? extends IBaseBuff, ? extends IBaseAttributeModifier>> {
 
-    public abstract T getUpgradeComponentType();
+	public abstract UpgradeComponentType getUpgradeComponentType();
 
-    public abstract void setUpgradeComponentType(T UpgradeComponentType);
+	public abstract void setUpgradeComponentType(UpgradeComponentType UpgradeComponentType);
 
-    public abstract Set<U> getUpgradeComponentFlags();
+	public abstract Set<UpgradeComponentFlag> getUpgradeComponentFlags();
 
-    public abstract void setUpgradeComponentFlags(Set<U> upgradeComponentFlags);
+	public abstract void setUpgradeComponentFlags(Set<UpgradeComponentFlag> upgradeComponentFlags);
 
-    public abstract Set<String> getBonuses();
+	public abstract Set<String> getBonuses();
 
-    public abstract void setBonuses(Set<String> bonuses);
+	public abstract void setBonuses(Set<String> bonuses);
 
-    public abstract String getSuffix();
+	public abstract String getSuffix();
 
-    public abstract void setSuffix(String suffix);
+	public abstract void setSuffix(String suffix);
 
-    public abstract V getInfixUpgrade();
+	public abstract V getInfixUpgrade();
 
-    public abstract void setInfixUpgrade(V infixUpgrade);
+	public abstract void setInfixUpgrade(V infixUpgrade);
 
 }

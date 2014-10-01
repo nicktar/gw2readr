@@ -1,6 +1,6 @@
 package de.getsetsociety.gw2readr.v1.item.items.entities;
 
-import de.getsetsociety.gw2readr.v1.item.items.enums.GizmoType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.GizmoType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IGizmo;
 
 public class Gizmo extends Item implements IGizmo {

@@ -1,12 +1,12 @@
 package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IContainerType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ContainerType;
 
-public interface IBaseContainer<T extends IContainerType> {
+public interface IBaseContainer {
 
-	public T getContainerType();
+	public ContainerType getContainerType();
 
-	public void setContainerType(T containerType);
+	public void setContainerType(ContainerType containerType);
 
 
 }

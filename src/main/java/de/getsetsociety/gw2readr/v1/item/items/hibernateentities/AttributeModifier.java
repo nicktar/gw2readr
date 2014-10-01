@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import de.getsetsociety.gw2readr.v1.item.items.enums.Attribute;
+import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
 
 @Table

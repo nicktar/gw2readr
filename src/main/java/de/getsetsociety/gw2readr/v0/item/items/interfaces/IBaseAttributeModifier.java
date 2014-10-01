@@ -1,13 +1,12 @@
 package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IAttribute;
+import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
 
+public interface IBaseAttributeModifier {
 
-public interface IBaseAttributeModifier<T extends IAttribute> {
+	public Attribute getAttribute();
 
-	public T getAttribute();
-
-	public void setAttribute(T attribute);
+	public void setAttribute(Attribute attribute);
 
 	public Integer getModifier();
 

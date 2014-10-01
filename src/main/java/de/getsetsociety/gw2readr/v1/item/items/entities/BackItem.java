@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
-import de.getsetsociety.gw2readr.v1.item.items.enums.InfusionSlotType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBackItem;
 
 public class BackItem extends Item implements IBackItem {

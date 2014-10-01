@@ -11,8 +11,8 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
-import de.getsetsociety.gw2readr.v1.item.items.enums.UpgradeComponentFlag;
-import de.getsetsociety.gw2readr.v1.item.items.enums.UpgradeComponentType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentFlag;
+import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IUpgradeComponent;
 
 public class UpgradeComponentJson extends ItemJson<IUpgradeComponent> {

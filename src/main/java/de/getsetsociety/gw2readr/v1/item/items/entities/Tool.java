@@ -1,6 +1,6 @@
 package de.getsetsociety.gw2readr.v1.item.items.entities;
 
-import de.getsetsociety.gw2readr.v1.item.items.enums.ToolType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ToolType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITool;
 
 public class Tool extends Item implements ITool {

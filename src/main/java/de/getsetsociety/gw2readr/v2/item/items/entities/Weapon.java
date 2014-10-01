@@ -3,10 +3,10 @@ package de.getsetsociety.gw2readr.v2.item.items.entities;
 import java.util.HashSet;
 import java.util.Set;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
-import de.getsetsociety.gw2readr.v2.item.items.enums.DamageType;
-import de.getsetsociety.gw2readr.v2.item.items.enums.InfusionSlotType;
-import de.getsetsociety.gw2readr.v2.item.items.enums.WeaponType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IWeapon;
 
 public class Weapon extends Item implements IWeapon {
@@ -14,7 +14,7 @@ public class Weapon extends Item implements IWeapon {
 	private static final long serialVersionUID = 5968065106961929839L;
 	private DamageType damageType;
 	private Integer defense;
-	private IBaseInfixUpgrade infixUpgrade;
+	private IInfixUpgrade infixUpgrade;
 	private Set<InfusionSlotType> infusionSlots = new HashSet<InfusionSlotType>();
 	private Integer maxPower;
 	private Integer minPower;
@@ -58,7 +58,7 @@ public class Weapon extends Item implements IWeapon {
 	 * @see de.getsetsociety.gw2readr.entities.IWeapon2#getInfixUpgrade()
 	 */
 	@Override
-	public IBaseInfixUpgrade getInfixUpgrade() {
+	public IInfixUpgrade getInfixUpgrade() {
 		return infixUpgrade;
 	}
 
@@ -66,7 +66,7 @@ public class Weapon extends Item implements IWeapon {
 	 * @see de.getsetsociety.gw2readr.entities.IWeapon2#setInfixUpgrade(de.getsetsociety.armory.entities.InfixUpgrade)
 	 */
 	@Override
-	public void setInfixUpgrade(IBaseInfixUpgrade infixUpgrade) {
+	public void setInfixUpgrade(IInfixUpgrade infixUpgrade) {
 		this.infixUpgrade = infixUpgrade;
 	}
 
@@ -155,6 +155,7 @@ public class Weapon extends Item implements IWeapon {
 		return secondarySuffixItemId;
 	}
 
+	@Override
 	public void setSecondarySuffixItemId(Integer secondarySuffixItemId) {
 		this.secondarySuffixItemId = secondarySuffixItemId;
 	}

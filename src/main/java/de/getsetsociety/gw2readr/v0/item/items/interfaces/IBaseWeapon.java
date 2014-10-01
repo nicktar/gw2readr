@@ -2,43 +2,42 @@ package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
 import java.util.Set;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IAttribute;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IDamageType;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IInfusionSlotType;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IWeaponType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
 
-public interface IBaseWeapon<T extends IDamageType, U extends IBaseInfixUpgrade<? extends IAttribute, ? extends IBaseBuff, ? extends IBaseAttributeModifier<?>>, V extends IInfusionSlotType, W extends IWeaponType> {
+public interface IBaseWeapon<T extends IBaseInfixUpgrade<? extends IBaseBuff, ? extends IBaseAttributeModifier>> {
 
-    public abstract T getDamageType();
+	public abstract DamageType getDamageType();
 
-    public abstract void setDamageType(T damageType);
+	public abstract void setDamageType(DamageType damageType);
 
-    public abstract Integer getDefense();
+	public abstract Integer getDefense();
 
-    public abstract void setDefense(Integer defense);
+	public abstract void setDefense(Integer defense);
 
-    public abstract U getInfixUpgrade();
+	public abstract T getInfixUpgrade();
 
-    public abstract void setInfixUpgrade(U infixUpgrade);
+	public abstract void setInfixUpgrade(T infixUpgrade);
 
-    public abstract Set<V> getInfusionSlots();
+	public abstract Set<InfusionSlotType> getInfusionSlots();
 
-    public abstract void setInfusionSlots(Set<V> infusionSlots);
+	public abstract void setInfusionSlots(Set<InfusionSlotType> infusionSlots);
 
-    public abstract Integer getMaxPower();
+	public abstract Integer getMaxPower();
 
-    public abstract void setMaxPower(Integer maxPower);
+	public abstract void setMaxPower(Integer maxPower);
 
-    public abstract Integer getMinPower();
+	public abstract Integer getMinPower();
 
-    public abstract void setMinPower(Integer min_power);
+	public abstract void setMinPower(Integer min_power);
 
-    public abstract Integer getSuffixItemId();
+	public abstract Integer getSuffixItemId();
 
-    public abstract void setSuffixItemId(Integer suffix_item_id);
+	public abstract void setSuffixItemId(Integer suffixItemId);
 
-    public abstract W getWeaponType();
+	public abstract WeaponType getWeaponType();
 
-    public abstract void setWeaponType(W type);
+	public abstract void setWeaponType(WeaponType type);
 
 }

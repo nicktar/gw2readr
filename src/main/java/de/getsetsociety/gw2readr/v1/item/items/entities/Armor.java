@@ -3,9 +3,9 @@ package de.getsetsociety.gw2readr.v1.item.items.entities;
 import java.util.HashSet;
 import java.util.Set;
 
-import de.getsetsociety.gw2readr.v1.item.items.enums.ArmorType;
-import de.getsetsociety.gw2readr.v1.item.items.enums.InfusionSlotType;
-import de.getsetsociety.gw2readr.v1.item.items.enums.WeightClass;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
 

@@ -2,25 +2,25 @@ package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
 import java.util.Set;
 
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.IInfusionSlotType;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.markers.ITrinketType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.TrinketType;
 
-public interface IBaseTrinket<T extends ITrinketType, U extends IInfusionSlotType, V extends IBaseInfixUpgrade<?, ?, ?>> {
+public interface IBaseTrinket<T  extends IBaseInfixUpgrade<? extends IBaseBuff, ? extends IBaseAttributeModifier>> {
 
-    public abstract T getTrinketType();
+	public abstract TrinketType getTrinketType();
 
-    public abstract void setTrinketType(T trinketType);
+	public abstract void setTrinketType(TrinketType trinketType);
 
-    public abstract Set<U> getInfusionSlots();
+	public abstract Set<InfusionSlotType> getInfusionSlots();
 
-    public abstract void setInfusionSlots(Set<U> infusionSlots);
+	public abstract void setInfusionSlots(Set<InfusionSlotType> infusionSlots);
 
-    public abstract V getInfixUpgrade();
+	public abstract T getInfixUpgrade();
 
-    public abstract void setInfixUpgrade(V infixUpgrade);
+	public abstract void setInfixUpgrade(T infixUpgrade);
 
-    public abstract Integer getSuffixItemId();
+	public abstract Integer getSuffixItemId();
 
-    public abstract void setSuffixItemId(Integer suffixItemId);
+	public abstract void setSuffixItemId(Integer suffixItemId);
 
 }
