@@ -17,7 +17,7 @@ import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBaseItem;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IItem;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
@@ -36,7 +36,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBaseItem;
 	@Type(value = TraitJson.class, name = "Trait"),
 	@Type(value = ToolJson.class, name = "Tool"),
 	@Type(value = BackItemJson.class, name = "Back") })
-public abstract class ItemJson<T extends IBaseItem> implements IEntityWrapper<T> {
+public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
