@@ -19,7 +19,7 @@ import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseItem;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IItem;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include= JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
@@ -39,102 +39,102 @@ import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseItem;
 	@Type(value = BackItemJson.class, name="Back")
 })
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public abstract class ItemJson <T extends IBaseItem> implements IEntityWrapper<T> {
+public abstract class ItemJson <T extends IItem> implements IEntityWrapper<T> {
 
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("name")
-    public String getName() {
-        return getEntity().getName();
-    }
+	@JsonProperty("name")
+	public String getName() {
+		return getEntity().getName();
+	}
 
-    @JsonProperty("name")
-    public void setName(String name) {
-        getEntity().setName(name);
-    }
+	@JsonProperty("name")
+	public void setName(String name) {
+		getEntity().setName(name);
+	}
 
-    @JsonProperty("description")
-    public String getDescription() {
-        return getEntity().getDescription();
-    }
+	@JsonProperty("description")
+	public String getDescription() {
+		return getEntity().getDescription();
+	}
 
-    @JsonProperty("description")
-    public void setDescription(String description) {
-        this.getEntity().setDescription(description);
-    }
+	@JsonProperty("description")
+	public void setDescription(String description) {
+		this.getEntity().setDescription(description);
+	}
 
-    @JsonProperty("rarity")
-    public Rarity getRarity() {
-        return getEntity().getRarity();
-    }
+	@JsonProperty("rarity")
+	public Rarity getRarity() {
+		return getEntity().getRarity();
+	}
 
-    public void setRarity(String rarity) {
-        getEntity().setRarity(Rarity.valueOf(rarity));
-    }
+	public void setRarity(String rarity) {
+		getEntity().setRarity(Rarity.valueOf(rarity));
+	}
 
-    @JsonProperty("vendor_value")
-    public Integer getVendorValue() {
-        return getEntity().getVendorValue();
-    }
+	@JsonProperty("vendor_value")
+	public Integer getVendorValue() {
+		return getEntity().getVendorValue();
+	}
 
-    public void setVendorValue(Integer vendor_value) {
-        getEntity().setVendorValue(vendor_value);
-    }
+	public void setVendorValue(Integer vendor_value) {
+		getEntity().setVendorValue(vendor_value);
+	}
 
-    @JsonProperty("icon_file_id")
-    public Integer getIconFileId() {
-        return getEntity().getIconFileId();
-    }
+	@JsonProperty("icon_file_id")
+	public Integer getIconFileId() {
+		return getEntity().getIconFileId();
+	}
 
-    public void setIconFileId(Integer icon_file_id) {
-        getEntity().setIconFileId(icon_file_id);;
-    }
+	public void setIconFileId(Integer icon_file_id) {
+		getEntity().setIconFileId(icon_file_id);;
+	}
 
-    @JsonProperty("icon_file_signature")
-    public String getIconFileSignature() {
-        return getEntity().getIconFileSignature();
-    }
+	@JsonProperty("icon_file_signature")
+	public String getIconFileSignature() {
+		return getEntity().getIconFileSignature();
+	}
 
-    public void setIconFileSignature(String icon_file_signature) {
-        getEntity().setIconFileSignature(icon_file_signature);
-    }
+	public void setIconFileSignature(String icon_file_signature) {
+		getEntity().setIconFileSignature(icon_file_signature);
+	}
 
-    @JsonProperty("game_types")
-    public List<String> getGameTypes() {
-        return new ArrayList<String>();
-    }
+	@JsonProperty("game_types")
+	public List<String> getGameTypes() {
+		return new ArrayList<String>();
+	}
 
-    @JsonProperty("game_types")
-    public void setGameTypes(List<String> game_types) {
-        for (String gt: game_types) {
-        	getEntity().string2GameType(gt);
-        }
-    }
+	@JsonProperty("game_types")
+	public void setGameTypes(List<String> game_types) {
+		for (String gt: game_types) {
+			getEntity().string2GameType(gt);
+		}
+	}
 
-    @JsonProperty("restrictions")
-    public List<String> getRestrictions() {
-        return new ArrayList<String>();
-    }
+	@JsonProperty("restrictions")
+	public List<String> getRestrictions() {
+		return new ArrayList<String>();
+	}
 
-    @JsonProperty("restrictions")
-    public void setRestrictions(List<String> restrictions) {
-        for (String restriction: restrictions) {
-        	getEntity().getRestrictions().add(RestrictionType.valueOf(restriction));
-        }
-    }
+	@JsonProperty("restrictions")
+	public void setRestrictions(List<String> restrictions) {
+		for (String restriction: restrictions) {
+			getEntity().getRestrictions().add(RestrictionType.valueOf(restriction));
+		}
+	}
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
+	@JsonAnyGetter
+	public Map<String, Object> getAdditionalProperties() {
+		return this.additionalProperties;
+	}
 
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+	@JsonAnySetter
+	public void setAdditionalProperty(String name, Object value) {
+		this.additionalProperties.put(name, value);
+	}
 
-    @JsonProperty("item_id")
-    public Integer getId() {
+	@JsonProperty("item_id")
+	public Integer getId() {
 		return getEntity().getId();
 	}
 
@@ -142,26 +142,26 @@ public abstract class ItemJson <T extends IBaseItem> implements IEntityWrapper<T
 		getEntity().setId(id);
 	}
 
-    @JsonProperty("level")
-    public Integer getLevel() {
+	@JsonProperty("level")
+	public Integer getLevel() {
 		return getEntity().getLevel();
 	}
 
 	public void setLevel(Integer level) {
 		getEntity().setLevel(level);
 	}
-	
+
 	public void setFlags(Set<String> flags) {
 		for (String flag: flags) {
 			getEntity().getFlags().add(ItemFlags.valueOf(flag));
 		}
 	}
-	
+
 	@JsonProperty("flags")
 	public Set<ItemFlags> getFlags() {
 		return getEntity().getFlags();
 	}
-	
+
 	public void setLanguage(Language language) {
 		getEntity().setLanguage(language);
 	}
