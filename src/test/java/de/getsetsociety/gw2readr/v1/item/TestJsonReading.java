@@ -23,7 +23,6 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
-import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.colors.AllColorsReader;
 import de.getsetsociety.gw2readr.v1.colors.interfaces.IColor;
 import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
@@ -38,6 +37,7 @@ import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBag;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBaseItem;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IConsumable;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ICraftingMaterial;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IWeapon;
 import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
 
@@ -70,7 +70,7 @@ public class TestJsonReading {
 		IWeapon o = (IWeapon)reader.readItem(38875);
 		assertEquals(DamageType.Physical, o.getDamageType());
 		assertEquals(Integer.valueOf(0), o.getDefense());
-		IBaseInfixUpgrade upgrade = o.getInfixUpgrade();
+		IInfixUpgrade upgrade = o.getInfixUpgrade();
 		assertEquals(null, upgrade.getBuff());
 		assertTrue(upgrade.getAttributes().isEmpty());
 		assertTrue(o.getInfusionSlots().isEmpty());

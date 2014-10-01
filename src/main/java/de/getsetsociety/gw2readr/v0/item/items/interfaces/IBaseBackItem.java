@@ -4,15 +4,15 @@ import java.util.Set;
 
 import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
 
-public interface IBaseBackItem {
+public interface IBaseBackItem <T extends IBaseInfixUpgrade<? extends IBaseBuff, ? extends IBaseAttributeModifier>>{
 
 	public abstract Set<InfusionSlotType> getInfusionSlots();
 
 	public abstract void setInfusionSlots(Set<InfusionSlotType> infusionSlots);
 
-	public abstract IBaseInfixUpgrade getInfixUpgrade();
+	public abstract T getInfixUpgrade();
 
-	public abstract void setInfixUpgrade(IBaseInfixUpgrade infixUpgrade);
+	public abstract void setInfixUpgrade(T infixUpgrade);
 
 	public abstract Integer getSuffixItemId();
 
