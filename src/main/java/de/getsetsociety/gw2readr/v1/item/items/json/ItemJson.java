@@ -19,7 +19,7 @@ import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBaseItem;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseItem;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include= JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
