@@ -5,7 +5,7 @@ import java.util.Set;
 import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionUpgradeFlag;
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseUpgradeComponentFlag;
 
-public interface IUpgradeComponent extends IBaseItem, IBaseUpgradeComponentFlag<IInfixUpgrade> {
+public interface IUpgradeComponent extends IItem, IBaseUpgradeComponentFlag<IInfixUpgrade> {
 
 	public abstract Set<InfusionUpgradeFlag> getInfusionUpgradeFlags();
 

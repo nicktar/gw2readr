@@ -8,8 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.getsetsociety.gw2readr.general.ContentLoader;
 import de.getsetsociety.gw2readr.general.enums.Language;
-import de.getsetsociety.gw2readr.v2.item.items.entities.Item;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBaseItem;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IItem;
 import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
 
 public class ItemReader {
@@ -27,13 +26,13 @@ public class ItemReader {
 		}
 	}}
 
-	public IBaseItem readItem(Integer id) {
+	public IItem readItem(Integer id) {
 		return readItem(id, Language.English);
 	}
 
 	@SuppressWarnings("unchecked")
-	public IBaseItem readItem(Integer id, Language language) {
-		ItemJson<? extends Item> item = null;
+	public IItem readItem(Integer id, Language language) {
+		ItemJson<? extends IItem> item = null;
 		try {
 			String content = ContentLoader.getItemUrlContent(String.valueOf(id), language);
 
@@ -42,8 +41,8 @@ public class ItemReader {
 		} catch (IOException e) {
 			logger.error("Caught Exception", e);
 		}
-		
-		IBaseItem item2 = null;
+
+		IItem item2 = null;
 		if (item != null) {
 			item2 = item.getEntity();
 		}

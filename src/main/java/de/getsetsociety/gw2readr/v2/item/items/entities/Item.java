@@ -11,13 +11,13 @@ import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBaseItem;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IItem;
 
 /**
  * @author Nicktar
  * 
  */
-public class Item implements Serializable, IBaseItem {
+public class Item implements Serializable, IItem {
 
 	private static final long serialVersionUID = -8942935346941562118L;
 	private Integer id;
