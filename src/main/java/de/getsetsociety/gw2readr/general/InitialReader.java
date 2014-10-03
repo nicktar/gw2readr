@@ -54,13 +54,13 @@ public class InitialReader {
 		ObjectMapper mapper = new ObjectMapper();
 		String content = "";
 		try {
-			List<Integer> items = mapper.readValue(ContentLoader.getItemsUrlContent(), AllItems.class).getItems();
+			List<Integer> items = mapper.readValue(ContentLoader.getV1ItemsUrlContent(), AllItems.class).getItems();
 
 			for (Integer i: items) {
 				try {
 					//if (em.find(Item.class, i) == null) {
 
-						content = ContentLoader.getItemUrlContent(String.valueOf(i), Language.English);
+						content = ContentLoader.getV1ItemUrlContent(String.valueOf(i), Language.English);
 						ItemJson<? extends Item> item = mapper.readValue(content, ItemJson.class);
 						IBaseItem entity = item.getEntity();
 						try {

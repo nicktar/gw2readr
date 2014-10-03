@@ -34,7 +34,7 @@ public class ItemReader {
 	public IItem readItem(Integer id, Language language) {
 		ItemJson<? extends IItem> item = null;
 		try {
-			String content = ContentLoader.getItemUrlContent(String.valueOf(id), language);
+			String content = ContentLoader.getV1ItemUrlContent(String.valueOf(id), language);
 
 			item = mapper.readValue(content, ItemJson.class);
 			item.setLanguage(language);

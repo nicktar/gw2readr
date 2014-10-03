@@ -24,7 +24,7 @@ public class AllItemsReader {
 	public List<Integer> readAllItems() {
 		AllItems allItems = null;
 		try {
-			String content = ContentLoader.getItemsUrlContent();
+			String content = ContentLoader.getV1ItemsUrlContent();
 
 			allItems = mapper.readValue(content, AllItems.class);
 		} catch (IOException e) {
