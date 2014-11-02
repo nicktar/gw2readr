@@ -18,6 +18,18 @@ public class ContentLoader {
         return readFromV1Url(String.format("item_details.json?item_id=%s&lang=%s", id, language));
     }
 
+    public static String getV2ItemUrlContent(Language language, Integer id) throws MalformedURLException, IOException {
+        return readFromV1Url(String.format("items/%s?lang=%s", id, language));
+    }
+
+    public static String getV2ItemUrlContent(Language language, Integer... ids) throws MalformedURLException, IOException {
+        return readFromV1Url(String.format("items/%s?lang=%s", StringUtils.join(ids, ","), language));
+    }
+
+    public static String getV2ItemByPageUrlContent(Language language, Integer pageNumber, Integer pageSize) throws MalformedURLException, IOException {
+        return readFromV1Url(String.format("items/?lang=%s&page=%s&page_size=%s", language, pageNumber, pageSize));
+    }
+
     public static String getV1ItemsUrlContent() throws MalformedURLException, IOException {
         return readFromV1Url("items.json");
     }
@@ -79,11 +91,11 @@ public class ContentLoader {
     }
 
     private static String readFromV1Url(String urlpart) throws MalformedURLException, IOException {
-        return readFromUrl(urlpart, "/v1/");
+        return readFromUrl(urlpart, "/v1/");// .replaceAll("\\n", Matcher.quoteReplacement("\\\\n"));
     }
 
     private static String readFromV2Url(String urlpart) throws MalformedURLException, IOException {
-        return readFromUrl(urlpart, "/v2/");
+        return maskControlSequences(readFromUrl(urlpart, "/v2/"));
     }
 
     private static String readFromUrl(String urlpart, String version)
@@ -91,8 +103,7 @@ public class ContentLoader {
         URL url = new URL("https", "api.guildwars2.com", version + urlpart);
         StringWriter writer = new StringWriter();
         IOUtils.copy((InputStream) url.getContent(), writer, "UTF-8");
-        String content = maskControlSequences(writer.toString());
-        return content;
+        return writer.toString();
     }
 
     public static String maskControlSequences(String input) {

@@ -13,6 +13,7 @@ import de.getsetsociety.gw2readr.v1.item.items.interfaces.IGizmo;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IMiniPet;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITool;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrait;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrophy;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IUpgradeComponent;
@@ -53,5 +54,7 @@ public interface IItemEntityFactory {
     public abstract IUpgradeComponent newUpgradeComponent();
 
     public abstract IWeapon newWeapon();
+
+    public abstract ITrait newTrait();
 
 }
