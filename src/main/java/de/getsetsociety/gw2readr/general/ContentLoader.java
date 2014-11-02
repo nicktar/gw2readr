@@ -14,11 +14,23 @@ import de.getsetsociety.gw2readr.general.enums.Language;
 
 public class ContentLoader {
 
-    public static String getItemUrlContent(String id, Language language) throws MalformedURLException, IOException {
+    public static String getV1ItemUrlContent(String id, Language language) throws MalformedURLException, IOException {
         return readFromV1Url(String.format("item_details.json?item_id=%s&lang=%s", id, language));
     }
 
-    public static String getItemsUrlContent() throws MalformedURLException, IOException {
+    public static String getV2ItemUrlContent(Language language, Integer id) throws MalformedURLException, IOException {
+        return readFromV1Url(String.format("items/%s?lang=%s", id, language));
+    }
+
+    public static String getV2ItemUrlContent(Language language, Integer... ids) throws MalformedURLException, IOException {
+        return readFromV1Url(String.format("items/%s?lang=%s", StringUtils.join(ids, ","), language));
+    }
+
+    public static String getV2ItemByPageUrlContent(Language language, Integer pageNumber, Integer pageSize) throws MalformedURLException, IOException {
+        return readFromV1Url(String.format("items/?lang=%s&page=%s&page_size=%s", language, pageNumber, pageSize));
+    }
+
+    public static String getV1ItemsUrlContent() throws MalformedURLException, IOException {
         return readFromV1Url("items.json");
     }
 
