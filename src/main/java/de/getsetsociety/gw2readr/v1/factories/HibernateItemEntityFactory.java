@@ -14,6 +14,7 @@ import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Gizmo;
 import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.InfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.MiniPet;
 import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Tool;
+import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Trait;
 import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Trinket;
 import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Trophy;
 import de.getsetsociety.gw2readr.v1.item.items.hibernateentities.UpgradeComponent;
@@ -31,6 +32,7 @@ import de.getsetsociety.gw2readr.v1.item.items.interfaces.IGizmo;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IMiniPet;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITool;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrait;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrophy;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IUpgradeComponent;
@@ -182,8 +184,21 @@ public class HibernateItemEntityFactory implements IItemEntityFactory {
         return new Weapon();
     }
 
+    /*
+     * (non-Javadoc)
+     * @see de.getsetsociety.gw2readr.v1.factories.interfaces.IItemEntityFactory#newTool()
+     */
     @Override
     public ITool newTool() {
         return new Tool();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see de.getsetsociety.gw2readr.v1.factories.interfaces.IItemEntityFactory#newTrait()
+     */
+    @Override
+    public ITrait newTrait() {
+        return new Trait();
     }
 }

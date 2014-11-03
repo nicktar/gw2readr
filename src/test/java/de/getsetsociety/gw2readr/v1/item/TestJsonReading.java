@@ -125,10 +125,10 @@ public class TestJsonReading {
 		boolean start = true;
 		Integer count = 0;
 		try {
-			for (Integer i: mapper.readValue(ContentLoader.getItemsUrlContent(), AllItems.class).getItems()) {
+			for (Integer i: mapper.readValue(ContentLoader.getV1ItemsUrlContent(), AllItems.class).getItems()) {
 				start = start || i.equals(49386);
 				if(start) {
-					content = ContentLoader.getItemUrlContent(String.valueOf(i), Language.English);
+					content = ContentLoader.getV1ItemUrlContent(String.valueOf(i), Language.English);
 
 					ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 					assertTrue(displayMap(item.getAdditionalProperties()), item.getAdditionalProperties().isEmpty());
