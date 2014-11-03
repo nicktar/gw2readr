@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import de.getsetsociety.gw2readr.v1.item.items.json.IEntityWrapper;
+import de.getsetsociety.gw2readr.v2.commerce.exchange.interfaces.IExchange;
 import de.getsetsociety.gw2readr.v2.factories.EntityFactoryProvider;
 
 public class ExchangeJson implements IEntityWrapper<IExchange> {

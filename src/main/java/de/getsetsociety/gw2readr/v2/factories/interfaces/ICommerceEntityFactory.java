@@ -1,6 +1,6 @@
 package de.getsetsociety.gw2readr.v2.factories.interfaces;
 
-import de.getsetsociety.gw2readr.v2.commerce.exchange.json.IExchange;
+import de.getsetsociety.gw2readr.v2.commerce.exchange.interfaces.IExchange;
 import de.getsetsociety.gw2readr.v2.commerce.listings.interfaces.IListings;
 import de.getsetsociety.gw2readr.v2.commerce.listings.interfaces.IOffer;
 

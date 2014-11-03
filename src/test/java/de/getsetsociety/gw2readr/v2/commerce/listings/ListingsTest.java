@@ -10,8 +10,6 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.getsetsociety.gw2readr.v2.commerce.exchange.json.ExchangeJson;
-import de.getsetsociety.gw2readr.v2.commerce.exchange.json.IExchange;
 import de.getsetsociety.gw2readr.v2.commerce.listings.entities.Offer;
 import de.getsetsociety.gw2readr.v2.commerce.listings.interfaces.IListings;
 import de.getsetsociety.gw2readr.v2.commerce.listings.interfaces.IOffer;
@@ -34,6 +32,7 @@ public class ListingsTest {
 				+ "\"sells\":[{\"listings\":2,\"unit_price\":71,\"quantity\":182},{\"listings\":2,\"unit_price\":72,\"quantity\":350},{\"listings\":1,\"unit_price\":73,\"quantity\":250}]}";
 		ListingsJson json = mapper.readValue(content, ListingsJson.class);
 		assertNotNull(json);
+		assertTrue(json.getAdditionalProperties().isEmpty());
 		IListings entity = json.getEntity();
 		assertEquals(Integer.valueOf(19684), entity.getId());
 		assertNotNull(entity.getBuys());
@@ -69,6 +68,7 @@ public class ListingsTest {
 				+ "\"buys\":[{\"listings\":2,\"unit_price\":53,\"quantity\":166},{\"listings\":13,\"unit_price\":52,\"quantity\":3098}]}";
 		ListingsJson json = mapper.readValue(content, ListingsJson.class);
 		assertNotNull(json);
+		assertTrue(json.getAdditionalProperties().isEmpty());
 		IListings entity = json.getEntity();
 		assertEquals(Integer.valueOf(19684), entity.getId());
 		assertNotNull(entity.getBuys());
@@ -86,22 +86,4 @@ public class ListingsTest {
 		assertEquals(0, entity.getSells().size());
 
 	}
-	/**
-	 * Test the readability of a response with an invalid amount
-	 * @throws IOException
-	 * @throws JsonMappingException
-	 * @throws JsonParseException
-	 */
-	@Test
-	public void testBuyCoinsWith1Gem() throws JsonParseException, JsonMappingException, IOException {
-		ExchangeJson json = null;
-		json = mapper.readValue("{\"text\":\"ExchangeState: amount offered is insufficient for exchange\"}", ExchangeJson.class);
-
-		IExchange exchange = json.getEntity();
-		assertNull(exchange.getCoinsPerGem());
-		assertNull(exchange.getQuantity());
-		assertTrue(json.getAdditionalProperties().containsKey("text"));
-		assertEquals("ExchangeState: amount offered is insufficient for exchange", json.getAdditionalProperties().get("text"));
-	}
-
 }

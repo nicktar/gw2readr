@@ -1,6 +1,6 @@
 package de.getsetsociety.gw2readr.v2.commerce.exchange.entities;
 
-import de.getsetsociety.gw2readr.v2.commerce.exchange.json.IExchange;
+import de.getsetsociety.gw2readr.v2.commerce.exchange.interfaces.IExchange;
 
 
 public class Exchange implements IExchange {
@@ -9,7 +9,7 @@ public class Exchange implements IExchange {
 	private Integer quantity;
 
 	/* (non-Javadoc)
-	 * @see de.getsetsociety.gw2readr.v2.commerce.exchange.json.IExchange#getCoinsPerGem()
+	 * @see de.getsetsociety.gw2readr.v2.commerce.exchange.interfaces.IExchange#getCoinsPerGem()
 	 */
 	@Override
 	public Integer getCoinsPerGem() {
@@ -17,7 +17,7 @@ public class Exchange implements IExchange {
 	}
 
 	/* (non-Javadoc)
-	 * @see de.getsetsociety.gw2readr.v2.commerce.exchange.json.IExchange#setCoinsPerGem(java.lang.Integer)
+	 * @see de.getsetsociety.gw2readr.v2.commerce.exchange.interfaces.IExchange#setCoinsPerGem(java.lang.Integer)
 	 */
 	@Override
 	public void setCoinsPerGem(Integer coinsPerGem) {
@@ -25,7 +25,7 @@ public class Exchange implements IExchange {
 	}
 
 	/* (non-Javadoc)
-	 * @see de.getsetsociety.gw2readr.v2.commerce.exchange.json.IExchange#getQuantity()
+	 * @see de.getsetsociety.gw2readr.v2.commerce.exchange.interfaces.IExchange#getQuantity()
 	 */
 	@Override
 	public Integer getQuantity() {
@@ -33,7 +33,7 @@ public class Exchange implements IExchange {
 	}
 
 	/* (non-Javadoc)
-	 * @see de.getsetsociety.gw2readr.v2.commerce.exchange.json.IExchange#setQuantity(java.lang.Integer)
+	 * @see de.getsetsociety.gw2readr.v2.commerce.exchange.interfaces.IExchange#setQuantity(java.lang.Integer)
 	 */
 	@Override
 	public void setQuantity(Integer quantity) {

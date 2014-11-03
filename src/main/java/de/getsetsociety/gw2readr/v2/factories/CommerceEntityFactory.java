@@ -1,7 +1,7 @@
 package de.getsetsociety.gw2readr.v2.factories;
 
 import de.getsetsociety.gw2readr.v2.commerce.exchange.entities.Exchange;
-import de.getsetsociety.gw2readr.v2.commerce.exchange.json.IExchange;
+import de.getsetsociety.gw2readr.v2.commerce.exchange.interfaces.IExchange;
 import de.getsetsociety.gw2readr.v2.commerce.listings.entities.Listings;
 import de.getsetsociety.gw2readr.v2.commerce.listings.entities.Offer;
 import de.getsetsociety.gw2readr.v2.commerce.listings.interfaces.IListings;

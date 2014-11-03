@@ -9,6 +9,7 @@ public interface IOffer {
 	public abstract Integer getListings();
 
 	/**
+	 * NOT A PART OF THE GW2 API
 	 * @param listings
 	 *            the number of listings to set
 	 */
@@ -20,6 +21,7 @@ public interface IOffer {
 	public abstract Integer getUnitPrice();
 
 	/**
+	 * NOT A PART OF THE GW2 API
 	 * @param unitPrice
 	 *            the unitPrice to set
 	 */
@@ -31,12 +33,16 @@ public interface IOffer {
 	public abstract Integer getQuantity();
 
 	/**
+	 * NOT A PART OF THE GW2 API
 	 * @param quantity
 	 *            the quantity to set
 	 */
 	public abstract void setQuantity(Integer quantity);
 
+	/**
+	 * @see java.lang.Object.equals(java.lang.Object obj)
+	 */
 	@Override
-	public boolean equals(Object obj);
+	public abstract boolean equals(Object obj);
 
 }

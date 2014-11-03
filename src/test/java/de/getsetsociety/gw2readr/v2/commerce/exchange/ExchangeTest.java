@@ -10,8 +10,8 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import de.getsetsociety.gw2readr.v2.commerce.exchange.interfaces.IExchange;
 import de.getsetsociety.gw2readr.v2.commerce.exchange.json.ExchangeJson;
-import de.getsetsociety.gw2readr.v2.commerce.exchange.json.IExchange;
 
 public class ExchangeTest {
 
@@ -29,6 +29,7 @@ public class ExchangeTest {
 		IExchange exchange = json.getEntity();
 		assertEquals(Integer.valueOf(971), exchange.getCoinsPerGem());
 		assertEquals(Integer.valueOf(971949), exchange.getQuantity());
+		assertTrue(json.getAdditionalProperties().isEmpty());
 	}
 
 
