@@ -19,6 +19,7 @@ public class Weapon extends Item implements IWeapon {
 	private Integer maxPower;
 	private Integer minPower;
 	private Integer suffixItemId;
+	private Integer secondarySuffixItemId;
 	private WeaponType weaponType;
 
 	/*
@@ -163,6 +164,21 @@ public class Weapon extends Item implements IWeapon {
 	@Override
 	public void setWeaponType(WeaponType type) {
 		this.weaponType = type;
+	}
+
+	/**
+	 * @return the secondarySuffixItemId
+	 */
+	public Integer getSecondarySuffixItemId() {
+		return secondarySuffixItemId;
+	}
+
+	/**
+	 * @param secondarySuffixItemId the secondarySuffixItemId to set
+	 */
+	@Override
+	public void setSecondarySuffixItemId(Integer secondarySuffixItemId) {
+		this.secondarySuffixItemId = secondarySuffixItemId;
 	}
 
 }

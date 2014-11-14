@@ -34,6 +34,7 @@ public class Weapon extends Item implements IWeapon {
 	private Integer maxPower;
 	private Integer minPower;
 	private Integer suffixItemId;
+	private Integer secondarySuffixItemId;
 	private WeaponType weaponType;
 
 	/*
@@ -178,6 +179,8 @@ public class Weapon extends Item implements IWeapon {
 	 * @see de.getsetsociety.gw2readr.entities.IWeapon2#getWeaponType()
 	 */
 	@Override
+	@Column
+	@Enumerated(EnumType.ORDINAL)
 	public WeaponType getWeaponType() {
 		return weaponType;
 	}
@@ -189,6 +192,22 @@ public class Weapon extends Item implements IWeapon {
 	@Override
 	public void setWeaponType(WeaponType type) {
 		this.weaponType = type;
+	}
+
+	/**
+	 * @return the secondarySuffixItemId
+	 */
+	@Column
+	public Integer getSecondarySuffixItemId() {
+		return secondarySuffixItemId;
+	}
+
+	/**
+	 * @param secondarySuffixItemId the secondarySuffixItemId to set
+	 */
+	@Override
+	public void setSecondarySuffixItemId(Integer secondarySuffixItemId) {
+		this.secondarySuffixItemId = secondarySuffixItemId;
 	}
 
 }

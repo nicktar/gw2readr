@@ -36,6 +36,10 @@ public interface IBaseWeapon<T extends IBaseInfixUpgrade<? extends IBaseBuff, ? 
 
 	public abstract void setSuffixItemId(Integer suffixItemId);
 
+	public abstract Integer getSecondarySuffixItemId();
+
+	public abstract void setSecondarySuffixItemId(Integer suffixItemId);
+
 	public abstract WeaponType getWeaponType();
 
 	public abstract void setWeaponType(WeaponType type);

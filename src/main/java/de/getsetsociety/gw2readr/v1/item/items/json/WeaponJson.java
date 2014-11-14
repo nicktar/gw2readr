@@ -9,9 +9,9 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
+import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IWeapon;
 
 public class WeaponJson extends ItemJson<IWeapon> {
@@ -30,6 +30,7 @@ public class WeaponJson extends ItemJson<IWeapon> {
 			item.getInfusionSlots().addAll(detail.getFlags());
 		}
 		item.setSuffixItemId(details.getSuffixItemId());
+		item.setSecondarySuffixItemId(details.getSecondarySuffixItemId());
 		item.setInfixUpgrade(details.getInfixUpgrade().getEntity());
 		getAdditionalProperties().putAll(details.getAdditionalProperties());
 	}
@@ -48,6 +49,7 @@ public class WeaponJson extends ItemJson<IWeapon> {
 		private Integer defense;
 		private List<InfusionSlotJson> infusionSlots = new ArrayList<>();
 		private Integer suffixItemId;
+		private Integer secondarySuffixItemId;
 		private InfixUpgradeJson infixUpgrade = new InfixUpgradeJson();
 		private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -131,6 +133,21 @@ public class WeaponJson extends ItemJson<IWeapon> {
 		@JsonAnySetter
 		public void setAdditionalProperty(String name, Object value) {
 			this.additionalProperties.put(name, value);
+		}
+
+		/**
+		 * @return the secondarySuffixItemId
+		 */
+		@JsonProperty("secondary_suffix_item_id")
+		public Integer getSecondarySuffixItemId() {
+			return secondarySuffixItemId;
+		}
+
+		/**
+		 * @param secondarySuffixItemId the secondarySuffixItemId to set
+		 */
+		public void setSecondarySuffixItemId(Integer secondarySuffixItemId) {
+			this.secondarySuffixItemId = secondarySuffixItemId;
 		}
 
 	}
