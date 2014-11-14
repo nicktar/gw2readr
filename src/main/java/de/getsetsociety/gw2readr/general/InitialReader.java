@@ -38,20 +38,20 @@ public class InitialReader {
 		Integer count = 0;
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
-//		for (Integer i: new AllRecipesReader().readAllRecipes()) {
-//			Recipe r = (Recipe)rr.readRecipe(i);
-//			if (em.find(Recipe.class, i) == null) {
-//				em.persist(r);
-//			} else {
-//				em.merge(r);
-//			}
-//			if (++count % 100 == 0) {
-//				transaction.commit();
-//				transaction = em.getTransaction();
-//				transaction.begin();
-//			}
-//		}
-		ObjectMapper mapper = new ObjectMapper();
+		//		for (Integer i: new AllRecipesReader().readAllRecipes()) {
+		//			Recipe r = (Recipe)rr.readRecipe(i);
+		//			if (em.find(Recipe.class, i) == null) {
+		//				em.persist(r);
+		//			} else {
+		//				em.merge(r);
+		//			}
+		//			if (++count % 100 == 0) {
+		//				transaction.commit();
+		//				transaction = em.getTransaction();
+		//				transaction.begin();
+		//			}
+		//		}
+		ObjectMapper mapper = ObjectMapperProvider.getMapper();
 		String content = "";
 		try {
 			List<Integer> items = mapper.readValue(ContentLoader.getV1ItemsUrlContent(), AllItems.class).getItems();
@@ -60,26 +60,26 @@ public class InitialReader {
 				try {
 					//if (em.find(Item.class, i) == null) {
 
-						content = ContentLoader.getV1ItemUrlContent(String.valueOf(i), Language.English);
-						ItemJson<? extends Item> item = mapper.readValue(content, ItemJson.class);
-						IBaseItem entity = item.getEntity();
-						try {
+					content = ContentLoader.getV1ItemUrlContent(String.valueOf(i), Language.English);
+					ItemJson<? extends Item> item = mapper.readValue(content, ItemJson.class);
+					IBaseItem entity = item.getEntity();
+					try {
 						if (em.find(Item.class, i) == null) {
 							em.persist(entity);
 						} else {
 							em.merge(entity);
 						}
-						} catch (PersistenceException e) {
-							e.printStackTrace();
-						}
-						count++;
-						if (count%100 == 0) {
-							transaction.commit();
-							transaction = em.getTransaction();
-							transaction.begin();
-							System.out.println(count);
-						}
-						//Thread.sleep(1000);
+					} catch (PersistenceException e) {
+						e.printStackTrace();
+					}
+					count++;
+					if (count%100 == 0) {
+						transaction.commit();
+						transaction = em.getTransaction();
+						transaction.begin();
+						System.out.println(count);
+					}
+					//Thread.sleep(1000);
 					//}
 				} catch (IOException e) {
 					System.out.println(content);

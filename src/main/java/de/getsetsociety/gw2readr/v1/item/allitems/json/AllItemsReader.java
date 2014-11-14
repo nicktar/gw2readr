@@ -28,6 +28,7 @@ public class AllItemsReader {
 
 			allItems = mapper.readValue(content, AllItems.class);
 		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 		return allItems != null ? allItems.getItems() : null;
