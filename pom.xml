@@ -20,7 +20,7 @@
 	<name>GuildWars 2 Readr</name>
 	<description>Wrapper to the GuildWars 2 JSON Webservice API</description>
 	<!-- <organization> <name>company name</name> </organization> -->
-	<url>http://gw2reader.gwassist.de</url> 
+	<url>http://gw2reader.gwassist.de</url>
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
@@ -29,27 +29,32 @@
 		</license>
 	</licenses>
 	<developers>
-	    <developer>
-	        <name>David Hendrix</name>
-	        <email>gw2readr@gwassist.de</email>
-	        <roles>
-	            <role>Project Owner</role>
-	            <role>Lead Developer</role>
-	        </roles>
-	    </developer>
+		<developer>
+			<name>David Hendrix</name>
+			<email>gw2readr@gwassist.de</email>
+			<roles>
+				<role>Project Owner</role>
+				<role>Lead Developer</role>
+			</roles>
+		</developer>
 	</developers>
 	<issueManagement>
-	    <system>Google Code Issue Tracker</system>
-	    <url>https://code.google.com/p/gw2readr/issues/list</url>
+		<system>Google Code Issue Tracker</system>
+		<url>https://code.google.com/p/gw2readr/issues/list</url>
 	</issueManagement>
 	<scm>
-	    <connection>scm:git:https://code.google.com/p/gw2readr/</connection>
-	    <url>https://code.google.com/p/gw2readr/source/browse/</url>
+		<connection>scm:git:https://code.google.com/p/gw2readr/</connection>
+		<url>https://code.google.com/p/gw2readr/source/browse/</url>
 	</scm>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
 	</properties>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
 	<dependencies>
 
 		<!-- LOGGING DEPENDENCIES - LOG4J -->
@@ -99,7 +104,7 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.2.1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
@@ -165,4 +170,26 @@
 			</plugin>
 		</plugins>
 	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.1</version>
+				<reportSets>
+					<reportSet><!-- by default, id = "default" -->
+						<reports><!-- select non-aggregate reports -->
+							<report>javadoc</report>
+							<report>test-javadoc</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.7.2</version>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
