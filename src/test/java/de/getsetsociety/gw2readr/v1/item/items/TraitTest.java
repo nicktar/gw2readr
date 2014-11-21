@@ -1,4 +1,4 @@
-package de.getsetsociety.gw2readr.v1.item.items.items;
+package de.getsetsociety.gw2readr.v1.item.items;
 
 import static org.junit.Assert.*;
 
