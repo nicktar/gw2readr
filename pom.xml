@@ -14,12 +14,11 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.getsetsociety</groupId>
-	<artifactId>armory</artifactId>
-	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<!-- TODO project name -->
-	<name>GuildWars 2 Armory</name>
-	<description></description>
+	<artifactId>gw2readr</artifactId>
+	<packaging>jar</packaging>
+	<version>0.9b-SNAPSHOT</version>
+	<name>GuildWars 2 Readr</name>
+	<description>Wrapper to the GuildWars 2 JSON Webservice API</description>
 	<!-- <organization> <name>company name</name> <url>company url</url> </organization> -->
 	<licenses>
 		<license>
@@ -31,7 +30,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
-		<wtp.version>none</wtp.version>
 	</properties>
 	<dependencies>
 
@@ -83,13 +81,6 @@
 			<version>3.2.1</version>
 		</dependency>
 		
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-math3</artifactId>
-			<version>3.3</version>
-		</dependency>
-		
-
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
@@ -150,7 +141,7 @@
 				<version>2.9</version>
 				<configuration>
 					<downloadSources>true</downloadSources>
-					<wtpversion>${wtp.version}</wtpversion>
+					<downloadJavaDocs>true</downloadJavaDocs>
 				</configuration>
 			</plugin>
 		</plugins>
