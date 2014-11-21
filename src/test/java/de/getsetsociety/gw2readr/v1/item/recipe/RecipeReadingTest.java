@@ -55,7 +55,6 @@ public class RecipeReadingTest {
         }
     }
 
-    @Test
     public void testReadAll() {
         Integer startAt = 7316;
         Integer read = 0;

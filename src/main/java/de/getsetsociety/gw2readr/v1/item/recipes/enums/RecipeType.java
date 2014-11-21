@@ -58,6 +58,6 @@ public enum RecipeType {
     RefinementEctoplasm,
     RefinementObsidian,
     UpgradeComponent,
-    BackPack
+    Backpack
 
 }
