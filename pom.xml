@@ -16,10 +16,11 @@
 	<groupId>de.getsetsociety</groupId>
 	<artifactId>gw2readr</artifactId>
 	<packaging>jar</packaging>
-	<version>0.9b-SNAPSHOT</version>
+	<version>0.8b</version>
 	<name>GuildWars 2 Readr</name>
 	<description>Wrapper to the GuildWars 2 JSON Webservice API</description>
-	<!-- <organization> <name>company name</name> <url>company url</url> </organization> -->
+	<!-- <organization> <name>company name</name> </organization> -->
+	<url>http://gw2reader.gwassist.de</url> 
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
@@ -27,6 +28,24 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
+	<developers>
+	    <developer>
+	        <name>David Hendrix</name>
+	        <email>gw2readr@gwassist.de</email>
+	        <roles>
+	            <role>Project Owner</role>
+	            <role>Lead Developer</role>
+	        </roles>
+	    </developer>
+	</developers>
+	<issueManagement>
+	    <system>Google Code Issue Tracker</system>
+	    <url>https://code.google.com/p/gw2readr/issues/list</url>
+	</issueManagement>
+	<scm>
+	    <connection>scm:git:https://code.google.com/p/gw2readr/</connection>
+	    <url>https://code.google.com/p/gw2readr/source/browse/</url>
+	</scm>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
@@ -146,17 +165,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<repositories>
-		<repository>
-			<id>Apache Nexus</id>
-			<url>https://repository.apache.org/content/repositories/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 </project>
