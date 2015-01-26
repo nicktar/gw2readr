@@ -13,5 +13,6 @@ public enum ConsumableType {
 	AppearanceChange,
 	ContractNpc,
 	UpgradeRemoval,
-	Immediate
+	Immediate,
+	Unknown
 }

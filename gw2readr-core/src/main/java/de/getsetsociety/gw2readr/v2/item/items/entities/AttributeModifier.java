@@ -8,6 +8,19 @@ public class AttributeModifier implements IAttributeModifier {
 	private Attribute attribute;
 	private Integer modifier;
 
+	public AttributeModifier() {
+		//do nothing
+	}
+
+	/**
+	 * @param attribute
+	 * @param modifier
+	 */
+	public AttributeModifier(Attribute attribute, Integer modifier) {
+		this.attribute = attribute;
+		this.modifier = modifier;
+	}
+
 	@Override
 	public Attribute getAttribute() {
 		return this.attribute;

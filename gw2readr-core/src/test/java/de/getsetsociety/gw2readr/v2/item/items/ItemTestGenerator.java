@@ -26,10 +26,10 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
-import de.getsetsociety.gw2readr.v1.item.items.json.ArmorJson;
-import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IAttributeModifier;
+import de.getsetsociety.gw2readr.v2.item.items.json.ArmorJson;
+import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
 
 public class ItemTestGenerator {
 
@@ -76,8 +76,8 @@ public class ItemTestGenerator {
 	}
 
 	private static FileWriter createTestFile(String className) throws IOException {
-		FileWriter w = new FileWriter(new File("src/test/java/de/getsetsociety/gw2readr/v1/item/items/items/" + className + ".java"));
-		w.append("package de.getsetsociety.gw2readr.v1.item.items.items;\n\n");
+		FileWriter w = new FileWriter(new File("src/test/java/de/getsetsociety/gw2readr/v2/item/items/items/" + className + ".java"));
+		w.append("package de.getsetsociety.gw2readr.v2.item.items.items;\n\n");
 		w.append("import static org.junit.Assert.*;\n");
 		w.append("import org.junit.Test;\n");
 		w.append("import com.fasterxml.jackson.databind.ObjectMapper;\n");
@@ -165,15 +165,19 @@ public class ItemTestGenerator {
 			w.append(String.format("            assert%s(armor.getAvailableInPvPLobby());%n", StringUtils.capitalize(armor.getAvailableInPvPLobby().toString())));
 			w.append(String.format("            assert%s(armor.getAvailableInWvW());%n", StringUtils.capitalize(armor.getAvailableInWvW().toString())));
 			w.append(String.format("            assertEquals(Integer.valueOf(%d), armor.getDefense());%n", armor.getDefense()));
-			w.append(String.format("            assertEquals(\"%s\", armor.getDescription());%n", maskString(armor.getDescription())));
+			if (armor.getDescription() != null) {
+				w.append(String.format("            assertEquals(\"%s\", armor.getDescription());%n", maskString(armor.getDescription())));
+			} else {
+				w.append("            assertNull(armor.getDescription());\n");
+			}
 			w.append(String.format("            assert%s(armor.getFlags().isEmpty());%n", StringUtils.capitalize(Boolean.valueOf(armor.getFlags().isEmpty()).toString())));
 			if (!armor.getFlags().isEmpty()) {
 				w.append(String.format("            assertEquals(%d, armor.getFlags().size());%n", armor.getFlags().size()));
 				String flags = "ItemFlags." + StringUtils.join(armor.getFlags(), ", ItemFlags.");
 				w.append(String.format("            assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {%s})));%n", flags));
 			}
-			w.append(String.format("            assertEquals(Integer.valueOf(%d), armor.getIconFileId());%n", armor.getIconFileId()));
-			w.append(String.format("            assertEquals(\"%s\", armor.getIconFileSignature());%n", armor.getIconFileSignature()));
+			//			w.append(String.format("            assertEquals(Integer.valueOf(%d), armor.getIconFileId());%n", armor.getIconFileId()));
+			//			w.append(String.format("            assertEquals(\"%s\", armor.getIconFileSignature());%n", armor.getIconFileSignature()));
 			w.append(String.format("            assertEquals(Integer.valueOf(%d), armor.getId());%n", armor.getId()));
 			w.append(String.format("            assert%sNull(armor.getInfixUpgrade());%n", armor.getInfixUpgrade() != null? "Not":""));
 			if (armor.getInfixUpgrade() != null) {
@@ -185,7 +189,7 @@ public class ItemTestGenerator {
 						attributeConstructors.add(String.format("new AttributeModifier(Attribute.%s,  %s)", am.getAttribute(), am.getModifier()));
 					}
 					attributes.append(StringUtils.join(attributeConstructors, ", "));
-					attributes.append("})));\n");
+					attributes.append("}))));\n");
 					w.append("            assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(" + attributes.toString());
 				}
 			}
