@@ -1,10 +1,7 @@
-target
-
-.settings
-
-.project
-
-.classpath
-.metadata
-bin
-persistence.xml
+**/.settings
+**/.metadata
+**/target
+**/bin
+**/.project
+**/.classpath
+**/persistence.xml
