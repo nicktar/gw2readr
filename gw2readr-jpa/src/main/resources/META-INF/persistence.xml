@@ -1,0 +1,42 @@
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	<persistence-unit name="de.getsetsociety.gw2readr">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Armor</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.AttributeModifier</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.BackItem</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Bag</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Buff</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Consumable</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Container</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.CraftingMaterial</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Gizmo</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.InfixUpgrade</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Item</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.MiniPet</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Trinket</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Trophy</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.UpgradeComponent</class>
+		<class>de.getsetsociety.gw2readr.v1.item.items.hibernateentities.Weapon</class>
+
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+			<property name="hibernate.archive.autodetection" value="class" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.password" value="armory" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://cyclops:3306/armory" />
+			<property name="hibernate.connection.username" value="armory" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.c3p0.min_size" value="5" />
+			<property name="hibernate.c3p0.max_size" value="20" />
+			<property name="hibernate.c3p0.timeout" value="300" />
+			<property name="hibernate.c3p0.max_statements" value="50" />
+			<property name="hibernate.c3p0.idle_test_period" value="3000" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+		</properties>
+	</persistence-unit>
+
+</persistence>
