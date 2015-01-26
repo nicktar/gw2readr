@@ -1,10 +1,10 @@
-/target
+target
 
-/.settings
+.settings
 
-/.project
+.project
 
-/.classpath
-/.metadata
-/bin
+.classpath
+.metadata
+bin
 persistence.xml
