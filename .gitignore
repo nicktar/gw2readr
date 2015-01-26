@@ -1,4 +1,9 @@
-.settings
+**/.settings
+**/.metadata
+**/target
+**/bin
+**/.project
+**/.classpath
 
 
 
