@@ -14,10 +14,10 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.getsetsociety</groupId>
-	<artifactId>gw2readr</artifactId>
-	<packaging>pom</packaging>
+	<artifactId>gw2readr-core</artifactId>
+	<packaging>jar</packaging>
 	<version>0.8b</version>
-	<name>GuildWars 2 Readr</name>
+	<name>GuildWars 2 Readr Core</name>
 	<description>Wrapper to the GuildWars 2 JSON Webservice API</description>
 	<!-- <organization> <name>company name</name> </organization> -->
 	<url>http://gw2reader.gwassist.de</url>
@@ -50,15 +50,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
 	</properties>
-	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>7</version>
-	</parent>
-	<modules>
-		<module>gw2readr-core</module>
-		<module>gw2readr-jpa</module>
-	</modules>
+    <parent>
+        <groupId>de.getsetsociety</groupId>
+        <artifactId>gw2readr</artifactId>
+        <version>0.8b</version>
+    </parent>
 	<dependencies>
 
 		<!-- LOGGING DEPENDENCIES - LOG4J -->
@@ -90,16 +86,6 @@
 
 		<!-- HIBERNATE AND MYSQL DEPENDENCIES -->
 		<!-- MYSQL HAS TO BE REMOVED BEFORE RELEASE -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>4.3.4.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.29</version>
-		</dependency>
 
 		<!-- GENERAL DEPENDENCIES -->
 
@@ -117,6 +103,38 @@
 
 	</dependencies>
 	<build>
+		<resources>
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<filtering>false</filtering>
+				<directory>src/test/resources</directory>
+			</testResource>
+			<testResource>
+				<filtering>false</filtering>
+				<directory>src/test/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</testResource>
+		</testResources>
 		<plugins>
 			<plugin>
 				<inherited>true</inherited>

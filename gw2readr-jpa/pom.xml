@@ -13,11 +13,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.getsetsociety</groupId>
-	<artifactId>gw2readr</artifactId>
-	<packaging>pom</packaging>
+	<artifactId>gw2readr-jpa</artifactId>
+	<packaging>jar</packaging>
 	<version>0.8b</version>
-	<name>GuildWars 2 Readr</name>
+	<name>GuildWars 2 Readr JPA Module</name>
 	<description>Wrapper to the GuildWars 2 JSON Webservice API</description>
 	<!-- <organization> <name>company name</name> </organization> -->
 	<url>http://gw2reader.gwassist.de</url>
@@ -50,17 +49,17 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
 	</properties>
-	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>7</version>
-	</parent>
-	<modules>
-		<module>gw2readr-core</module>
-		<module>gw2readr-jpa</module>
-	</modules>
+    <parent>
+        <groupId>de.getsetsociety</groupId>
+        <artifactId>gw2readr</artifactId>
+        <version>0.8b</version>
+    </parent>
 	<dependencies>
-
+		<dependency>
+			<groupId>de.getsetsociety</groupId>
+        	<artifactId>gw2readr-core</artifactId>
+        	<version>0.8b</version>
+		</dependency>
 		<!-- LOGGING DEPENDENCIES - LOG4J -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -117,6 +116,38 @@
 
 	</dependencies>
 	<build>
+		<resources>
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<filtering>false</filtering>
+				<directory>src/test/resources</directory>
+			</testResource>
+			<testResource>
+				<filtering>false</filtering>
+				<directory>src/test/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</testResource>
+		</testResources>
 		<plugins>
 			<plugin>
 				<inherited>true</inherited>
