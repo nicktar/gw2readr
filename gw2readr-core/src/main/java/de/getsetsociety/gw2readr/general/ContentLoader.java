@@ -31,7 +31,7 @@ public class ContentLoader {
 	}
 
 	public static String getV2ItemByPageUrlContent(Language language, Integer pageNumber, Integer pageSize) throws MalformedURLException, IOException {
-		return readFromV1Url(String.format("items/?lang=%s&page=%s&page_size=%s", language, pageNumber, pageSize));
+		return readFromV1Url(String.format("items?lang=%s&page=%s&page_size=%s", language, pageNumber, pageSize));
 	}
 
 	public static String getV1ItemsUrlContent() throws MalformedURLException, IOException {

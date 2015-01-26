@@ -13,10 +13,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.getsetsociety</groupId>
 	<artifactId>gw2readr-core</artifactId>
 	<packaging>jar</packaging>
-	<version>0.8b</version>
 	<name>GuildWars 2 Readr Core</name>
 	<description>Wrapper to the GuildWars 2 JSON Webservice API</description>
 	<!-- <organization> <name>company name</name> </organization> -->
