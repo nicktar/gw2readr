@@ -8,13 +8,37 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.getsetsociety.gw2readr.general.ObjectMapperProvider;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
+import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
+import de.getsetsociety.gw2readr.v1.item.items.entities.AttributeModifier;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
+import de.getsetsociety.gw2readr.v1.item.items.json.ArmorJson;
+import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBackItem;
+import de.getsetsociety.gw2readr.v1.item.items.json.BackItemJson;
+import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
+import de.getsetsociety.gw2readr.general.ObjectMapperProvider;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.ICraftingMaterial;
+import de.getsetsociety.gw2readr.v1.item.items.json.CraftingMaterialJson;
+import de.getsetsociety.gw2readr.v1.item.items.json.WeaponJson;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IWeapon;
+import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IConsumable;
 import de.getsetsociety.gw2readr.v1.item.items.json.ConsumableJson;
-import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBag;
+import de.getsetsociety.gw2readr.v1.item.items.json.BagJson;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IContainer;
+import de.getsetsociety.gw2readr.v1.item.items.json.ContainerJson;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ContainerType;
+
 
 public class ConsumableTest {
 
@@ -28,7 +52,7 @@ public class ConsumableTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof ConsumableJson);
             IConsumable item = (IConsumable) itemJson.getEntity();
-            assertEquals(Integer.valueOf(67224), item.getId());
+            assertEquals(Integer.valueOf(67224),  item.getId());
             assertFalse(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -37,18 +61,18 @@ public class ConsumableTest {
             assertFalse(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Recipe: Hylek Maintenance Oil", item.getName());
-            assertEquals(Integer.valueOf(0), item.getLevel());
-            assertEquals(Integer.valueOf(0), item.getVendorValue());
+            assertEquals(Integer.valueOf(0),  item.getLevel());
+            assertEquals(Integer.valueOf(0),  item.getVendorValue());
             assertEquals(Rarity.Masterwork, item.getRarity());
-            assertEquals(5, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.AccountBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoMysticForge, ItemFlags.NoSell })));
+            assertEquals(5,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge})));
             assertTrue(item.getRestrictions().isEmpty());
             assertNull(item.getDurationMs());
-            assertEquals(Integer.valueOf(9802), item.getRecipeId());
+            assertEquals(Integer.valueOf(9802),  item.getRecipeId());
             assertNull(item.getColorId());
             assertEquals(ConsumableType.Unlock, item.getConsumableType());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
     }
@@ -61,7 +85,7 @@ public class ConsumableTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof ConsumableJson);
             IConsumable item = (IConsumable) itemJson.getEntity();
-            assertEquals(Integer.valueOf(43030), item.getId());
+            assertEquals(Integer.valueOf(43030),  item.getId());
             assertFalse(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -70,18 +94,18 @@ public class ConsumableTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Zodiac Heavy Pauldron Skin", item.getName());
-            assertEquals(Integer.valueOf(0), item.getLevel());
-            assertEquals(Integer.valueOf(0), item.getVendorValue());
+            assertEquals(Integer.valueOf(0),  item.getLevel());
+            assertEquals(Integer.valueOf(0),  item.getVendorValue());
             assertEquals(Rarity.Rare, item.getRarity());
-            assertEquals(4, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.AccountBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell })));
+            assertEquals(4,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound})));
             assertTrue(item.getRestrictions().isEmpty());
             assertNull(item.getDurationMs());
             assertNull(item.getRecipeId());
             assertNull(item.getColorId());
             assertEquals(ConsumableType.Transmutation, item.getConsumableType());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
     }
@@ -94,7 +118,7 @@ public class ConsumableTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof ConsumableJson);
             IConsumable item = (IConsumable) itemJson.getEntity();
-            assertEquals(Integer.valueOf(12438), item.getId());
+            assertEquals(Integer.valueOf(12438),  item.getId());
             assertFalse(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -103,18 +127,18 @@ public class ConsumableTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("-36% Stun Duration\n+60 Toughness\n+10% Experience from Kills", item.getDescription());
             assertEquals("Roasted Parsnip", item.getName());
-            assertEquals(Integer.valueOf(60), item.getLevel());
-            assertEquals(Integer.valueOf(28), item.getVendorValue());
+            assertEquals(Integer.valueOf(60),  item.getLevel());
+            assertEquals(Integer.valueOf(28),  item.getVendorValue());
             assertEquals(Rarity.Fine, item.getRarity());
-            assertEquals(1, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.NoSell })));
+            assertEquals(1,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSell})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(Integer.valueOf(1800000), item.getDurationMs());
+            assertEquals(Integer.valueOf(1800000),  item.getDurationMs());
             assertNull(item.getRecipeId());
             assertNull(item.getColorId());
             assertEquals(ConsumableType.Food, item.getConsumableType());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
     }
@@ -127,7 +151,7 @@ public class ConsumableTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof ConsumableJson);
             IConsumable item = (IConsumable) itemJson.getEntity();
-            assertEquals(Integer.valueOf(20328), item.getId());
+            assertEquals(Integer.valueOf(20328),  item.getId());
             assertFalse(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -136,18 +160,18 @@ public class ConsumableTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Owl Tonic", item.getName());
-            assertEquals(Integer.valueOf(0), item.getLevel());
-            assertEquals(Integer.valueOf(0), item.getVendorValue());
+            assertEquals(Integer.valueOf(0),  item.getLevel());
+            assertEquals(Integer.valueOf(0),  item.getVendorValue());
             assertEquals(Rarity.Basic, item.getRarity());
-            assertEquals(4, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoUnderwater, ItemFlags.AccountBindOnUse, ItemFlags.NoSell })));
+            assertEquals(4,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.NoUnderwater, ItemFlags.AccountBound})));
             assertTrue(item.getRestrictions().isEmpty());
             assertNull(item.getDurationMs());
             assertNull(item.getRecipeId());
             assertNull(item.getColorId());
             assertEquals(ConsumableType.Generic, item.getConsumableType());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
     }
@@ -160,7 +184,7 @@ public class ConsumableTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof ConsumableJson);
             IConsumable item = (IConsumable) itemJson.getEntity();
-            assertEquals(Integer.valueOf(9472), item.getId());
+            assertEquals(Integer.valueOf(9472),  item.getId());
             assertFalse(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -169,17 +193,17 @@ public class ConsumableTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("Gain Condition Damage Equal to 4% of Your Toughness\nGain Condition Damage Equal to 2% of Your Vitality\n+10% Experience from Kills", item.getDescription());
             assertEquals("Artisan Tuning Crystal", item.getName());
-            assertEquals(Integer.valueOf(45), item.getLevel());
-            assertEquals(Integer.valueOf(23), item.getVendorValue());
+            assertEquals(Integer.valueOf(45),  item.getLevel());
+            assertEquals(Integer.valueOf(23),  item.getVendorValue());
             assertEquals(Rarity.Fine, item.getRarity());
             assertTrue(item.getFlags().isEmpty());
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(Integer.valueOf(1800000), item.getDurationMs());
+            assertEquals(Integer.valueOf(1800000),  item.getDurationMs());
             assertNull(item.getRecipeId());
             assertNull(item.getColorId());
             assertEquals(ConsumableType.Utility, item.getConsumableType());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
     }
@@ -192,7 +216,7 @@ public class ConsumableTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof ConsumableJson);
             IConsumable item = (IConsumable) itemJson.getEntity();
-            assertEquals(Integer.valueOf(8583), item.getId());
+            assertEquals(Integer.valueOf(8583),  item.getId());
             assertFalse(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -201,8 +225,8 @@ public class ConsumableTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Jug of Hard Apple Cider", item.getName());
-            assertEquals(Integer.valueOf(0), item.getLevel());
-            assertEquals(Integer.valueOf(2), item.getVendorValue());
+            assertEquals(Integer.valueOf(0),  item.getLevel());
+            assertEquals(Integer.valueOf(2),  item.getVendorValue());
             assertEquals(Rarity.Basic, item.getRarity());
             assertTrue(item.getFlags().isEmpty());
             assertTrue(item.getRestrictions().isEmpty());
@@ -211,7 +235,7 @@ public class ConsumableTest {
             assertNull(item.getColorId());
             assertEquals(ConsumableType.Booze, item.getConsumableType());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
     }
@@ -224,7 +248,7 @@ public class ConsumableTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof ConsumableJson);
             IConsumable item = (IConsumable) itemJson.getEntity();
-            assertEquals(Integer.valueOf(8459), item.getId());
+            assertEquals(Integer.valueOf(8459),  item.getId());
             assertFalse(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -233,18 +257,18 @@ public class ConsumableTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("Regenerate health\n(Will be removed if you enter Competitive PvP)", item.getDescription());
             assertEquals("Rejuvenation Booster", item.getName());
-            assertEquals(Integer.valueOf(0), item.getLevel());
-            assertEquals(Integer.valueOf(0), item.getVendorValue());
+            assertEquals(Integer.valueOf(0),  item.getLevel());
+            assertEquals(Integer.valueOf(0),  item.getVendorValue());
             assertEquals(Rarity.Masterwork, item.getRarity());
-            assertEquals(5, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.AccountBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoMysticForge, ItemFlags.NoSell })));
+            assertEquals(5,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(Integer.valueOf(3600000), item.getDurationMs());
+            assertEquals(Integer.valueOf(3600000),  item.getDurationMs());
             assertNull(item.getRecipeId());
             assertNull(item.getColorId());
             assertEquals(ConsumableType.Immediate, item.getConsumableType());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
     }
@@ -257,7 +281,7 @@ public class ConsumableTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof ConsumableJson);
             IConsumable item = (IConsumable) itemJson.getEntity();
-            assertEquals(Integer.valueOf(20015), item.getId());
+            assertEquals(Integer.valueOf(20015),  item.getId());
             assertFalse(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -266,18 +290,18 @@ public class ConsumableTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Speed Booster", item.getName());
-            assertEquals(Integer.valueOf(0), item.getLevel());
-            assertEquals(Integer.valueOf(0), item.getVendorValue());
+            assertEquals(Integer.valueOf(0),  item.getLevel());
+            assertEquals(Integer.valueOf(0),  item.getVendorValue());
             assertEquals(Rarity.Masterwork, item.getRarity());
-            assertEquals(3, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.AccountBindOnUse, ItemFlags.NoSell })));
+            assertEquals(3,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound})));
             assertTrue(item.getRestrictions().isEmpty());
             assertNull(item.getDurationMs());
             assertNull(item.getRecipeId());
             assertNull(item.getColorId());
             assertEquals(ConsumableType.Halloween, item.getConsumableType());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
     }
@@ -290,7 +314,7 @@ public class ConsumableTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof ConsumableJson);
             IConsumable item = (IConsumable) itemJson.getEntity();
-            assertEquals(Integer.valueOf(36285), item.getId());
+            assertEquals(Integer.valueOf(36285),  item.getId());
             assertFalse(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -299,18 +323,18 @@ public class ConsumableTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Total Makeover Kit", item.getName());
-            assertEquals(Integer.valueOf(0), item.getLevel());
-            assertEquals(Integer.valueOf(8), item.getVendorValue());
+            assertEquals(Integer.valueOf(0),  item.getLevel());
+            assertEquals(Integer.valueOf(8),  item.getVendorValue());
             assertEquals(Rarity.Masterwork, item.getRarity());
-            assertEquals(6, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.SoulbindOnAcquire, ItemFlags.AccountBound, ItemFlags.AccountBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoMysticForge, ItemFlags.NoSell })));
+            assertEquals(6,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire, ItemFlags.AccountBound, ItemFlags.NoMysticForge})));
             assertTrue(item.getRestrictions().isEmpty());
             assertNull(item.getDurationMs());
             assertNull(item.getRecipeId());
             assertNull(item.getColorId());
             assertEquals(ConsumableType.AppearanceChange, item.getConsumableType());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
     }
@@ -323,7 +347,7 @@ public class ConsumableTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof ConsumableJson);
             IConsumable item = (IConsumable) itemJson.getEntity();
-            assertEquals(Integer.valueOf(20018), item.getId());
+            assertEquals(Integer.valueOf(20018),  item.getId());
             assertFalse(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -332,18 +356,18 @@ public class ConsumableTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Merchant Express", item.getName());
-            assertEquals(Integer.valueOf(0), item.getLevel());
-            assertEquals(Integer.valueOf(4), item.getVendorValue());
+            assertEquals(Integer.valueOf(0),  item.getLevel());
+            assertEquals(Integer.valueOf(4),  item.getVendorValue());
             assertEquals(Rarity.Fine, item.getRarity());
-            assertEquals(4, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.AccountBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell })));
+            assertEquals(4,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound})));
             assertTrue(item.getRestrictions().isEmpty());
             assertNull(item.getDurationMs());
             assertNull(item.getRecipeId());
             assertNull(item.getColorId());
             assertEquals(ConsumableType.ContractNpc, item.getConsumableType());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
     }
@@ -356,7 +380,7 @@ public class ConsumableTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof ConsumableJson);
             IConsumable item = (IConsumable) itemJson.getEntity();
-            assertEquals(Integer.valueOf(20349), item.getId());
+            assertEquals(Integer.valueOf(20349),  item.getId());
             assertFalse(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -365,18 +389,18 @@ public class ConsumableTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Upgrade Extractor", item.getName());
-            assertEquals(Integer.valueOf(0), item.getLevel());
-            assertEquals(Integer.valueOf(0), item.getVendorValue());
+            assertEquals(Integer.valueOf(0),  item.getLevel());
+            assertEquals(Integer.valueOf(0),  item.getVendorValue());
             assertEquals(Rarity.Fine, item.getRarity());
-            assertEquals(4, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.AccountBindOnUse, ItemFlags.NoMysticForge, ItemFlags.NoSell })));
+            assertEquals(4,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge})));
             assertTrue(item.getRestrictions().isEmpty());
             assertNull(item.getDurationMs());
             assertNull(item.getRecipeId());
             assertNull(item.getColorId());
             assertEquals(ConsumableType.UpgradeRemoval, item.getConsumableType());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
     }

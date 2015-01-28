@@ -14,13 +14,14 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.getsetsociety</groupId>
+	<groupId>de.get-set-society</groupId>
 	<artifactId>gw2readr</artifactId>
 	<packaging>pom</packaging>
-	<version>0.8b</version>
+	<version>0.8b-SNAPSHOT</version>
 	<name>GuildWars 2 Readr</name>
 	<description>Wrapper to the GuildWars 2 JSON Webservice API</description>
 	<!-- <organization> <name>company name</name> </organization> -->
-	<url>http://gw2reader.gwassist.de</url>
+	<url>http://gw2reader.get-set-society.de</url>
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
@@ -31,7 +32,7 @@
 	<developers>
 		<developer>
 			<name>David Hendrix</name>
-			<email>gw2readr@gwassist.de</email>
+			<email>gw2readr@get-set-society.de</email>
 			<roles>
 				<role>Project Owner</role>
 				<role>Lead Developer</role>
@@ -48,7 +49,6 @@
 	</scm>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
 	</properties>
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
@@ -137,7 +137,7 @@
 				<version>2.9</version>
 				<configuration>
 					<downloadSources>true</downloadSources>
-					<downloadJavaDocs>true</downloadJavaDocs>
+					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
 		</plugins>

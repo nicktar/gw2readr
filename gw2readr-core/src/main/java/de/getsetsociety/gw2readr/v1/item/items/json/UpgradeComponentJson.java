@@ -27,7 +27,6 @@ public class UpgradeComponentJson extends ItemJson<IUpgradeComponent> {
 	@JsonProperty("upgrade_component")
 	public void setUpgradeComponentDetails(UpgradeComponentDetails details) {
 		item.setUpgradeComponentType(details.getType());
-		item.setUpgradeComponentType(details.getType());
 		item.getUpgradeComponentFlags().addAll(details.getUpgradeComponentFlags());
 		item.setSuffix(details.getSuffix());
 		item.setInfixUpgrade(details.getInfixUpgrade().getEntity());
@@ -42,7 +41,7 @@ public class UpgradeComponentJson extends ItemJson<IUpgradeComponent> {
 		private String suffix;
 		private InfixUpgradeJson infixUpgrade = new InfixUpgradeJson();
 		private List<Object> infusionUpgradeFlags;
-		private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+		private Map<String, Object> additionalProperties = new HashMap<>();
 
 		@JsonProperty("type")
 		public UpgradeComponentType getType() {
@@ -99,7 +98,7 @@ public class UpgradeComponentJson extends ItemJson<IUpgradeComponent> {
 			this.additionalProperties.put(name, value);
 		}
 
-		@JsonProperty("infusion_upgrade_flags")
+		//@JsonProperty("infusion_upgrade_flags")
 		public List<Object> getInfusionUpgradeFlags() {
 			return infusionUpgradeFlags;
 		}

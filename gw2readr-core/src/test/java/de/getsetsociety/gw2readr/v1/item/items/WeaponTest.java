@@ -8,31 +8,51 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.getsetsociety.gw2readr.general.ObjectMapperProvider;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
-import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
-import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
 import de.getsetsociety.gw2readr.v1.item.items.entities.AttributeModifier;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IWeapon;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
+import de.getsetsociety.gw2readr.v1.item.items.json.ArmorJson;
 import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBackItem;
+import de.getsetsociety.gw2readr.v1.item.items.json.BackItemJson;
+import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
+import de.getsetsociety.gw2readr.general.ObjectMapperProvider;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.ICraftingMaterial;
+import de.getsetsociety.gw2readr.v1.item.items.json.CraftingMaterialJson;
 import de.getsetsociety.gw2readr.v1.item.items.json.WeaponJson;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IWeapon;
+import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IConsumable;
+import de.getsetsociety.gw2readr.v1.item.items.json.ConsumableJson;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBag;
+import de.getsetsociety.gw2readr.v1.item.items.json.BagJson;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IContainer;
+import de.getsetsociety.gw2readr.v1.item.items.json.ContainerJson;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ContainerType;
+
 
 public class WeaponTest {
 
     private ObjectMapper mapper = ObjectMapperProvider.getMapper();
 
     @Test
-    public void testWeaponPhysicalDamageAccountBoundAccountBindOnUseNoMysticForgeHideSuffixNoSellInfixUpgradeNoSlotNoRestrictionHammer052998() {
+    public void testWeaponPhysicalDamageHideSuffixAccountBindOnUseNoSellAccountBoundNoMysticForgeInfixUpgradeNoSlotNoRestrictionHammer052998() {
         String content = "{\"item_id\":\"52998\",\"name\":\"Deserter's Pulse Hammer\",\"type\":\"Weapon\",\"level\":\"34\",\"rarity\":\"Masterwork\",\"vendor_value\":\"105\",\"icon_file_id\":\"60991\",\"icon_file_signature\":\"C5B365D6105F76470106A61F4AB96F3E39D10E18\",\"default_skin\":\"5222\",\"game_types\":[\"Activity\",\n\"Dungeon\",\n\"Pve\",\n\"Wvw\"],\"flags\":[\"AccountBound\",\n\"HideSuffix\",\n\"NoMysticForge\",\n\"NoSell\",\n\"AccountBindOnUse\"],\"restrictions\":[],\"weapon\":{\"type\":\"Hammer\",\"damage_type\":\"Physical\",\"min_power\":\"356\",\"max_power\":\"402\",\"defense\":\"0\",\"infusion_slots\":[],\"infix_upgrade\":{\"attributes\":[{\"attribute\":\"ConditionDamage\",\"modifier\":\"50\"},\n{\"attribute\":\"Toughness\",\"modifier\":\"36\"}]},\"suffix_item_id\":\"\",\"secondary_suffix_item_id\":\"\"}}";
         try {
             ItemJson<?> itemJson = mapper.readValue(content, ItemJson.class);
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(52998), item.getId());
+            assertEquals(Integer.valueOf(52998),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -41,28 +61,28 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Deserter's Pulse Hammer", item.getName());
-            assertEquals(Integer.valueOf(34), item.getLevel());
-            assertEquals(Integer.valueOf(105), item.getVendorValue());
+            assertEquals(Integer.valueOf(34),  item.getLevel());
+            assertEquals(Integer.valueOf(105),  item.getVendorValue());
             assertEquals(Rarity.Masterwork, item.getRarity());
-            assertEquals(5, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.AccountBindOnUse, ItemFlags.NoMysticForge, ItemFlags.HideSuffix, ItemFlags.NoSell })));
+            assertEquals(5,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Hammer, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(356), item.getMinPower());
-            assertEquals(Integer.valueOf(402), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Hammer,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(356),  item.getMinPower());
+            assertEquals(Integer.valueOf(402),  item.getMaxPower());
             assertEquals(2, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.ConditionDamage, 50), new AttributeModifier(Attribute.Toughness, 36) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.ConditionDamage, 50), new AttributeModifier(Attribute.Toughness, 36)})));
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponSoulBindOnUseLongBow038875() {
@@ -72,7 +92,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(38875), item.getId());
+            assertEquals(Integer.valueOf(38875),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -81,27 +101,27 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Tribal Bow", item.getName());
-            assertEquals(Integer.valueOf(80), item.getLevel());
-            assertEquals(Integer.valueOf(396), item.getVendorValue());
+            assertEquals(Integer.valueOf(80),  item.getLevel());
+            assertEquals(Integer.valueOf(396),  item.getVendorValue());
             assertEquals(Rarity.Exotic, item.getRarity());
-            assertEquals(2, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.SoulBindOnUse })));
+            assertEquals(2,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse, ItemFlags.AccountBound})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.LongBow, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(920), item.getMinPower());
-            assertEquals(Integer.valueOf(1080), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.LongBow,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(920),  item.getMinPower());
+            assertEquals(Integer.valueOf(1080),  item.getMaxPower());
             assertTrue(item.getInfixUpgrade().getAttributes().isEmpty());
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponPistol026706() {
@@ -111,7 +131,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(26706), item.getId());
+            assertEquals(Integer.valueOf(26706),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -120,28 +140,28 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("", item.getDescription());
             assertEquals("Dragonshot", item.getName());
-            assertEquals(Integer.valueOf(80), item.getLevel());
-            assertEquals(Integer.valueOf(264), item.getVendorValue());
+            assertEquals(Integer.valueOf(80),  item.getLevel());
+            assertEquals(Integer.valueOf(264),  item.getVendorValue());
             assertEquals(Rarity.Exotic, item.getRarity());
-            assertEquals(2, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.SoulBindOnUse, ItemFlags.HideSuffix })));
+            assertEquals(2,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse, ItemFlags.HideSuffix})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Pistol, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(876), item.getMinPower());
-            assertEquals(Integer.valueOf(1029), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Pistol,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(876),  item.getMinPower());
+            assertEquals(Integer.valueOf(1029),  item.getMaxPower());
             assertEquals(3, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.ConditionDamage, 90), new AttributeModifier(Attribute.Precision, 64), new AttributeModifier(Attribute.Toughness, 64) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.ConditionDamage, 90), new AttributeModifier(Attribute.Precision, 64), new AttributeModifier(Attribute.Toughness, 64)})));
             assertTrue(item.getInfusionSlots().isEmpty());
-            assertEquals(Integer.valueOf(24630), item.getSuffixItemId());
+            assertEquals(Integer.valueOf(24630),  item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponWarhorn026920() {
@@ -151,7 +171,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(26920), item.getId());
+            assertEquals(Integer.valueOf(26920),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -160,27 +180,27 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("", item.getDescription());
             assertEquals("Honed Soft Wood Warhorn", item.getName());
-            assertEquals(Integer.valueOf(32), item.getLevel());
-            assertEquals(Integer.valueOf(32), item.getVendorValue());
+            assertEquals(Integer.valueOf(32),  item.getLevel());
+            assertEquals(Integer.valueOf(32),  item.getVendorValue());
             assertEquals(Rarity.Fine, item.getRarity());
             assertTrue(item.getFlags().isEmpty());
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Warhorn, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(243), item.getMinPower());
-            assertEquals(Integer.valueOf(269), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Warhorn,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(243),  item.getMinPower());
+            assertEquals(Integer.valueOf(269),  item.getMaxPower());
             assertEquals(2, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.Power, 19), new AttributeModifier(Attribute.CritDamage, 14) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.Power, 19), new AttributeModifier(Attribute.CritDamage, 14)})));
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponSword029051() {
@@ -190,7 +210,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(29051), item.getId());
+            assertEquals(Integer.valueOf(29051),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -199,27 +219,27 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("", item.getDescription());
             assertEquals("Mighty Sword", item.getName());
-            assertEquals(Integer.valueOf(4), item.getLevel());
-            assertEquals(Integer.valueOf(5), item.getVendorValue());
+            assertEquals(Integer.valueOf(4),  item.getLevel());
+            assertEquals(Integer.valueOf(5),  item.getVendorValue());
             assertEquals(Rarity.Basic, item.getRarity());
             assertTrue(item.getFlags().isEmpty());
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Sword, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(117), item.getMinPower());
-            assertEquals(Integer.valueOf(129), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Sword,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(117),  item.getMinPower());
+            assertEquals(Integer.valueOf(129),  item.getMaxPower());
             assertEquals(1, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.Power, 4) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.Power, 4)})));
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponStaff034330() {
@@ -229,7 +249,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(34330), item.getId());
+            assertEquals(Integer.valueOf(34330),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -238,27 +258,27 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Ravaging Glyphic Staff", item.getName());
-            assertEquals(Integer.valueOf(21), item.getLevel());
-            assertEquals(Integer.valueOf(36), item.getVendorValue());
+            assertEquals(Integer.valueOf(21),  item.getLevel());
+            assertEquals(Integer.valueOf(36),  item.getVendorValue());
             assertEquals(Rarity.Fine, item.getRarity());
             assertTrue(item.getFlags().isEmpty());
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Staff, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(230), item.getMinPower());
-            assertEquals(Integer.valueOf(259), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Staff,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(230),  item.getMinPower());
+            assertEquals(Integer.valueOf(259),  item.getMaxPower());
             assertEquals(2, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.ConditionDamage, 25), new AttributeModifier(Attribute.Precision, 18) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.ConditionDamage, 25), new AttributeModifier(Attribute.Precision, 18)})));
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponGreatsword053029() {
@@ -268,7 +288,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(53029), item.getId());
+            assertEquals(Integer.valueOf(53029),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -277,28 +297,28 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Vagabond's Problem Solver", item.getName());
-            assertEquals(Integer.valueOf(14), item.getLevel());
-            assertEquals(Integer.valueOf(63), item.getVendorValue());
+            assertEquals(Integer.valueOf(14),  item.getLevel());
+            assertEquals(Integer.valueOf(63),  item.getVendorValue());
             assertEquals(Rarity.Masterwork, item.getRarity());
-            assertEquals(5, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.AccountBindOnUse, ItemFlags.NoMysticForge, ItemFlags.HideSuffix, ItemFlags.NoSell })));
+            assertEquals(5,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Greatsword, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(231), item.getMinPower());
-            assertEquals(Integer.valueOf(255), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Greatsword,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(231),  item.getMinPower());
+            assertEquals(Integer.valueOf(255),  item.getMaxPower());
             assertEquals(2, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.Power, 23), new AttributeModifier(Attribute.Toughness, 17) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.Power, 23), new AttributeModifier(Attribute.Toughness, 17)})));
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponNoSalvageOffenseSlotTrident046985() {
@@ -308,7 +328,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(46985), item.getId());
+            assertEquals(Integer.valueOf(46985),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -317,29 +337,29 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("<c=@flavor>Crafted in the style of the renowned asuran genius, Hronk.</c>", item.getDescription());
             assertEquals("Hronk's Trident", item.getName());
-            assertEquals(Integer.valueOf(80), item.getLevel());
-            assertEquals(Integer.valueOf(10000), item.getVendorValue());
+            assertEquals(Integer.valueOf(80),  item.getLevel());
+            assertEquals(Integer.valueOf(10000),  item.getVendorValue());
             assertEquals(Rarity.Ascended, item.getRarity());
-            assertEquals(4, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.AccountBindOnUse, ItemFlags.NoSalvage, ItemFlags.HideSuffix })));
+            assertEquals(4,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.HideSuffix, ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.AccountBound})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Trident, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(950), item.getMinPower());
-            assertEquals(Integer.valueOf(1050), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Trident,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(950),  item.getMinPower());
+            assertEquals(Integer.valueOf(1050),  item.getMaxPower());
             assertEquals(3, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.Healing, 188), new AttributeModifier(Attribute.Precision, 134), new AttributeModifier(Attribute.Vitality, 134) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.Healing, 188), new AttributeModifier(Attribute.Precision, 134), new AttributeModifier(Attribute.Vitality, 134)})));
             assertEquals(1, item.getInfusionSlots().size());
-            assertTrue(item.getInfusionSlots().containsAll(Arrays.asList(new InfusionSlotType[] { InfusionSlotType.Offense })));
+            assertTrue(item.getInfusionSlots().containsAll(Arrays.asList(new InfusionSlotType[] {InfusionSlotType.Offense})));
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponSoulbindOnAcquire031594() {
@@ -349,7 +369,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(31594), item.getId());
+            assertEquals(Integer.valueOf(31594),  item.getId());
             assertFalse(item.getAvailableInActivity());
             assertFalse(item.getAvailableInDungeon());
             assertFalse(item.getAvailableInPvE());
@@ -358,27 +378,27 @@ public class WeaponTest {
             assertFalse(item.getAvailableInWvW());
             assertEquals("", item.getDescription());
             assertEquals("Tainted Glyphic Maul", item.getName());
-            assertEquals(Integer.valueOf(80), item.getLevel());
-            assertEquals(Integer.valueOf(396), item.getVendorValue());
+            assertEquals(Integer.valueOf(80),  item.getLevel());
+            assertEquals(Integer.valueOf(396),  item.getVendorValue());
             assertEquals(Rarity.Exotic, item.getRarity());
-            assertEquals(3, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse, ItemFlags.NoSell })));
+            assertEquals(3,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Hammer, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(985), item.getMinPower());
-            assertEquals(Integer.valueOf(1111), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Hammer,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(985),  item.getMinPower());
+            assertEquals(Integer.valueOf(1111),  item.getMaxPower());
             assertTrue(item.getInfixUpgrade().getAttributes().isEmpty());
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponAxe052664() {
@@ -388,7 +408,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(52664), item.getId());
+            assertEquals(Integer.valueOf(52664),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -397,28 +417,28 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Vagabond's Tarnished Hewer", item.getName());
-            assertEquals(Integer.valueOf(26), item.getLevel());
-            assertEquals(Integer.valueOf(60), item.getVendorValue());
+            assertEquals(Integer.valueOf(26),  item.getLevel());
+            assertEquals(Integer.valueOf(60),  item.getVendorValue());
             assertEquals(Rarity.Masterwork, item.getRarity());
-            assertEquals(5, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.AccountBindOnUse, ItemFlags.NoMysticForge, ItemFlags.HideSuffix, ItemFlags.NoSell })));
+            assertEquals(5,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Axe, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(260), item.getMinPower());
-            assertEquals(Integer.valueOf(317), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Axe,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(260),  item.getMinPower());
+            assertEquals(Integer.valueOf(317),  item.getMaxPower());
             assertEquals(2, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.Power, 19), new AttributeModifier(Attribute.Toughness, 14) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.Power, 19), new AttributeModifier(Attribute.Toughness, 14)})));
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponShortBow063679() {
@@ -428,7 +448,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(63679), item.getId());
+            assertEquals(Integer.valueOf(63679),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -437,28 +457,28 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("", item.getDescription());
             assertEquals("Rejuvenating Hard Wood Short Bow", item.getName());
-            assertEquals(Integer.valueOf(40), item.getLevel());
-            assertEquals(Integer.valueOf(114), item.getVendorValue());
+            assertEquals(Integer.valueOf(40),  item.getLevel());
+            assertEquals(Integer.valueOf(114),  item.getVendorValue());
             assertEquals(Rarity.Masterwork, item.getRarity());
-            assertEquals(2, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse })));
+            assertEquals(2,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse, ItemFlags.SoulbindOnAcquire})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.ShortBow, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(349), item.getMinPower());
-            assertEquals(Integer.valueOf(386), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.ShortBow,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(349),  item.getMinPower());
+            assertEquals(Integer.valueOf(386),  item.getMaxPower());
             assertEquals(2, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.Healing, 55), new AttributeModifier(Attribute.Power, 39) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.Healing, 55), new AttributeModifier(Attribute.Power, 39)})));
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponScepter034391() {
@@ -468,7 +488,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(34391), item.getId());
+            assertEquals(Integer.valueOf(34391),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -477,27 +497,27 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Ravaging Glyphic Scepter", item.getName());
-            assertEquals(Integer.valueOf(46), item.getLevel());
-            assertEquals(Integer.valueOf(42), item.getVendorValue());
+            assertEquals(Integer.valueOf(46),  item.getLevel());
+            assertEquals(Integer.valueOf(42),  item.getVendorValue());
             assertEquals(Rarity.Fine, item.getRarity());
             assertTrue(item.getFlags().isEmpty());
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Scepter, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(359), item.getMinPower());
-            assertEquals(Integer.valueOf(405), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Scepter,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(359),  item.getMinPower());
+            assertEquals(Integer.valueOf(405),  item.getMaxPower());
             assertEquals(2, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.ConditionDamage, 30), new AttributeModifier(Attribute.Precision, 21) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.ConditionDamage, 30), new AttributeModifier(Attribute.Precision, 21)})));
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponSpeargun031026() {
@@ -507,7 +527,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(31026), item.getId());
+            assertEquals(Integer.valueOf(31026),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -516,28 +536,28 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("", item.getDescription());
             assertEquals("Berserker's Speargun", item.getName());
-            assertEquals(Integer.valueOf(80), item.getLevel());
-            assertEquals(Integer.valueOf(50), item.getVendorValue());
+            assertEquals(Integer.valueOf(80),  item.getLevel());
+            assertEquals(Integer.valueOf(50),  item.getVendorValue());
             assertEquals(Rarity.Basic, item.getRarity());
-            assertEquals(1, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.NoSalvage })));
+            assertEquals(1,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSalvage})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Speargun, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(551), item.getMinPower());
-            assertEquals(Integer.valueOf(609), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Speargun,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(551),  item.getMinPower());
+            assertEquals(Integer.valueOf(609),  item.getMaxPower());
             assertEquals(3, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.Power, 108), new AttributeModifier(Attribute.Precision, 77), new AttributeModifier(Attribute.CritDamage, 77) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.Power, 108), new AttributeModifier(Attribute.Precision, 77), new AttributeModifier(Attribute.CritDamage, 77)})));
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponMace041540() {
@@ -547,7 +567,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(41540), item.getId());
+            assertEquals(Integer.valueOf(41540),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -556,28 +576,28 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("", item.getDescription());
             assertEquals("Sentinel's Pearl Bludgeoner", item.getName());
-            assertEquals(Integer.valueOf(80), item.getLevel());
-            assertEquals(Integer.valueOf(264), item.getVendorValue());
+            assertEquals(Integer.valueOf(80),  item.getLevel());
+            assertEquals(Integer.valueOf(264),  item.getVendorValue());
             assertEquals(Rarity.Exotic, item.getRarity());
-            assertEquals(1, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.SoulBindOnUse })));
+            assertEquals(1,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Mace, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(895), item.getMinPower());
-            assertEquals(Integer.valueOf(1010), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Mace,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(895),  item.getMinPower());
+            assertEquals(Integer.valueOf(1010),  item.getMaxPower());
             assertEquals(3, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.Vitality, 90), new AttributeModifier(Attribute.Power, 64), new AttributeModifier(Attribute.Toughness, 64) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.Vitality, 90), new AttributeModifier(Attribute.Power, 64), new AttributeModifier(Attribute.Toughness, 64)})));
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponHarpoon046840() {
@@ -587,7 +607,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(46840), item.getId());
+            assertEquals(Integer.valueOf(46840),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -596,29 +616,29 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("<c=@flavor>Crafted in the style of the renowned Sylvari smith, Occam.</c>", item.getDescription());
             assertEquals("Occam's Impaler", item.getName());
-            assertEquals(Integer.valueOf(80), item.getLevel());
-            assertEquals(Integer.valueOf(10000), item.getVendorValue());
+            assertEquals(Integer.valueOf(80),  item.getLevel());
+            assertEquals(Integer.valueOf(10000),  item.getVendorValue());
             assertEquals(Rarity.Ascended, item.getRarity());
-            assertEquals(4, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.AccountBindOnUse, ItemFlags.NoSalvage, ItemFlags.HideSuffix })));
+            assertEquals(4,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.HideSuffix, ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.AccountBound})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Harpoon, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(950), item.getMinPower());
-            assertEquals(Integer.valueOf(1050), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Harpoon,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(950),  item.getMinPower());
+            assertEquals(Integer.valueOf(1050),  item.getMaxPower());
             assertEquals(3, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.ConditionDamage, 188), new AttributeModifier(Attribute.Power, 134), new AttributeModifier(Attribute.Vitality, 134) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.ConditionDamage, 188), new AttributeModifier(Attribute.Power, 134), new AttributeModifier(Attribute.Vitality, 134)})));
             assertEquals(1, item.getInfusionSlots().size());
-            assertTrue(item.getInfusionSlots().containsAll(Arrays.asList(new InfusionSlotType[] { InfusionSlotType.Offense })));
+            assertTrue(item.getInfusionSlots().containsAll(Arrays.asList(new InfusionSlotType[] {InfusionSlotType.Offense})));
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponTorch029404() {
@@ -628,7 +648,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(29404), item.getId());
+            assertEquals(Integer.valueOf(29404),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -637,28 +657,28 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("<c=@flavor>\"Great for cleaning out grawl.\"<br>—Etta</c>", item.getDescription());
             assertEquals("Exterminator Torch", item.getName());
-            assertEquals(Integer.valueOf(9), item.getLevel());
-            assertEquals(Integer.valueOf(14), item.getVendorValue());
+            assertEquals(Integer.valueOf(9),  item.getLevel());
+            assertEquals(Integer.valueOf(14),  item.getVendorValue());
             assertEquals(Rarity.Fine, item.getRarity());
-            assertEquals(5, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.SoulbindOnAcquire, ItemFlags.NoSalvage, ItemFlags.SoulBindOnUse, ItemFlags.HideSuffix, ItemFlags.NoSell })));
+            assertEquals(5,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse, ItemFlags.HideSuffix, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Torch, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(141), item.getMinPower());
-            assertEquals(Integer.valueOf(165), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Torch,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(141),  item.getMinPower());
+            assertEquals(Integer.valueOf(165),  item.getMaxPower());
             assertEquals(1, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.Vitality, 7) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.Vitality, 7)})));
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponShield054171() {
@@ -668,7 +688,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(54171), item.getId());
+            assertEquals(Integer.valueOf(54171),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -677,28 +697,28 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Vagabond's Immutabilis", item.getName());
-            assertEquals(Integer.valueOf(51), item.getLevel());
-            assertEquals(Integer.valueOf(141), item.getVendorValue());
+            assertEquals(Integer.valueOf(51),  item.getLevel());
+            assertEquals(Integer.valueOf(141),  item.getVendorValue());
             assertEquals(Rarity.Rare, item.getRarity());
-            assertEquals(5, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.AccountBindOnUse, ItemFlags.NoMysticForge, ItemFlags.HideSuffix, ItemFlags.NoSell })));
+            assertEquals(5,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Shield, item.getWeaponType());
-            assertEquals(Integer.valueOf(32), item.getDefense());
-            assertEquals(Integer.valueOf(447), item.getMinPower());
-            assertEquals(Integer.valueOf(504), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Shield,  item.getWeaponType());
+            assertEquals(Integer.valueOf(32),  item.getDefense());
+            assertEquals(Integer.valueOf(447),  item.getMinPower());
+            assertEquals(Integer.valueOf(504),  item.getMaxPower());
             assertEquals(2, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.Power, 44), new AttributeModifier(Attribute.Toughness, 32) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.Power, 44), new AttributeModifier(Attribute.Toughness, 32)})));
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponDagger033197() {
@@ -708,7 +728,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(33197), item.getId());
+            assertEquals(Integer.valueOf(33197),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -717,27 +737,27 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Orrian Dagger of Earth", item.getName());
-            assertEquals(Integer.valueOf(80), item.getLevel());
-            assertEquals(Integer.valueOf(132), item.getVendorValue());
+            assertEquals(Integer.valueOf(80),  item.getLevel());
+            assertEquals(Integer.valueOf(132),  item.getVendorValue());
             assertEquals(Rarity.Masterwork, item.getRarity());
-            assertEquals(2, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.SoulBindOnUse })));
+            assertEquals(2,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse, ItemFlags.AccountBound})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Dagger, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(761), item.getMinPower());
-            assertEquals(Integer.valueOf(808), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Dagger,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(761),  item.getMinPower());
+            assertEquals(Integer.valueOf(808),  item.getMaxPower());
             assertTrue(item.getInfixUpgrade().getAttributes().isEmpty());
             assertTrue(item.getInfusionSlots().isEmpty());
-            assertEquals(Integer.valueOf(24558), item.getSuffixItemId());
+            assertEquals(Integer.valueOf(24558),  item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponNotUpgradeableTwoHandedToy043092() {
@@ -747,7 +767,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(43092), item.getId());
+            assertEquals(Integer.valueOf(43092),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -756,27 +776,27 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("Town clothes can no longer be equipped separately.\n\nSpeak to a Black Lion Armor Trader to exchange this for a portable bundle item.", item.getDescription());
             assertEquals("Bloody Prince's Staff Toy", item.getName());
-            assertEquals(Integer.valueOf(0), item.getLevel());
-            assertEquals(Integer.valueOf(0), item.getVendorValue());
+            assertEquals(Integer.valueOf(0),  item.getLevel());
+            assertEquals(Integer.valueOf(0),  item.getVendorValue());
             assertEquals(Rarity.Rare, item.getRarity());
-            assertEquals(5, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse, ItemFlags.NoMysticForge, ItemFlags.NoSell })));
+            assertEquals(5,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.TwoHandedToy, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(0), item.getMinPower());
-            assertEquals(Integer.valueOf(0), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.TwoHandedToy,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(0),  item.getMinPower());
+            assertEquals(Integer.valueOf(0),  item.getMaxPower());
             assertTrue(item.getInfixUpgrade().getAttributes().isEmpty());
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponRifle028035() {
@@ -786,7 +806,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(28035), item.getId());
+            assertEquals(Integer.valueOf(28035),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -795,27 +815,27 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("", item.getDescription());
             assertEquals("Strong Iron Rifle", item.getName());
-            assertEquals(Integer.valueOf(56), item.getLevel());
-            assertEquals(Integer.valueOf(74), item.getVendorValue());
+            assertEquals(Integer.valueOf(56),  item.getLevel());
+            assertEquals(Integer.valueOf(74),  item.getVendorValue());
             assertEquals(Rarity.Fine, item.getRarity());
             assertTrue(item.getFlags().isEmpty());
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Rifle, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(487), item.getMinPower());
-            assertEquals(Integer.valueOf(595), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Rifle,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(487),  item.getMinPower());
+            assertEquals(Integer.valueOf(595),  item.getMaxPower());
             assertEquals(2, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.Power, 79), new AttributeModifier(Attribute.Precision, 56) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.Power, 79), new AttributeModifier(Attribute.Precision, 56)})));
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponFocus034132() {
@@ -825,7 +845,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(34132), item.getId());
+            assertEquals(Integer.valueOf(34132),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -834,28 +854,28 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Carrion Tribal Focus of Accuracy", item.getName());
-            assertEquals(Integer.valueOf(78), item.getLevel());
-            assertEquals(Integer.valueOf(256), item.getVendorValue());
+            assertEquals(Integer.valueOf(78),  item.getLevel());
+            assertEquals(Integer.valueOf(256),  item.getVendorValue());
             assertEquals(Rarity.Exotic, item.getRarity());
-            assertEquals(1, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.SoulBindOnUse })));
+            assertEquals(1,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Focus, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(805), item.getMinPower());
-            assertEquals(Integer.valueOf(855), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Focus,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(805),  item.getMinPower());
+            assertEquals(Integer.valueOf(855),  item.getMaxPower());
             assertEquals(3, item.getInfixUpgrade().getAttributes().size());
-            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] { new AttributeModifier(Attribute.ConditionDamage, 86), new AttributeModifier(Attribute.Power, 62), new AttributeModifier(Attribute.Vitality, 62) })));
+            assertTrue(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier[] {new AttributeModifier(Attribute.ConditionDamage, 86), new AttributeModifier(Attribute.Power, 62), new AttributeModifier(Attribute.Vitality, 62)})));
             assertTrue(item.getInfusionSlots().isEmpty());
-            assertEquals(Integer.valueOf(24618), item.getSuffixItemId());
+            assertEquals(Integer.valueOf(24618),  item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponToy020262() {
@@ -865,7 +885,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(20262), item.getId());
+            assertEquals(Integer.valueOf(20262),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -874,27 +894,27 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("Town clothes can no longer be equipped separately.\n\nSpeak to a Black Lion Armor Trader to exchange this for a portable bundle item.", item.getDescription());
             assertEquals("Frying Pan", item.getName());
-            assertEquals(Integer.valueOf(0), item.getLevel());
-            assertEquals(Integer.valueOf(0), item.getVendorValue());
+            assertEquals(Integer.valueOf(0),  item.getLevel());
+            assertEquals(Integer.valueOf(0),  item.getVendorValue());
             assertEquals(Rarity.Fine, item.getRarity());
-            assertEquals(5, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse, ItemFlags.NoMysticForge, ItemFlags.NoSell })));
+            assertEquals(5,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.Toy, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(0), item.getMinPower());
-            assertEquals(Integer.valueOf(0), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.Toy,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(0),  item.getMinPower());
+            assertEquals(Integer.valueOf(0),  item.getMaxPower());
             assertTrue(item.getInfixUpgrade().getAttributes().isEmpty());
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponFireDamage049202() {
@@ -904,7 +924,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(49202), item.getId());
+            assertEquals(Integer.valueOf(49202),  item.getId());
             assertFalse(item.getAvailableInActivity());
             assertFalse(item.getAvailableInDungeon());
             assertFalse(item.getAvailableInPvE());
@@ -913,27 +933,27 @@ public class WeaponTest {
             assertFalse(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Rodgort", item.getName());
-            assertEquals(Integer.valueOf(80), item.getLevel());
-            assertEquals(Integer.valueOf(100000), item.getVendorValue());
+            assertEquals(Integer.valueOf(80),  item.getLevel());
+            assertEquals(Integer.valueOf(100000),  item.getVendorValue());
             assertEquals(Rarity.Exotic, item.getRarity());
-            assertEquals(4, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.SoulbindOnAcquire, ItemFlags.NoSalvage, ItemFlags.SoulBindOnUse, ItemFlags.NoSell })));
+            assertEquals(4,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Fire, item.getDamageType());
-            assertEquals(WeaponType.Torch, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(789), item.getMinPower());
-            assertEquals(Integer.valueOf(926), item.getMaxPower());
+            assertEquals(DamageType.Fire,  item.getDamageType());
+            assertEquals(WeaponType.Torch,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(789),  item.getMinPower());
+            assertEquals(Integer.valueOf(926),  item.getMaxPower());
             assertTrue(item.getInfixUpgrade().getAttributes().isEmpty());
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponLargeBundle049935() {
@@ -943,7 +963,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(49935), item.getId());
+            assertEquals(Integer.valueOf(49935),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -952,27 +972,27 @@ public class WeaponTest {
             assertFalse(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Enchanted Broom", item.getName());
-            assertEquals(Integer.valueOf(0), item.getLevel());
-            assertEquals(Integer.valueOf(0), item.getVendorValue());
+            assertEquals(Integer.valueOf(0),  item.getLevel());
+            assertEquals(Integer.valueOf(0),  item.getVendorValue());
             assertEquals(Rarity.Rare, item.getRarity());
-            assertEquals(5, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.SoulbindOnAcquire, ItemFlags.NotUpgradeable, ItemFlags.NoMysticForge, ItemFlags.SoulBindOnUse, ItemFlags.NoSell })));
+            assertEquals(5,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse, ItemFlags.NotUpgradeable, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire, ItemFlags.NoMysticForge})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Physical, item.getDamageType());
-            assertEquals(WeaponType.LargeBundle, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(0), item.getMinPower());
-            assertEquals(Integer.valueOf(0), item.getMaxPower());
+            assertEquals(DamageType.Physical,  item.getDamageType());
+            assertEquals(WeaponType.LargeBundle,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(0),  item.getMinPower());
+            assertEquals(Integer.valueOf(0),  item.getMaxPower());
             assertTrue(item.getInfixUpgrade().getAttributes().isEmpty());
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponIceDamage049185() {
@@ -982,7 +1002,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(49185), item.getId());
+            assertEquals(Integer.valueOf(49185),  item.getId());
             assertFalse(item.getAvailableInActivity());
             assertFalse(item.getAvailableInDungeon());
             assertFalse(item.getAvailableInPvE());
@@ -991,27 +1011,27 @@ public class WeaponTest {
             assertFalse(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Frostfang", item.getName());
-            assertEquals(Integer.valueOf(80), item.getLevel());
-            assertEquals(Integer.valueOf(100000), item.getVendorValue());
+            assertEquals(Integer.valueOf(80),  item.getLevel());
+            assertEquals(Integer.valueOf(100000),  item.getVendorValue());
             assertEquals(Rarity.Exotic, item.getRarity());
-            assertEquals(4, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.SoulbindOnAcquire, ItemFlags.NoSalvage, ItemFlags.SoulBindOnUse, ItemFlags.NoSell })));
+            assertEquals(4,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Ice, item.getDamageType());
-            assertEquals(WeaponType.Axe, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(857), item.getMinPower());
-            assertEquals(Integer.valueOf(1048), item.getMaxPower());
+            assertEquals(DamageType.Ice,  item.getDamageType());
+            assertEquals(WeaponType.Axe,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(857),  item.getMinPower());
+            assertEquals(Integer.valueOf(1048),  item.getMaxPower());
             assertTrue(item.getInfixUpgrade().getAttributes().isEmpty());
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponLightningDamage049197() {
@@ -1021,7 +1041,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(49197), item.getId());
+            assertEquals(Integer.valueOf(49197),  item.getId());
             assertFalse(item.getAvailableInActivity());
             assertFalse(item.getAvailableInDungeon());
             assertFalse(item.getAvailableInPvE());
@@ -1030,27 +1050,27 @@ public class WeaponTest {
             assertFalse(item.getAvailableInWvW());
             assertNull(item.getDescription());
             assertEquals("Meteorlogicus", item.getName());
-            assertEquals(Integer.valueOf(80), item.getLevel());
-            assertEquals(Integer.valueOf(100000), item.getVendorValue());
+            assertEquals(Integer.valueOf(80),  item.getLevel());
+            assertEquals(Integer.valueOf(100000),  item.getVendorValue());
             assertEquals(Rarity.Exotic, item.getRarity());
-            assertEquals(4, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.SoulbindOnAcquire, ItemFlags.NoSalvage, ItemFlags.SoulBindOnUse, ItemFlags.NoSell })));
+            assertEquals(4,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Lightning, item.getDamageType());
-            assertEquals(WeaponType.Scepter, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(895), item.getMinPower());
-            assertEquals(Integer.valueOf(1010), item.getMaxPower());
+            assertEquals(DamageType.Lightning,  item.getDamageType());
+            assertEquals(WeaponType.Scepter,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(895),  item.getMinPower());
+            assertEquals(Integer.valueOf(1010),  item.getMaxPower());
             assertTrue(item.getInfixUpgrade().getAttributes().isEmpty());
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
     @Test
     public void testWeaponChokingDamageSmallBundle000006() {
@@ -1060,7 +1080,7 @@ public class WeaponTest {
             assertNotNull(itemJson);
             assertTrue(itemJson instanceof WeaponJson);
             IWeapon item = (IWeapon) itemJson.getEntity();
-            assertEquals(Integer.valueOf(6), item.getId());
+            assertEquals(Integer.valueOf(6),  item.getId());
             assertTrue(item.getAvailableInActivity());
             assertTrue(item.getAvailableInDungeon());
             assertTrue(item.getAvailableInPvE());
@@ -1069,26 +1089,26 @@ public class WeaponTest {
             assertTrue(item.getAvailableInWvW());
             assertEquals("", item.getDescription());
             assertEquals("((Assassin Coin Bundle))", item.getName());
-            assertEquals(Integer.valueOf(0), item.getLevel());
-            assertEquals(Integer.valueOf(0), item.getVendorValue());
+            assertEquals(Integer.valueOf(0),  item.getLevel());
+            assertEquals(Integer.valueOf(0),  item.getVendorValue());
             assertEquals(Rarity.Basic, item.getRarity());
-            assertEquals(3, item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] { ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse, ItemFlags.NoSell })));
+            assertEquals(3,  item.getFlags().size());
+            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire})));
             assertTrue(item.getRestrictions().isEmpty());
-            assertEquals(DamageType.Choking, item.getDamageType());
-            assertEquals(WeaponType.SmallBundle, item.getWeaponType());
-            assertEquals(Integer.valueOf(0), item.getDefense());
-            assertEquals(Integer.valueOf(105), item.getMinPower());
-            assertEquals(Integer.valueOf(117), item.getMaxPower());
+            assertEquals(DamageType.Choking,  item.getDamageType());
+            assertEquals(WeaponType.SmallBundle,  item.getWeaponType());
+            assertEquals(Integer.valueOf(0),  item.getDefense());
+            assertEquals(Integer.valueOf(105),  item.getMinPower());
+            assertEquals(Integer.valueOf(117),  item.getMaxPower());
             assertTrue(item.getInfixUpgrade().getAttributes().isEmpty());
             assertTrue(item.getInfusionSlots().isEmpty());
             assertNull(item.getSuffixItemId());
             assertNull(item.getSecondarySuffixItemId());
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             fail("Unexpected Exception");
         }
 
-    }
+        }
 
 }

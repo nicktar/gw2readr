@@ -99,7 +99,8 @@ public class ContentLoader {
 	}
 
 	private static String readFromV2Url(String urlpart) throws MalformedURLException, IOException {
-		return maskControlSequences(readFromUrl(urlpart, "/v2/"));
+		//return maskControlSequences(readFromUrl(urlpart, "/v2/"));
+        return readFromUrl(urlpart, "/v2/");
 	}
 
 	private static String readFromUrl(String urlpart, String version)
