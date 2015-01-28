@@ -14,7 +14,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.getsetsociety</groupId>
-	<groupId>de.get-set-society</groupId>
 	<artifactId>gw2readr</artifactId>
 	<packaging>pom</packaging>
 	<version>0.8b-SNAPSHOT</version>

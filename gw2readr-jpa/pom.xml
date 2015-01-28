@@ -51,13 +51,13 @@
     <parent>
         <groupId>de.getsetsociety</groupId>
         <artifactId>gw2readr</artifactId>
-        <version>0.8b</version>
+        <version>0.8b-SNAPSHOT</version>
     </parent>
 	<dependencies>
 		<dependency>
 			<groupId>de.getsetsociety</groupId>
         	<artifactId>gw2readr-core</artifactId>
-        	<version>0.8b</version>
+        	<version>0.8b-SNAPSHOT</version>
 		</dependency>
 		<!-- LOGGING DEPENDENCIES - LOG4J -->
 		<dependency>
@@ -162,7 +162,7 @@
 				<version>2.9</version>
 				<configuration>
 					<downloadSources>true</downloadSources>
-					<downloadJavaDocs>true</downloadJavaDocs>
+					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
 		</plugins>

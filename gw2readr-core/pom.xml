@@ -51,7 +51,7 @@
     <parent>
         <groupId>de.getsetsociety</groupId>
         <artifactId>gw2readr</artifactId>
-        <version>0.8b</version>
+        <version>0.8b-SNAPSHOT</version>
     </parent>
 	<dependencies>
 
@@ -153,7 +153,7 @@
 				<version>2.9</version>
 				<configuration>
 					<downloadSources>true</downloadSources>
-					<downloadJavaDocs>true</downloadJavaDocs>
+					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
 		</plugins>
