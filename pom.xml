@@ -1,166 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor 
-	license agreements. See the NOTICE file distributed with this work for additional 
-	information regarding copyright ownership. The ASF licenses this file to 
-	You under the Apache License, Version 2.0 (the "License"); you may not use 
-	this file except in compliance with the License. You may obtain a copy of 
-	the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
-	by applicable law or agreed to in writing, software distributed under the 
-	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
-	OF ANY KIND, either express or implied. See the License for the specific 
-	language governing permissions and limitations under the License. -->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.getsetsociety</groupId>
-	<artifactId>gw2readr</artifactId>
-	<packaging>pom</packaging>
-	<version>0.8b-SNAPSHOT</version>
-	<name>GuildWars 2 Readr</name>
-	<description>Wrapper to the GuildWars 2 JSON Webservice API</description>
-	<!-- <organization> <name>company name</name> </organization> -->
-	<url>http://gw2reader.get-set-society.de</url>
-	<licenses>
-		<license>
-			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-	<developers>
-		<developer>
-			<name>David Hendrix</name>
-			<email>gw2readr@get-set-society.de</email>
-			<roles>
-				<role>Project Owner</role>
-				<role>Lead Developer</role>
-			</roles>
-		</developer>
-	</developers>
-	<issueManagement>
-		<system>Google Code Issue Tracker</system>
-		<url>https://code.google.com/p/gw2readr/issues/list</url>
-	</issueManagement>
-	<scm>
-		<connection>scm:git:https://code.google.com/p/gw2readr/</connection>
-		<url>https://code.google.com/p/gw2readr/source/browse/</url>
-	</scm>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>7</version>
-	</parent>
-	<modules>
-		<module>gw2readr-core</module>
-		<module>gw2readr-jpa</module>
-	</modules>
-	<dependencies>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>de.getsetsociety</groupId>
+    <artifactId>gw2readr</artifactId>
+    <packaging>pom</packaging>
+    <version>0.8b-SNAPSHOT</version>
+    <name>GuildWars 2 Readr</name>
+    <description>Wrapper to the GuildWars 2 JSON Webservice API</description>
+    <url>http://gw2reader.get-set-society.de</url>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>David Hendrix</name>
+            <email>gw2readr@get-set-society.de</email>
+            <roles>
+                <role>Project Owner</role>
+                <role>Lead Developer</role>
+            </roles>
+        </developer>
+    </developers>
+    <issueManagement>
+        <system>Google Code Issue Tracker</system>
+        <url>https://code.google.com/p/gw2readr/issues/list</url>
+    </issueManagement>
+    <scm>
+        <connection>scm:git:https://code.google.com/p/gw2readr/</connection>
+        <url>https://code.google.com/p/gw2readr/source/browse/</url>
+    </scm>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <modules>
+        <module>gw2readr-core</module>
+        <module>gw2readr-jpa</module>
+    </modules>
+    <dependencyManagement>
+        <dependencies>
 
-		<!-- LOGGING DEPENDENCIES - LOG4J -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.6.4</version>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
-		</dependency>
+            <!-- LOGGING DEPENDENCIES - LOG4J -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.6.4</version>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.16</version>
+            </dependency>
 
-		<!-- JUNIT DEPENDENCY FOR TESTING -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
+            <!-- JUNIT DEPENDENCY FOR TESTING -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.11</version>
+                <scope>test</scope>
+            </dependency>
 
-		<!-- JACKSON DEPENDENCY -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.3.0</version>
-		</dependency>
+            <!-- JACKSON DEPENDENCY -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.9.7</version>
+            </dependency>
 
-		<!-- HIBERNATE AND MYSQL DEPENDENCIES -->
-		<!-- MYSQL HAS TO BE REMOVED BEFORE RELEASE -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>4.3.4.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.29</version>
-		</dependency>
+            <!-- HIBERNATE AND MYSQL DEPENDENCIES -->
+            <!-- MYSQL HAS TO BE REMOVED BEFORE RELEASE -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>4.3.4.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.29</version>
+            </dependency>
 
-		<!-- GENERAL DEPENDENCIES -->
+            <!-- GENERAL DEPENDENCIES -->
 
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.2.1</version>
-		</dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.2.1</version>
+            </dependency>
 
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
-		</dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.4</version>
+            </dependency>
 
-	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<inherited>true</inherited>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5.1</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-					<encoding>UTF-8</encoding>
-					<showWarnings>true</showWarnings>
-					<showDeprecation>true</showDeprecation>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.9</version>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>true</downloadJavadocs>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.1</version>
-				<reportSets>
-					<reportSet><!-- by default, id = "default" -->
-						<reports><!-- select non-aggregate reports -->
-							<report>javadoc</report>
-							<report>test-javadoc</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>2.7.2</version>
-			</plugin>
-		</plugins>
-	</reporting>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <inherited>true</inherited>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>UTF-8</encoding>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <downloadSources>true</downloadSources>
+                    <downloadJavadocs>true</downloadJavadocs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.21.0</version>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
