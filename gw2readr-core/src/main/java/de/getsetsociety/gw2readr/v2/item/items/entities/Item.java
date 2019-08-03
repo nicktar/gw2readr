@@ -5,6 +5,7 @@ package de.getsetsociety.gw2readr.v2.item.items.entities;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
@@ -12,11 +13,13 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IItem;
+import lombok.Data;
 
 /**
  * @author Nicktar
  * 
  */
+@Data
 public class Item implements Serializable, IItem {
 
 	private static final long serialVersionUID = -8942935346941562118L;
@@ -37,6 +40,7 @@ public class Item implements Serializable, IItem {
 	private Set<RestrictionType> restrictions = new HashSet<>();
 	private Language language;
 	private Integer defaultSkin;
+	private List<String> upgradeRecipes;
 
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.entities.IBaseItem#getId()

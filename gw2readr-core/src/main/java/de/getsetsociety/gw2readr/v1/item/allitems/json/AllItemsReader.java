@@ -10,16 +10,8 @@ import de.getsetsociety.gw2readr.general.ContentLoader;
 public class AllItemsReader {
 
 	private static final Object lock = new Object();
-	private volatile static ObjectMapper mapper;
-	{{
-		if (mapper == null) {
-			synchronized (lock) {
-				if (mapper == null) {
-					mapper = new ObjectMapper();
-				}
-			}
-		}
-	}}
+	private static  final ObjectMapper mapper = new ObjectMapper();
+
 
 	public List<Integer> readAllItems() {
 		AllItems allItems = null;

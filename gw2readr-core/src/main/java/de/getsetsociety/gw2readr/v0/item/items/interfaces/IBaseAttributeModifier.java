@@ -4,12 +4,16 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
 
 public interface IBaseAttributeModifier {
 
-	public Attribute getAttribute();
+	Integer getId();
 
-	public void setAttribute(Attribute attribute);
+	void setId(Integer id);
 
-	public Integer getModifier();
+	Attribute getAttribute();
 
-	public void setModifier(Integer modifier);
+	void setAttribute(Attribute attribute);
+
+	Integer getModifier();
+
+	void setModifier(Integer modifier);
 
 }

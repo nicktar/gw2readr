@@ -12,5 +12,6 @@ public enum ItemFlags {
 	SoulBindOnUse,
 	Unique,
 	AccountBindOnUse,
-	MonsterOnly
+	MonsterOnly,
+	DeleteWarning
 }

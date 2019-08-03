@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ObjectMapperProvider {
 
-	private static Object lock = new Object();
+	private static final Object lock = new Object();
 
 	private static volatile ObjectMapper mapper;
 

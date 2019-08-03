@@ -3,26 +3,32 @@ package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableUnlockType;
 
+import java.util.List;
+
 public interface IBaseConsumable {
 
-	public abstract ConsumableUnlockType getUnlockType();
+	ConsumableUnlockType getUnlockType();
 
-	public abstract void setUnlockType(ConsumableUnlockType unlockType);
+	void setUnlockType(ConsumableUnlockType unlockType);
 
-	public abstract ConsumableType getConsumableType();
+	ConsumableType getConsumableType();
 
-	public abstract void setConsumableType(ConsumableType type);
+	void setConsumableType(ConsumableType type);
 
-	public abstract Integer getColorId();
+	Integer getColorId();
 
-	public abstract void setColorId(Integer colorId);
+	void setColorId(Integer colorId);
 
-	public abstract Integer getDurationMs();
+	Integer getDurationMs();
 
-	public abstract void setDurationMs(Integer durationMs);
+	void setDurationMs(Integer durationMs);
 
-	public abstract Integer getRecipeId();
+	Integer getRecipeId();
 
-	public abstract void setRecipeId(Integer recipeId);
+	void setRecipeId(Integer recipeId);
+
+	Integer getGuildUpgradeId();
+
+	void setGuildUpgradeId(Integer guildUpgradeId);
 
 }

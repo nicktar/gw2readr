@@ -19,6 +19,15 @@ public class AttributeModifierJson implements IEntityWrapper<IAttributeModifier>
 		entity = am;
 	}
 
+	@JsonProperty("id")
+	public Integer getId() {
+		return entity.getId();
+	}
+
+	public void setId(Integer id) {
+		entity.setId(id);
+	}
+
 	@JsonProperty("attribute")
 	public Attribute getAttribute() {
 		return entity.getAttribute();

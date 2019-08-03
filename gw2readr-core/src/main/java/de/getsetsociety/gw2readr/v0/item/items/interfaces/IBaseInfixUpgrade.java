@@ -4,12 +4,16 @@ import java.util.List;
 
 public interface IBaseInfixUpgrade<U extends IBaseBuff, V extends IBaseAttributeModifier> {
 
-	public abstract List<V> getAttributes();
+	void setId(Integer id);
 
-	public abstract void setAttributes(List<V> attributes);
+	Integer getId();
 
-	public abstract U getBuff();
+	List<V> getAttributes();
 
-	public abstract void setBuff(U buff);
+	void setAttributes(List<V> attributes);
+
+	U getBuff();
+
+	void setBuff(U buff);
 
 }

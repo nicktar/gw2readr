@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AllItems {
 
-	List<Integer> items;
+	private List<Integer> items;
 
 	@JsonProperty("items")
 	public List<Integer> getItems() {

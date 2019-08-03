@@ -18,71 +18,71 @@ public class ContentLoader {
 
 	private static Proxy proxy;
 
-	public static String getV1ItemUrlContent(String id, Language language) throws MalformedURLException, IOException {
+	public static String getV1ItemUrlContent(String id, Language language) throws IOException {
 		return readFromV1Url(String.format("item_details.json?item_id=%s&lang=%s", id, language));
 	}
 
-	public static String getV2ItemUrlContent(Language language, Integer id) throws MalformedURLException, IOException {
+	public static String getV2ItemUrlContent(Language language, Integer id) throws IOException {
 		return readFromV2Url(String.format("items/%s?lang=%s", id, language));
 	}
 
-	public static String getV2ItemUrlContent(Language language, Integer... ids) throws MalformedURLException, IOException {
+	public static String getV2ItemUrlContent(Language language, Integer... ids) throws IOException {
 		return readFromV2Url(String.format("items/%s?lang=%s", StringUtils.join(ids, ","), language));
 	}
 
-	public static String getV2ItemByPageUrlContent(Language language, Integer pageNumber, Integer pageSize) throws MalformedURLException, IOException {
+	public static String getV2ItemByPageUrlContent(Language language, Integer pageNumber, Integer pageSize) throws IOException {
 		return readFromV2Url(String.format("items?lang=%s&page=%s&page_size=%s", language, pageNumber, pageSize));
 	}
 
-	public static String getV1ItemsUrlContent() throws MalformedURLException, IOException {
+	public static String getV1ItemsUrlContent() throws IOException {
 		return readFromV1Url("items.json");
 	}
 
-	public static String getRecipesUrlContent() throws MalformedURLException, IOException {
+	public static String getRecipesUrlContent() throws IOException {
 		return readFromV1Url("recipes.json");
 	}
 
-	public static String getRecipeUrlContent(String id) throws MalformedURLException, IOException {
+	public static String getRecipeUrlContent(String id) throws IOException {
 		return readFromV1Url("recipe_details.json?recipe_id=" + id);
 	}
 
-	public static String getBuyGemsUrlContent(Integer coins) throws MalformedURLException, IOException {
+	public static String getBuyGemsUrlContent(Integer coins) throws IOException {
 		return readFromV2Url("commerce/exchange/coins?quantity=" + coins);
 	}
 
-	public static String getBuyCoinsUrlContent(Integer gems) throws MalformedURLException, IOException {
+	public static String getBuyCoinsUrlContent(Integer gems) throws IOException {
 		return readFromV2Url("commerce/exchange/gems?quantity=" + gems);
 	}
 
-	public static String getRecipeUrlContent(String id, Language language) throws MalformedURLException, IOException {
+	public static String getRecipeUrlContent(String id, Language language) throws IOException {
 		return readFromV1Url(String.format("recipe_details.json?recipe_id=%s&lang=%s", id, language));
 	}
 
-	public static String getBuildUrlContent() throws MalformedURLException, IOException {
+	public static String getBuildUrlContent() throws IOException {
 		return readFromV1Url("build.json");
 	}
 
-	public static String getColorsUrlContent() throws MalformedURLException, IOException {
+	public static String getColorsUrlContent() throws IOException {
 		return getColorsUrlContent(Language.English);
 	}
 
-	public static String getColorsUrlContent(Language language) throws MalformedURLException, IOException {
+	public static String getColorsUrlContent(Language language) throws IOException {
 		return readFromV1Url("colors.json?lang=" + language);
 	}
 
-	public static String getFilesUrlContent() throws MalformedURLException, IOException {
+	public static String getFilesUrlContent() throws IOException {
 		return readFromV1Url("files.json");
 	}
 
-	public static String getWorldsUrlContent(Language language) throws MalformedURLException, IOException {
+	public static String getWorldsUrlContent(Language language) throws IOException {
 		return readFromV1Url("world_names.json?lang=" + language);
 	}
 
-	public static String readContinentsUrlContent() throws MalformedURLException, IOException {
+	public static String readContinentsUrlContent() throws IOException {
 		return readFromV1Url("continents.json");
 	}
 
-	public static String readGuildUrlContent(String guildId, String guildName) throws MalformedURLException, IOException {
+	public static String readGuildUrlContent(String guildId, String guildName) throws IOException {
 		StringBuilder urlpart = new StringBuilder("guild_details.json");
 		if (StringUtils.isNoneBlank(guildId)) {
 			urlpart.append("?guild_id=").append(guildId);
@@ -94,17 +94,17 @@ public class ContentLoader {
 		return readFromV1Url(urlpart.toString());
 	}
 
-	private static String readFromV1Url(String urlpart) throws MalformedURLException, IOException {
+	private static String readFromV1Url(String urlpart) throws IOException {
 		return readFromUrl(urlpart, "/v1/");
 	}
 
-	private static String readFromV2Url(String urlpart) throws MalformedURLException, IOException {
+	private static String readFromV2Url(String urlpart) throws IOException {
 		//return maskControlSequences(readFromUrl(urlpart, "/v2/"));
         return readFromUrl(urlpart, "/v2/");
 	}
 
 	private static String readFromUrl(String urlpart, String version)
-			throws MalformedURLException, IOException {
+			throws IOException {
 		URL url = new URL("https", "api.guildwars2.com", version + urlpart);
 		StringWriter writer = new StringWriter();
 		if (proxy == null) {

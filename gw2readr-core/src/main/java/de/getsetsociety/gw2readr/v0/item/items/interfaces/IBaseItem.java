@@ -2,56 +2,63 @@ package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
 
+import java.util.List;
+
 public interface IBaseItem {
 
-	public abstract Integer getId();
+	Integer getId();
 
-	public abstract void setId(Integer id);
+	void setId(Integer id);
 
-	public abstract String getName();
+	String getName();
 
-	public abstract void setName(String name);
+	void setName(String name);
 
-	public abstract Integer getLevel();
+	Integer getLevel();
 
-	public abstract void setLevel(Integer level);
+	void setLevel(Integer level);
 
-	public abstract Integer getVendorValue();
+	Integer getVendorValue();
 
-	public abstract void setVendorValue(Integer vendorValue);
+	void setVendorValue(Integer vendorValue);
 
-	public abstract Boolean getAvailableInActivity();
+	Boolean getAvailableInActivity();
 
-	public abstract void setAvailableInActivity(Boolean availableInActivity);
+	void setAvailableInActivity(Boolean availableInActivity);
 
-	public abstract Boolean getAvailableInDungeon();
+	Boolean getAvailableInDungeon();
 
-	public abstract void setAvailableInDungeon(Boolean availableInDungeon);
+	void setAvailableInDungeon(Boolean availableInDungeon);
 
-	public abstract Boolean getAvailableInPvE();
+	List<String> getUpgradeRecipes();
 
-	public abstract void setAvailableInPvE(Boolean availableInPvE);
+	void setUpgradeRecipes(List<String> upgradeRecipe);
 
-	public abstract Boolean getAvailableInPvP();
 
-	public abstract void setAvailableInPvP(Boolean availableInPvP);
+	Boolean getAvailableInPvE();
 
-	public abstract Boolean getAvailableInPvPLobby();
+	void setAvailableInPvE(Boolean availableInPvE);
 
-	public abstract void setAvailableInPvPLobby(Boolean availableInPvPLobby);
+	Boolean getAvailableInPvP();
 
-	public abstract Boolean getAvailableInWvW();
+	void setAvailableInPvP(Boolean availableInPvP);
 
-	public abstract void setAvailableInWvW(Boolean availableInWvW);
+	Boolean getAvailableInPvPLobby();
 
-	public abstract String getDescription();
+	void setAvailableInPvPLobby(Boolean availableInPvPLobby);
 
-	public abstract void setDescription(String description);
+	Boolean getAvailableInWvW();
 
-	public abstract void string2GameType(String gameType);
+	void setAvailableInWvW(Boolean availableInWvW);
 
-	public abstract Language getLanguage();
+	String getDescription();
+
+	void setDescription(String description);
+
+	void string2GameType(String gameType);
+
+	Language getLanguage();
 	
-	public abstract void setLanguage(Language language);
+	void setLanguage(Language language);
 
 }
