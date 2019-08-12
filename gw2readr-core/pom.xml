@@ -72,9 +72,6 @@
     			<artifactId>jackson-databind</artifactId>
 		</dependency>
 
-		<!-- HIBERNATE AND MYSQL DEPENDENCIES -->
-		<!-- MYSQL HAS TO BE REMOVED BEFORE RELEASE -->
-
 		<!-- GENERAL DEPENDENCIES -->
 
 		<dependency>
