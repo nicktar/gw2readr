@@ -27,16 +27,14 @@ public class Item implements IItem {
 	private Boolean availableInPvP = false;
 	private Boolean availableInPvPLobby = false;
 	private Boolean availableInWvW = false;
-	private Set<ItemFlags> flags = new HashSet<ItemFlags>();
+    private Set<ItemFlags> flags = new HashSet<>();
 	private String description;
 	private Set<RestrictionType> restrictions = new HashSet<>();
 	private Language language;
 	private List<String> upgradeRecipes;
 
-	/* (non-Javadoc)
-	 * @see de.getsetsociety.gw2readr.entities.IBaseItem#string2GameType(java.lang.String)
-	 */
-	@Override
+
+    @Override
 	public void string2GameType(String gameType) {
 		switch (gameType) {
 			case "Activity":
