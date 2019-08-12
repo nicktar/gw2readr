@@ -1,47 +1,47 @@
 package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
-import java.util.Set;
-
 import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
 
+import java.util.Set;
+
 public interface IBaseWeapon<T extends IBaseInfixUpgrade<? extends IBaseBuff, ? extends IBaseAttributeModifier>> {
 
-	public abstract DamageType getDamageType();
+    DamageType getDamageType();
 
-	public abstract void setDamageType(DamageType damageType);
+    void setDamageType(DamageType damageType);
 
-	public abstract Integer getDefense();
+    Integer getDefense();
 
-	public abstract void setDefense(Integer defense);
+    void setDefense(Integer defense);
 
-	public abstract T getInfixUpgrade();
+    T getInfixUpgrade();
 
-	public abstract void setInfixUpgrade(T infixUpgrade);
+    void setInfixUpgrade(T infixUpgrade);
 
-	public abstract Set<InfusionSlotType> getInfusionSlots();
+    Set<InfusionSlotType> getInfusionSlots();
 
-	public abstract void setInfusionSlots(Set<InfusionSlotType> infusionSlots);
+    void setInfusionSlots(Set<InfusionSlotType> infusionSlots);
 
-	public abstract Integer getMaxPower();
+    Integer getMaxPower();
 
-	public abstract void setMaxPower(Integer maxPower);
+    void setMaxPower(Integer maxPower);
 
-	public abstract Integer getMinPower();
+    Integer getMinPower();
 
-	public abstract void setMinPower(Integer min_power);
+    void setMinPower(Integer min_power);
 
-	public abstract Integer getSuffixItemId();
+    Integer getSuffixItemId();
 
-	public abstract void setSuffixItemId(Integer suffixItemId);
+    void setSuffixItemId(Integer suffixItemId);
 
-	public abstract Integer getSecondarySuffixItemId();
+    Integer getSecondarySuffixItemId();
 
-	public abstract void setSecondarySuffixItemId(Integer suffixItemId);
+    void setSecondarySuffixItemId(Integer suffixItemId);
 
-	public abstract WeaponType getWeaponType();
+    WeaponType getWeaponType();
 
-	public abstract void setWeaponType(WeaponType type);
+    void setWeaponType(WeaponType type);
 
 }
