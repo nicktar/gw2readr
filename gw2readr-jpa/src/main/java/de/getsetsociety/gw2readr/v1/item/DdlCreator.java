@@ -1,18 +1,16 @@
 package  de.getsetsociety.gw2readr.v1.item;
 
-import org.hibernate.cfg.AnnotationConfiguration;
+import de.getsetsociety.gw2readr.v1.item.recipes.hibernateentities.Ingredient;
+import de.getsetsociety.gw2readr.v1.item.recipes.hibernateentities.Recipe;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.dialect.MySQLDialect;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
-import de.getsetsociety.gw2readr.v1.item.recipes.hibernateentities.Ingredient;
-import de.getsetsociety.gw2readr.v1.item.recipes.hibernateentities.Recipe;
-
 public class DdlCreator {
 
 	public static void main(String[] args) {
-		Configuration conf = new AnnotationConfiguration();
+        Configuration conf = new Configuration();
 		conf.setProperty(Environment.DIALECT, MySQLDialect.class.getName());
 		conf.setProperty("hbm2ddl", "update");
 //		conf.addAnnotatedClass(Armor.class);
