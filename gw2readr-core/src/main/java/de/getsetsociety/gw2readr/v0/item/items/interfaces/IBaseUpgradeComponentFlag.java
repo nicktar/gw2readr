@@ -1,30 +1,30 @@
 package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
-import java.util.Set;
-
 import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentFlag;
 import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentType;
 
+import java.util.Set;
+
 public interface IBaseUpgradeComponentFlag<V extends IBaseInfixUpgrade<? extends IBaseBuff, ? extends IBaseAttributeModifier>> {
 
-	public abstract UpgradeComponentType getUpgradeComponentType();
+    UpgradeComponentType getUpgradeComponentType();
 
-	public abstract void setUpgradeComponentType(UpgradeComponentType UpgradeComponentType);
+    void setUpgradeComponentType(UpgradeComponentType upgradeComponentType);
 
-	public abstract Set<UpgradeComponentFlag> getUpgradeComponentFlags();
+    Set<UpgradeComponentFlag> getUpgradeComponentFlags();
 
-	public abstract void setUpgradeComponentFlags(Set<UpgradeComponentFlag> upgradeComponentFlags);
+    void setUpgradeComponentFlags(Set<UpgradeComponentFlag> upgradeComponentFlags);
 
-	public abstract Set<String> getBonuses();
+    Set<String> getBonuses();
 
-	public abstract void setBonuses(Set<String> bonuses);
+    void setBonuses(Set<String> bonuses);
 
-	public abstract String getSuffix();
+    String getSuffix();
 
-	public abstract void setSuffix(String suffix);
+    void setSuffix(String suffix);
 
-	public abstract V getInfixUpgrade();
+    V getInfixUpgrade();
 
-	public abstract void setInfixUpgrade(V infixUpgrade);
+    void setInfixUpgrade(V infixUpgrade);
 
 }
