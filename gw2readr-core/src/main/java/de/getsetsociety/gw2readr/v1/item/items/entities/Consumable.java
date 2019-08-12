@@ -10,7 +10,6 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class Consumable extends Item implements IConsumable {
 
-    private static final long serialVersionUID = 3862166075196472425L;
     private ConsumableType consumableType;
     private ConsumableUnlockType unlockType;
     private Integer colorId;
