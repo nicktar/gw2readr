@@ -30,7 +30,7 @@ public interface IBaseWeapon<T extends IBaseInfixUpgrade<? extends IBaseBuff, ? 
 
     Integer getMinPower();
 
-    void setMinPower(Integer min_power);
+    void setMinPower(Integer minPower);
 
     Integer getSuffixItemId();
 
@@ -43,5 +43,4 @@ public interface IBaseWeapon<T extends IBaseInfixUpgrade<? extends IBaseBuff, ? 
     WeaponType getWeaponType();
 
     void setWeaponType(WeaponType type);
-
 }
