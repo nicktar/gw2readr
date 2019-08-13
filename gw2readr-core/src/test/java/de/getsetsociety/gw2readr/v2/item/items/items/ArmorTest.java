@@ -1,25 +1,16 @@
 package de.getsetsociety.gw2readr.v2.item.items.items;
 
-import static org.junit.Assert.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import de.getsetsociety.gw2readr.v0.item.items.enums.*;
+import de.getsetsociety.gw2readr.v2.item.items.entities.AttributeModifier;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
+import de.getsetsociety.gw2readr.v2.item.items.json.ArmorJson;
+import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
+import org.junit.Test;
 
 import java.util.Arrays;
 
-import org.junit.Test;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
-import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
-import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
-import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
-import de.getsetsociety.gw2readr.v2.item.items.entities.AttributeModifier;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IAttributeModifier;
-import de.getsetsociety.gw2readr.v2.item.items.json.ArmorJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
+import static org.junit.Assert.*;
 public class ArmorTest {
 
 	private static ObjectMapper mapper = new ObjectMapper();
@@ -43,11 +34,11 @@ public class ArmorTest {
 			assertNull(armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(1, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NotUpgradeable})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.NotUpgradeable)));
 			assertEquals(Integer.valueOf(77), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(1, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.Power,  5)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 5))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(0), armor.getLevel());
 			assertEquals("Mighty Studded Coat", armor.getName());
@@ -80,11 +71,11 @@ public class ArmorTest {
 			assertEquals("", armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(2, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.HideSuffix, ItemFlags.SoulBindOnUse})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.HideSuffix, ItemFlags.SoulBindOnUse)));
 			assertEquals(Integer.valueOf(84), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(3, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.Power,  101), new AttributeModifier(Attribute.Precision,  72), new AttributeModifier(Attribute.CritDamage,  72)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 101), new AttributeModifier(Attribute.Precision, 72), new AttributeModifier(Attribute.CritDamage, 72))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(80), armor.getLevel());
 			assertEquals("Zhed's Coat", armor.getName());
@@ -119,7 +110,7 @@ public class ArmorTest {
 			assertEquals(Integer.valueOf(141), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(1, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.Power,  5)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 5))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(16), armor.getLevel());
 			assertEquals("Mighty Swindler Mask", armor.getName());
@@ -154,7 +145,7 @@ public class ArmorTest {
 			assertEquals(Integer.valueOf(98), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(3, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.Power,  21), new AttributeModifier(Attribute.Precision,  15), new AttributeModifier(Attribute.CritDamage,  15)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 21), new AttributeModifier(Attribute.Precision, 15), new AttributeModifier(Attribute.CritDamage, 15))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(71), armor.getLevel());
 			assertEquals("Berserker's Reinforced Scale Boots", armor.getName());
@@ -187,7 +178,7 @@ public class ArmorTest {
 			assertEquals("", armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(2, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.AccountBound, ItemFlags.SoulBindOnUse})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.AccountBound, ItemFlags.SoulBindOnUse)));
 			assertEquals(Integer.valueOf(127), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(0, armor.getInfixUpgrade().getAttributes().size());
@@ -223,11 +214,11 @@ public class ArmorTest {
 			assertEquals("", armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(1, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse)));
 			assertEquals(Integer.valueOf(639), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(3, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.Power,  27), new AttributeModifier(Attribute.Precision,  20), new AttributeModifier(Attribute.CritDamage,  20)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 27), new AttributeModifier(Attribute.Precision, 20), new AttributeModifier(Attribute.CritDamage, 20))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(70), armor.getLevel());
 			assertEquals("Berserker's Sneakthief Shoulderguards of Balthazar", armor.getName());
@@ -260,11 +251,11 @@ public class ArmorTest {
 			assertEquals("", armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(1, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NotUpgradeable})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.NotUpgradeable)));
 			assertEquals(Integer.valueOf(653), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(1, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.Power,  1)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 1))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(0), armor.getLevel());
 			assertEquals("Mighty Studded Gloves", armor.getName());
@@ -297,11 +288,11 @@ public class ArmorTest {
 			assertEquals("", armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(1, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse)));
 			assertEquals(Integer.valueOf(1218), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(3, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.Power,  62), new AttributeModifier(Attribute.Precision,  44), new AttributeModifier(Attribute.CritDamage,  44)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 62), new AttributeModifier(Attribute.Precision, 44), new AttributeModifier(Attribute.CritDamage, 44))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(76), armor.getLevel());
 			assertEquals("Berserker's Sneakthief Leggings of Infiltration", armor.getName());
@@ -334,11 +325,11 @@ public class ArmorTest {
 			assertNull(armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(2, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse)));
 			assertEquals(Integer.valueOf(3533), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(2, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.Power,  29), new AttributeModifier(Attribute.CritDamage,  21)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 29), new AttributeModifier(Attribute.CritDamage, 21))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(35), armor.getLevel());
 			assertEquals("Honed Warband Hauberk", armor.getName());
@@ -348,7 +339,7 @@ public class ArmorTest {
 			assertEquals(Integer.valueOf(1000), armor.getVendorValue());
 			assertFalse(armor.getRestrictions().isEmpty());
 			assertEquals(1, armor.getRestrictions().size());
-			assertTrue(armor.getRestrictions().containsAll(Arrays.asList(new RestrictionType[] {RestrictionType.Charr})));
+			assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.Charr)));
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
@@ -373,11 +364,11 @@ public class ArmorTest {
 			assertNull(armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(2, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse)));
 			assertEquals(Integer.valueOf(3558), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(3, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.Power,  42), new AttributeModifier(Attribute.Precision,  59), new AttributeModifier(Attribute.ConditionDamage,  42)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 42), new AttributeModifier(Attribute.Precision, 59), new AttributeModifier(Attribute.ConditionDamage, 42))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(80), armor.getLevel());
 			assertEquals("Rampager's Protector's Chausses", armor.getName());
@@ -387,7 +378,7 @@ public class ArmorTest {
 			assertEquals(Integer.valueOf(31250), armor.getVendorValue());
 			assertFalse(armor.getRestrictions().isEmpty());
 			assertEquals(1, armor.getRestrictions().size());
-			assertTrue(armor.getRestrictions().containsAll(Arrays.asList(new RestrictionType[] {RestrictionType.Human})));
+			assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.Human)));
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
@@ -412,11 +403,11 @@ public class ArmorTest {
 			assertNull(armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(2, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse)));
 			assertEquals(Integer.valueOf(3527), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(3, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.ConditionDamage,  30), new AttributeModifier(Attribute.Power,  21), new AttributeModifier(Attribute.Vitality,  21)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.ConditionDamage, 30), new AttributeModifier(Attribute.Power, 21), new AttributeModifier(Attribute.Vitality, 21))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(80), armor.getLevel());
 			assertEquals("Carrion Savant Boots", armor.getName());
@@ -426,7 +417,7 @@ public class ArmorTest {
 			assertEquals(Integer.valueOf(15000), armor.getVendorValue());
 			assertFalse(armor.getRestrictions().isEmpty());
 			assertEquals(1, armor.getRestrictions().size());
-			assertTrue(armor.getRestrictions().containsAll(Arrays.asList(new RestrictionType[] {RestrictionType.Asura})));
+			assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.Asura)));
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
@@ -451,11 +442,11 @@ public class ArmorTest {
 			assertNull(armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(2, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse)));
 			assertEquals(Integer.valueOf(3566), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(2, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.Power,  10), new AttributeModifier(Attribute.Vitality,  7)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 10), new AttributeModifier(Attribute.Vitality, 7))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(35), armor.getLevel());
 			assertEquals("Vigorous Wolfborn Boots", armor.getName());
@@ -465,7 +456,7 @@ public class ArmorTest {
 			assertEquals(Integer.valueOf(425), armor.getVendorValue());
 			assertFalse(armor.getRestrictions().isEmpty());
 			assertEquals(1, armor.getRestrictions().size());
-			assertTrue(armor.getRestrictions().containsAll(Arrays.asList(new RestrictionType[] {RestrictionType.Norn})));
+			assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.Norn)));
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
@@ -490,11 +481,11 @@ public class ArmorTest {
 			assertNull(armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(2, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse)));
 			assertEquals(Integer.valueOf(3652), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(3, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.ConditionDamage,  39), new AttributeModifier(Attribute.Precision,  28), new AttributeModifier(Attribute.Toughness,  28)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.ConditionDamage, 39), new AttributeModifier(Attribute.Precision, 28), new AttributeModifier(Attribute.Toughness, 28))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(60), armor.getLevel());
 			assertEquals("Rabid Nightshade Leggings", armor.getName());
@@ -504,7 +495,7 @@ public class ArmorTest {
 			assertEquals(Integer.valueOf(1875), armor.getVendorValue());
 			assertFalse(armor.getRestrictions().isEmpty());
 			assertEquals(1, armor.getRestrictions().size());
-			assertTrue(armor.getRestrictions().containsAll(Arrays.asList(new RestrictionType[] {RestrictionType.Sylvari})));
+			assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.Sylvari)));
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
@@ -529,11 +520,11 @@ public class ArmorTest {
 			assertEquals("<c=@flavor>\"Very sturdy. I made it myself.\"<br>—Leika</c>", armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(5, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSell, ItemFlags.NoSalvage, ItemFlags.SoulbindOnAcquire, ItemFlags.HideSuffix, ItemFlags.SoulBindOnUse})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.NoSell, ItemFlags.NoSalvage, ItemFlags.SoulbindOnAcquire, ItemFlags.HideSuffix, ItemFlags.SoulBindOnUse)));
 			assertEquals(Integer.valueOf(3907), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(1, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.ConditionDamage,  17)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.ConditionDamage, 17))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(23), armor.getLevel());
 			assertEquals("Leika's Breastplate", armor.getName());
@@ -566,11 +557,11 @@ public class ArmorTest {
 			assertEquals("<c=@flavor>\"Good for breathing.\"<br>—Lugung</c>", armor.getDescription());
 					assertFalse(armor.getFlags().isEmpty());
 					assertEquals(5, armor.getFlags().size());
-					assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSell, ItemFlags.NoSalvage, ItemFlags.SoulbindOnAcquire, ItemFlags.HideSuffix, ItemFlags.SoulBindOnUse})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.NoSell, ItemFlags.NoSalvage, ItemFlags.SoulbindOnAcquire, ItemFlags.HideSuffix, ItemFlags.SoulBindOnUse)));
 					assertEquals(Integer.valueOf(3942), armor.getId());
 					assertNotNull(armor.getInfixUpgrade());
 					assertEquals(1, armor.getInfixUpgrade().getAttributes().size());
-					assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.Power,  6)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 6))));
 					assertTrue(armor.getInfusionSlots().isEmpty());
 					assertEquals(Integer.valueOf(20), armor.getLevel());
 					assertEquals("Metal Aquabreather", armor.getName());
@@ -603,11 +594,11 @@ public class ArmorTest {
 			assertEquals("<c=@flavor>\"Fur keeps the head warm.\"<br>—Gestre Howle</c>", armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(5, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.HideSuffix})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.HideSuffix)));
 			assertEquals(Integer.valueOf(3955), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(1, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.ConditionDamage,  7)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.ConditionDamage, 7))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(20), armor.getLevel());
 			assertEquals("Fur-Lined Helmet", armor.getName());
@@ -640,11 +631,11 @@ public class ArmorTest {
 			assertEquals("", armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(5, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSell, ItemFlags.NoSalvage, ItemFlags.NoMysticForge, ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.NoSell, ItemFlags.NoSalvage, ItemFlags.NoMysticForge, ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse)));
 			assertEquals(Integer.valueOf(5345), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(3, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.ConditionDamage,  89), new AttributeModifier(Attribute.Precision,  64), new AttributeModifier(Attribute.Toughness,  64)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.ConditionDamage, 89), new AttributeModifier(Attribute.Precision, 64), new AttributeModifier(Attribute.Toughness, 64))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(80), armor.getLevel());
 			assertEquals("Whisper's Secret Longvest", armor.getName());
@@ -677,11 +668,11 @@ public class ArmorTest {
 			assertNull(armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(3, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse)));
 			assertEquals(Integer.valueOf(17012), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(3, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.ConditionDamage,  40), new AttributeModifier(Attribute.Precision,  28), new AttributeModifier(Attribute.Toughness,  28)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.ConditionDamage, 40), new AttributeModifier(Attribute.Precision, 28), new AttributeModifier(Attribute.Toughness, 28))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(80), armor.getLevel());
 			assertEquals("Rabid Reinforced Scale Helm", armor.getName());
@@ -691,7 +682,7 @@ public class ArmorTest {
 			assertEquals(Integer.valueOf(248), armor.getVendorValue());
 			assertFalse(armor.getRestrictions().isEmpty());
 			assertEquals(2, armor.getRestrictions().size());
-			assertTrue(armor.getRestrictions().containsAll(Arrays.asList(new RestrictionType[] {RestrictionType.Guardian, RestrictionType.Warrior})));
+			assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.Guardian, RestrictionType.Warrior)));
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
@@ -699,7 +690,7 @@ public class ArmorTest {
 	}
 	@Test
 	public void testArmor020225() {
-		String content = "{\"name\":\"Aviator Sunglasses\",\"description\":\"Town clothes can no longer be equipped separately.\n\nSpeak to a Black Lion Armor Trader in any major city to exchange this for a helmet skin with the same look.\",\"type\":\"Armor\",\"level\":0,\"rarity\":\"Fine\",\"vendor_value\":0,\"default_skin\":1180,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoMysticForge\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":20225,\"icon\":\"https://render.guildwars2.com/file/0BA30DF7347E390797D3995552FF6B5E1B72CBE3/220574.png\",\"details\":{\"type\":\"Helm\",\"weight_class\":\"Clothing\",\"defense\":0,\"infusion_slots\":[],\"secondary_suffix_item_id\":\"\"}}";
+		String content = "{\"name\":\"Aviator Sunglasses\",\"description\":\"Town clothes can no longer be equipped separately.\\n\\nSpeak to a Black Lion Armor Trader in any major city to exchange this for a helmet skin with the same look.\",\"type\":\"Armor\",\"level\":0,\"rarity\":\"Fine\",\"vendor_value\":0,\"default_skin\":1180,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"PvpLobby\",\"Wvw\"],\"flags\":[\"AccountBound\",\"NoMysticForge\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[],\"id\":20225,\"icon\":\"https://render.guildwars2.com/file/0BA30DF7347E390797D3995552FF6B5E1B72CBE3/220574.png\",\"details\":{\"type\":\"Helm\",\"weight_class\":\"Clothing\",\"defense\":0,\"infusion_slots\":[],\"secondary_suffix_item_id\":\"\"}}";
 		try {
 			ItemJson<?> itemJson = mapper.readValue(content, ItemJson.class);
 			assertNotNull(itemJson);
@@ -716,7 +707,7 @@ public class ArmorTest {
 			assertEquals("Town clothes can no longer be equipped separately.\n\nSpeak to a Black Lion Armor Trader in any major city to exchange this for a helmet skin with the same look.", armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(4, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge, ItemFlags.AccountBindOnUse})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge, ItemFlags.AccountBindOnUse)));
 			assertEquals(Integer.valueOf(20225), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(0, armor.getInfixUpgrade().getAttributes().size());
@@ -752,14 +743,14 @@ public class ArmorTest {
 			assertEquals("<c=@flavor>Crafted in the style of the ancient Wupwup grawl tribe.</c>", armor.getDescription());
 			assertFalse(armor.getFlags().isEmpty());
 			assertEquals(4, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.HideSuffix})));
+			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.HideSuffix)));
 			assertEquals(Integer.valueOf(47940), armor.getId());
 			assertNotNull(armor.getInfixUpgrade());
 			assertEquals(7, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList( new IAttributeModifier[] {new AttributeModifier(Attribute.Power,  17), new AttributeModifier(Attribute.Precision,  17), new AttributeModifier(Attribute.Toughness,  17), new AttributeModifier(Attribute.Vitality,  17), new AttributeModifier(Attribute.Healing,  17), new AttributeModifier(Attribute.ConditionDamage,  17), new AttributeModifier(Attribute.CritDamage,  17)})));
+			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 17), new AttributeModifier(Attribute.Precision, 17), new AttributeModifier(Attribute.Toughness, 17), new AttributeModifier(Attribute.Vitality, 17), new AttributeModifier(Attribute.Healing, 17), new AttributeModifier(Attribute.ConditionDamage, 17), new AttributeModifier(Attribute.CritDamage, 17))));
 			assertFalse(armor.getInfusionSlots().isEmpty());
 			assertEquals(1, armor.getInfusionSlots().size());
-			assertTrue(armor.getInfusionSlots().containsAll(Arrays.asList(new InfusionSlotType[] {InfusionSlotType.Defense})));
+			assertTrue(armor.getInfusionSlots().containsAll(Arrays.asList(InfusionSlotType.Defense)));
 			assertEquals(Integer.valueOf(80), armor.getLevel());
 			assertEquals("Wupwup Striders", armor.getName());
 			assertEquals(Rarity.Ascended, armor.getRarity());
