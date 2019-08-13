@@ -1,12 +1,4 @@
-/**
- * 
- */
 package de.getsetsociety.gw2readr.v2.item.items.entities;
-
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
@@ -15,14 +7,13 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IItem;
 import lombok.Data;
 
-/**
- * @author Nicktar
- * 
- */
-@Data
-public class Item implements Serializable, IItem {
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-	private static final long serialVersionUID = -8942935346941562118L;
+@Data
+public class Item implements IItem {
+
 	private Integer id;
 	private String name;
 	private Integer level;
@@ -35,7 +26,7 @@ public class Item implements Serializable, IItem {
 	private Boolean availableInPvP = false;
 	private Boolean availableInPvPLobby = false;
 	private Boolean availableInWvW = false;
-	private Set<ItemFlags> flags = new HashSet<ItemFlags>();
+    private Set<ItemFlags> flags = new HashSet<>();
 	private String description;
 	private Set<RestrictionType> restrictions = new HashSet<>();
 	private Language language;
