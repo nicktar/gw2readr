@@ -4,7 +4,15 @@ import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseWeapon;
 
 public interface IWeapon extends IItem, IBaseWeapon<IInfixUpgrade> {
 
-	public abstract Integer getSecondarySuffixItemId();
+	@Override
+	Integer getSecondarySuffixItemId();
 
-	public abstract void setSecondarySuffixItemId(Integer secondarySuffixItemId);
+	@Override
+	void setSecondarySuffixItemId(Integer secondarySuffixItemId);
+
+	@Override
+	Integer getDefaultSkin();
+
+	@Override
+	void setDefaultSkin(Integer defaultSkin);
 }
