@@ -11,6 +11,7 @@ import de.getsetsociety.gw2readr.v1.files.interfaces.IFileInfo;
 import de.getsetsociety.gw2readr.v1.item.allitems.json.AllItems;
 import de.getsetsociety.gw2readr.v1.item.items.ItemReader;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBag;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IConsumable;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ICraftingMaterial;
 import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
 import org.junit.Test;
@@ -53,8 +54,8 @@ public class TestJsonReading {
     }
 
     @Test
-    public void testAurilliumEssennce() {
-        IBag o = (IBag) reader.readItem(73344);
+    public void testAurilliumEssence() {
+        IConsumable o = (IConsumable) reader.readItem(73344);
         assertNotNull(o);
 
     }
