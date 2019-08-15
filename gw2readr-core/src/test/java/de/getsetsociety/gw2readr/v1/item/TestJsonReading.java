@@ -18,8 +18,13 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class TestJsonReading {
 
@@ -63,7 +68,7 @@ public class TestJsonReading {
     @Test
     public void testFindNextUnknownType() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        String content = "";
+        String content;
         boolean start = false;
         int count = 0;
         try {
@@ -74,15 +79,17 @@ public class TestJsonReading {
 
                     ItemJson<?> item = mapper.readValue(content, ItemJson.class);
                     if (!item.getAdditionalProperties().isEmpty()) {
-                        System.out.println(item.getAdditionalProperties());
-                        fail(content + "\nContained an unknown property.");
+                        String unknown = item.getAdditionalProperties().entrySet()
+                                .stream()
+                                .map(e -> e.getKey() + ": " + e.getValue())
+                                .collect(Collectors.joining("\n"));
+                        fail(content + "\nContained an unknown property.\n" + unknown);
                     }
                 }
                 count++;
             }
         } finally {
             System.out.println(count + " items gelesen");
-            System.out.println(content);
         }
     }
 
