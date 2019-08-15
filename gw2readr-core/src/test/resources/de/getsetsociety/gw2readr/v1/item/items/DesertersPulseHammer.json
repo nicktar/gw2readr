@@ -1,0 +1,49 @@
+{
+  "item_id": "52998",
+  "name": "Deserter's Pulse Hammer",
+  "type": "Weapon",
+  "level": "34",
+  "rarity": "Masterwork",
+  "vendor_value": "105",
+  "icon_file_id": "60991",
+  "icon_file_signature": "C5B365D6105F76470106A61F4AB96F3E39D10E18",
+  "default_skin": "5222",
+  "upgrade_recipes": [],
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "HideSuffix",
+    "AccountBound",
+    "NoMysticForge",
+    "NoSell",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "weapon": {
+    "type": "Hammer",
+    "damage_type": "Physical",
+    "min_power": "356",
+    "max_power": "402",
+    "defense": "0",
+    "infusion_slots": [],
+    "infix_upgrade": {
+      "id": 1014,
+      "attributes": [
+        {
+          "attribute": "Toughness",
+          "modifier": 48
+        },
+        {
+          "attribute": "ConditionDamage",
+          "modifier": 68
+        }
+      ]
+    },
+    "suffix_item_id": "",
+    "secondary_suffix_item_id": ""
+  }
+}
