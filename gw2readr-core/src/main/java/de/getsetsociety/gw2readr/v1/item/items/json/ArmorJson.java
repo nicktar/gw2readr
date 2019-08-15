@@ -1,17 +1,16 @@
 package de.getsetsociety.gw2readr.v1.item.items.json;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
+import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ArmorJson extends ItemJson<IArmor> {
 
@@ -32,6 +31,7 @@ public class ArmorJson extends ItemJson<IArmor> {
 		}
 		item.setSuffixItemId(details.getSuffixItemId());
 		item.setInfixUpgrade(details.getInfixUpgrade().getEntity());
+		item.setSecondarySuffixItemId(details.getSecondarySuffixItemId());
 		getAdditionalProperties().putAll(details.getAdditionalProperties());
 	}
 
@@ -43,7 +43,8 @@ public class ArmorJson extends ItemJson<IArmor> {
 		private List<InfusionSlotJson> infusionSlots;
 		private Integer suffixItemId;
 		private InfixUpgradeJson infixUpgrade = new InfixUpgradeJson();
-		private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+		private Map<String, Object> additionalProperties = new HashMap<>();
+		private Integer secondarySuffixItemId;
 
 		@JsonProperty("type")
 		public ArmorType getArmorType() {
@@ -101,12 +102,23 @@ public class ArmorJson extends ItemJson<IArmor> {
 
 		@JsonAnyGetter
 		public Map<String, Object> getAdditionalProperties() {
-			return this.additionalProperties;
+			return additionalProperties;
 		}
 
 		@JsonAnySetter
 		public void setAdditionalProperty(String name, Object value) {
-			this.additionalProperties.put(name, value);
-		}	}
+			additionalProperties.put(name, value);
+		}
+
+		@JsonProperty("secondary_suffix_item_id")
+		public Integer getSecondarySuffixItemId() {
+			return secondarySuffixItemId;
+		}
+
+		public void setSecondarySuffixItemId(Integer secondarySuffixItemId) {
+			this.secondarySuffixItemId = secondarySuffixItemId;
+		}
+
+	}
 
 }
