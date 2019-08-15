@@ -1,0 +1,49 @@
+{
+  "item_id": "18431",
+  "name": "Flame Legion Helm",
+  "type": "Armor",
+  "level": "80",
+  "rarity": "Exotic",
+  "vendor_value": "330",
+  "icon_file_id": "61589",
+  "icon_file_signature": "709A030CA0F96E922C3F4BE30E0CDFB7D84AA21A",
+  "default_skin": "735",
+  "upgrade_recipes": [],
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoSell",
+    "SoulBindOnUse"
+  ],
+  "restrictions": [],
+  "armor": {
+    "type": "Helm",
+    "weight_class": "Medium",
+    "defense": "97",
+    "infusion_slots": [],
+    "infix_upgrade": {
+      "id": 160,
+      "attributes": [
+        {
+          "attribute": "Power",
+          "modifier": 43
+        },
+        {
+          "attribute": "Vitality",
+          "modifier": 43
+        },
+        {
+          "attribute": "ConditionDamage",
+          "modifier": 60
+        }
+      ]
+    },
+    "suffix_item_id": "24854",
+    "secondary_suffix_item_id": ""
+  }
+}
