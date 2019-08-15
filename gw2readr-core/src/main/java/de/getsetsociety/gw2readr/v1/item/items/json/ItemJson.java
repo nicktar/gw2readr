@@ -1,11 +1,5 @@
 package de.getsetsociety.gw2readr.v1.item.items.json;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -13,14 +7,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IItem;
 
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
         @Type(value = CraftingMaterialJson.class, name = "CraftingMaterial"),
         @Type(value = WeaponJson.class, name = "Weapon"),
@@ -41,7 +40,7 @@ import de.getsetsociety.gw2readr.v1.item.items.interfaces.IItem;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("name")
     public String getName() {
@@ -60,7 +59,7 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 
     @JsonProperty("description")
     public void setDescription(String description) {
-        this.getEntity().setDescription(description);
+        getEntity().setDescription(description);
     }
 
     @JsonProperty("rarity")
@@ -88,7 +87,6 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 
     public void setIconFileId(Integer icon_file_id) {
         getEntity().setIconFileId(icon_file_id);
-        ;
     }
 
     @JsonProperty("icon_file_signature")
@@ -102,7 +100,7 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 
     @JsonProperty("game_types")
     public List<String> getGameTypes() {
-        return new ArrayList<String>();
+        return new ArrayList<>();
     }
 
     @JsonProperty("game_types")
@@ -114,7 +112,7 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 
     @JsonProperty("restrictions")
     public List<String> getRestrictions() {
-        return new ArrayList<String>();
+        return new ArrayList<>();
     }
 
     @JsonProperty("restrictions")
@@ -126,12 +124,12 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+        return additionalProperties;
     }
 
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+        additionalProperties.put(name, value);
     }
 
     @JsonProperty("item_id")
@@ -167,4 +165,21 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
         getEntity().setLanguage(language);
     }
 
+    @JsonProperty("upgrade_recipes")
+    public List<String> getUpgradeRecipes() {
+        return getEntity().getUpgradeRecipes();
+    }
+
+    public void setUpgradeRecipes(List<String> upgradeReicpes) {
+        getEntity().setUpgradeRecipes(upgradeReicpes);
+    }
+
+    @JsonProperty("default_skin")
+    public Integer getDefaultSkin() {
+        return getEntity().getDefaultSkin();
+    }
+
+    public void setDefaultSkin(Integer defaultSkin) {
+        getEntity().setDefaultSkin(defaultSkin);
+    }
 }

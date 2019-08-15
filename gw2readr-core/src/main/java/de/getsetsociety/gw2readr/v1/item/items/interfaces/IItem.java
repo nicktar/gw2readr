@@ -29,4 +29,8 @@ public interface IItem extends IBaseItem {
 
     void setFlags(Set<ItemFlags> flags);
 
+    Integer getDefaultSkin();
+
+    void setDefaultSkin(Integer defaultSkin);
+
 }

@@ -43,4 +43,10 @@ public interface IBaseWeapon<T extends IBaseInfixUpgrade<? extends IBaseBuff, ? 
     WeaponType getWeaponType();
 
     void setWeaponType(WeaponType type);
+
+    Integer getDefaultSkin();
+
+    void setDefaultSkin(Integer defaultSkin);
+
+
 }

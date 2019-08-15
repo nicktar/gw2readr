@@ -32,9 +32,10 @@ public class Item implements IItem {
 	private Set<RestrictionType> restrictions = new HashSet<>();
 	private Language language;
 	private List<String> upgradeRecipes;
+	private Integer defaultSkin;
 
 
-    @Override
+	@Override
 	public void string2GameType(String gameType) {
 		switch (gameType) {
 			case "Activity":
