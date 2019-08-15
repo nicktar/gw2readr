@@ -10,7 +10,17 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IItem;
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -70,8 +80,11 @@ public class Item implements IItem {
     private Language language;
     @ElementCollection(targetClass = String.class)
     private List<String> upgradeRecipes;
+    @Column
+    private Integer defaultSkin;
 
-	/* (non-Javadoc)
+
+    /* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.entities.IBaseItem#string2GameType(java.lang.String)
 	 */
 	@Override
