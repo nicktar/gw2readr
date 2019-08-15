@@ -16,7 +16,6 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.Matchers.instanceOf;
@@ -53,7 +52,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(396));
             assertThat(item.getRarity(), is(Rarity.Exotic));
             assertThat(item.getFlags().size(), is(2));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse, ItemFlags.AccountBound)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.AccountBound));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.LongBow));
@@ -92,7 +91,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(264));
             assertThat(item.getRarity(), is(Rarity.Exotic));
             assertThat(item.getFlags().size(), is(2));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse, ItemFlags.HideSuffix)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.HideSuffix));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.Pistol));
@@ -100,7 +99,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(876));
             assertThat(item.getMaxPower(), is(1029));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(3));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.ConditionDamage, 90), new AttributeModifier(Attribute.Precision, 64), new AttributeModifier(Attribute.Toughness, 64))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.ConditionDamage, 90), new AttributeModifier(Attribute.Precision, 64), new AttributeModifier(Attribute.Toughness, 64)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(24630));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -139,7 +138,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(243));
             assertThat(item.getMaxPower(), is(269));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 19), new AttributeModifier(Attribute.CritDamage, 14))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Power, 19), new AttributeModifier(Attribute.CritDamage, 14)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -178,7 +177,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(117));
             assertThat(item.getMaxPower(), is(129));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(1));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 4))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Power, 4)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -217,7 +216,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(230));
             assertThat(item.getMaxPower(), is(259));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.ConditionDamage, 25), new AttributeModifier(Attribute.Precision, 18))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.ConditionDamage, 25), new AttributeModifier(Attribute.Precision, 18)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -249,7 +248,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(63));
             assertThat(item.getRarity(), is(Rarity.Masterwork));
             assertThat(item.getFlags().size(), is(5));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.Greatsword));
@@ -257,7 +256,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(231));
             assertThat(item.getMaxPower(), is(255));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 23), new AttributeModifier(Attribute.Toughness, 17))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Power, 23), new AttributeModifier(Attribute.Toughness, 17)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -289,7 +288,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(10000));
             assertThat(item.getRarity(), is(Rarity.Ascended));
             assertThat(item.getFlags().size(), is(4));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.HideSuffix, ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.AccountBound)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.HideSuffix, ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.AccountBound));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.Trident));
@@ -297,9 +296,9 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(950));
             assertThat(item.getMaxPower(), is(1050));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(3));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Healing, 188), new AttributeModifier(Attribute.Precision, 134), new AttributeModifier(Attribute.Vitality, 134))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Healing, 188), new AttributeModifier(Attribute.Precision, 134), new AttributeModifier(Attribute.Vitality, 134)));
             assertThat(item.getInfusionSlots().size(), is(1));
-            assertThat(item.getInfusionSlots().containsAll(Arrays.asList(InfusionSlotType.Offense)), is(true));
+            assertThat(item.getInfusionSlots(), hasItems(InfusionSlotType.Offense));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
         } catch (Exception e) {
@@ -330,7 +329,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(396));
             assertThat(item.getRarity(), is(Rarity.Exotic));
             assertThat(item.getFlags().size(), is(3));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.Hammer));
@@ -369,7 +368,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(60));
             assertThat(item.getRarity(), is(Rarity.Masterwork));
             assertThat(item.getFlags().size(), is(5));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.Axe));
@@ -377,7 +376,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(260));
             assertThat(item.getMaxPower(), is(317));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 19), new AttributeModifier(Attribute.Toughness, 14))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Power, 19), new AttributeModifier(Attribute.Toughness, 14)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -409,7 +408,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(114));
             assertThat(item.getRarity(), is(Rarity.Masterwork));
             assertThat(item.getFlags().size(), is(2));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse, ItemFlags.SoulbindOnAcquire)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.ShortBow));
@@ -417,7 +416,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(349));
             assertThat(item.getMaxPower(), is(386));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Healing, 55), new AttributeModifier(Attribute.Power, 39))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Healing, 55), new AttributeModifier(Attribute.Power, 39)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -456,7 +455,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(359));
             assertThat(item.getMaxPower(), is(405));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.ConditionDamage, 30), new AttributeModifier(Attribute.Precision, 21))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.ConditionDamage, 30), new AttributeModifier(Attribute.Precision, 21)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -488,7 +487,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(50));
             assertThat(item.getRarity(), is(Rarity.Basic));
             assertThat(item.getFlags().size(), is(1));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.NoSalvage)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.NoSalvage));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.Speargun));
@@ -496,7 +495,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(551));
             assertThat(item.getMaxPower(), is(609));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(3));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 108), new AttributeModifier(Attribute.Precision, 77), new AttributeModifier(Attribute.CritDamage, 77))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Power, 108), new AttributeModifier(Attribute.Precision, 77), new AttributeModifier(Attribute.CritDamage, 77)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -528,7 +527,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(264));
             assertThat(item.getRarity(), is(Rarity.Exotic));
             assertThat(item.getFlags().size(), is(1));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.Mace));
@@ -536,7 +535,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(895));
             assertThat(item.getMaxPower(), is(1010));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(3));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Vitality, 90), new AttributeModifier(Attribute.Power, 64), new AttributeModifier(Attribute.Toughness, 64))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Vitality, 90), new AttributeModifier(Attribute.Power, 64), new AttributeModifier(Attribute.Toughness, 64)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -568,7 +567,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(10000));
             assertThat(item.getRarity(), is(Rarity.Ascended));
             assertThat(item.getFlags().size(), is(4));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.HideSuffix, ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.AccountBound)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.HideSuffix, ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.AccountBound));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.Harpoon));
@@ -576,9 +575,9 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(950));
             assertThat(item.getMaxPower(), is(1050));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(3));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.ConditionDamage, 188), new AttributeModifier(Attribute.Power, 134), new AttributeModifier(Attribute.Vitality, 134))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.ConditionDamage, 188), new AttributeModifier(Attribute.Power, 134), new AttributeModifier(Attribute.Vitality, 134)));
             assertThat(item.getInfusionSlots().size(), is(1));
-            assertThat(item.getInfusionSlots().containsAll(Arrays.asList(InfusionSlotType.Offense)), is(true));
+            assertThat(item.getInfusionSlots(), hasItems(InfusionSlotType.Offense));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
         } catch (Exception e) {
@@ -609,7 +608,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(14));
             assertThat(item.getRarity(), is(Rarity.Fine));
             assertThat(item.getFlags().size(), is(5));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse, ItemFlags.HideSuffix, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.HideSuffix, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.Torch));
@@ -617,7 +616,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(141));
             assertThat(item.getMaxPower(), is(165));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(1));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Vitality, 7))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Vitality, 7)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -649,7 +648,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(141));
             assertThat(item.getRarity(), is(Rarity.Rare));
             assertThat(item.getFlags().size(), is(5));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.Shield));
@@ -657,7 +656,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(447));
             assertThat(item.getMaxPower(), is(504));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 44), new AttributeModifier(Attribute.Toughness, 32))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Power, 44), new AttributeModifier(Attribute.Toughness, 32)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -689,7 +688,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(132));
             assertThat(item.getRarity(), is(Rarity.Masterwork));
             assertThat(item.getFlags().size(), is(2));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse, ItemFlags.AccountBound)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.AccountBound));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.Dagger));
@@ -728,7 +727,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(0));
             assertThat(item.getRarity(), is(Rarity.Rare));
             assertThat(item.getFlags().size(), is(5));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.TwoHandedToy));
@@ -774,7 +773,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(487));
             assertThat(item.getMaxPower(), is(595));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.Power, 79), new AttributeModifier(Attribute.Precision, 56))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Power, 79), new AttributeModifier(Attribute.Precision, 56)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -806,7 +805,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(256));
             assertThat(item.getRarity(), is(Rarity.Exotic));
             assertThat(item.getFlags().size(), is(1));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.Focus));
@@ -814,7 +813,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(805));
             assertThat(item.getMaxPower(), is(855));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(3));
-            assertThat(item.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.ConditionDamage, 86), new AttributeModifier(Attribute.Power, 62), new AttributeModifier(Attribute.Vitality, 62))), is(true));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.ConditionDamage, 86), new AttributeModifier(Attribute.Power, 62), new AttributeModifier(Attribute.Vitality, 62)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(24618));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -846,7 +845,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(0));
             assertThat(item.getRarity(), is(Rarity.Fine));
             assertThat(item.getFlags().size(), is(5));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.Toy));
@@ -885,7 +884,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(100000));
             assertThat(item.getRarity(), is(Rarity.Exotic));
             assertThat(item.getFlags().size(), is(4));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Fire));
             assertThat(item.getWeaponType(), is(WeaponType.Torch));
@@ -924,7 +923,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(0));
             assertThat(item.getRarity(), is(Rarity.Rare));
             assertThat(item.getFlags().size(), is(5));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse, ItemFlags.NotUpgradeable, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire, ItemFlags.NoMysticForge)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NotUpgradeable, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire, ItemFlags.NoMysticForge));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
             assertThat(item.getWeaponType(), is(WeaponType.LargeBundle));
@@ -963,7 +962,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(100000));
             assertThat(item.getRarity(), is(Rarity.Exotic));
             assertThat(item.getFlags().size(), is(4));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Ice));
             assertThat(item.getWeaponType(), is(WeaponType.Axe));
@@ -1002,7 +1001,7 @@ public class WeaponTest {
             assertThat(item.getVendorValue(), is(100000));
             assertThat(item.getRarity(), is(Rarity.Exotic));
             assertThat(item.getFlags().size(), is(4));
-            assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire)), is(true));
+            assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Lightning));
             assertThat(item.getWeaponType(), is(WeaponType.Scepter));
@@ -1041,7 +1040,7 @@ public class WeaponTest {
         assertThat(item.getRarity(), is(Rarity.Basic));
         assertThat(item.getFlags().size(), is(3));
         assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
-        assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire)), is(true));
+        assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
         assertThat(item.getRestrictions().isEmpty(), is(true));
         assertThat(item.getDamageType(), is(DamageType.Choking));
         assertThat(item.getWeaponType(), is(WeaponType.SmallBundle));
@@ -1074,7 +1073,7 @@ public class WeaponTest {
         assertThat(item.getVendorValue(), is(105));
         assertThat(item.getRarity(), is(Rarity.Masterwork));
         assertThat(item.getFlags().size(), is(5));
-        assertThat(item.getFlags().containsAll(Arrays.asList(ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge)), is(true));
+        assertThat(item.getFlags(), hasItems(ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge));
         assertThat(item.getRestrictions().isEmpty(), is(true));
         assertThat(item.getDamageType(), is(DamageType.Physical));
         assertThat(item.getWeaponType(), is(WeaponType.Hammer));
@@ -1082,11 +1081,11 @@ public class WeaponTest {
         assertThat(item.getMinPower(), is(356));
         assertThat(item.getMaxPower(), is(402));
         assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-        assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Toughness, 36), new AttributeModifier(Attribute.ConditionDamage, 50)));
+        assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Toughness, 48), new AttributeModifier(Attribute.ConditionDamage, 68)));
         assertThat(item.getInfusionSlots().isEmpty(), is(true));
         assertThat(item.getSuffixItemId(), is(nullValue()));
         assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
-        assertThat(item.getDefaultSkin(), is(5722));
+        assertThat(item.getDefaultSkin(), is(5222));
     }
 
 }
