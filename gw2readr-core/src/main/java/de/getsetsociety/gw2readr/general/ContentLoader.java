@@ -1,18 +1,16 @@
 package de.getsetsociety.gw2readr.general;
 
+import de.getsetsociety.gw2readr.general.enums.Language;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
-import java.net.MalformedURLException;
 import java.net.Proxy;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.regex.Matcher;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
-
-import de.getsetsociety.gw2readr.general.enums.Language;
 
 public class ContentLoader {
 
@@ -99,12 +97,10 @@ public class ContentLoader {
 	}
 
 	private static String readFromV2Url(String urlpart) throws IOException {
-		//return maskControlSequences(readFromUrl(urlpart, "/v2/"));
         return readFromUrl(urlpart, "/v2/");
 	}
 
-	private static String readFromUrl(String urlpart, String version)
-			throws IOException {
+    private static String readFromUrl(String urlpart, String version) throws IOException {
 		URL url = new URL("https", "api.guildwars2.com", version + urlpart);
 		StringWriter writer = new StringWriter();
 		if (proxy == null) {

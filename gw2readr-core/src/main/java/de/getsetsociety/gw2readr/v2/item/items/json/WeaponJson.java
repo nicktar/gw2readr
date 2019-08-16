@@ -1,18 +1,18 @@
 package de.getsetsociety.gw2readr.v2.item.items.json;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
 import de.getsetsociety.gw2readr.v2.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IWeapon;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class WeaponJson extends ItemJson<IWeapon> {
 
@@ -50,7 +50,7 @@ public class WeaponJson extends ItemJson<IWeapon> {
 		private Integer suffixItemId;
 		private Integer secondarySuffixItemId;
 		private InfixUpgradeJson infixUpgrade = new InfixUpgradeJson();
-		private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+		private Map<String, Object> additionalProperties = new HashMap<>();
 
 		@JsonProperty("type")
 		public WeaponType getType() {
@@ -58,7 +58,7 @@ public class WeaponJson extends ItemJson<IWeapon> {
 		}
 
 		public void setType(String type) {
-			this.type = WeaponType.valueOf(type);
+			this.type = WeaponType.valueOf(StringUtils.upperCase(type));
 		}
 
 		@JsonProperty("damage_type")
@@ -112,7 +112,7 @@ public class WeaponJson extends ItemJson<IWeapon> {
 		}
 
 		public void setSuffixItemId(Integer suffix_item_id) {
-			this.suffixItemId = suffix_item_id;
+			suffixItemId = suffix_item_id;
 		}
 
 		@JsonProperty("infix_upgrade")
@@ -141,12 +141,12 @@ public class WeaponJson extends ItemJson<IWeapon> {
 
 		@JsonAnyGetter
 		public Map<String, Object> getAdditionalProperties() {
-			return this.additionalProperties;
+			return additionalProperties;
 		}
 
 		@JsonAnySetter
 		public void setAdditionalProperty(String name, Object value) {
-			this.additionalProperties.put(name, value);
+			additionalProperties.put(name, value);
 		}
 	}
 }

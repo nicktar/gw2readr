@@ -7,6 +7,7 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
 import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IWeapon;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,7 +58,7 @@ public class WeaponJson extends ItemJson<IWeapon> {
         }
 
         public void setType(String type) {
-            this.type = WeaponType.valueOf(type);
+            this.type = WeaponType.valueOf(StringUtils.upperCase(type));
         }
 
         @JsonProperty("damage_type")
@@ -133,17 +134,11 @@ public class WeaponJson extends ItemJson<IWeapon> {
             additionalProperties.put(name, value);
         }
 
-        /**
-         * @return the secondarySuffixItemId
-         */
         @JsonProperty("secondary_suffix_item_id")
         public Integer getSecondarySuffixItemId() {
             return secondarySuffixItemId;
         }
 
-        /**
-         * @param secondarySuffixItemId the secondarySuffixItemId to set
-         */
         public void setSecondarySuffixItemId(Integer secondarySuffixItemId) {
             this.secondarySuffixItemId = secondarySuffixItemId;
         }
