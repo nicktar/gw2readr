@@ -55,7 +55,7 @@ public class WeaponTest {
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.AccountBound));
             assertThat(item.getRestrictions().isEmpty(), is(true));
             assertThat(item.getDamageType(), is(DamageType.Physical));
-            assertThat(item.getWeaponType(), is(WeaponType.LongBow));
+            assertThat(item.getWeaponType(), is(WeaponType.LONGBOW));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(920));
             assertThat(item.getMaxPower(), is(1080));
