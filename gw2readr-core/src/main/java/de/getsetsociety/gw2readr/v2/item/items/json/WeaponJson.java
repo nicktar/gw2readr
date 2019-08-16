@@ -67,7 +67,7 @@ public class WeaponJson extends ItemJson<IWeapon> {
 		}
 
 		public void setDamageType(String damageType) {
-			this.damageType = DamageType.valueOf(damageType);
+			this.damageType = DamageType.valueOf(StringUtils.upperCase(damageType));
 		}
 
 		@JsonProperty("min_power")

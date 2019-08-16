@@ -1,15 +1,6 @@
 package de.getsetsociety.gw2readr.v2.item.items;
 
-import static org.junit.Assert.*;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-
-import org.junit.Test;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
@@ -60,6 +51,18 @@ import de.getsetsociety.gw2readr.v2.item.items.json.TrinketJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.TrophyJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.UpgradeComponentJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.WeaponJson;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class TestItems {
 
@@ -110,8 +113,8 @@ public class TestItems {
 		assertTrue(entity.getRestrictions().isEmpty());
 		assertEquals(Integer.valueOf(28445), entity.getId());
 		assertEquals("https://render.guildwars2.com/file/C6110F52DF5AFE0F00A56F9E143E9732176DDDE9/65015.png", entity.getIcon());
-		assertEquals(WeaponType.LongBow, entity.getWeaponType());
-		assertEquals(DamageType.Physical, entity.getDamageType());
+        assertEquals(WeaponType.LONGBOW, entity.getWeaponType());
+        assertEquals(DamageType.PHYSICAL, entity.getDamageType());
 		assertEquals(Integer.valueOf(385), entity.getMinPower());
 		assertEquals(Integer.valueOf(452), entity.getMaxPower());
 		assertEquals(Integer.valueOf(0), entity.getDefense());
@@ -330,14 +333,13 @@ public class TestItems {
 		assertEquals(Integer.valueOf(24654), entity.getId());
 		assertEquals("https://render.guildwars2.com/file/656ABB62BBEC39BC24D002FBE19EFCE953ABEDCD/221036.png", entity.getIcon());
 		assertEquals(UpgradeComponentType.Sigil, entity.getUpgradeComponentType());
-		List<UpgradeComponentFlag> upgradeComponentFlags = Arrays.asList(new UpgradeComponentFlag[] {
-				UpgradeComponentFlag.Axe, UpgradeComponentFlag.LongBow, UpgradeComponentFlag.ShortBow,
-				UpgradeComponentFlag.Dagger, UpgradeComponentFlag.Focus, UpgradeComponentFlag.Greatsword,
-				UpgradeComponentFlag.Hammer, UpgradeComponentFlag.Harpoon, UpgradeComponentFlag.Mace,
-				UpgradeComponentFlag.Pistol, UpgradeComponentFlag.Rifle, UpgradeComponentFlag.Scepter,
-				UpgradeComponentFlag.Shield, UpgradeComponentFlag.Speargun, UpgradeComponentFlag.Staff,
-				UpgradeComponentFlag.Sword, UpgradeComponentFlag.Torch, UpgradeComponentFlag.Trident,
-				UpgradeComponentFlag.Warhorn });
+        List<UpgradeComponentFlag> upgradeComponentFlags = Arrays.asList(UpgradeComponentFlag.Axe, UpgradeComponentFlag.LongBow, UpgradeComponentFlag.ShortBow,
+                UpgradeComponentFlag.Dagger, UpgradeComponentFlag.Focus, UpgradeComponentFlag.Greatsword,
+                UpgradeComponentFlag.Hammer, UpgradeComponentFlag.Harpoon, UpgradeComponentFlag.Mace,
+                UpgradeComponentFlag.Pistol, UpgradeComponentFlag.Rifle, UpgradeComponentFlag.Scepter,
+                UpgradeComponentFlag.Shield, UpgradeComponentFlag.Speargun, UpgradeComponentFlag.Staff,
+                UpgradeComponentFlag.Sword, UpgradeComponentFlag.Torch, UpgradeComponentFlag.Trident,
+                UpgradeComponentFlag.Warhorn);
 		assertEquals(upgradeComponentFlags.size(), entity.getUpgradeComponentFlags().size());
 		assertTrue("Item should contain all these Upgrade flags.", entity.getUpgradeComponentFlags()
 				.containsAll(upgradeComponentFlags));
@@ -385,8 +387,8 @@ public class TestItems {
 		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
 		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
 		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoSalvage,
-				ItemFlags.NoSell, ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse });
+        List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSalvage,
+                ItemFlags.NoSell, ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse);
 		assertEquals(flags.size(), entity.getFlags().size());
 		assertTrue(flags.containsAll(entity.getFlags()));
 		assertTrue(entity.getRestrictions().isEmpty());
@@ -428,8 +430,8 @@ public class TestItems {
 		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
 		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
 		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoMysticForge,
-				ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.AccountBindOnUse });
+        List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoMysticForge,
+                ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.AccountBindOnUse);
 		assertEquals(flags.size(), entity.getFlags().size());
 		assertTrue(flags.containsAll(entity.getFlags()));
 		assertTrue(entity.getRestrictions().isEmpty());
@@ -469,8 +471,8 @@ public class TestItems {
 		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
 		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
 		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire,
-				ItemFlags.SoulBindOnUse });
+        List<ItemFlags> flags = Arrays.asList(ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire,
+                ItemFlags.SoulBindOnUse);
 		assertEquals(flags.size(), entity.getFlags().size());
 		assertTrue(flags.containsAll(entity.getFlags()));
 		assertTrue(entity.getRestrictions().isEmpty());
@@ -548,7 +550,7 @@ public class TestItems {
 		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
 		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
 		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.HideSuffix });
+        List<ItemFlags> flags = Arrays.asList(ItemFlags.HideSuffix);
 		assertEquals(flags.size(), entity.getFlags().size());
 		assertTrue(flags.containsAll(entity.getFlags()));
 		assertTrue(entity.getRestrictions().isEmpty());
@@ -598,7 +600,7 @@ public class TestItems {
 		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
 		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
 		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.NoSalvage, ItemFlags.NoSell });
+        List<ItemFlags> flags = Arrays.asList(ItemFlags.NoSalvage, ItemFlags.NoSell);
 		assertEquals(flags.size(), entity.getFlags().size());
 		assertTrue(flags.containsAll(entity.getFlags()));
 		assertTrue(entity.getRestrictions().isEmpty());
@@ -640,8 +642,8 @@ public class TestItems {
 		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
 		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
 		assertTrue("Item should be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell,
-				ItemFlags.AccountBindOnUse });
+        List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell,
+                ItemFlags.AccountBindOnUse);
 		assertEquals(flags.size(), entity.getFlags().size());
 		assertTrue(flags.containsAll(entity.getFlags()));
 		assertTrue(entity.getRestrictions().isEmpty());
@@ -684,8 +686,8 @@ public class TestItems {
 		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
 		assertTrue("Item should be available in PvP", entity.getAvailableInPvP());
 		assertTrue("Item should be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell,
-				ItemFlags.AccountBindOnUse });
+        List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell,
+                ItemFlags.AccountBindOnUse);
 		assertEquals(flags.size(), entity.getFlags().size());
 		assertTrue(flags.containsAll(entity.getFlags()));
 		assertTrue(entity.getRestrictions().isEmpty());
@@ -726,7 +728,7 @@ public class TestItems {
 		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
 		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
 		assertTrue("Item should be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.NoSell });
+        List<ItemFlags> flags = Arrays.asList(ItemFlags.NoSell);
 		assertEquals(flags.size(), entity.getFlags().size());
 		assertTrue(flags.containsAll(entity.getFlags()));
 		assertTrue(entity.getRestrictions().isEmpty());
@@ -769,8 +771,8 @@ public class TestItems {
 		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
 		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
 		assertTrue("Item should be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoSell,
-				ItemFlags.AccountBindOnUse });
+        List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSell,
+                ItemFlags.AccountBindOnUse);
 		assertEquals(flags.size(), entity.getFlags().size());
 		assertTrue(flags.containsAll(entity.getFlags()));
 		assertTrue(entity.getRestrictions().isEmpty());
@@ -812,8 +814,8 @@ public class TestItems {
 		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
 		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
 		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoSell,
-				ItemFlags.AccountBindOnUse });
+        List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSell,
+                ItemFlags.AccountBindOnUse);
 		assertEquals(flags.size(), entity.getFlags().size());
 		assertTrue(flags.containsAll(entity.getFlags()));
 		assertTrue(entity.getRestrictions().isEmpty());
@@ -857,10 +859,10 @@ public class TestItems {
 		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
 		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
 		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.AccountBound, ItemFlags.NoSell, ItemFlags.AccountBindOnUse });
+        List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSell, ItemFlags.AccountBindOnUse);
 		assertEquals(flags.size(), entity.getFlags().size());
 		assertTrue(flags.containsAll(entity.getFlags()));
-		List<RestrictionType> restrictions = Arrays.asList(new RestrictionType[] {RestrictionType.Ranger});
+        List<RestrictionType> restrictions = Arrays.asList(RestrictionType.Ranger);
 		assertEquals(restrictions.size(), entity.getRestrictions().size());
 		assertTrue(restrictions.containsAll(entity.getRestrictions()));
 		assertEquals("https://render.guildwars2.com/file/1B9503F466E464B34620340FEC65CFE7BBC69231/534278.png", entity.getIcon());
@@ -898,11 +900,11 @@ public class TestItems {
 		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
 		assertTrue("Item should be available in PvP", entity.getAvailableInPvP());
 		assertTrue("Item should be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		List<ItemFlags> flags = Arrays.asList(new ItemFlags[] { ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoSalvage,
-				ItemFlags.AccountBindOnUse });
+        List<ItemFlags> flags = Arrays.asList(ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoSalvage,
+                ItemFlags.AccountBindOnUse);
 		assertEquals(flags.size(), entity.getFlags().size());
 		assertTrue(flags.containsAll(entity.getFlags()));
-		List<RestrictionType> restrictions = Arrays.asList(new RestrictionType[] {RestrictionType.Mesmer});
+        List<RestrictionType> restrictions = Arrays.asList(RestrictionType.Mesmer);
 		assertEquals(restrictions.size(), entity.getRestrictions().size());
 		assertTrue(restrictions.containsAll(entity.getRestrictions()));
 		assertEquals("https://render.guildwars2.com/file/2DFB4EDF0408A8604100BB6A510D215CE637B03C/780409.png", entity.getIcon());

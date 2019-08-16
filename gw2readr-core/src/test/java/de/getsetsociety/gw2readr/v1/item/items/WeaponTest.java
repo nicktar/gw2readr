@@ -54,7 +54,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(2));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.AccountBound));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.LONGBOW));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(920));
@@ -93,7 +93,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(2));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.HideSuffix));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.PISTOL));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(876));
@@ -132,7 +132,7 @@ public class WeaponTest {
             assertThat(item.getRarity(), is(Rarity.Fine));
             assertThat(item.getFlags().isEmpty(), is(true));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.WARHORN));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(243));
@@ -171,7 +171,7 @@ public class WeaponTest {
             assertThat(item.getRarity(), is(Rarity.Basic));
             assertThat(item.getFlags().isEmpty(), is(true));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.SWORD));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(117));
@@ -210,7 +210,7 @@ public class WeaponTest {
             assertThat(item.getRarity(), is(Rarity.Fine));
             assertThat(item.getFlags().isEmpty(), is(true));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.STAFF));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(230));
@@ -250,7 +250,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(5));
             assertThat(item.getFlags(), hasItems(ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.GREATSWORD));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(231));
@@ -290,7 +290,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(4));
             assertThat(item.getFlags(), hasItems(ItemFlags.HideSuffix, ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.AccountBound));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.TRIDENT));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(950));
@@ -331,7 +331,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(3));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.HAMMER));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(985));
@@ -370,7 +370,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(5));
             assertThat(item.getFlags(), hasItems(ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.AXE));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(260));
@@ -410,7 +410,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(2));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.SHORTBOW));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(349));
@@ -449,7 +449,7 @@ public class WeaponTest {
             assertThat(item.getRarity(), is(Rarity.Fine));
             assertThat(item.getFlags().isEmpty(), is(true));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.SCEPTER));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(359));
@@ -489,7 +489,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(1));
             assertThat(item.getFlags(), hasItems(ItemFlags.NoSalvage));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.SPEARGUN));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(551));
@@ -529,7 +529,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(1));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.MACE));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(895));
@@ -569,7 +569,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(4));
             assertThat(item.getFlags(), hasItems(ItemFlags.HideSuffix, ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.AccountBound));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.HARPOON));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(950));
@@ -610,7 +610,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(5));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.HideSuffix, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.TORCH));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(141));
@@ -650,7 +650,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(5));
             assertThat(item.getFlags(), hasItems(ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.SHIELD));
             assertThat(item.getDefense(), is(32));
             assertThat(item.getMinPower(), is(447));
@@ -690,7 +690,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(2));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.AccountBound));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.DAGGER));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(761));
@@ -729,7 +729,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(5));
             assertThat(item.getFlags(), hasItems(ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.TWOHANDEDTOY));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(0));
@@ -767,7 +767,7 @@ public class WeaponTest {
             assertThat(item.getRarity(), is(Rarity.Fine));
             assertThat(item.getFlags().isEmpty(), is(true));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.RIFLE));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(487));
@@ -807,7 +807,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(1));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.FOCUS));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(805));
@@ -847,7 +847,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(5));
             assertThat(item.getFlags(), hasItems(ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.TOY));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(0));
@@ -886,7 +886,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(4));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Fire));
+            assertThat(item.getDamageType(), is(DamageType.FIRE));
             assertThat(item.getWeaponType(), is(WeaponType.TORCH));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(789));
@@ -925,7 +925,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(5));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NotUpgradeable, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire, ItemFlags.NoMysticForge));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Physical));
+            assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
             assertThat(item.getWeaponType(), is(WeaponType.LARGEBUNDLE));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(0));
@@ -964,7 +964,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(4));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Ice));
+            assertThat(item.getDamageType(), is(DamageType.ICE));
             assertThat(item.getWeaponType(), is(WeaponType.AXE));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(857));
@@ -1003,7 +1003,7 @@ public class WeaponTest {
             assertThat(item.getFlags().size(), is(4));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().isEmpty(), is(true));
-            assertThat(item.getDamageType(), is(DamageType.Lightning));
+            assertThat(item.getDamageType(), is(DamageType.LIGHTNING));
             assertThat(item.getWeaponType(), is(WeaponType.SCEPTER));
             assertThat(item.getDefense(), is(0));
             assertThat(item.getMinPower(), is(895));
@@ -1042,7 +1042,7 @@ public class WeaponTest {
         assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
         assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
         assertThat(item.getRestrictions().isEmpty(), is(true));
-        assertThat(item.getDamageType(), is(DamageType.Choking));
+        assertThat(item.getDamageType(), is(DamageType.CHOKING));
         assertThat(item.getWeaponType(), is(WeaponType.SMALLBUNDLE));
         assertThat(item.getDefense(), is(0));
         assertThat(item.getMinPower(), is(105));
@@ -1075,7 +1075,7 @@ public class WeaponTest {
         assertThat(item.getFlags().size(), is(5));
         assertThat(item.getFlags(), hasItems(ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge));
         assertThat(item.getRestrictions().isEmpty(), is(true));
-        assertThat(item.getDamageType(), is(DamageType.Physical));
+        assertThat(item.getDamageType(), is(DamageType.PHYSICAL));
         assertThat(item.getWeaponType(), is(WeaponType.HAMMER));
         assertThat(item.getDefense(), is(0));
         assertThat(item.getMinPower(), is(356));
