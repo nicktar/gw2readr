@@ -1,16 +1,15 @@
 package de.getsetsociety.gw2readr.v1.item.items.json;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableUnlockType;
+import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IConsumable;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ConsumableJson extends ItemJson<IConsumable> {
 
@@ -40,7 +39,8 @@ public class ConsumableJson extends ItemJson<IConsumable> {
 		private Integer durationMs;
 		private String description;
 		private Integer recipeId;
-		private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+        private Integer guildUpgradeId;
+        private Map<String, Object> additionalProperties = new HashMap<>();
 
 		@JsonProperty("type")
 		public ConsumableType getType() {
@@ -62,12 +62,12 @@ public class ConsumableJson extends ItemJson<IConsumable> {
 
 		@JsonAnyGetter
 		public Map<String, Object> getAdditionalProperties() {
-			return this.additionalProperties;
+            return additionalProperties;
 		}
 
 		@JsonAnySetter
 		public void setAdditionalProperty(String name, Object value) {
-			this.additionalProperties.put(name, value);
+            additionalProperties.put(name, value);
 		}
 
 		@JsonProperty("color_id")
@@ -104,8 +104,16 @@ public class ConsumableJson extends ItemJson<IConsumable> {
 
 		public void setRecipeId(Integer recipeId) {
 			this.recipeId = recipeId;
-		}	
-		
-	}
+        }
+
+        @JsonProperty("guild_upgrade_id")
+        public Integer getGuildUpgradeId() {
+            return guildUpgradeId;
+        }
+
+        public void setGuildUpgradeId(Integer guildUpgradeId) {
+            this.guildUpgradeId = guildUpgradeId;
+        }
+    }
 
 }

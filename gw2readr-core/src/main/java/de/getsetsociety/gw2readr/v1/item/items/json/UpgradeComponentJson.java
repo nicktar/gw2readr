@@ -98,7 +98,7 @@ public class UpgradeComponentJson extends ItemJson<IUpgradeComponent> {
 			additionalProperties.put(name, value);
 		}
 
-		//@JsonProperty("infusion_upgrade_flags")
+		@JsonProperty("infusion_upgrade_flags")
 		public List<Object> getInfusionUpgradeFlags() {
 			return infusionUpgradeFlags;
 		}

@@ -128,11 +128,11 @@ public class TestItems {
 		assertThat(entity.getInfusionSlots().isEmpty(), is(true));
 		assertThat(entity.getInfixUpgrade().getAttributes().size(), is(2));
 		AttributeModifier attributeModifier1 = new AttributeModifier();
-		attributeModifier1.setAttribute(Attribute.Precision);
+		attributeModifier1.setAttribute(Attribute.PRECISION);
 		attributeModifier1.setModifier(44);
 		assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier1), is(true));
 		AttributeModifier attributeModifier2 = new AttributeModifier();
-		attributeModifier2.setAttribute(Attribute.Power);
+		attributeModifier2.setAttribute(Attribute.POWER);
 		attributeModifier2.setModifier(62);
 		assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier2), is(true));
 		assertThat(entity.getSuffixItemId(), is(24547));
@@ -188,11 +188,11 @@ public class TestItems {
 		assertThat(entity.getInfusionSlots().isEmpty(), is(true));
 		assertThat(entity.getInfixUpgrade().getAttributes().size(), is(2));
 		AttributeModifier attributeModifier1 = new AttributeModifier();
-		attributeModifier1.setAttribute(Attribute.Vitality);
+		attributeModifier1.setAttribute(Attribute.VITALITY);
 		attributeModifier1.setModifier(4);
 		assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier1), is(true));
 		AttributeModifier attributeModifier2 = new AttributeModifier();
-		attributeModifier2.setAttribute(Attribute.Toughness);
+		attributeModifier2.setAttribute(Attribute.TOUGHNESS);
 		attributeModifier2.setModifier(3);
 		assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier2), is(true));
 		assertNull(entity.getSuffixItemId());
@@ -243,7 +243,7 @@ public class TestItems {
 		assertThat(entity.getInfusionSlots().isEmpty(), is(true));
 		assertThat(entity.getInfixUpgrade().getAttributes().size(), is(1));
 		AttributeModifier attributeModifier1 = new AttributeModifier();
-		attributeModifier1.setAttribute(Attribute.Power);
+		attributeModifier1.setAttribute(Attribute.POWER);
 		attributeModifier1.setModifier(4);
 		assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier1), is(true));
 		assertNull(entity.getSuffixItemId());
@@ -550,7 +550,7 @@ public class TestItems {
 		assertThat(entity.getTrinketType(), is(TrinketType.Amulet));
 		assertThat(entity.getInfusionSlots().isEmpty(), is(true));
 		AttributeModifier am = new AttributeModifier();
-		am.setAttribute(Attribute.Vitality);
+		am.setAttribute(Attribute.VITALITY);
 		am.setModifier(12);
 		assertNotNull(entity.getInfixUpgrade());
 		assertNotNull(entity.getInfixUpgrade().getAttributes());

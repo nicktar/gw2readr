@@ -58,7 +58,7 @@ public class TrinketTest {
         assertThat(item.getTrinketType(), is(TrinketType.Accessory));
         assertThat(item.getInfusionSlots(), empty());
         assertThat(item.getInfixUpgrade().getId(), is(146));
-        assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Power, 12), new AttributeModifier(Attribute.Vitality, 8)));
+        assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.POWER, 12), new AttributeModifier(Attribute.VITALITY, 8)));
         assertThat(item.getSuffixItemId(), nullValue());
         assertThat(item.getSecondarySuffixItemId(), nullValue());
     }

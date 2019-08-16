@@ -1,8 +1,10 @@
 
 package de.getsetsociety.gw2readr.v1.item.items.hibernateentities;
 
-import java.util.ArrayList;
-import java.util.List;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBuff;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
+import lombok.Data;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,11 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBuff;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
-
+@Data
 @Table
 @Entity
 public class InfixUpgrade implements IInfixUpgrade {
@@ -25,12 +26,15 @@ public class InfixUpgrade implements IInfixUpgrade {
 	private List<IAttributeModifier> attributes = new ArrayList<>();
 	private IBuff buff;
 
+	@Override
 	@Id
 	@Column
 	@GeneratedValue
 	public Integer getId() {
 		return id;
 	}
+
+	@Override
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -40,7 +44,7 @@ public class InfixUpgrade implements IInfixUpgrade {
 	@Override
 	@OneToMany(cascade=CascadeType.ALL, targetEntity=AttributeModifier.class)
 	public List<IAttributeModifier> getAttributes(){
-		return this.attributes;
+		return attributes;
 	}
 	/* (non-Javadoc)
 	 * @see de.getsetsociety.gw2readr.entities.IInfixUpgrade#setAttributes(java.util.List)

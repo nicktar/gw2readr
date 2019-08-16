@@ -99,7 +99,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(876));
             assertThat(item.getMaxPower(), is(1029));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(3));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.ConditionDamage, 90), new AttributeModifier(Attribute.Precision, 64), new AttributeModifier(Attribute.Toughness, 64)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.CONDITIONDAMAGE, 90), new AttributeModifier(Attribute.PRECISION, 64), new AttributeModifier(Attribute.TOUGHNESS, 64)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(24630));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -138,7 +138,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(243));
             assertThat(item.getMaxPower(), is(269));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Power, 19), new AttributeModifier(Attribute.CritDamage, 14)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.POWER, 19), new AttributeModifier(Attribute.CRITDAMAGE, 14)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -177,7 +177,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(117));
             assertThat(item.getMaxPower(), is(129));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(1));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Power, 4)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.POWER, 4)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -216,7 +216,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(230));
             assertThat(item.getMaxPower(), is(259));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.ConditionDamage, 25), new AttributeModifier(Attribute.Precision, 18)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.CONDITIONDAMAGE, 25), new AttributeModifier(Attribute.PRECISION, 18)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -256,7 +256,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(231));
             assertThat(item.getMaxPower(), is(255));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Power, 23), new AttributeModifier(Attribute.Toughness, 17)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.POWER, 23), new AttributeModifier(Attribute.TOUGHNESS, 17)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -296,7 +296,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(950));
             assertThat(item.getMaxPower(), is(1050));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(3));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Healing, 188), new AttributeModifier(Attribute.Precision, 134), new AttributeModifier(Attribute.Vitality, 134)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.HEALING, 188), new AttributeModifier(Attribute.PRECISION, 134), new AttributeModifier(Attribute.VITALITY, 134)));
             assertThat(item.getInfusionSlots().size(), is(1));
             assertThat(item.getInfusionSlots(), hasItems(InfusionSlotType.Offense));
             assertThat(item.getSuffixItemId(), is(nullValue()));
@@ -376,7 +376,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(260));
             assertThat(item.getMaxPower(), is(317));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Power, 19), new AttributeModifier(Attribute.Toughness, 14)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.POWER, 19), new AttributeModifier(Attribute.TOUGHNESS, 14)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -416,7 +416,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(349));
             assertThat(item.getMaxPower(), is(386));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Healing, 55), new AttributeModifier(Attribute.Power, 39)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.HEALING, 55), new AttributeModifier(Attribute.POWER, 39)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -455,7 +455,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(359));
             assertThat(item.getMaxPower(), is(405));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.ConditionDamage, 30), new AttributeModifier(Attribute.Precision, 21)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.CONDITIONDAMAGE, 30), new AttributeModifier(Attribute.PRECISION, 21)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -495,7 +495,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(551));
             assertThat(item.getMaxPower(), is(609));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(3));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Power, 108), new AttributeModifier(Attribute.Precision, 77), new AttributeModifier(Attribute.CritDamage, 77)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.POWER, 108), new AttributeModifier(Attribute.PRECISION, 77), new AttributeModifier(Attribute.CRITDAMAGE, 77)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -535,7 +535,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(895));
             assertThat(item.getMaxPower(), is(1010));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(3));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Vitality, 90), new AttributeModifier(Attribute.Power, 64), new AttributeModifier(Attribute.Toughness, 64)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.VITALITY, 90), new AttributeModifier(Attribute.POWER, 64), new AttributeModifier(Attribute.TOUGHNESS, 64)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -575,7 +575,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(950));
             assertThat(item.getMaxPower(), is(1050));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(3));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.ConditionDamage, 188), new AttributeModifier(Attribute.Power, 134), new AttributeModifier(Attribute.Vitality, 134)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.CONDITIONDAMAGE, 188), new AttributeModifier(Attribute.POWER, 134), new AttributeModifier(Attribute.VITALITY, 134)));
             assertThat(item.getInfusionSlots().size(), is(1));
             assertThat(item.getInfusionSlots(), hasItems(InfusionSlotType.Offense));
             assertThat(item.getSuffixItemId(), is(nullValue()));
@@ -616,7 +616,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(141));
             assertThat(item.getMaxPower(), is(165));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(1));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Vitality, 7)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.VITALITY, 7)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -656,7 +656,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(447));
             assertThat(item.getMaxPower(), is(504));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Power, 44), new AttributeModifier(Attribute.Toughness, 32)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.POWER, 44), new AttributeModifier(Attribute.TOUGHNESS, 32)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -773,7 +773,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(487));
             assertThat(item.getMaxPower(), is(595));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Power, 79), new AttributeModifier(Attribute.Precision, 56)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.POWER, 79), new AttributeModifier(Attribute.PRECISION, 56)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(nullValue()));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -813,7 +813,7 @@ public class WeaponTest {
             assertThat(item.getMinPower(), is(805));
             assertThat(item.getMaxPower(), is(855));
             assertThat(item.getInfixUpgrade().getAttributes().size(), is(3));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.ConditionDamage, 86), new AttributeModifier(Attribute.Power, 62), new AttributeModifier(Attribute.Vitality, 62)));
+            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.CONDITIONDAMAGE, 86), new AttributeModifier(Attribute.POWER, 62), new AttributeModifier(Attribute.VITALITY, 62)));
             assertThat(item.getInfusionSlots().isEmpty(), is(true));
             assertThat(item.getSuffixItemId(), is(24618));
             assertThat(item.getSecondarySuffixItemId(), is(nullValue()));
@@ -1081,7 +1081,7 @@ public class WeaponTest {
         assertThat(item.getMinPower(), is(356));
         assertThat(item.getMaxPower(), is(402));
         assertThat(item.getInfixUpgrade().getAttributes().size(), is(2));
-        assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.Toughness, 48), new AttributeModifier(Attribute.ConditionDamage, 68)));
+        assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.TOUGHNESS, 48), new AttributeModifier(Attribute.CONDITIONDAMAGE, 68)));
         assertThat(item.getInfusionSlots().isEmpty(), is(true));
         assertThat(item.getSuffixItemId(), is(nullValue()));
         assertThat(item.getSecondarySuffixItemId(), is(nullValue()));

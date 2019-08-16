@@ -83,7 +83,7 @@ public class TestJsonReading {
                                 .stream()
                                 .map(e -> e.getKey() + ": " + e.getValue())
                                 .collect(Collectors.joining("\n"));
-                        fail(content + "\nContained an unknown property.\n" + unknown);
+                        fail(content + "\nContained an unknown property.\nType: " + item.getClass().getCanonicalName() + "\n" + unknown);
                     }
                 }
                 count++;

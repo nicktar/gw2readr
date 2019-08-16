@@ -2,10 +2,10 @@ package de.getsetsociety.gw2readr.v1.item.items.json;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
+import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
+import org.apache.commons.lang3.StringUtils;
 
 public class AttributeModifierJson implements IEntityWrapper<IAttributeModifier>{
 
@@ -19,14 +19,23 @@ public class AttributeModifierJson implements IEntityWrapper<IAttributeModifier>
 		entity = am;
 	}
 
-	@JsonProperty("attribute")
+    @JsonProperty("id")
+    public Integer getId() {
+        return entity.getId();
+    }
+
+    public void setId(Integer id) {
+        entity.setId(id);
+    }
+
+    @JsonProperty("attribute")
 	public Attribute getAttribute() {
 		return entity.getAttribute();
 	}
 
 	@JsonProperty("attribute")
 	public void setAttribute(String attribute) {
-		entity.setAttribute(Attribute.valueOf(attribute));
+        entity.setAttribute(Attribute.valueOf(StringUtils.upperCase(attribute)));
 	}
 
 	@JsonProperty("modifier")
@@ -42,4 +51,6 @@ public class AttributeModifierJson implements IEntityWrapper<IAttributeModifier>
 	public IAttributeModifier getEntity() {
 		return entity;
 	}
+
+
 }

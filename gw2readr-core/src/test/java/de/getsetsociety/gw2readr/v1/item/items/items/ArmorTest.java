@@ -16,13 +16,13 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.ConditionDamage;
-import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.CritDamage;
-import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.Healing;
-import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.Power;
-import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.Precision;
-import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.Toughness;
-import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.Vitality;
+import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.CONDITIONDAMAGE;
+import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.CRITDAMAGE;
+import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.HEALING;
+import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.POWER;
+import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.PRECISION;
+import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.TOUGHNESS;
+import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.VITALITY;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -66,9 +66,9 @@ public class ArmorTest {
 					.getInfixUpgrade()
 					.getAttributes()
 					.containsAll(
-                            Arrays.asList(new AttributeModifier(ConditionDamage, 45),
-									new AttributeModifier(Power, 32),
-                                    new AttributeModifier(Vitality, 32))));
+							Arrays.asList(new AttributeModifier(CONDITIONDAMAGE, 45),
+									new AttributeModifier(POWER, 32),
+									new AttributeModifier(VITALITY, 32))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(80), armor.getLevel());
 			assertEquals("Flame Legion Helm", armor.getName());
@@ -115,9 +115,9 @@ public class ArmorTest {
 					.getInfixUpgrade()
 					.getAttributes()
 					.containsAll(
-                            Arrays.asList(new AttributeModifier(Toughness, 34),
-									new AttributeModifier(Healing, 24),
-                                    new AttributeModifier(Vitality, 24))));
+							Arrays.asList(new AttributeModifier(TOUGHNESS, 34),
+									new AttributeModifier(HEALING, 24),
+									new AttributeModifier(VITALITY, 24))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(80), armor.getLevel());
 			assertEquals("Nomad's Exalted Boots", armor.getName());
@@ -164,9 +164,9 @@ public class ArmorTest {
 					.getInfixUpgrade()
 					.getAttributes()
 					.containsAll(
-                            Arrays.asList(new AttributeModifier(ConditionDamage, 45),
-									new AttributeModifier(Precision, 32),
-                                    new AttributeModifier(Toughness, 32))));
+							Arrays.asList(new AttributeModifier(CONDITIONDAMAGE, 45),
+									new AttributeModifier(PRECISION, 32),
+									new AttributeModifier(TOUGHNESS, 32))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(80), armor.getLevel());
 			assertEquals("Khilbron's Mask", armor.getName());
@@ -211,9 +211,9 @@ public class ArmorTest {
 					.getInfixUpgrade()
 					.getAttributes()
 					.containsAll(
-                            Arrays.asList(new AttributeModifier(Power, 33),
-									new AttributeModifier(Precision, 23),
-                                    new AttributeModifier(CritDamage, 23))));
+							Arrays.asList(new AttributeModifier(POWER, 33),
+									new AttributeModifier(PRECISION, 23),
+									new AttributeModifier(CRITDAMAGE, 23))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(70), armor.getLevel());
 			assertEquals("Berserker's Apprentice Pants", armor.getName());
@@ -258,8 +258,8 @@ public class ArmorTest {
 					.getInfixUpgrade()
 					.getAttributes()
 					.containsAll(
-                            Arrays.asList(new AttributeModifier(Power, 18),
-                                    new AttributeModifier(Precision, 13))));
+							Arrays.asList(new AttributeModifier(POWER, 18),
+									new AttributeModifier(PRECISION, 13))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(50), armor.getLevel());
 			assertEquals("Strong Reinforced Scale Helm of Scavenging",
@@ -306,8 +306,8 @@ public class ArmorTest {
 					.getInfixUpgrade()
 					.getAttributes()
 					.containsAll(
-                            Arrays.asList(new AttributeModifier(Healing, 15),
-                                    new AttributeModifier(Power, 11))));
+							Arrays.asList(new AttributeModifier(HEALING, 15),
+									new AttributeModifier(POWER, 11))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(50), armor.getLevel());
 			assertEquals("Rejuvenating Noble Gloves", armor.getName());
@@ -357,9 +357,9 @@ public class ArmorTest {
 					.getInfixUpgrade()
 					.getAttributes()
 					.containsAll(
-                            Arrays.asList(new AttributeModifier(Healing, 35),
-									new AttributeModifier(Power, 25),
-                                    new AttributeModifier(Toughness, 25))));
+							Arrays.asList(new AttributeModifier(HEALING, 35),
+									new AttributeModifier(POWER, 25),
+									new AttributeModifier(TOUGHNESS, 25))));
 			assertFalse(armor.getInfusionSlots().isEmpty());
 			assertEquals(1, armor.getInfusionSlots().size());
 			assertTrue(armor
@@ -406,9 +406,9 @@ public class ArmorTest {
 					.getInfixUpgrade()
 					.getAttributes()
 					.containsAll(
-                            Arrays.asList(new AttributeModifier(Power, 21),
-									new AttributeModifier(CritDamage, 15),
-                                    new AttributeModifier(Vitality, 15))));
+							Arrays.asList(new AttributeModifier(POWER, 21),
+									new AttributeModifier(CRITDAMAGE, 15),
+									new AttributeModifier(VITALITY, 15))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(70), armor.getLevel());
 			assertEquals("Valkyrie Prowler Boots", armor.getName());
@@ -456,8 +456,8 @@ public class ArmorTest {
 					.getInfixUpgrade()
 					.getAttributes()
 					.containsAll(
-                            Arrays.asList(new AttributeModifier(Power, 51),
-                                    new AttributeModifier(CritDamage, 37))));
+							Arrays.asList(new AttributeModifier(POWER, 51),
+									new AttributeModifier(CRITDAMAGE, 37))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(55), armor.getLevel());
 			assertEquals("Honed Conjurer Chest of Balthazar", armor.getName());
@@ -550,7 +550,7 @@ public class ArmorTest {
 					.getAttributes()
                     .contains(
                             new AttributeModifier(
-                                    Power, 15)));
+									POWER, 15)));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(20), armor.getLevel());
 			assertEquals("Dolyak Mail", armor.getName());
@@ -852,9 +852,9 @@ public class ArmorTest {
 					.getInfixUpgrade()
 					.getAttributes()
 					.containsAll(
-                            Arrays.asList(new AttributeModifier(Healing, 22),
-									new AttributeModifier(Precision, 16),
-                                    new AttributeModifier(Vitality, 16))));
+							Arrays.asList(new AttributeModifier(HEALING, 22),
+									new AttributeModifier(PRECISION, 16),
+									new AttributeModifier(VITALITY, 16))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(60), armor.getLevel());
 			assertEquals("Metal Aquabreather", armor.getName());
@@ -900,7 +900,7 @@ public class ArmorTest {
 			assertTrue(armor
 					.getInfixUpgrade()
 					.getAttributes()
-                    .contains(new AttributeModifier(Power, 2)));
+					.contains(new AttributeModifier(POWER, 2)));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(0), armor.getLevel());
 			assertEquals("Mighty Worn Chain Gauntlets", armor.getName());
@@ -947,9 +947,9 @@ public class ArmorTest {
 					.getInfixUpgrade()
 					.getAttributes()
 					.containsAll(
-                            Arrays.asList(new AttributeModifier(Healing, 67),
-									new AttributeModifier(Precision, 48),
-                                    new AttributeModifier(Vitality, 48))));
+							Arrays.asList(new AttributeModifier(HEALING, 67),
+									new AttributeModifier(PRECISION, 48),
+									new AttributeModifier(VITALITY, 48))));
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(80), armor.getLevel());
 			assertEquals("Body of Koda", armor.getName());
