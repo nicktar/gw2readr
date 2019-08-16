@@ -51,17 +51,24 @@ import de.getsetsociety.gw2readr.v2.item.items.json.TrinketJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.TrophyJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.UpgradeComponentJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.WeaponJson;
+import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 public class TestItems {
@@ -89,46 +96,46 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting WeaponJson, got " + item.getClass().getCanonicalName(), item instanceof WeaponJson);
+			assertThat("Expecting WeaponJson, got " + item.getClass().getCanonicalName(), item instanceof WeaponJson, is(true));
 			entity = ((WeaponJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			fail("Unexpected Exception");
 		}
-		assertEquals("Strong Soft Wood Longbow of Fire", entity.getName());
-		assertEquals("", entity.getDescription());
-		assertEquals(Integer.valueOf(44), entity.getLevel());
-		assertEquals(Rarity.MASTERWORK, entity.getRarity());
-		assertEquals(Integer.valueOf(120), entity.getVendorValue());
-		assertEquals(Integer.valueOf(3942), entity.getDefaultSkin());
-		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		assertEquals(1, entity.getFlags().size());
-		assertTrue("Item Should be 'SoulbindOnUse'", entity.getFlags().contains(ItemFlags.SoulBindOnUse));
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals(Integer.valueOf(28445), entity.getId());
-		assertEquals("https://render.guildwars2.com/file/C6110F52DF5AFE0F00A56F9E143E9732176DDDE9/65015.png", entity.getIcon());
-        assertEquals(WeaponType.LONGBOW, entity.getWeaponType());
-        assertEquals(DamageType.PHYSICAL, entity.getDamageType());
-		assertEquals(Integer.valueOf(385), entity.getMinPower());
-		assertEquals(Integer.valueOf(452), entity.getMaxPower());
-		assertEquals(Integer.valueOf(0), entity.getDefense());
-		assertTrue(entity.getInfusionSlots().isEmpty());
-		assertEquals(2, entity.getInfixUpgrade().getAttributes().size());
+		assertThat(entity.getName(), is("Strong Soft Wood Longbow of Fire"));
+		assertThat(entity.getDescription(), is(""));
+		assertThat(entity.getLevel(), is(44));
+		assertThat(entity.getRarity(), is(Rarity.MASTERWORK));
+		assertThat(entity.getVendorValue(), is(120));
+		assertThat(entity.getDefaultSkin(), is(3942));
+		assertThat(entity.getAvailableInActivity(), is(true));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(false));
+		assertThat(entity.getFlags().size(), is(1));
+		assertThat(entity.getFlags().contains(ItemFlags.SoulBindOnUse), is(true));
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getId(), is(28445));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/C6110F52DF5AFE0F00A56F9E143E9732176DDDE9/65015.png"));
+		assertThat(entity.getWeaponType(), is(WeaponType.LONGBOW));
+		assertThat(entity.getDamageType(), is(DamageType.PHYSICAL));
+		assertThat(entity.getMinPower(), is(385));
+		assertThat(entity.getMaxPower(), is(452));
+		assertThat(entity.getDefense(), is(0));
+		assertThat(entity.getInfusionSlots().isEmpty(), is(true));
+		assertThat(entity.getInfixUpgrade().getAttributes().size(), is(2));
 		AttributeModifier attributeModifier1 = new AttributeModifier();
 		attributeModifier1.setAttribute(Attribute.Precision);
 		attributeModifier1.setModifier(44);
-		assertTrue(entity.getInfixUpgrade().getAttributes().contains(attributeModifier1));
+		assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier1), is(true));
 		AttributeModifier attributeModifier2 = new AttributeModifier();
 		attributeModifier2.setAttribute(Attribute.Power);
 		attributeModifier2.setModifier(62);
-		assertTrue(entity.getInfixUpgrade().getAttributes().contains(attributeModifier2));
-		assertEquals(Integer.valueOf(24547), entity.getSuffixItemId());
+		assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier2), is(true));
+		assertThat(entity.getSuffixItemId(), is(24547));
 		assertNull(entity.getSecondarySuffixItemId());
 	}
 
@@ -152,42 +159,42 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting BackItemJson, got " + item.getClass().getCanonicalName(), item instanceof BackItemJson);
+			assertThat("Expecting BackItemJson, got " + item.getClass().getCanonicalName(), item instanceof BackItemJson, is(true));
 			entity = ((BackItemJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().size() + " unassigned values found", item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().size() + " unassigned values found", item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			fail("Unexpected Exception");
 		}
-		assertEquals("Hearty Back Brace", entity.getName());
-		assertEquals("This equipment goes under armor and can hold an additional upgrade.", entity.getDescription());
-		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.BASIC, entity.getRarity());
-		assertEquals(Integer.valueOf(16), entity.getVendorValue());
-		assertEquals(Integer.valueOf(2329), entity.getDefaultSkin());
-		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		assertEquals(2, entity.getFlags().size());
-		assertTrue("Item Should be 'SoulbindOnUse'", entity.getFlags().contains(ItemFlags.SoulBindOnUse));
-		assertTrue("Item Should be 'SoulbindOnAquire'", entity.getFlags().contains(ItemFlags.SoulbindOnAcquire));
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals(Integer.valueOf(57), entity.getId());
+		assertThat(entity.getName(), is("Hearty Back Brace"));
+		assertThat(entity.getDescription(), is("This equipment goes under armor and can hold an additional upgrade."));
+		assertThat(entity.getLevel(), is(0));
+		assertThat(entity.getRarity(), is(Rarity.BASIC));
+		assertThat(entity.getVendorValue(), is(16));
+		assertThat(entity.getDefaultSkin(), is(2329));
+		assertThat(entity.getAvailableInActivity(), is(true));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(false));
+		assertThat(entity.getFlags().size(), is(2));
+		assertThat(entity.getFlags().contains(ItemFlags.SoulBindOnUse), is(true));
+		assertThat(entity.getFlags().contains(ItemFlags.SoulbindOnAcquire), is(true));
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getId(), is(57));
 		assertNull(entity.getSecondarySuffixItemId());
-		assertEquals("https://render.guildwars2.com/file/6CF800ACB923E42F6CA40832C80694C7E0E9CB4D/61005.png", entity.getIcon());
-		assertTrue(entity.getInfusionSlots().isEmpty());
-		assertEquals(2, entity.getInfixUpgrade().getAttributes().size());
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/6CF800ACB923E42F6CA40832C80694C7E0E9CB4D/61005.png"));
+		assertThat(entity.getInfusionSlots().isEmpty(), is(true));
+		assertThat(entity.getInfixUpgrade().getAttributes().size(), is(2));
 		AttributeModifier attributeModifier1 = new AttributeModifier();
 		attributeModifier1.setAttribute(Attribute.Vitality);
 		attributeModifier1.setModifier(4);
-		assertTrue(entity.getInfixUpgrade().getAttributes().contains(attributeModifier1));
+		assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier1), is(true));
 		AttributeModifier attributeModifier2 = new AttributeModifier();
 		attributeModifier2.setAttribute(Attribute.Toughness);
 		attributeModifier2.setModifier(3);
-		assertTrue(entity.getInfixUpgrade().getAttributes().contains(attributeModifier2));
+		assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier2), is(true));
 		assertNull(entity.getSuffixItemId());
 
 	}
@@ -209,40 +216,40 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting ArmorJson, got " + item.getClass().getCanonicalName(), item instanceof ArmorJson);
+			assertThat("Expecting ArmorJson, got " + item.getClass().getCanonicalName(), item instanceof ArmorJson, is(true));
 			entity = ((ArmorJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().size() + " unassigned values found", item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().size() + " unassigned values found", item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			fail("Unexpected Exception");
 		}
-		assertEquals("Mighty Studded Coat", entity.getName());
+		assertThat(entity.getName(), is("Mighty Studded Coat"));
 		assertNull(entity.getDescription());
-		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.BASIC, entity.getRarity());
-		assertEquals(Integer.valueOf(6), entity.getVendorValue());
-		assertEquals(Integer.valueOf(17), entity.getDefaultSkin());
-		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		assertEquals(1, entity.getFlags().size());
-		assertTrue("Item Should be 'NotUpgradeable'", entity.getFlags().contains(ItemFlags.NotUpgradeable));
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals(Integer.valueOf(70), entity.getId());
-		assertEquals("https://render.guildwars2.com/file/5050F9A0AAA5324F0501B7944876F0FA29DCEB97/61008.png", entity.getIcon());
-		assertTrue(entity.getInfusionSlots().isEmpty());
-		assertEquals(1, entity.getInfixUpgrade().getAttributes().size());
+		assertThat(entity.getLevel(), is(0));
+		assertThat(entity.getRarity(), is(Rarity.BASIC));
+		assertThat(entity.getVendorValue(), is(6));
+		assertThat(entity.getDefaultSkin(), is(17));
+		assertThat(entity.getAvailableInActivity(), is(true));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(false));
+		assertThat(entity.getFlags().size(), is(1));
+		assertThat(entity.getFlags().contains(ItemFlags.NotUpgradeable), is(true));
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getId(), is(70));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/5050F9A0AAA5324F0501B7944876F0FA29DCEB97/61008.png"));
+		assertThat(entity.getInfusionSlots().isEmpty(), is(true));
+		assertThat(entity.getInfixUpgrade().getAttributes().size(), is(1));
 		AttributeModifier attributeModifier1 = new AttributeModifier();
 		attributeModifier1.setAttribute(Attribute.Power);
 		attributeModifier1.setModifier(4);
-		assertTrue(entity.getInfixUpgrade().getAttributes().contains(attributeModifier1));
+		assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier1), is(true));
 		assertNull(entity.getSuffixItemId());
-		assertEquals(ArmorType.Coat, entity.getArmorType());
-		assertEquals(WeightClass.Medium, entity.getWeightClass());
-		assertEquals(Integer.valueOf(25), entity.getDefense());
+		assertThat(entity.getArmorType(), is(ArmorType.Coat));
+		assertThat(entity.getWeightClass(), is(WeightClass.Medium));
+		assertThat(entity.getDefense(), is(25));
 		assertNull(entity.getSecondarySuffixItemId());
 	}
 
@@ -264,95 +271,80 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting ConsumableJson, got " + item.getClass().getCanonicalName(), item instanceof ConsumableJson);
+			assertThat("Expecting ConsumableJson, got " + item.getClass().getCanonicalName(), item instanceof ConsumableJson, is(true));
 			entity = ((ConsumableJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			fail("Unexpected Exception");
 		}
-		assertEquals("Assassin Pill", entity.getName());
-		assertEquals("Take this pill to participate in the next round of Assassin", entity.getDescription());
-		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.BASIC, entity.getRarity());
-		assertEquals(Integer.valueOf(0), entity.getVendorValue());
-		assertEquals(Integer.valueOf(2), entity.getId());
-		assertFalse("Item should not be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		assertEquals(3, entity.getFlags().size());
-		assertTrue("Item Should be 'NoSell'", entity.getFlags().contains(ItemFlags.NoSell));
-		assertTrue("Item Should be 'SoulbindOnAcquire'", entity.getFlags().contains(ItemFlags.SoulbindOnAcquire));
-		assertTrue("Item Should be 'SoulBindOnUse'", entity.getFlags().contains(ItemFlags.SoulBindOnUse));
+		assertThat(entity.getName(), is("Assassin Pill"));
+		assertThat(entity.getDescription(), is("Take this pill to participate in the next round of Assassin"));
+		assertThat(entity.getLevel(), is(0));
+		assertThat(entity.getRarity(), is(Rarity.BASIC));
+		assertThat(entity.getVendorValue(), is(0));
+		assertThat(entity.getId(), is(2));
+		assertThat(entity.getAvailableInActivity(), is(false));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(false));
+		assertThat(entity.getFlags().size(), is(3));
+		assertThat(entity.getFlags().contains(ItemFlags.NoSell), is(true));
+		assertThat(entity.getFlags().contains(ItemFlags.SoulbindOnAcquire), is(true));
+		assertThat(entity.getFlags().contains(ItemFlags.SoulBindOnUse), is(true));
 
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals(Integer.valueOf(2), entity.getId());
-		assertEquals("https://render.guildwars2.com/file/ED903431B97968C79AEC7FB21535FC015DBB0BBA/60981.png", entity.getIcon());
-		assertEquals(ConsumableType.Food, entity.getConsumableType());
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getId(), is(2));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/ED903431B97968C79AEC7FB21535FC015DBB0BBA/60981.png"));
+		assertThat(entity.getConsumableType(), is(ConsumableType.Food));
 	}
 
 	@Test
-	public void testUpgradeComponent24654() {
-		String content = "{\"name\":\"Superior Sigil of Destroyer Slaying\",\"description\":"
-				+ "\"Double-click to apply to a weapon.\",\"type\":\"UpgradeComponent\",\"level\":60,\"rarity\":\"Exotic\","
-				+ "\"vendor_value\":216,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[],"
-				+ "\"restrictions\":[],\"id\":24654,"
-				+ "\"icon\":\"https://render.guildwars2.com/file/656ABB62BBEC39BC24D002FBE19EFCE953ABEDCD/221036.png\","
-				+ "\"details\":{\"type\":\"Sigil\",\"flags\":[\"Axe\",\"LongBow\",\"ShortBow\",\"Dagger\",\"Focus\","
-				+ "\"Greatsword\",\"Hammer\",\"Harpoon\",\"Mace\",\"Pistol\",\"Rifle\",\"Scepter\",\"Shield\",\"Speargun\","
-				+ "\"Staff\",\"Sword\",\"Torch\",\"Trident\",\"Warhorn\"],\"infusion_upgrade_flags\":[],"
-				+ "\"infix_upgrade\":{\"buff\":{\"skill_id\":9343,\"description\":\"+10% Damage vs. Destroyers\"},"
-				+ "\"attributes\":[]},\"suffix\":\"of Destroyer Slaying\"}}";
-		IUpgradeComponent entity = null;
-		try {
-			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
-			assertNotNull(item);
-			assertTrue("Expecting ConsumableJson, got " + item.getClass().getCanonicalName(), item instanceof UpgradeComponentJson);
-			entity = ((UpgradeComponentJson) item).getEntity();
-			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
-		} catch (IOException e) {
-			e.printStackTrace();
-			fail("Unexpected Exception");
-		}
-		assertEquals("Superior Sigil of Destroyer Slaying", entity.getName());
-		assertEquals("Double-click to apply to a weapon.", entity.getDescription());
-		assertEquals(Integer.valueOf(60), entity.getLevel());
-		assertEquals(Rarity.EXOTIC, entity.getRarity());
-		assertEquals(Integer.valueOf(216), entity.getVendorValue());
-		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals(Integer.valueOf(24654), entity.getId());
-		assertEquals("https://render.guildwars2.com/file/656ABB62BBEC39BC24D002FBE19EFCE953ABEDCD/221036.png", entity.getIcon());
-		assertEquals(UpgradeComponentType.SIGIL, entity.getUpgradeComponentType());
-        List<UpgradeComponentFlag> upgradeComponentFlags = Arrays.asList(UpgradeComponentFlag.Axe, UpgradeComponentFlag.LongBow, UpgradeComponentFlag.ShortBow,
+	public void testUpgradeComponent24654() throws IOException {
+		String content = IOUtils.toString(getClass().getResource("SuperiorSigilOfDestroyerSlaying.json"));
+		ItemJson<?> item = mapper.readValue(content, ItemJson.class);
+		assertThat(item, not(nullValue()));
+		assertThat(item, instanceOf(UpgradeComponentJson.class));
+		IUpgradeComponent entity = ((UpgradeComponentJson) item).getEntity();
+		assertThat(entity, not(nullValue()));
+		assertThat(item.getAdditionalProperties().entrySet(), empty());
+		assertThat(entity.getName(), is("Superior Sigil of Destroyer Slaying"));
+		assertThat(entity.getDescription(), is("<c=@abilitytype>Element: </c>Pain<br>Double-click to apply to a weapon."));
+		assertThat(entity.getLevel(), is(60));
+		assertThat(entity.getRarity(), is(Rarity.EXOTIC));
+		assertThat(entity.getVendorValue(), is(216));
+		assertThat(entity.getAvailableInActivity(), is(true));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(false));
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getId(), is(24654));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/656ABB62BBEC39BC24D002FBE19EFCE953ABEDCD/221036.png"));
+		assertThat(entity.getUpgradeComponentType(), is(UpgradeComponentType.SIGIL));
+		UpgradeComponentFlag[] upgradeComponentFlags = new UpgradeComponentFlag[]{UpgradeComponentFlag.Axe, UpgradeComponentFlag.LongBow, UpgradeComponentFlag.ShortBow,
                 UpgradeComponentFlag.Dagger, UpgradeComponentFlag.Focus, UpgradeComponentFlag.Greatsword,
                 UpgradeComponentFlag.Hammer, UpgradeComponentFlag.Harpoon, UpgradeComponentFlag.Mace,
                 UpgradeComponentFlag.Pistol, UpgradeComponentFlag.Rifle, UpgradeComponentFlag.Scepter,
                 UpgradeComponentFlag.Shield, UpgradeComponentFlag.Speargun, UpgradeComponentFlag.Staff,
                 UpgradeComponentFlag.Sword, UpgradeComponentFlag.Torch, UpgradeComponentFlag.Trident,
-                UpgradeComponentFlag.Warhorn);
-		assertEquals(upgradeComponentFlags.size(), entity.getUpgradeComponentFlags().size());
-		assertTrue("Item should contain all these Upgrade flags.", entity.getUpgradeComponentFlags()
-				.containsAll(upgradeComponentFlags));
-		assertTrue(entity.getInfusionUpgradeFlags().isEmpty());
+				UpgradeComponentFlag.Warhorn};
+		assertThat(entity.getUpgradeComponentFlags().size(), is(upgradeComponentFlags.length));
+		assertThat(entity.getUpgradeComponentFlags(), hasItems(upgradeComponentFlags));
+		assertThat(entity.getInfusionUpgradeFlags().isEmpty(), is(true));
 		assertNotNull(entity.getInfixUpgrade());
 		IBaseBuff buff = entity.getInfixUpgrade().getBuff();
 		assertNotNull(buff);
-		assertTrue(buff instanceof Buff);
-		assertEquals(Integer.valueOf(9343), buff.getSkillId());
-		assertEquals("+10% Damage vs. Destroyers", buff.getDescription());
-		assertTrue("Item shouldn't have attributes.", entity.getInfixUpgrade().getAttributes().isEmpty());
-		assertTrue("Item shouldn't have Flags.", entity.getFlags().isEmpty());
-		assertEquals("of Destroyer Slaying", entity.getSuffix());
+		assertThat(buff, instanceOf(Buff.class));
+		assertThat(buff.getSkillId(), is(9343));
+		assertThat(buff.getDescription(), containsString("+7% Damage vs. Destroyers"));
+		assertThat(buff.getDescription(), containsString("+3% Damage"));
+		assertThat(entity.getInfixUpgrade().getAttributes(), empty());
+		assertThat(entity.getFlags(), empty());
+		assertThat(entity.getSuffix(), is("of Destroyer Slaying"));
 	}
 
 	@Test
@@ -367,32 +359,32 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof TrophyJson);
+			assertThat("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof TrophyJson, is(true));
 			entity = ((TrophyJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
 		}
-		assertEquals("Race Track Voucher", entity.getName());
-		assertEquals("Redeem this for your winnings by talking to Tigg.", entity.getDescription());
-		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.EXOTIC, entity.getRarity());
-		assertEquals(Integer.valueOf(50), entity.getVendorValue());
-		assertEquals(Integer.valueOf(8123), entity.getId());
-		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
+		assertThat(entity.getName(), is("Race Track Voucher"));
+		assertThat(entity.getDescription(), is("Redeem this for your winnings by talking to Tigg."));
+		assertThat(entity.getLevel(), is(0));
+		assertThat(entity.getRarity(), is(Rarity.EXOTIC));
+		assertThat(entity.getVendorValue(), is(50));
+		assertThat(entity.getId(), is(8123));
+		assertThat(entity.getAvailableInActivity(), is(true));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(false));
         List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSalvage,
                 ItemFlags.NoSell, ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse);
-		assertEquals(flags.size(), entity.getFlags().size());
-		assertTrue(flags.containsAll(entity.getFlags()));
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals("https://render.guildwars2.com/file/0FF3F1E574DCDEFA2CC60E04B22BF5291273EDC3/62856.png", entity.getIcon());
+		assertThat(entity.getFlags().size(), is(flags.size()));
+		assertThat(flags.containsAll(entity.getFlags()), is(true));
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/0FF3F1E574DCDEFA2CC60E04B22BF5291273EDC3/62856.png"));
 	}
 
 	@Test
@@ -409,34 +401,34 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting ContainerJson, got " + item.getClass().getCanonicalName(), item instanceof ContainerJson);
+			assertThat("Expecting ContainerJson, got " + item.getClass().getCanonicalName(), item instanceof ContainerJson, is(true));
 			entity = ((ContainerJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
 		}
-		assertEquals("Zephyrite Rescue Pack", entity.getName());
+		assertThat(entity.getName(), is("Zephyrite Rescue Pack"));
 		assertEquals("Double-click to receive the following items: 1 Speed Booster, 1 Zephyrite Color Swatch: Red, 15 Black Lion Keys, 1 Aviator Cap Skin, 250 Piles of Sand.",
 				entity.getDescription());
-		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.RARE, entity.getRarity());
-		assertEquals(Integer.valueOf(129), entity.getVendorValue());
-		assertEquals(Integer.valueOf(8468), entity.getId());
-		assertFalse("Item should not be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
+		assertThat(entity.getLevel(), is(0));
+		assertThat(entity.getRarity(), is(Rarity.RARE));
+		assertThat(entity.getVendorValue(), is(129));
+		assertThat(entity.getId(), is(8468));
+		assertThat(entity.getAvailableInActivity(), is(false));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(false));
         List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoMysticForge,
                 ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.AccountBindOnUse);
-		assertEquals(flags.size(), entity.getFlags().size());
-		assertTrue(flags.containsAll(entity.getFlags()));
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals("https://render.guildwars2.com/file/B80BE438007179E12B18B5EBDFCB1C61E2605DD6/824921.png", entity.getIcon());
-		assertEquals(ContainerType.Default, entity.getContainerType());
+		assertThat(entity.getFlags().size(), is(flags.size()));
+		assertThat(flags.containsAll(entity.getFlags()), is(true));
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/B80BE438007179E12B18B5EBDFCB1C61E2605DD6/824921.png"));
+		assertThat(entity.getContainerType(), is(ContainerType.Default));
 	}
 
 	@Test
@@ -451,34 +443,34 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting BagJson, got " + item.getClass().getCanonicalName(), item instanceof BagJson);
+			assertThat("Expecting BagJson, got " + item.getClass().getCanonicalName(), item instanceof BagJson, is(true));
 			entity = ((BagJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
 		}
-		assertEquals("Starter Backpack", entity.getName());
-		assertEquals("A 20 slot bag for beginning characters.", entity.getDescription());
-		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.BASIC, entity.getRarity());
-		assertEquals(Integer.valueOf(11), entity.getVendorValue());
-		assertEquals(Integer.valueOf(8932), entity.getId());
-		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
+		assertThat(entity.getName(), is("Starter Backpack"));
+		assertThat(entity.getDescription(), is("A 20 slot bag for beginning characters."));
+		assertThat(entity.getLevel(), is(0));
+		assertThat(entity.getRarity(), is(Rarity.BASIC));
+		assertThat(entity.getVendorValue(), is(11));
+		assertThat(entity.getId(), is(8932));
+		assertThat(entity.getAvailableInActivity(), is(true));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(false));
         List<ItemFlags> flags = Arrays.asList(ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire,
                 ItemFlags.SoulBindOnUse);
-		assertEquals(flags.size(), entity.getFlags().size());
-		assertTrue(flags.containsAll(entity.getFlags()));
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals("https://render.guildwars2.com/file/80E36806385691D4C0910817EF2A6C2006AEE353/61755.png", entity.getIcon());
-		assertFalse(entity.isNoSellOrSort());
-		assertEquals(Integer.valueOf(20), entity.getSize());
+		assertThat(entity.getFlags().size(), is(flags.size()));
+		assertThat(flags.containsAll(entity.getFlags()), is(true));
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/80E36806385691D4C0910817EF2A6C2006AEE353/61755.png"));
+		assertThat(entity.isNoSellOrSort(), is(false));
+		assertThat(entity.getSize(), is(20));
 	}
 
 	@Test
@@ -492,29 +484,29 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting CraftingMaterialJson, got " + item.getClass().getCanonicalName(), item instanceof CraftingMaterialJson);
+			assertThat("Expecting CraftingMaterialJson, got " + item.getClass().getCanonicalName(), item instanceof CraftingMaterialJson, is(true));
 			entity = ((CraftingMaterialJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
 		}
-		assertEquals("Omnomberry", entity.getName());
-		assertEquals("Ingredient", entity.getDescription());
-		assertEquals(Integer.valueOf(80), entity.getLevel());
-		assertEquals(Rarity.BASIC, entity.getRarity());
-		assertEquals(Integer.valueOf(9), entity.getVendorValue());
-		assertEquals(Integer.valueOf(12128), entity.getId());
-		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
-		assertTrue(entity.getFlags().isEmpty());
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals("https://render.guildwars2.com/file/9C5457B024D9152906D808A53BFF67539BB94FA0/219396.png", entity.getIcon());
+		assertThat(entity.getName(), is("Omnomberry"));
+		assertThat(entity.getDescription(), is("Ingredient"));
+		assertThat(entity.getLevel(), is(80));
+		assertThat(entity.getRarity(), is(Rarity.BASIC));
+		assertThat(entity.getVendorValue(), is(9));
+		assertThat(entity.getId(), is(12128));
+		assertThat(entity.getAvailableInActivity(), is(true));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(false));
+		assertThat(entity.getFlags().isEmpty(), is(true));
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/9C5457B024D9152906D808A53BFF67539BB94FA0/219396.png"));
 	}
 
 	@Test
@@ -530,41 +522,41 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting TrinketJson, got " + item.getClass().getCanonicalName(), item instanceof TrinketJson);
+			assertThat("Expecting TrinketJson, got " + item.getClass().getCanonicalName(), item instanceof TrinketJson, is(true));
 			entity = ((TrinketJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
 		}
-		assertEquals("Turquoise Copper Amulet", entity.getName());
-		assertEquals("", entity.getDescription());
-		assertEquals(Integer.valueOf(20), entity.getLevel());
-		assertEquals(Rarity.FINE, entity.getRarity());
-		assertEquals(Integer.valueOf(48), entity.getVendorValue());
-		assertEquals(Integer.valueOf(13267), entity.getId());
-		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
+		assertThat(entity.getName(), is("Turquoise Copper Amulet"));
+		assertThat(entity.getDescription(), is(""));
+		assertThat(entity.getLevel(), is(20));
+		assertThat(entity.getRarity(), is(Rarity.FINE));
+		assertThat(entity.getVendorValue(), is(48));
+		assertThat(entity.getId(), is(13267));
+		assertThat(entity.getAvailableInActivity(), is(true));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(false));
         List<ItemFlags> flags = Arrays.asList(ItemFlags.HideSuffix);
-		assertEquals(flags.size(), entity.getFlags().size());
-		assertTrue(flags.containsAll(entity.getFlags()));
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals("https://render.guildwars2.com/file/BA77541A56E7F639CCC5A379F4662EA2C55420BE/340120.png", entity.getIcon());
-		assertEquals(TrinketType.Amulet, entity.getTrinketType());
-		assertTrue(entity.getInfusionSlots().isEmpty());
+		assertThat(entity.getFlags().size(), is(flags.size()));
+		assertThat(flags.containsAll(entity.getFlags()), is(true));
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/BA77541A56E7F639CCC5A379F4662EA2C55420BE/340120.png"));
+		assertThat(entity.getTrinketType(), is(TrinketType.Amulet));
+		assertThat(entity.getInfusionSlots().isEmpty(), is(true));
 		AttributeModifier am = new AttributeModifier();
 		am.setAttribute(Attribute.Vitality);
 		am.setModifier(12);
 		assertNotNull(entity.getInfixUpgrade());
 		assertNotNull(entity.getInfixUpgrade().getAttributes());
-		assertEquals(1, entity.getInfixUpgrade().getAttributes().size());
-		assertTrue(entity.getInfixUpgrade().getAttributes().contains(am));
-		assertEquals(Integer.valueOf(24465), entity.getSuffixItemId());
+		assertThat(entity.getInfixUpgrade().getAttributes().size(), is(1));
+		assertThat(entity.getInfixUpgrade().getAttributes().contains(am), is(true));
+		assertThat(entity.getSuffixItemId(), is(24465));
 		assertNull(entity.getSecondarySuffixItemId());
 	}
 
@@ -580,31 +572,31 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof TrophyJson);
+			assertThat("Expecting TrophyJson, got " + item.getClass().getCanonicalName(), item instanceof TrophyJson, is(true));
 			entity = ((TrophyJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
 		}
-		assertEquals("Mystic Coin", entity.getName());
-		assertEquals("Coins are used to create high level weapons at the mystic forge in Lion's Arch. \nPart of Zommoros' favorite trades.", entity.getDescription());
-		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.RARE, entity.getRarity());
-		assertEquals(Integer.valueOf(50), entity.getVendorValue());
-		assertEquals(Integer.valueOf(19976), entity.getId());
-		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
+		assertThat(entity.getName(), is("Mystic Coin"));
+		assertThat(entity.getDescription(), is("Coins are used to create high level weapons at the mystic forge in Lion's Arch. \nPart of Zommoros' favorite trades."));
+		assertThat(entity.getLevel(), is(0));
+		assertThat(entity.getRarity(), is(Rarity.RARE));
+		assertThat(entity.getVendorValue(), is(50));
+		assertThat(entity.getId(), is(19976));
+		assertThat(entity.getAvailableInActivity(), is(true));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(false));
         List<ItemFlags> flags = Arrays.asList(ItemFlags.NoSalvage, ItemFlags.NoSell);
-		assertEquals(flags.size(), entity.getFlags().size());
-		assertTrue(flags.containsAll(entity.getFlags()));
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals("https://render.guildwars2.com/file/AB0317DF5B0E1BA47436A5420248660765154C08/62864.png", entity.getIcon());
+		assertThat(entity.getFlags().size(), is(flags.size()));
+		assertThat(flags.containsAll(entity.getFlags()), is(true));
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/AB0317DF5B0E1BA47436A5420248660765154C08/62864.png"));
 	}
 
 	@Test
@@ -622,33 +614,33 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting GizmoJson, got " + item.getClass().getCanonicalName(), item instanceof GizmoJson);
+			assertThat("Expecting GizmoJson, got " + item.getClass().getCanonicalName(), item instanceof GizmoJson, is(true));
 			entity = ((GizmoJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
 		}
-		assertEquals("Black Lion Chest Key", entity.getName());
-		assertEquals("This key will unlock one Black Lion Chest containing random Gem Store merchandise, including some rare items not sold separately.\n\n Black Lion Chests can be found randomly on enemies or bought from the trading post.", entity.getDescription());
-		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.FINE, entity.getRarity());
-		assertEquals(Integer.valueOf(0), entity.getVendorValue());
-		assertEquals(Integer.valueOf(19980), entity.getId());
-		assertFalse("Item should not be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertTrue("Item should be available in PvP Lobby", entity.getAvailableInPvPLobby());
+		assertThat(entity.getName(), is("Black Lion Chest Key"));
+		assertThat(entity.getDescription(), is("This key will unlock one Black Lion Chest containing random Gem Store merchandise, including some rare items not sold separately.\n\n Black Lion Chests can be found randomly on enemies or bought from the trading post."));
+		assertThat(entity.getLevel(), is(0));
+		assertThat(entity.getRarity(), is(Rarity.FINE));
+		assertThat(entity.getVendorValue(), is(0));
+		assertThat(entity.getId(), is(19980));
+		assertThat(entity.getAvailableInActivity(), is(false));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(true));
         List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell,
                 ItemFlags.AccountBindOnUse);
-		assertEquals(flags.size(), entity.getFlags().size());
-		assertTrue(flags.containsAll(entity.getFlags()));
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals("https://render.guildwars2.com/file/207BDD31BC494A07A0A1691705079100066D3F2F/414998.png", entity.getIcon());
-		assertEquals(GizmoType.ContainerKey, entity.getGizmoType());
+		assertThat(entity.getFlags().size(), is(flags.size()));
+		assertThat(flags.containsAll(entity.getFlags()), is(true));
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/207BDD31BC494A07A0A1691705079100066D3F2F/414998.png"));
+		assertThat(entity.getGizmoType(), is(GizmoType.ContainerKey));
 	}
 
 	@Test
@@ -666,34 +658,34 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting ToolJson, got " + item.getClass().getCanonicalName(), item instanceof ToolJson);
+			assertThat("Expecting ToolJson, got " + item.getClass().getCanonicalName(), item instanceof ToolJson, is(true));
 			entity = ((ToolJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
 		}
-		assertEquals("Black Lion Salvage Kit", entity.getName());
-		assertEquals("Double-click then select an item in your inventory to salvage for crafting materials. 100% chance of recovering upgrades. 50% chance to get rarer materials.", entity.getDescription());
-		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.EXOTIC, entity.getRarity());
-		assertEquals(Integer.valueOf(0), entity.getVendorValue());
-		assertEquals(Integer.valueOf(19986), entity.getId());
-		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertTrue("Item should be available in PvP", entity.getAvailableInPvP());
-		assertTrue("Item should be available in PvP Lobby", entity.getAvailableInPvPLobby());
+		assertThat(entity.getName(), is("Black Lion Salvage Kit"));
+		assertThat(entity.getDescription(), is("Double-click then select an item in your inventory to salvage for crafting materials. 100% chance of recovering upgrades. 50% chance to get rarer materials."));
+		assertThat(entity.getLevel(), is(0));
+		assertThat(entity.getRarity(), is(Rarity.EXOTIC));
+		assertThat(entity.getVendorValue(), is(0));
+		assertThat(entity.getId(), is(19986));
+		assertThat(entity.getAvailableInActivity(), is(true));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(true));
+		assertThat(entity.getAvailableInPvPLobby(), is(true));
         List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell,
                 ItemFlags.AccountBindOnUse);
-		assertEquals(flags.size(), entity.getFlags().size());
-		assertTrue(flags.containsAll(entity.getFlags()));
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals("https://render.guildwars2.com/file/2204EE5D7B1F7BEE9261CBAE3BF1DB5B027EE607/66551.png", entity.getIcon());
-		assertEquals(ToolType.Salvage, entity.getToolType());
-		assertEquals(Integer.valueOf(25), entity.getCharges());
+		assertThat(entity.getFlags().size(), is(flags.size()));
+		assertThat(flags.containsAll(entity.getFlags()), is(true));
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/2204EE5D7B1F7BEE9261CBAE3BF1DB5B027EE607/66551.png"));
+		assertThat(entity.getToolType(), is(ToolType.Salvage));
+		assertThat(entity.getCharges(), is(25));
 	}
 
 	@Test
@@ -708,31 +700,31 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting MiniPetJson, got " + item.getClass().getCanonicalName(), item instanceof MiniPetJson);
+			assertThat("Expecting MiniPetJson, got " + item.getClass().getCanonicalName(), item instanceof MiniPetJson, is(true));
 			entity = ((MiniPetJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
 		}
-		assertEquals("Mini Bandit Bruiser", entity.getName());
-		assertEquals("Double-click to summon this miniature to follow you around. Only one miniature may be in use at a time.", entity.getDescription());
-		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.MASTERWORK, entity.getRarity());
-		assertEquals(Integer.valueOf(100), entity.getVendorValue());
-		assertEquals(Integer.valueOf(20117), entity.getId());
-		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertTrue("Item should be available in PvP Lobby", entity.getAvailableInPvPLobby());
+		assertThat(entity.getName(), is("Mini Bandit Bruiser"));
+		assertThat(entity.getDescription(), is("Double-click to summon this miniature to follow you around. Only one miniature may be in use at a time."));
+		assertThat(entity.getLevel(), is(0));
+		assertThat(entity.getRarity(), is(Rarity.MASTERWORK));
+		assertThat(entity.getVendorValue(), is(100));
+		assertThat(entity.getId(), is(20117));
+		assertThat(entity.getAvailableInActivity(), is(true));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(true));
         List<ItemFlags> flags = Arrays.asList(ItemFlags.NoSell);
-		assertEquals(flags.size(), entity.getFlags().size());
-		assertTrue(flags.containsAll(entity.getFlags()));
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals("https://render.guildwars2.com/file/D3F3C5BA926B0990FC30C0AAD37A3D57190B0B08/66056.png", entity.getIcon());
+		assertThat(entity.getFlags().size(), is(flags.size()));
+		assertThat(flags.containsAll(entity.getFlags()), is(true));
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/D3F3C5BA926B0990FC30C0AAD37A3D57190B0B08/66056.png"));
 	}
 
 	@Test
@@ -750,34 +742,34 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting ContainerJson, got " + item.getClass().getCanonicalName(), item instanceof ContainerJson);
+			assertThat("Expecting ContainerJson, got " + item.getClass().getCanonicalName(), item instanceof ContainerJson, is(true));
 			entity = ((ContainerJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
 		}
-		assertEquals("Black Lion Chest (Unlocked)", entity.getName());
+		assertThat(entity.getName(), is("Black Lion Chest (Unlocked)"));
 		assertEquals("Contains a random booster plus two more random items from the Black Lion Trading Company warehouse.\nThese may include weapon tickets redeemable for unique skins and other rare items not available anywhere else.",
 				entity.getDescription());
-		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.FINE, entity.getRarity());
-		assertEquals(Integer.valueOf(0), entity.getVendorValue());
-		assertEquals(Integer.valueOf(20313), entity.getId());
-		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertTrue("Item should be available in PvP Lobby", entity.getAvailableInPvPLobby());
+		assertThat(entity.getLevel(), is(0));
+		assertThat(entity.getRarity(), is(Rarity.FINE));
+		assertThat(entity.getVendorValue(), is(0));
+		assertThat(entity.getId(), is(20313));
+		assertThat(entity.getAvailableInActivity(), is(true));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(true));
         List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSell,
                 ItemFlags.AccountBindOnUse);
-		assertEquals(flags.size(), entity.getFlags().size());
-		assertTrue(flags.containsAll(entity.getFlags()));
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals("https://render.guildwars2.com/file/48E4CEEAEEF8F3419A63D4F6295AB77136B86656/711974.png", entity.getIcon());
-		assertEquals(ContainerType.OpenUI, entity.getContainerType());
+		assertThat(entity.getFlags().size(), is(flags.size()));
+		assertThat(flags.containsAll(entity.getFlags()), is(true));
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/48E4CEEAEEF8F3419A63D4F6295AB77136B86656/711974.png"));
+		assertThat(entity.getContainerType(), is(ContainerType.OpenUI));
 	}
 
 	@Test
@@ -793,34 +785,34 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting GatheringJson, got " + item.getClass().getCanonicalName(), item instanceof GatheringJson);
+			assertThat("Expecting GatheringJson, got " + item.getClass().getCanonicalName(), item instanceof GatheringJson, is(true));
 			entity = ((GatheringJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
 		}
-		assertEquals("Black Lion Harvesting Sickle", entity.getName());
-		assertEquals("Extremely efficient at gathering resources and uncovering rare components.", entity.getDescription());
-		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.RARE, entity.getRarity());
-		assertEquals(Integer.valueOf(2385), entity.getDefaultSkin());
-		assertEquals(Integer.valueOf(0), entity.getVendorValue());
-		assertEquals(Integer.valueOf(20324), entity.getId());
-		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
+		assertThat(entity.getName(), is("Black Lion Harvesting Sickle"));
+		assertThat(entity.getDescription(), is("Extremely efficient at gathering resources and uncovering rare components."));
+		assertThat(entity.getLevel(), is(0));
+		assertThat(entity.getRarity(), is(Rarity.RARE));
+		assertThat(entity.getDefaultSkin(), is(2385));
+		assertThat(entity.getVendorValue(), is(0));
+		assertThat(entity.getId(), is(20324));
+		assertThat(entity.getAvailableInActivity(), is(true));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(false));
         List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSell,
                 ItemFlags.AccountBindOnUse);
-		assertEquals(flags.size(), entity.getFlags().size());
-		assertTrue(flags.containsAll(entity.getFlags()));
-		assertTrue(entity.getRestrictions().isEmpty());
-		assertEquals("https://render.guildwars2.com/file/BD0DC17564A9BC9B2354EAB2122F086DBF699D15/526356.png", entity.getIcon());
-		assertEquals(GatheringType.Foraging, entity.getGatheringType());
+		assertThat(entity.getFlags().size(), is(flags.size()));
+		assertThat(flags.containsAll(entity.getFlags()), is(true));
+		assertThat(entity.getRestrictions().isEmpty(), is(true));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/BD0DC17564A9BC9B2354EAB2122F086DBF699D15/526356.png"));
+		assertThat(entity.getGatheringType(), is(GatheringType.Foraging));
 	}
 
 	@Test
@@ -838,35 +830,35 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting ContainerJson, got " + item.getClass().getCanonicalName(), item instanceof ContainerJson);
+			assertThat("Expecting ContainerJson, got " + item.getClass().getCanonicalName(), item instanceof ContainerJson, is(true));
 			entity = ((ContainerJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
 		}
-		assertEquals("Francisca", entity.getName());
+		assertThat(entity.getName(), is("Francisca"));
 		assertEquals("A mysteriously light and well-balanced weapon that seems malleable to your wishes. Double-click to choose what form it should take.",
 				entity.getDescription());
-		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.MASTERWORK, entity.getRarity());
-		assertEquals(Integer.valueOf(0), entity.getVendorValue());
-		assertEquals(Integer.valueOf(54813), entity.getId());
-		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertFalse("Item should not be available in PvP", entity.getAvailableInPvP());
-		assertFalse("Item should not be available in PvP Lobby", entity.getAvailableInPvPLobby());
+		assertThat(entity.getLevel(), is(0));
+		assertThat(entity.getRarity(), is(Rarity.MASTERWORK));
+		assertThat(entity.getVendorValue(), is(0));
+		assertThat(entity.getId(), is(54813));
+		assertThat(entity.getAvailableInActivity(), is(true));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(false));
+		assertThat(entity.getAvailableInPvPLobby(), is(false));
         List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSell, ItemFlags.AccountBindOnUse);
-		assertEquals(flags.size(), entity.getFlags().size());
-		assertTrue(flags.containsAll(entity.getFlags()));
+		assertThat(entity.getFlags().size(), is(flags.size()));
+		assertThat(flags.containsAll(entity.getFlags()), is(true));
         List<RestrictionType> restrictions = Arrays.asList(RestrictionType.Ranger);
-		assertEquals(restrictions.size(), entity.getRestrictions().size());
-		assertTrue(restrictions.containsAll(entity.getRestrictions()));
-		assertEquals("https://render.guildwars2.com/file/1B9503F466E464B34620340FEC65CFE7BBC69231/534278.png", entity.getIcon());
-		assertEquals(ContainerType.Default, entity.getContainerType());
+		assertThat(entity.getRestrictions().size(), is(restrictions.size()));
+		assertThat(restrictions.containsAll(entity.getRestrictions()), is(true));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/1B9503F466E464B34620340FEC65CFE7BBC69231/534278.png"));
+		assertThat(entity.getContainerType(), is(ContainerType.Default));
 	}
 
 	@Test
@@ -880,34 +872,34 @@ public class TestItems {
 		try {
 			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
 			assertNotNull(item);
-			assertTrue("Expecting TraitJson, got " + item.getClass().getCanonicalName(), item instanceof TraitJson);
+			assertThat("Expecting TraitJson, got " + item.getClass().getCanonicalName(), item instanceof TraitJson, is(true));
 			entity = ((TraitJson) item).getEntity();
 			assertNotNull(entity);
-			assertTrue(item.getAdditionalProperties().isEmpty());
+			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
 		}
-		assertEquals("Trait Guide [Prismatic Understanding]", entity.getName());
+		assertThat(entity.getName(), is("Trait Guide [Prismatic Understanding]"));
 		assertNull(entity.getDescription());
-		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.RARE, entity.getRarity());
-		assertEquals(Integer.valueOf(0), entity.getVendorValue());
-		assertEquals(Integer.valueOf(65841), entity.getId());
-		assertFalse("Item should not be available in Activity", entity.getAvailableInActivity());
-		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
-		assertTrue("Item should be available in PVE", entity.getAvailableInPvE());
-		assertTrue("Item should be available in WvW", entity.getAvailableInWvW());
-		assertTrue("Item should be available in PvP", entity.getAvailableInPvP());
-		assertTrue("Item should be available in PvP Lobby", entity.getAvailableInPvPLobby());
+		assertThat(entity.getLevel(), is(0));
+		assertThat(entity.getRarity(), is(Rarity.RARE));
+		assertThat(entity.getVendorValue(), is(0));
+		assertThat(entity.getId(), is(65841));
+		assertThat(entity.getAvailableInActivity(), is(false));
+		assertThat(entity.getAvailableInDungeon(), is(true));
+		assertThat(entity.getAvailableInPvE(), is(true));
+		assertThat(entity.getAvailableInWvW(), is(true));
+		assertThat(entity.getAvailableInPvP(), is(true));
+		assertThat(entity.getAvailableInPvPLobby(), is(true));
         List<ItemFlags> flags = Arrays.asList(ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoSalvage,
                 ItemFlags.AccountBindOnUse);
-		assertEquals(flags.size(), entity.getFlags().size());
-		assertTrue(flags.containsAll(entity.getFlags()));
+		assertThat(entity.getFlags().size(), is(flags.size()));
+		assertThat(flags.containsAll(entity.getFlags()), is(true));
         List<RestrictionType> restrictions = Arrays.asList(RestrictionType.Mesmer);
-		assertEquals(restrictions.size(), entity.getRestrictions().size());
-		assertTrue(restrictions.containsAll(entity.getRestrictions()));
-		assertEquals("https://render.guildwars2.com/file/2DFB4EDF0408A8604100BB6A510D215CE637B03C/780409.png", entity.getIcon());
+		assertThat(entity.getRestrictions().size(), is(restrictions.size()));
+		assertThat(restrictions.containsAll(entity.getRestrictions()), is(true));
+		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/2DFB4EDF0408A8604100BB6A510D215CE637B03C/780409.png"));
 	}
 
 

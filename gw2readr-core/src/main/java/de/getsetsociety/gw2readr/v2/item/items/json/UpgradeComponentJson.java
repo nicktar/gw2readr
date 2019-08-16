@@ -50,7 +50,7 @@ public class UpgradeComponentJson extends ItemJson<IUpgradeComponent> {
 			return type;
 		}
 
-		public void setUpgradeComponentType(String upgradeComponentType) {
+		public void setType(String upgradeComponentType) {
 			type = UpgradeComponentType.valueOf(StringUtils.upperCase(upgradeComponentType));
 		}
 

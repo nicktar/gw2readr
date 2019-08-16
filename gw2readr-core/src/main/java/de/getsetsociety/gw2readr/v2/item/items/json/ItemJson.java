@@ -159,4 +159,13 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 		getEntity().setLanguage(language);
 	}
 
+	@JsonProperty("chat_link")
+	public String getChatLink() {
+		return getEntity().getChatLink();
+	}
+
+	public void setChatLink(String chatLink) {
+		getEntity().setChatLink(chatLink);
+	}
+
 }

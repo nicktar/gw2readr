@@ -31,6 +31,7 @@ public class Item implements IItem {
 	private Set<RestrictionType> restrictions = new HashSet<>();
 	private Language language;
 	private Integer defaultSkin;
+	private String chatLink;
 	private List<String> upgradeRecipes;
 
 	/* (non-Javadoc)

@@ -32,6 +32,7 @@ public class Item implements IItem {
 	private Set<RestrictionType> restrictions = new HashSet<>();
 	private Language language;
 	private List<String> upgradeRecipes;
+	private String chatLink;
 	private Integer defaultSkin;
 
 

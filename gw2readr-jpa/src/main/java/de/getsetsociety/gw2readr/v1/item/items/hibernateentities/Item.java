@@ -82,6 +82,8 @@ public class Item implements IItem {
     private List<String> upgradeRecipes;
     @Column
     private Integer defaultSkin;
+    @Column
+    private String chatLink;
 
 
     /* (non-Javadoc)

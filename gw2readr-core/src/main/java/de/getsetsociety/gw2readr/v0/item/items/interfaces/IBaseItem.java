@@ -60,5 +60,4 @@ public interface IBaseItem {
 	Language getLanguage();
 	
 	void setLanguage(Language language);
-
 }

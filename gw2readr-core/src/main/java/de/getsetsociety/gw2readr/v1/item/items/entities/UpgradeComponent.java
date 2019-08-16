@@ -1,5 +1,6 @@
 package de.getsetsociety.gw2readr.v1.item.items.entities;
 
+import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionUpgradeFlag;
 import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentFlag;
 import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
@@ -19,4 +20,5 @@ public class UpgradeComponent extends Item implements IUpgradeComponent {
     private Set<String> bonuses;
     private String suffix;
     private IInfixUpgrade infixUpgrade;
+    private Set<InfusionUpgradeFlag> infusionUpgradeFlags;
 }

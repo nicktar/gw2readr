@@ -183,4 +183,13 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
     public void setDefaultSkin(Integer defaultSkin) {
         getEntity().setDefaultSkin(defaultSkin);
     }
+
+    @JsonProperty("chat_link")
+    public String getChatLink() {
+        return getEntity().getChatLink();
+    }
+
+    public void setChatLink(String chatLink) {
+        getEntity().setChatLink(chatLink);
+    }
 }

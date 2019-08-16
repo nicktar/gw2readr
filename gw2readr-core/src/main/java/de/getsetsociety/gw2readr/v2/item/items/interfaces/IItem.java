@@ -29,4 +29,7 @@ public interface IItem extends IBaseItem {
 
 	void setDefaultSkin(Integer defaultSkin);
 
+	String getChatLink();
+
+	void setChatLink(String chatLink);
 }
