@@ -99,7 +99,7 @@ public class TestItems {
 		assertEquals("Strong Soft Wood Longbow of Fire", entity.getName());
 		assertEquals("", entity.getDescription());
 		assertEquals(Integer.valueOf(44), entity.getLevel());
-		assertEquals(Rarity.Masterwork, entity.getRarity());
+		assertEquals(Rarity.MASTERWORK, entity.getRarity());
 		assertEquals(Integer.valueOf(120), entity.getVendorValue());
 		assertEquals(Integer.valueOf(3942), entity.getDefaultSkin());
 		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
@@ -162,7 +162,7 @@ public class TestItems {
 		assertEquals("Hearty Back Brace", entity.getName());
 		assertEquals("This equipment goes under armor and can hold an additional upgrade.", entity.getDescription());
 		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.Basic, entity.getRarity());
+		assertEquals(Rarity.BASIC, entity.getRarity());
 		assertEquals(Integer.valueOf(16), entity.getVendorValue());
 		assertEquals(Integer.valueOf(2329), entity.getDefaultSkin());
 		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
@@ -219,7 +219,7 @@ public class TestItems {
 		assertEquals("Mighty Studded Coat", entity.getName());
 		assertNull(entity.getDescription());
 		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.Basic, entity.getRarity());
+		assertEquals(Rarity.BASIC, entity.getRarity());
 		assertEquals(Integer.valueOf(6), entity.getVendorValue());
 		assertEquals(Integer.valueOf(17), entity.getDefaultSkin());
 		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
@@ -274,7 +274,7 @@ public class TestItems {
 		assertEquals("Assassin Pill", entity.getName());
 		assertEquals("Take this pill to participate in the next round of Assassin", entity.getDescription());
 		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.Basic, entity.getRarity());
+		assertEquals(Rarity.BASIC, entity.getRarity());
 		assertEquals(Integer.valueOf(0), entity.getVendorValue());
 		assertEquals(Integer.valueOf(2), entity.getId());
 		assertFalse("Item should not be available in Activity", entity.getAvailableInActivity());
@@ -321,7 +321,7 @@ public class TestItems {
 		assertEquals("Superior Sigil of Destroyer Slaying", entity.getName());
 		assertEquals("Double-click to apply to a weapon.", entity.getDescription());
 		assertEquals(Integer.valueOf(60), entity.getLevel());
-		assertEquals(Rarity.Exotic, entity.getRarity());
+		assertEquals(Rarity.EXOTIC, entity.getRarity());
 		assertEquals(Integer.valueOf(216), entity.getVendorValue());
 		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
 		assertTrue("Item should be available in Dungeon", entity.getAvailableInDungeon());
@@ -378,7 +378,7 @@ public class TestItems {
 		assertEquals("Race Track Voucher", entity.getName());
 		assertEquals("Redeem this for your winnings by talking to Tigg.", entity.getDescription());
 		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.Exotic, entity.getRarity());
+		assertEquals(Rarity.EXOTIC, entity.getRarity());
 		assertEquals(Integer.valueOf(50), entity.getVendorValue());
 		assertEquals(Integer.valueOf(8123), entity.getId());
 		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
@@ -421,7 +421,7 @@ public class TestItems {
 		assertEquals("Double-click to receive the following items: 1 Speed Booster, 1 Zephyrite Color Swatch: Red, 15 Black Lion Keys, 1 Aviator Cap Skin, 250 Piles of Sand.",
 				entity.getDescription());
 		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.Rare, entity.getRarity());
+		assertEquals(Rarity.RARE, entity.getRarity());
 		assertEquals(Integer.valueOf(129), entity.getVendorValue());
 		assertEquals(Integer.valueOf(8468), entity.getId());
 		assertFalse("Item should not be available in Activity", entity.getAvailableInActivity());
@@ -462,7 +462,7 @@ public class TestItems {
 		assertEquals("Starter Backpack", entity.getName());
 		assertEquals("A 20 slot bag for beginning characters.", entity.getDescription());
 		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.Basic, entity.getRarity());
+		assertEquals(Rarity.BASIC, entity.getRarity());
 		assertEquals(Integer.valueOf(11), entity.getVendorValue());
 		assertEquals(Integer.valueOf(8932), entity.getId());
 		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
@@ -503,7 +503,7 @@ public class TestItems {
 		assertEquals("Omnomberry", entity.getName());
 		assertEquals("Ingredient", entity.getDescription());
 		assertEquals(Integer.valueOf(80), entity.getLevel());
-		assertEquals(Rarity.Basic, entity.getRarity());
+		assertEquals(Rarity.BASIC, entity.getRarity());
 		assertEquals(Integer.valueOf(9), entity.getVendorValue());
 		assertEquals(Integer.valueOf(12128), entity.getId());
 		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
@@ -541,7 +541,7 @@ public class TestItems {
 		assertEquals("Turquoise Copper Amulet", entity.getName());
 		assertEquals("", entity.getDescription());
 		assertEquals(Integer.valueOf(20), entity.getLevel());
-		assertEquals(Rarity.Fine, entity.getRarity());
+		assertEquals(Rarity.FINE, entity.getRarity());
 		assertEquals(Integer.valueOf(48), entity.getVendorValue());
 		assertEquals(Integer.valueOf(13267), entity.getId());
 		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
@@ -591,7 +591,7 @@ public class TestItems {
 		assertEquals("Mystic Coin", entity.getName());
 		assertEquals("Coins are used to create high level weapons at the mystic forge in Lion's Arch. \nPart of Zommoros' favorite trades.", entity.getDescription());
 		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.Rare, entity.getRarity());
+		assertEquals(Rarity.RARE, entity.getRarity());
 		assertEquals(Integer.valueOf(50), entity.getVendorValue());
 		assertEquals(Integer.valueOf(19976), entity.getId());
 		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
@@ -633,7 +633,7 @@ public class TestItems {
 		assertEquals("Black Lion Chest Key", entity.getName());
 		assertEquals("This key will unlock one Black Lion Chest containing random Gem Store merchandise, including some rare items not sold separately.\n\n Black Lion Chests can be found randomly on enemies or bought from the trading post.", entity.getDescription());
 		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.Fine, entity.getRarity());
+		assertEquals(Rarity.FINE, entity.getRarity());
 		assertEquals(Integer.valueOf(0), entity.getVendorValue());
 		assertEquals(Integer.valueOf(19980), entity.getId());
 		assertFalse("Item should not be available in Activity", entity.getAvailableInActivity());
@@ -677,7 +677,7 @@ public class TestItems {
 		assertEquals("Black Lion Salvage Kit", entity.getName());
 		assertEquals("Double-click then select an item in your inventory to salvage for crafting materials. 100% chance of recovering upgrades. 50% chance to get rarer materials.", entity.getDescription());
 		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.Exotic, entity.getRarity());
+		assertEquals(Rarity.EXOTIC, entity.getRarity());
 		assertEquals(Integer.valueOf(0), entity.getVendorValue());
 		assertEquals(Integer.valueOf(19986), entity.getId());
 		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
@@ -719,7 +719,7 @@ public class TestItems {
 		assertEquals("Mini Bandit Bruiser", entity.getName());
 		assertEquals("Double-click to summon this miniature to follow you around. Only one miniature may be in use at a time.", entity.getDescription());
 		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.Masterwork, entity.getRarity());
+		assertEquals(Rarity.MASTERWORK, entity.getRarity());
 		assertEquals(Integer.valueOf(100), entity.getVendorValue());
 		assertEquals(Integer.valueOf(20117), entity.getId());
 		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
@@ -762,7 +762,7 @@ public class TestItems {
 		assertEquals("Contains a random booster plus two more random items from the Black Lion Trading Company warehouse.\nThese may include weapon tickets redeemable for unique skins and other rare items not available anywhere else.",
 				entity.getDescription());
 		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.Fine, entity.getRarity());
+		assertEquals(Rarity.FINE, entity.getRarity());
 		assertEquals(Integer.valueOf(0), entity.getVendorValue());
 		assertEquals(Integer.valueOf(20313), entity.getId());
 		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
@@ -804,7 +804,7 @@ public class TestItems {
 		assertEquals("Black Lion Harvesting Sickle", entity.getName());
 		assertEquals("Extremely efficient at gathering resources and uncovering rare components.", entity.getDescription());
 		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.Rare, entity.getRarity());
+		assertEquals(Rarity.RARE, entity.getRarity());
 		assertEquals(Integer.valueOf(2385), entity.getDefaultSkin());
 		assertEquals(Integer.valueOf(0), entity.getVendorValue());
 		assertEquals(Integer.valueOf(20324), entity.getId());
@@ -850,7 +850,7 @@ public class TestItems {
 		assertEquals("A mysteriously light and well-balanced weapon that seems malleable to your wishes. Double-click to choose what form it should take.",
 				entity.getDescription());
 		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.Masterwork, entity.getRarity());
+		assertEquals(Rarity.MASTERWORK, entity.getRarity());
 		assertEquals(Integer.valueOf(0), entity.getVendorValue());
 		assertEquals(Integer.valueOf(54813), entity.getId());
 		assertTrue("Item should be available in Activity", entity.getAvailableInActivity());
@@ -891,7 +891,7 @@ public class TestItems {
 		assertEquals("Trait Guide [Prismatic Understanding]", entity.getName());
 		assertNull(entity.getDescription());
 		assertEquals(Integer.valueOf(0), entity.getLevel());
-		assertEquals(Rarity.Rare, entity.getRarity());
+		assertEquals(Rarity.RARE, entity.getRarity());
 		assertEquals(Integer.valueOf(0), entity.getVendorValue());
 		assertEquals(Integer.valueOf(65841), entity.getId());
 		assertFalse("Item should not be available in Activity", entity.getAvailableInActivity());

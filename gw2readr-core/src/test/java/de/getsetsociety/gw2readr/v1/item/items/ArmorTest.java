@@ -50,7 +50,7 @@ public class ArmorTest {
         assertThat(item.getName(), is("Flame Legion Helm"));
         assertThat(item.getLevel(), is(80));
         assertThat(item.getVendorValue(), is(330));
-        assertThat(item.getRarity(), is(Rarity.Exotic));
+        assertThat(item.getRarity(), is(Rarity.EXOTIC));
         assertThat(item.getFlags().size(), is(3));
         assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound));
         assertThat(item.getRestrictions().isEmpty(), is(true));
@@ -83,7 +83,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Nomad's Exalted Boots"));
             assertThat(item.getLevel(), is(80));
             assertThat(item.getVendorValue(), is(240));
-            assertThat(item.getRarity(), is(Rarity.Exotic));
+            assertThat(item.getRarity(), is(Rarity.EXOTIC));
             assertThat(item.getFlags().size(), is(2));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.AccountBound));
             assertThat(item.getRestrictions().isEmpty(), is(true));
@@ -118,7 +118,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Khilbron's Mask"));
             assertThat(item.getLevel(), is(80));
             assertThat(item.getVendorValue(), is(330));
-            assertThat(item.getRarity(), is(Rarity.Exotic));
+            assertThat(item.getRarity(), is(Rarity.EXOTIC));
             assertThat(item.getFlags().size(), is(2));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.HideSuffix));
             assertThat(item.getRestrictions().isEmpty(), is(true));
@@ -153,7 +153,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Berserker's Apprentice Pants"));
             assertThat(item.getLevel(), is(70));
             assertThat(item.getVendorValue(), is(42));
-            assertThat(item.getRarity(), is(Rarity.Basic));
+            assertThat(item.getRarity(), is(Rarity.BASIC));
             assertThat(item.getFlags().size(), is(1));
             assertThat(item.getFlags(), hasItems(ItemFlags.NoSalvage));
             assertThat(item.getRestrictions().isEmpty(), is(true));
@@ -188,7 +188,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Strong Reinforced Scale Helm of Scavenging"));
             assertThat(item.getLevel(), is(50));
             assertThat(item.getVendorValue(), is(113));
-            assertThat(item.getRarity(), is(Rarity.Masterwork));
+            assertThat(item.getRarity(), is(Rarity.MASTERWORK));
             assertThat(item.getFlags().size(), is(1));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse));
             assertThat(item.getRestrictions().isEmpty(), is(true));
@@ -223,7 +223,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Rejuvenating Noble Gloves"));
             assertThat(item.getLevel(), is(50));
             assertThat(item.getVendorValue(), is(122));
-            assertThat(item.getRarity(), is(Rarity.Rare));
+            assertThat(item.getRarity(), is(Rarity.RARE));
             assertThat(item.getFlags().size(), is(1));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse));
             assertThat(item.getRestrictions().isEmpty(), is(true));
@@ -258,7 +258,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Tateos's Pauldrons"));
             assertThat(item.getLevel(), is(80));
             assertThat(item.getVendorValue(), is(240));
-            assertThat(item.getRarity(), is(Rarity.Ascended));
+            assertThat(item.getRarity(), is(Rarity.ASCENDED));
             assertThat(item.getFlags().size(), is(4));
             assertThat(item.getFlags(), hasItems(ItemFlags.HideSuffix, ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.AccountBound));
             assertThat(item.getRestrictions().isEmpty(), is(true));
@@ -294,7 +294,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Honed Conjurer Chest of Balthazar"));
             assertThat(item.getLevel(), is(55));
             assertThat(item.getVendorValue(), is(216));
-            assertThat(item.getRarity(), is(Rarity.Rare));
+            assertThat(item.getRarity(), is(Rarity.RARE));
             assertThat(item.getFlags().size(), is(4));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().isEmpty(), is(true));
@@ -329,7 +329,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Flamewalker Boots"));
             assertThat(item.getLevel(), is(0));
             assertThat(item.getVendorValue(), is(0));
-            assertThat(item.getRarity(), is(Rarity.Exotic));
+            assertThat(item.getRarity(), is(Rarity.EXOTIC));
             assertThat(item.getFlags().size(), is(5));
             assertThat(item.getFlags(), hasItems(ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge));
             assertThat(item.getRestrictions().isEmpty(), is(true));
@@ -363,7 +363,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Dolyak Mail"));
             assertThat(item.getLevel(), is(20));
             assertThat(item.getVendorValue(), is(1000));
-            assertThat(item.getRarity(), is(Rarity.Masterwork));
+            assertThat(item.getRarity(), is(Rarity.MASTERWORK));
             assertThat(item.getFlags().size(), is(2));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().size(), is(1));
@@ -399,7 +399,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Adept Boots"));
             assertThat(item.getLevel(), is(0));
             assertThat(item.getVendorValue(), is(0));
-            assertThat(item.getRarity(), is(Rarity.Exotic));
+            assertThat(item.getRarity(), is(Rarity.EXOTIC));
             assertThat(item.getFlags().size(), is(3));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().size(), is(1));
@@ -434,7 +434,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Scout's Coat"));
             assertThat(item.getLevel(), is(0));
             assertThat(item.getVendorValue(), is(0));
-            assertThat(item.getRarity(), is(Rarity.Exotic));
+            assertThat(item.getRarity(), is(Rarity.EXOTIC));
             assertThat(item.getFlags().size(), is(3));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().size(), is(1));
@@ -469,7 +469,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Riding Gloves"));
             assertThat(item.getLevel(), is(0));
             assertThat(item.getVendorValue(), is(0));
-            assertThat(item.getRarity(), is(Rarity.Fine));
+            assertThat(item.getRarity(), is(Rarity.FINE));
             assertThat(item.getFlags().size(), is(4));
             assertThat(item.getFlags(), hasItems(ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge));
             assertThat(item.getRestrictions().isEmpty(), is(true));
@@ -503,7 +503,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Dryad Boots"));
             assertThat(item.getLevel(), is(0));
             assertThat(item.getVendorValue(), is(0));
-            assertThat(item.getRarity(), is(Rarity.Exotic));
+            assertThat(item.getRarity(), is(Rarity.EXOTIC));
             assertThat(item.getFlags().size(), is(3));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().size(), is(1));
@@ -538,7 +538,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Drover Boots"));
             assertThat(item.getLevel(), is(0));
             assertThat(item.getVendorValue(), is(0));
-            assertThat(item.getRarity(), is(Rarity.Exotic));
+            assertThat(item.getRarity(), is(Rarity.EXOTIC));
             assertThat(item.getFlags().size(), is(3));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().size(), is(1));
@@ -573,7 +573,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Metal Aquabreather"));
             assertThat(item.getLevel(), is(60));
             assertThat(item.getVendorValue(), is(65));
-            assertThat(item.getRarity(), is(Rarity.Fine));
+            assertThat(item.getRarity(), is(Rarity.FINE));
             assertThat(item.getFlags().size(), is(5));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.HideSuffix, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire));
             assertThat(item.getRestrictions().isEmpty(), is(true));
@@ -608,7 +608,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Mighty Worn Chain Gauntlets"));
             assertThat(item.getLevel(), is(0));
             assertThat(item.getVendorValue(), is(5));
-            assertThat(item.getRarity(), is(Rarity.Basic));
+            assertThat(item.getRarity(), is(Rarity.BASIC));
             assertThat(item.getFlags().size(), is(1));
             assertThat(item.getFlags(), hasItems(ItemFlags.NotUpgradeable));
             assertThat(item.getRestrictions().isEmpty(), is(true));
@@ -643,7 +643,7 @@ public class ArmorTest {
             assertThat(item.getName(), is("Body of Koda"));
             assertThat(item.getLevel(), is(80));
             assertThat(item.getVendorValue(), is(370));
-            assertThat(item.getRarity(), is(Rarity.Exotic));
+            assertThat(item.getRarity(), is(Rarity.EXOTIC));
             assertThat(item.getFlags().size(), is(3));
             assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound));
             assertThat(item.getRestrictions().size(), is(2));

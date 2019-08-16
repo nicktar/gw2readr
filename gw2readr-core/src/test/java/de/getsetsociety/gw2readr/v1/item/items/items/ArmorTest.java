@@ -1,7 +1,12 @@
 package de.getsetsociety.gw2readr.v1.item.items.items;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.getsetsociety.gw2readr.v0.item.items.enums.*;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
+import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
+import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
 import de.getsetsociety.gw2readr.v1.item.items.entities.AttributeModifier;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v1.item.items.json.ArmorJson;
@@ -11,8 +16,19 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.*;
-import static org.junit.Assert.*;
+import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.ConditionDamage;
+import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.CritDamage;
+import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.Healing;
+import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.Power;
+import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.Precision;
+import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.Toughness;
+import static de.getsetsociety.gw2readr.v0.item.items.enums.Attribute.Vitality;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class ArmorTest {
 
@@ -56,7 +72,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(80), armor.getLevel());
 			assertEquals("Flame Legion Helm", armor.getName());
-			assertEquals(Rarity.Exotic, armor.getRarity());
+			assertEquals(Rarity.EXOTIC, armor.getRarity());
 			assertEquals(Integer.valueOf(24854), armor.getSuffixItemId());
 			assertEquals(WeightClass.Medium, armor.getWeightClass());
 			assertEquals(Integer.valueOf(330), armor.getVendorValue());
@@ -105,7 +121,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(80), armor.getLevel());
 			assertEquals("Nomad's Exalted Boots", armor.getName());
-			assertEquals(Rarity.Exotic, armor.getRarity());
+			assertEquals(Rarity.EXOTIC, armor.getRarity());
 			assertNull(armor.getSuffixItemId());
 			assertEquals(WeightClass.Light, armor.getWeightClass());
 			assertEquals(Integer.valueOf(240), armor.getVendorValue());
@@ -154,7 +170,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(80), armor.getLevel());
 			assertEquals("Khilbron's Mask", armor.getName());
-			assertEquals(Rarity.Exotic, armor.getRarity());
+			assertEquals(Rarity.EXOTIC, armor.getRarity());
 			assertEquals(Integer.valueOf(24688), armor.getSuffixItemId());
 			assertEquals(WeightClass.Light, armor.getWeightClass());
 			assertEquals(Integer.valueOf(330), armor.getVendorValue());
@@ -201,7 +217,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(70), armor.getLevel());
 			assertEquals("Berserker's Apprentice Pants", armor.getName());
-			assertEquals(Rarity.Basic, armor.getRarity());
+			assertEquals(Rarity.BASIC, armor.getRarity());
 			assertNull(armor.getSuffixItemId());
 			assertEquals(WeightClass.Light, armor.getWeightClass());
 			assertEquals(Integer.valueOf(42), armor.getVendorValue());
@@ -248,7 +264,7 @@ public class ArmorTest {
 			assertEquals(Integer.valueOf(50), armor.getLevel());
 			assertEquals("Strong Reinforced Scale Helm of Scavenging",
 					armor.getName());
-			assertEquals(Rarity.Masterwork, armor.getRarity());
+			assertEquals(Rarity.MASTERWORK, armor.getRarity());
 			assertEquals(Integer.valueOf(24736), armor.getSuffixItemId());
 			assertEquals(WeightClass.Heavy, armor.getWeightClass());
 			assertEquals(Integer.valueOf(113), armor.getVendorValue());
@@ -295,7 +311,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(50), armor.getLevel());
 			assertEquals("Rejuvenating Noble Gloves", armor.getName());
-			assertEquals(Rarity.Rare, armor.getRarity());
+			assertEquals(Rarity.RARE, armor.getRarity());
 			assertNull(armor.getSuffixItemId());
 			assertEquals(WeightClass.Medium, armor.getWeightClass());
 			assertEquals(Integer.valueOf(122), armor.getVendorValue());
@@ -351,7 +367,7 @@ public class ArmorTest {
                     .contains(InfusionSlotType.Defense));
 			assertEquals(Integer.valueOf(80), armor.getLevel());
 			assertEquals("Tateos's Pauldrons", armor.getName());
-			assertEquals(Rarity.Ascended, armor.getRarity());
+			assertEquals(Rarity.ASCENDED, armor.getRarity());
 			assertNull(armor.getSuffixItemId());
 			assertEquals(WeightClass.Heavy, armor.getWeightClass());
 			assertEquals(Integer.valueOf(240), armor.getVendorValue());
@@ -396,7 +412,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(70), armor.getLevel());
 			assertEquals("Valkyrie Prowler Boots", armor.getName());
-			assertEquals(Rarity.Fine, armor.getRarity());
+			assertEquals(Rarity.FINE, armor.getRarity());
 			assertNull(armor.getSuffixItemId());
 			assertEquals(WeightClass.Medium, armor.getWeightClass());
 			assertEquals(Integer.valueOf(72), armor.getVendorValue());
@@ -445,7 +461,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(55), armor.getLevel());
 			assertEquals("Honed Conjurer Chest of Balthazar", armor.getName());
-			assertEquals(Rarity.Rare, armor.getRarity());
+			assertEquals(Rarity.RARE, armor.getRarity());
 			assertEquals(Integer.valueOf(24764), armor.getSuffixItemId());
 			assertEquals(WeightClass.Light, armor.getWeightClass());
 			assertEquals(Integer.valueOf(216), armor.getVendorValue());
@@ -490,7 +506,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(0), armor.getLevel());
 			assertEquals("Flamewalker Boots", armor.getName());
-			assertEquals(Rarity.Exotic, armor.getRarity());
+			assertEquals(Rarity.EXOTIC, armor.getRarity());
 			assertNull(armor.getSuffixItemId());
 			assertEquals(WeightClass.Medium, armor.getWeightClass());
 			assertEquals(Integer.valueOf(0), armor.getVendorValue());
@@ -538,7 +554,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(20), armor.getLevel());
 			assertEquals("Dolyak Mail", armor.getName());
-			assertEquals(Rarity.Masterwork, armor.getRarity());
+			assertEquals(Rarity.MASTERWORK, armor.getRarity());
 			assertNull(armor.getSuffixItemId());
 			assertEquals(WeightClass.Heavy, armor.getWeightClass());
 			assertEquals(Integer.valueOf(1000), armor.getVendorValue());
@@ -588,7 +604,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(0), armor.getLevel());
 			assertEquals("Adept Boots", armor.getName());
-			assertEquals(Rarity.Exotic, armor.getRarity());
+			assertEquals(Rarity.EXOTIC, armor.getRarity());
 			assertNull(armor.getSuffixItemId());
 			assertEquals(WeightClass.Light, armor.getWeightClass());
 			assertEquals(Integer.valueOf(0), armor.getVendorValue());
@@ -638,7 +654,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(0), armor.getLevel());
 			assertEquals("Scout's Coat", armor.getName());
-			assertEquals(Rarity.Exotic, armor.getRarity());
+			assertEquals(Rarity.EXOTIC, armor.getRarity());
 			assertNull(armor.getSuffixItemId());
 			assertEquals(WeightClass.Medium, armor.getWeightClass());
 			assertEquals(Integer.valueOf(0), armor.getVendorValue());
@@ -689,7 +705,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(0), armor.getLevel());
 			assertEquals("Riding Gloves", armor.getName());
-			assertEquals(Rarity.Fine, armor.getRarity());
+			assertEquals(Rarity.FINE, armor.getRarity());
 			assertNull(armor.getSuffixItemId());
 			assertEquals(WeightClass.Clothing, armor.getWeightClass());
 			assertEquals(Integer.valueOf(0), armor.getVendorValue());
@@ -734,7 +750,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(0), armor.getLevel());
 			assertEquals("Dryad Boots", armor.getName());
-			assertEquals(Rarity.Exotic, armor.getRarity());
+			assertEquals(Rarity.EXOTIC, armor.getRarity());
 			assertNull(armor.getSuffixItemId());
 			assertEquals(WeightClass.Light, armor.getWeightClass());
 			assertEquals(Integer.valueOf(0), armor.getVendorValue());
@@ -783,7 +799,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(0), armor.getLevel());
 			assertEquals("Drover Boots", armor.getName());
-			assertEquals(Rarity.Exotic, armor.getRarity());
+			assertEquals(Rarity.EXOTIC, armor.getRarity());
 			assertNull(armor.getSuffixItemId());
 			assertEquals(WeightClass.Medium, armor.getWeightClass());
 			assertEquals(Integer.valueOf(0), armor.getVendorValue());
@@ -842,7 +858,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(60), armor.getLevel());
 			assertEquals("Metal Aquabreather", armor.getName());
-			assertEquals(Rarity.Fine, armor.getRarity());
+			assertEquals(Rarity.FINE, armor.getRarity());
 			assertNull(armor.getSuffixItemId());
 			assertEquals(WeightClass.Heavy, armor.getWeightClass());
 			assertEquals(Integer.valueOf(65), armor.getVendorValue());
@@ -888,7 +904,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(0), armor.getLevel());
 			assertEquals("Mighty Worn Chain Gauntlets", armor.getName());
-			assertEquals(Rarity.Basic, armor.getRarity());
+			assertEquals(Rarity.BASIC, armor.getRarity());
 			assertNull(armor.getSuffixItemId());
 			assertEquals(WeightClass.Heavy, armor.getWeightClass());
 			assertEquals(Integer.valueOf(5), armor.getVendorValue());
@@ -937,7 +953,7 @@ public class ArmorTest {
 			assertTrue(armor.getInfusionSlots().isEmpty());
 			assertEquals(Integer.valueOf(80), armor.getLevel());
 			assertEquals("Body of Koda", armor.getName());
-			assertEquals(Rarity.Exotic, armor.getRarity());
+			assertEquals(Rarity.EXOTIC, armor.getRarity());
 			assertEquals(Integer.valueOf(24857), armor.getSuffixItemId());
 			assertEquals(WeightClass.Heavy, armor.getWeightClass());
 			assertEquals(Integer.valueOf(370), armor.getVendorValue());

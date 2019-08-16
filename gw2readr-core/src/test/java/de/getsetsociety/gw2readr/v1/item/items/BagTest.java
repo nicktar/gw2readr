@@ -1,43 +1,21 @@
 package de.getsetsociety.gw2readr.v1.item.items;
 
-import static org.junit.Assert.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import de.getsetsociety.gw2readr.general.ObjectMapperProvider;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
+import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBag;
+import de.getsetsociety.gw2readr.v1.item.items.json.BagJson;
+import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
+import org.junit.Test;
 
 import java.util.Arrays;
 
-import org.junit.Test;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
-import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
-import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
-import de.getsetsociety.gw2readr.v1.item.items.entities.AttributeModifier;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
-import de.getsetsociety.gw2readr.v1.item.items.json.ArmorJson;
-import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBackItem;
-import de.getsetsociety.gw2readr.v1.item.items.json.BackItemJson;
-import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
-import de.getsetsociety.gw2readr.general.ObjectMapperProvider;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.ICraftingMaterial;
-import de.getsetsociety.gw2readr.v1.item.items.json.CraftingMaterialJson;
-import de.getsetsociety.gw2readr.v1.item.items.json.WeaponJson;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IWeapon;
-import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IConsumable;
-import de.getsetsociety.gw2readr.v1.item.items.json.ConsumableJson;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBag;
-import de.getsetsociety.gw2readr.v1.item.items.json.BagJson;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IContainer;
-import de.getsetsociety.gw2readr.v1.item.items.json.ContainerJson;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ContainerType;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 
 public class BagTest {
@@ -63,7 +41,7 @@ public class BagTest {
             assertEquals("18 Slot Invisible Pack", item.getName());
             assertEquals(Integer.valueOf(0),  item.getLevel());
             assertEquals(Integer.valueOf(22),  item.getVendorValue());
-            assertEquals(Rarity.Fine, item.getRarity());
+            assertEquals(Rarity.FINE, item.getRarity());
             assertTrue(item.getFlags().isEmpty());
             assertTrue(item.getRestrictions().isEmpty());
             assertEquals(Integer.valueOf(18),  item.getSize());
@@ -92,9 +70,9 @@ public class BagTest {
             assertEquals("Leather Bag", item.getName());
             assertEquals(Integer.valueOf(0),  item.getLevel());
             assertEquals(Integer.valueOf(4),  item.getVendorValue());
-            assertEquals(Rarity.Basic, item.getRarity());
+            assertEquals(Rarity.BASIC, item.getRarity());
             assertEquals(4,  item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound})));
+            assertTrue(item.getFlags().containsAll(Arrays.asList(ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound)));
             assertTrue(item.getRestrictions().isEmpty());
             assertEquals(Integer.valueOf(4),  item.getSize());
         } catch (Exception e) {
@@ -122,9 +100,9 @@ public class BagTest {
             assertEquals("10 Slot Trick-or-Treat Bag", item.getName());
             assertEquals(Integer.valueOf(0),  item.getLevel());
             assertEquals(Integer.valueOf(22),  item.getVendorValue());
-            assertEquals(Rarity.Basic, item.getRarity());
+            assertEquals(Rarity.BASIC, item.getRarity());
             assertEquals(2,  item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse, ItemFlags.SoulbindOnAcquire})));
+            assertTrue(item.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse, ItemFlags.SoulbindOnAcquire)));
             assertTrue(item.getRestrictions().isEmpty());
             assertEquals(Integer.valueOf(10),  item.getSize());
         } catch (Exception e) {
@@ -152,9 +130,9 @@ public class BagTest {
             assertEquals("Ancient Karka Shell Box", item.getName());
             assertEquals(Integer.valueOf(0),  item.getLevel());
             assertEquals(Integer.valueOf(256),  item.getVendorValue());
-            assertEquals(Rarity.Exotic, item.getRarity());
+            assertEquals(Rarity.EXOTIC, item.getRarity());
             assertEquals(5,  item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge})));
+            assertTrue(item.getFlags().containsAll(Arrays.asList(ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge)));
             assertTrue(item.getRestrictions().isEmpty());
             assertEquals(Integer.valueOf(20),  item.getSize());
         } catch (Exception e) {
@@ -182,9 +160,9 @@ public class BagTest {
             assertEquals("20 Slot Fractal Bag", item.getName());
             assertEquals(Integer.valueOf(0),  item.getLevel());
             assertEquals(Integer.valueOf(189),  item.getVendorValue());
-            assertEquals(Rarity.Rare, item.getRarity());
+            assertEquals(Rarity.RARE, item.getRarity());
             assertEquals(3,  item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.Unique, ItemFlags.AccountBindOnUse, ItemFlags.AccountBound})));
+            assertTrue(item.getFlags().containsAll(Arrays.asList(ItemFlags.Unique, ItemFlags.AccountBindOnUse, ItemFlags.AccountBound)));
             assertTrue(item.getRestrictions().isEmpty());
             assertEquals(Integer.valueOf(20),  item.getSize());
         } catch (Exception e) {

@@ -1,20 +1,22 @@
 package de.getsetsociety.gw2readr.v1.item.items;
 
-import static org.junit.Assert.*;
-
-import java.io.IOException;
-import java.util.Arrays;
-
-import org.junit.Test;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrait;
 import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
 import de.getsetsociety.gw2readr.v1.item.items.json.TraitJson;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.util.Arrays;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class TraitTest {
 
@@ -30,7 +32,7 @@ public class TraitTest {
 			assertEquals(Integer.valueOf(65841), trait.getId());
 			assertEquals("Trait Guide [Prismatic Understanding]", trait.getName());
 			assertEquals(Integer.valueOf(0), trait.getLevel());
-			assertEquals(Rarity.Rare, trait.getRarity());
+			assertEquals(Rarity.RARE, trait.getRarity());
 			assertEquals(Integer.valueOf(0), trait.getVendorValue());
 			assertEquals(Integer.valueOf(780409), trait.getIconFileId());
 			assertEquals("2DFB4EDF0408A8604100BB6A510D215CE637B03C", trait.getIconFileSignature());
@@ -41,9 +43,9 @@ public class TraitTest {
 			assertTrue(trait.getAvailableInPvPLobby());
 			assertTrue(trait.getAvailableInWvW());
 			assertEquals(4, trait.getFlags().size());
-			assertTrue(trait.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.AccountBindOnUse})));
+			assertTrue(trait.getFlags().containsAll(Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.AccountBindOnUse)));
 			assertEquals(1, trait.getRestrictions().size());
-			assertTrue(trait.getRestrictions().containsAll(Arrays.asList(new RestrictionType[] {RestrictionType.Mesmer})));
+			assertTrue(trait.getRestrictions().containsAll(Arrays.asList(RestrictionType.Mesmer)));
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("Unexpected Exception");
@@ -60,7 +62,7 @@ public class TraitTest {
 			assertEquals(Integer.valueOf(66115), trait.getId());
 			assertEquals("Trait Guide [Dogged March]", trait.getName());
 			assertEquals(Integer.valueOf(0), trait.getLevel());
-			assertEquals(Rarity.Fine, trait.getRarity());
+			assertEquals(Rarity.FINE, trait.getRarity());
 			assertEquals(Integer.valueOf(0), trait.getVendorValue());
 			assertEquals(Integer.valueOf(780413), trait.getIconFileId());
 			assertEquals("07944E932465EF2D624808557257989007D0B5DC", trait.getIconFileSignature());
@@ -71,9 +73,9 @@ public class TraitTest {
 			assertTrue(trait.getAvailableInPvPLobby());
 			assertTrue(trait.getAvailableInWvW());
 			assertEquals(4, trait.getFlags().size());
-			assertTrue(trait.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.AccountBindOnUse})));
+			assertTrue(trait.getFlags().containsAll(Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.AccountBindOnUse)));
 			assertEquals(1, trait.getRestrictions().size());
-			assertTrue(trait.getRestrictions().containsAll(Arrays.asList(new RestrictionType[] {RestrictionType.Warrior})));
+			assertTrue(trait.getRestrictions().containsAll(Arrays.asList(RestrictionType.Warrior)));
 
 		} catch (IOException e) {
 			e.printStackTrace();

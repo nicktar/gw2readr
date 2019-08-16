@@ -50,7 +50,7 @@ public class TrinketTest {
         assertThat(item.getName(), is("Large Horn"));
         assertThat(item.getLevel(), is(25));
         assertThat(item.getVendorValue(), is(34));
-        assertThat(item.getRarity(), is(Rarity.Fine));
+        assertThat(item.getRarity(), is(Rarity.FINE));
         assertThat(item.getFlags(), hasSize(5));
         assertThat(item.getFlags(), hasItems(ItemFlags.HideSuffix, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire, ItemFlags.SoulBindOnUse));
         assertThat(item.getRestrictions(), empty());

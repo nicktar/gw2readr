@@ -12,6 +12,7 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IItem;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,7 +69,7 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
     }
 
     public void setRarity(String rarity) {
-        getEntity().setRarity(Rarity.valueOf(rarity));
+        getEntity().setRarity(Rarity.valueOf(StringUtils.upperCase(rarity)));
     }
 
     @JsonProperty("vendor_value")
@@ -76,8 +77,8 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
         return getEntity().getVendorValue();
     }
 
-    public void setVendorValue(Integer vendor_value) {
-        getEntity().setVendorValue(vendor_value);
+    public void setVendorValue(Integer vendorValue) {
+        getEntity().setVendorValue(vendorValue);
     }
 
     @JsonProperty("icon_file_id")
@@ -85,8 +86,8 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
         return getEntity().getIconFileId();
     }
 
-    public void setIconFileId(Integer icon_file_id) {
-        getEntity().setIconFileId(icon_file_id);
+    public void setIconFileId(Integer iconFileId) {
+        getEntity().setIconFileId(iconFileId);
     }
 
     @JsonProperty("icon_file_signature")

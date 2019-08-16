@@ -46,7 +46,7 @@ public class TestJsonReading {
         assertEquals("Lemongrass", cm.getName());
         assertEquals(Integer.valueOf(12546), cm.getId());
         assertEquals(Integer.valueOf(80), cm.getLevel());
-        assertEquals(Rarity.Basic, cm.getRarity());
+        assertEquals(Rarity.BASIC, cm.getRarity());
         assertEquals(Integer.valueOf(9), cm.getVendorValue());
     }
 

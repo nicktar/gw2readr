@@ -1,23 +1,23 @@
 package de.getsetsociety.gw2readr.v2.item.items.json;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IItem;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
@@ -38,7 +38,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IItem;
 	@Type(value = BackItemJson.class, name = "Back") })
 public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	private Map<String, Object> additionalProperties = new HashMap<>();
 
 	@JsonProperty("name")
 	public String getName() {
@@ -73,7 +73,7 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 	}
 
 	public void setRarity(String rarity) {
-		getEntity().setRarity(Rarity.valueOf(rarity));
+		getEntity().setRarity(Rarity.valueOf(StringUtils.upperCase(rarity)));
 	}
 
 	@JsonProperty("vendor_value")
@@ -87,7 +87,7 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 
 	@JsonProperty("game_types")
 	public List<String> getGameTypes() {
-		return new ArrayList<String>();
+		return new ArrayList<>();
 	}
 
 	public void setGameTypes(List<String> gameTypes) {
@@ -109,7 +109,7 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 
 	@JsonProperty("restrictions")
 	public List<String> getRestrictions() {
-		return new ArrayList<String>();
+		return new ArrayList<>();
 	}
 
 	public void setRestrictions(List<String> restrictions) {
@@ -147,12 +147,12 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 
 	@JsonAnyGetter
 	public Map<String, Object> getAdditionalProperties() {
-		return this.additionalProperties;
+		return additionalProperties;
 	}
 
 	@JsonAnySetter
 	public void setAdditionalProperty(String name, Object value) {
-		this.additionalProperties.put(name, value);
+		additionalProperties.put(name, value);
 	}
 
 	public void setLanguage(Language language) {

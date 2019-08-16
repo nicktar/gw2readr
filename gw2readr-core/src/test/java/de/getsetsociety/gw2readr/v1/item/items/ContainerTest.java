@@ -1,43 +1,23 @@
 package de.getsetsociety.gw2readr.v1.item.items;
 
-import static org.junit.Assert.*;
-
-import java.util.Arrays;
-
-import org.junit.Test;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
+import de.getsetsociety.gw2readr.general.ObjectMapperProvider;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ContainerType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
-import de.getsetsociety.gw2readr.v1.item.items.entities.AttributeModifier;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
-import de.getsetsociety.gw2readr.v1.item.items.json.ArmorJson;
-import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBackItem;
-import de.getsetsociety.gw2readr.v1.item.items.json.BackItemJson;
-import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
-import de.getsetsociety.gw2readr.general.ObjectMapperProvider;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.ICraftingMaterial;
-import de.getsetsociety.gw2readr.v1.item.items.json.CraftingMaterialJson;
-import de.getsetsociety.gw2readr.v1.item.items.json.WeaponJson;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IWeapon;
-import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IConsumable;
-import de.getsetsociety.gw2readr.v1.item.items.json.ConsumableJson;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBag;
-import de.getsetsociety.gw2readr.v1.item.items.json.BagJson;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IContainer;
 import de.getsetsociety.gw2readr.v1.item.items.json.ContainerJson;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ContainerType;
+import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
+import org.junit.Test;
+
+import java.util.Arrays;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 
 public class ContainerTest {
@@ -63,9 +43,9 @@ public class ContainerTest {
             assertEquals("Li'l Letter Opener", item.getName());
             assertEquals(Integer.valueOf(0),  item.getLevel());
             assertEquals(Integer.valueOf(0),  item.getVendorValue());
-            assertEquals(Rarity.Fine, item.getRarity());
+            assertEquals(Rarity.FINE, item.getRarity());
             assertEquals(3,  item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound})));
+            assertTrue(item.getFlags().containsAll(Arrays.asList(ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound)));
             assertTrue(item.getRestrictions().isEmpty());
            assertEquals(ContainerType.Default, item.getContainerType());
         } catch (Exception e) {
@@ -93,9 +73,9 @@ public class ContainerTest {
             assertEquals("Fallen Adventurer's Backpack", item.getName());
             assertEquals(Integer.valueOf(0),  item.getLevel());
             assertEquals(Integer.valueOf(7),  item.getVendorValue());
-            assertEquals(Rarity.Basic, item.getRarity());
+            assertEquals(Rarity.BASIC, item.getRarity());
             assertEquals(5,  item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge})));
+            assertTrue(item.getFlags().containsAll(Arrays.asList(ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge)));
             assertTrue(item.getRestrictions().isEmpty());
            assertEquals(ContainerType.Default, item.getContainerType());
         } catch (Exception e) {
@@ -123,9 +103,9 @@ public class ContainerTest {
             assertEquals("Unidentified Blue Dye", item.getName());
             assertEquals(Integer.valueOf(0),  item.getLevel());
             assertEquals(Integer.valueOf(0),  item.getVendorValue());
-            assertEquals(Rarity.Masterwork, item.getRarity());
+            assertEquals(Rarity.MASTERWORK, item.getRarity());
             assertEquals(1,  item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSell})));
+            assertTrue(item.getFlags().containsAll(Arrays.asList(ItemFlags.NoSell)));
             assertTrue(item.getRestrictions().isEmpty());
            assertEquals(ContainerType.GiftBox, item.getContainerType());
         } catch (Exception e) {
@@ -153,9 +133,9 @@ public class ContainerTest {
             assertEquals("WvW Achievement Reward Chest", item.getName());
             assertEquals(Integer.valueOf(0),  item.getLevel());
             assertEquals(Integer.valueOf(0),  item.getVendorValue());
-            assertEquals(Rarity.Exotic, item.getRarity());
+            assertEquals(Rarity.EXOTIC, item.getRarity());
             assertEquals(6,  item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire, ItemFlags.AccountBound, ItemFlags.NoMysticForge})));
+            assertTrue(item.getFlags().containsAll(Arrays.asList(ItemFlags.NoSalvage, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire, ItemFlags.AccountBound, ItemFlags.NoMysticForge)));
             assertTrue(item.getRestrictions().isEmpty());
            assertEquals(ContainerType.Default, item.getContainerType());
         } catch (Exception e) {
@@ -183,9 +163,9 @@ public class ContainerTest {
             assertEquals("Splendid Chest", item.getName());
             assertEquals(Integer.valueOf(0),  item.getLevel());
             assertEquals(Integer.valueOf(0),  item.getVendorValue());
-            assertEquals(Rarity.Fine, item.getRarity());
+            assertEquals(Rarity.FINE, item.getRarity());
             assertEquals(5,  item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.SoulBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire, ItemFlags.NoMysticForge})));
+            assertTrue(item.getFlags().containsAll(Arrays.asList(ItemFlags.SoulBindOnUse, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire, ItemFlags.NoMysticForge)));
             assertTrue(item.getRestrictions().isEmpty());
            assertEquals(ContainerType.Default, item.getContainerType());
         } catch (Exception e) {
@@ -213,9 +193,9 @@ public class ContainerTest {
             assertEquals("Candy Corn Gobbler Pack", item.getName());
             assertEquals(Integer.valueOf(0),  item.getLevel());
             assertEquals(Integer.valueOf(0),  item.getVendorValue());
-            assertEquals(Rarity.Masterwork, item.getRarity());
+            assertEquals(Rarity.MASTERWORK, item.getRarity());
             assertEquals(5,  item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge})));
+            assertTrue(item.getFlags().containsAll(Arrays.asList(ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge)));
             assertTrue(item.getRestrictions().isEmpty());
            assertEquals(ContainerType.Default, item.getContainerType());
         } catch (Exception e) {
@@ -243,9 +223,9 @@ public class ContainerTest {
             assertEquals("Unopened Crystal Shard Kite", item.getName());
             assertEquals(Integer.valueOf(0),  item.getLevel());
             assertEquals(Integer.valueOf(0),  item.getVendorValue());
-            assertEquals(Rarity.Masterwork, item.getRarity());
+            assertEquals(Rarity.MASTERWORK, item.getRarity());
             assertEquals(3,  item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.NoSell, ItemFlags.NoUnderwater, ItemFlags.NoMysticForge})));
+            assertTrue(item.getFlags().containsAll(Arrays.asList(ItemFlags.NoSell, ItemFlags.NoUnderwater, ItemFlags.NoMysticForge)));
             assertTrue(item.getRestrictions().isEmpty());
            assertEquals(ContainerType.Default, item.getContainerType());
         } catch (Exception e) {
@@ -273,9 +253,9 @@ public class ContainerTest {
             assertEquals("Black Lion Chest (Unlocked)", item.getName());
             assertEquals(Integer.valueOf(0),  item.getLevel());
             assertEquals(Integer.valueOf(0),  item.getVendorValue());
-            assertEquals(Rarity.Fine, item.getRarity());
+            assertEquals(Rarity.FINE, item.getRarity());
             assertEquals(3,  item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound})));
+            assertTrue(item.getFlags().containsAll(Arrays.asList(ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound)));
             assertTrue(item.getRestrictions().isEmpty());
            assertEquals(ContainerType.OpenUI, item.getContainerType());
         } catch (Exception e) {
@@ -303,11 +283,11 @@ public class ContainerTest {
             assertEquals("Francisca", item.getName());
             assertEquals(Integer.valueOf(0),  item.getLevel());
             assertEquals(Integer.valueOf(0),  item.getVendorValue());
-            assertEquals(Rarity.Masterwork, item.getRarity());
+            assertEquals(Rarity.MASTERWORK, item.getRarity());
             assertEquals(3,  item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound})));
+            assertTrue(item.getFlags().containsAll(Arrays.asList(ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound)));
             assertEquals(1,  item.getRestrictions().size());
-            assertTrue(item.getRestrictions().containsAll(Arrays.asList(new RestrictionType[] {RestrictionType.Ranger})));
+            assertTrue(item.getRestrictions().containsAll(Arrays.asList(RestrictionType.Ranger)));
            assertEquals(ContainerType.Default, item.getContainerType());
         } catch (Exception e) {
            e.printStackTrace();
@@ -334,9 +314,9 @@ public class ContainerTest {
             assertEquals("Mad King's Outfit", item.getName());
             assertEquals(Integer.valueOf(0),  item.getLevel());
             assertEquals(Integer.valueOf(0),  item.getVendorValue());
-            assertEquals(Rarity.Rare, item.getRarity());
+            assertEquals(Rarity.RARE, item.getRarity());
             assertEquals(5,  item.getFlags().size());
-            assertTrue(item.getFlags().containsAll(Arrays.asList(new ItemFlags[] {ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge})));
+            assertTrue(item.getFlags().containsAll(Arrays.asList(ItemFlags.HideSuffix, ItemFlags.AccountBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoMysticForge)));
             assertTrue(item.getRestrictions().isEmpty());
            assertEquals(ContainerType.Default, item.getContainerType());
         } catch (Exception e) {

@@ -1,43 +1,18 @@
 package de.getsetsociety.gw2readr.v1.item.items;
 
-import static org.junit.Assert.*;
-
-import java.util.Arrays;
-
-import org.junit.Test;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
-import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
-import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
-import de.getsetsociety.gw2readr.v1.item.items.entities.AttributeModifier;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IAttributeModifier;
-import de.getsetsociety.gw2readr.v1.item.items.json.ArmorJson;
-import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBackItem;
-import de.getsetsociety.gw2readr.v1.item.items.json.BackItemJson;
-import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
 import de.getsetsociety.gw2readr.general.ObjectMapperProvider;
+import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ICraftingMaterial;
 import de.getsetsociety.gw2readr.v1.item.items.json.CraftingMaterialJson;
-import de.getsetsociety.gw2readr.v1.item.items.json.WeaponJson;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IWeapon;
-import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IConsumable;
-import de.getsetsociety.gw2readr.v1.item.items.json.ConsumableJson;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBag;
-import de.getsetsociety.gw2readr.v1.item.items.json.BagJson;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IContainer;
-import de.getsetsociety.gw2readr.v1.item.items.json.ContainerJson;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ContainerType;
+import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 
 public class CraftingMaterialTest {
@@ -63,7 +38,7 @@ public class CraftingMaterialTest {
             assertEquals("Lemongrass", item.getName());
             assertEquals(Integer.valueOf(80),  item.getLevel());
             assertEquals(Integer.valueOf(9),  item.getVendorValue());
-            assertEquals(Rarity.Basic, item.getRarity());
+            assertEquals(Rarity.BASIC, item.getRarity());
             assertTrue(item.getFlags().isEmpty());
             assertTrue(item.getRestrictions().isEmpty());
         } catch (Exception e) {
