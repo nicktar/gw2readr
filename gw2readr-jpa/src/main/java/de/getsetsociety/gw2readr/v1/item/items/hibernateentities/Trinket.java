@@ -1,7 +1,11 @@
 package de.getsetsociety.gw2readr.v1.item.items.hibernateentities;
 
-import java.util.HashSet;
-import java.util.Set;
+import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.TrinketType;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
@@ -14,101 +18,32 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
 
-import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.TrinketType;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
-
-@Entity
+@Data
 @Table
+@Entity
+@EqualsAndHashCode(callSuper = true)
 @PrimaryKeyJoinColumn(name = "ItemId")
 public class Trinket extends Item implements ITrinket {
 
-	private static final long serialVersionUID = -7895269575167289085L;
-	private TrinketType trinketType;
-	private Set<InfusionSlotType> infusionSlots = new HashSet<InfusionSlotType>();
-	private IInfixUpgrade infixUpgrade;
-	private Integer suffixItemId;
-
-	/*
-	 * (non-Javadoc)
-	 * @see de.getsetsociety.gw2readr.entities.ITrinket#getTrinketType()
-	 */
-	@Override
 	@Column
 	@Enumerated(EnumType.ORDINAL)
-	public TrinketType getTrinketType() {
-		return trinketType;
-	}
+	private TrinketType trinketType;
 
-	/*
-	 * (non-Javadoc)
-	 * @see de.getsetsociety.gw2readr.entities.ITrinket#setTrinketType(de.getsetsociety.armory.enums.TrinketType)
-	 */
-	@Override
-	public void setTrinketType(TrinketType trinketType) {
-		this.trinketType = trinketType;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see de.getsetsociety.gw2readr.entities.ITrinket#getInfusionSlots()
-	 */
-	@Override
+	@Column
+	@Enumerated(EnumType.ORDINAL)
 	@ElementCollection(targetClass = InfusionSlotType.class)
 	@CollectionTable(name = "TrinketFlags", joinColumns = @JoinColumn(name = "ItemId"))
-	@Column
-	@Enumerated(EnumType.ORDINAL)
-	public Set<InfusionSlotType> getInfusionSlots() {
-		return infusionSlots;
-	}
+	private Set<InfusionSlotType> infusionSlots = new HashSet<>();
 
-	/*
-	 * (non-Javadoc)
-	 * @see de.getsetsociety.gw2readr.entities.ITrinket#setInfusionSlots(java.util.Set)
-	 */
-	@Override
-	public void setInfusionSlots(Set<InfusionSlotType> infusionSlots) {
-		this.infusionSlots = infusionSlots;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see de.getsetsociety.gw2readr.entities.ITrinket#getInfixUpgrade()
-	 */
-	@Override
 	@OneToOne(orphanRemoval = true, targetEntity = InfixUpgrade.class, cascade = CascadeType.ALL)
-	public IInfixUpgrade getInfixUpgrade() {
-		return infixUpgrade;
-	}
+	private IInfixUpgrade infixUpgrade;
 
-	/*
-	 * (non-Javadoc)
-	 * @see de.getsetsociety.gw2readr.entities.ITrinket#setInfixUpgrade(de.getsetsociety.armory.entities.InfixUpgrade)
-	 */
-	@Override
-	public void setInfixUpgrade(IInfixUpgrade infixUpgrade) {
-		this.infixUpgrade = infixUpgrade;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see de.getsetsociety.gw2readr.entities.ITrinket#getSuffixItemId()
-	 */
-	@Override
 	@Column
-	public Integer getSuffixItemId() {
-		return suffixItemId;
-	}
+	private Integer suffixItemId;
 
-	/*
-	 * (non-Javadoc)
-	 * @see de.getsetsociety.gw2readr.entities.ITrinket#setSuffixItemId(java.lang.Integer)
-	 */
-	@Override
-	public void setSuffixItemId(Integer suffixItemId) {
-		this.suffixItemId = suffixItemId;
-	}
-
+	@Column
+	private Integer secondarySuffixItemId;
 }

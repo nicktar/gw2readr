@@ -1,26 +1,30 @@
 package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
-import java.util.Set;
-
 import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.TrinketType;
 
+import java.util.Set;
+
 public interface IBaseTrinket<T  extends IBaseInfixUpgrade<? extends IBaseBuff, ? extends IBaseAttributeModifier>> {
 
-	public abstract TrinketType getTrinketType();
+	TrinketType getTrinketType();
 
-	public abstract void setTrinketType(TrinketType trinketType);
+	void setTrinketType(TrinketType trinketType);
 
-	public abstract Set<InfusionSlotType> getInfusionSlots();
+	Set<InfusionSlotType> getInfusionSlots();
 
-	public abstract void setInfusionSlots(Set<InfusionSlotType> infusionSlots);
+	void setInfusionSlots(Set<InfusionSlotType> infusionSlots);
 
-	public abstract T getInfixUpgrade();
+	T getInfixUpgrade();
 
-	public abstract void setInfixUpgrade(T infixUpgrade);
+	void setInfixUpgrade(T infixUpgrade);
 
-	public abstract Integer getSuffixItemId();
+	Integer getSuffixItemId();
 
-	public abstract void setSuffixItemId(Integer suffixItemId);
+	void setSuffixItemId(Integer suffixItemId);
+
+	Integer getSecondarySuffixItemId();
+
+	void setSecondarySuffixItemId(Integer secondarySuffixItemId);
 
 }

@@ -1,0 +1,45 @@
+{
+  "item_id": "23294",
+  "name": "Large Horn",
+  "description": "",
+  "type": "Trinket",
+  "level": "25",
+  "rarity": "Fine",
+  "vendor_value": "34",
+  "icon_file_id": "66804",
+  "icon_file_signature": "AA31662624F92ADF714F9FADC8D35C9FE06D5FF3",
+  "upgrade_recipes": [],
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "HideSuffix",
+    "NoSalvage",
+    "NoSell",
+    "SoulbindOnAcquire",
+    "SoulBindOnUse"
+  ],
+  "restrictions": [],
+  "trinket": {
+    "type": "Accessory",
+    "infusion_slots": [],
+    "infix_upgrade": {
+      "id": 146,
+      "attributes": [
+        {
+          "attribute": "Power",
+          "modifier": 12
+        },
+        {
+          "attribute": "Vitality",
+          "modifier": 8
+        }
+      ]
+    },
+    "suffix_item_id": "",
+    "secondary_suffix_item_id": ""
+  }
+}

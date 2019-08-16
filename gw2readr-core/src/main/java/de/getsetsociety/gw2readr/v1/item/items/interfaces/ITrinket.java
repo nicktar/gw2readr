@@ -5,4 +5,5 @@ import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseTrinket;
 
 public interface ITrinket extends IItem, IBaseTrinket<IInfixUpgrade> {
 
+
 }

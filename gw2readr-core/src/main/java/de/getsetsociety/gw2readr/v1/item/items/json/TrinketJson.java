@@ -1,17 +1,16 @@
 package de.getsetsociety.gw2readr.v1.item.items.json;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import de.getsetsociety.gw2readr.v0.item.items.enums.TrinketType;
+import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
-import de.getsetsociety.gw2readr.v0.item.items.enums.TrinketType;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrinket;
 
 public class TrinketJson extends ItemJson<ITrinket> {
 
@@ -39,9 +38,9 @@ public class TrinketJson extends ItemJson<ITrinket> {
         private TrinketType type;
         private List<InfusionSlotJson> infusionSlots = new ArrayList<>();
         private Integer suffixItemId;
+        private Integer secondarySuffixItemId;
         private InfixUpgradeJson infixUpgrade = new InfixUpgradeJson();
-
-        private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+        private Map<String, Object> additionalProperties = new HashMap<>();
 
         @JsonProperty("type")
         public TrinketType getType() {
@@ -66,8 +65,8 @@ public class TrinketJson extends ItemJson<ITrinket> {
             return suffixItemId;
         }
 
-        public void setSuffixItemId(Integer suffix_item_id) {
-            this.suffixItemId = suffix_item_id;
+        public void setSuffixItemId(Integer suffixItemId) {
+            this.suffixItemId = suffixItemId;
         }
 
         @JsonProperty("infix_upgrade")
@@ -81,14 +80,22 @@ public class TrinketJson extends ItemJson<ITrinket> {
 
         @JsonAnyGetter
         public Map<String, Object> getAdditionalProperties() {
-            return this.additionalProperties;
+            return additionalProperties;
         }
 
         @JsonAnySetter
         public void setAdditionalProperty(String name, Object value) {
-            this.additionalProperties.put(name, value);
+            additionalProperties.put(name, value);
         }
 
+        @JsonProperty("secondary_suffix_item_id")
+        public Integer getSecondarySuffixItemId() {
+            return secondarySuffixItemId;
+        }
+
+        public void setSecondarySuffixItemId(Integer secondarySuffixItemId) {
+            this.secondarySuffixItemId = secondarySuffixItemId;
+        }
     }
 
 }
