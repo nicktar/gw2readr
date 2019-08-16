@@ -332,7 +332,7 @@ public class TestItems {
 		assertTrue(entity.getRestrictions().isEmpty());
 		assertEquals(Integer.valueOf(24654), entity.getId());
 		assertEquals("https://render.guildwars2.com/file/656ABB62BBEC39BC24D002FBE19EFCE953ABEDCD/221036.png", entity.getIcon());
-		assertEquals(UpgradeComponentType.Sigil, entity.getUpgradeComponentType());
+		assertEquals(UpgradeComponentType.SIGIL, entity.getUpgradeComponentType());
         List<UpgradeComponentFlag> upgradeComponentFlags = Arrays.asList(UpgradeComponentFlag.Axe, UpgradeComponentFlag.LongBow, UpgradeComponentFlag.ShortBow,
                 UpgradeComponentFlag.Dagger, UpgradeComponentFlag.Focus, UpgradeComponentFlag.Greatsword,
                 UpgradeComponentFlag.Hammer, UpgradeComponentFlag.Harpoon, UpgradeComponentFlag.Mace,

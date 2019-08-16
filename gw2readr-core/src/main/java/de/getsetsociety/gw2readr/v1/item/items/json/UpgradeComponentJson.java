@@ -1,19 +1,19 @@
 package de.getsetsociety.gw2readr.v1.item.items.json;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentFlag;
+import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentType;
+import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IUpgradeComponent;
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
-import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentFlag;
-import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentType;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IUpgradeComponent;
 
 public class UpgradeComponentJson extends ItemJson<IUpgradeComponent> {
 
@@ -48,8 +48,8 @@ public class UpgradeComponentJson extends ItemJson<IUpgradeComponent> {
 			return type;
 		}
 
-		public void setUpgradeComponentType(UpgradeComponentType upgradeComponentType) {
-			this.type = upgradeComponentType;
+		public void setUpgradeComponentType(String upgradeComponentType) {
+            type = UpgradeComponentType.valueOf(StringUtils.upperCase(upgradeComponentType));
 		}
 
 		@JsonProperty("flags")
@@ -90,12 +90,12 @@ public class UpgradeComponentJson extends ItemJson<IUpgradeComponent> {
 
 		@JsonAnyGetter
 		public Map<String, Object> getAdditionalProperties() {
-			return this.additionalProperties;
+			return additionalProperties;
 		}
 
 		@JsonAnySetter
 		public void setAdditionalProperty(String name, Object value) {
-			this.additionalProperties.put(name, value);
+			additionalProperties.put(name, value);
 		}
 
 		//@JsonProperty("infusion_upgrade_flags")
