@@ -39,7 +39,7 @@ public class WeaponJson extends ItemJson<IWeapon> {
 		return item;
 	}
 
-	public class WeaponDetailsJson {
+    public static class WeaponDetailsJson {
 
 		private WeaponType type;
 		private DamageType damageType;
