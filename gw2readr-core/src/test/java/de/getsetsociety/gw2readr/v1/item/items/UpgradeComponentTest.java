@@ -2,12 +2,11 @@ package de.getsetsociety.gw2readr.v1.item.items;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.getsetsociety.gw2readr.general.ObjectMapperProvider;
-import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentFlag;
 import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentType;
-import de.getsetsociety.gw2readr.v1.item.items.entities.AttributeModifier;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IUpgradeComponent;
 import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
 import de.getsetsociety.gw2readr.v1.item.items.json.UpgradeComponentJson;
@@ -31,7 +30,7 @@ public class UpgradeComponentTest {
     private ObjectMapper mapper = ObjectMapperProvider.getMapper();
 
     @Test
-    public void testContainerDefaultAccountBindOnUseNoSellAccountBoundNoRestriction061738() throws IOException {
+    public void testSuperiorSigilOfAbsorption() throws IOException {
         String content = IOUtils.toString(getClass().getResource("SuperiorSigilOfAbsorption.json"));
         ItemJson<?> itemJson = mapper.readValue(content, ItemJson.class);
         assertThat(itemJson, not(nullValue()));
@@ -57,8 +56,12 @@ public class UpgradeComponentTest {
         assertThat(item.getUpgradeRecipes(), empty());
         assertThat(item.getUpgradeComponentType(), is(UpgradeComponentType.SIGIL));
         assertThat(item.getUpgradeComponentFlags(), hasItems(UpgradeComponentFlag.ShortBow, UpgradeComponentFlag.Dagger, UpgradeComponentFlag.Focus, UpgradeComponentFlag.Greatsword, UpgradeComponentFlag.Hammer, UpgradeComponentFlag.Harpoon, UpgradeComponentFlag.Mace, UpgradeComponentFlag.Pistol, UpgradeComponentFlag.Rifle, UpgradeComponentFlag.Scepter, UpgradeComponentFlag.Shield, UpgradeComponentFlag.Speargun, UpgradeComponentFlag.Axe, UpgradeComponentFlag.Staff, UpgradeComponentFlag.Sword, UpgradeComponentFlag.Torch, UpgradeComponentFlag.Warhorn, UpgradeComponentFlag.LongBow));
-        assertThat(item.getInfusionUpgradeFlags(), empty());
-        assertThat(item.getInfixUpgrade().getId(), is(146));
-        assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.POWER, 12), new AttributeModifier(Attribute.VITALITY, 8)));
+        assertThat(item.getInfusionUpgradeFlags(), nullValue());
+        IInfixUpgrade infixUpgrade = item.getInfixUpgrade();
+        assertThat(infixUpgrade.getId(), is(1107));
+        assertThat(infixUpgrade.getAttributes(), empty());
+        assertThat(infixUpgrade.getBuff(), not(nullValue()));
+        assertThat(infixUpgrade.getBuff().getSkillId(), is(33756));
+        assertThat(infixUpgrade.getBuff().getDescription(), is("Steal 3 boons when interrupting a foe. <c=@reminder>(Cooldown against Defiant Foes: 3 Seconds)</c>"));
     }
 }
