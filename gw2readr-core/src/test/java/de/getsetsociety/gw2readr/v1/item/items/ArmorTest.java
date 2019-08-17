@@ -11,6 +11,7 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
 import de.getsetsociety.gw2readr.v1.item.items.entities.AttributeModifier;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IArmor;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v1.item.items.json.ArmorJson;
 import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
 import org.apache.commons.io.IOUtils;
@@ -19,7 +20,9 @@ import org.junit.Test;
 import java.io.IOException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
@@ -625,39 +628,87 @@ public class ArmorTest {
         }
 }
     @Test
-    public void testArmorGuardianRestrictionWarriorRestriction018160() {
+    public void testArmorGuardianRestrictionWarriorRestriction018160() throws IOException {
         String content = "{\"item_id\":\"18160\",\"name\":\"Body of Koda\",\"type\":\"Armor\",\"level\":\"80\",\"rarity\":\"Exotic\",\"vendor_value\":\"370\",\"icon_file_id\":\"218952\",\"icon_file_signature\":\"5B3D97ACE0B564D69B7B020AE94016D49E01EEFC\",\"default_skin\":\"707\",\"game_types\":[\"Activity\",\n\"Dungeon\",\n\"Pve\",\n\"Wvw\"],\"flags\":[\"AccountBound\",\n\"NoSell\",\n\"SoulBindOnUse\"],\"restrictions\":[\"Guardian\",\n\"Warrior\"],\"armor\":{\"type\":\"Leggings\",\"weight_class\":\"Heavy\",\"defense\":\"242\",\"infusion_slots\":[],\"infix_upgrade\":{\"attributes\":[{\"attribute\":\"Healing\",\"modifier\":\"67\"},\n{\"attribute\":\"Precision\",\"modifier\":\"48\"},\n{\"attribute\":\"Vitality\",\"modifier\":\"48\"}]},\"suffix_item_id\":\"24857\",\"secondary_suffix_item_id\":\"\"}}";
-        try {
-            ItemJson<?> itemJson = mapper.readValue(content, ItemJson.class);
-            assertThat(itemJson, not(nullValue()));
-            assertThat(itemJson, instanceOf(ArmorJson.class));
-            IArmor item = (IArmor) itemJson.getEntity();
-            assertThat(item.getId(), is(18160));
-            assertThat(item.getAvailableInActivity(), is(true));
-            assertThat(item.getAvailableInDungeon(), is(true));
-            assertThat(item.getAvailableInPvE(), is(true));
-            assertThat(item.getAvailableInPvP(), is(false));
-            assertThat(item.getAvailableInPvPLobby(), is(false));
-            assertThat(item.getAvailableInWvW(), is(true));
-            assertNull(item.getDescription());
-            assertThat(item.getName(), is("Body of Koda"));
-            assertThat(item.getLevel(), is(80));
-            assertThat(item.getVendorValue(), is(370));
-            assertThat(item.getRarity(), is(Rarity.EXOTIC));
-            assertThat(item.getFlags().size(), is(3));
-            assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound));
-            assertThat(item.getRestrictions().size(), is(2));
-            assertThat(item.getRestrictions(), hasItems(RestrictionType.Guardian, RestrictionType.Warrior));
-            assertThat(item.getDefense(), is(242));
-            assertThat(item.getInfixUpgrade().getAttributes().size(), is(3));
-            assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.HEALING, 67), new AttributeModifier(Attribute.PRECISION, 48), new AttributeModifier(Attribute.VITALITY, 48)));
-            assertThat(item.getInfusionSlots().isEmpty(), is(true));
-            assertThat(item.getSuffixItemId(), is(24857));
-            assertThat(item.getArmorType(), is(ArmorType.Leggings));
-            assertThat(item.getWeightClass(), is(WeightClass.Heavy));
-        } catch (Exception e) {
-           e.printStackTrace();
-            fail("Unexpected Exception");
-        }
-}
+        ItemJson<?> itemJson = mapper.readValue(content, ItemJson.class);
+        assertThat(itemJson, not(nullValue()));
+        assertThat(itemJson, instanceOf(ArmorJson.class));
+        IArmor item = (IArmor) itemJson.getEntity();
+        assertThat(item.getId(), is(18160));
+        assertThat(item.getAvailableInActivity(), is(true));
+        assertThat(item.getAvailableInDungeon(), is(true));
+        assertThat(item.getAvailableInPvE(), is(true));
+        assertThat(item.getAvailableInPvP(), is(false));
+        assertThat(item.getAvailableInPvPLobby(), is(false));
+        assertThat(item.getAvailableInWvW(), is(true));
+        assertNull(item.getDescription());
+        assertThat(item.getName(), is("Body of Koda"));
+        assertThat(item.getLevel(), is(80));
+        assertThat(item.getVendorValue(), is(370));
+        assertThat(item.getRarity(), is(Rarity.EXOTIC));
+        assertThat(item.getFlags().size(), is(3));
+        assertThat(item.getFlags(), hasItems(ItemFlags.SoulBindOnUse, ItemFlags.NoSell, ItemFlags.AccountBound));
+        assertThat(item.getRestrictions().size(), is(2));
+        assertThat(item.getRestrictions(), hasItems(RestrictionType.Guardian, RestrictionType.Warrior));
+        assertThat(item.getDefense(), is(242));
+        assertThat(item.getInfixUpgrade().getAttributes().size(), is(3));
+        assertThat(item.getInfixUpgrade().getAttributes(), hasItems(new AttributeModifier(Attribute.HEALING, 67), new AttributeModifier(Attribute.PRECISION, 48), new AttributeModifier(Attribute.VITALITY, 48)));
+        assertThat(item.getInfusionSlots().isEmpty(), is(true));
+        assertThat(item.getSuffixItemId(), is(24857));
+        assertThat(item.getArmorType(), is(ArmorType.Leggings));
+        assertThat(item.getWeightClass(), is(WeightClass.Heavy));
+    }
+
+    @Test
+    public void testVipersExaltedMasque() throws IOException {
+        ItemJson<?> itemJson = mapper.readValue(getClass().getResource("VipersExaltedMasque.json"), ItemJson.class);
+        assertThat(itemJson, not(nullValue()));
+        assertThat(itemJson, instanceOf(ArmorJson.class));
+        IArmor item = (IArmor) itemJson.getEntity();
+        assertThat(item.getId(), is(71794));
+        assertThat(item.getName(), is("Viper's Exalted Masque"));
+        assertThat(item.getLevel(), is(80));
+        assertThat(item.getRarity(), is(Rarity.EXOTIC));
+        assertThat(item.getVendorValue(), is(240));
+        assertThat(item.getIconFileId(), is(61523));
+        assertThat(item.getIconFileSignature(), is("0F2101315C12A3E75263224DEA3B946FFD0801E0"));
+        assertThat(item.getDefaultSkin(), is(185));
+        assertThat(item.getUpgradeRecipes(), empty());
+        assertThat(item.getAvailableInActivity(), is(true));
+        assertThat(item.getAvailableInDungeon(), is(true));
+        assertThat(item.getAvailableInPvE(), is(true));
+        assertThat(item.getAvailableInPvP(), is(false));
+        assertThat(item.getAvailableInPvPLobby(), is(false));
+        assertThat(item.getAvailableInWvW(), is(true));
+        assertThat(item.getFlags().size(), is(2));
+        assertThat(item.getFlags(), hasItems(ItemFlags.AccountBound, ItemFlags.SoulBindOnUse));
+        assertThat(item.getRestrictions(), empty());
+        assertThat(item.getArmorType(), is(ArmorType.Helm));
+        assertThat(item.getWeightClass(), is(WeightClass.Light));
+        assertThat(item.getDefense(), is(73));
+        assertThat(item.getInfusionSlots(), empty());
+        IInfixUpgrade infixUpgrade = item.getInfixUpgrade();
+        assertThat(infixUpgrade, not(nullValue()));
+        assertThat(infixUpgrade.getAttributes(), hasSize(4));
+        AttributeModifier power = AttributeModifier.builder()
+                .attribute(Attribute.POWER)
+                .modifier(51)
+                .build();
+        AttributeModifier precision = AttributeModifier.builder()
+                .attribute(Attribute.PRECISION)
+                .modifier(28)
+                .build();
+        AttributeModifier conditionDamage = AttributeModifier.builder()
+                .attribute(Attribute.CONDITIONDAMAGE)
+                .modifier(51)
+                .build();
+        AttributeModifier conditionDuration = AttributeModifier.builder()
+                .attribute(Attribute.CONDITIONDURATION)
+                .modifier(28)
+                .build();
+        assertThat(infixUpgrade.getAttributes(), hasItems(power, precision, conditionDamage, conditionDuration));
+        assertThat(item.getSuffixItemId(), nullValue());
+        assertThat(item.getSecondarySuffixItemId(), nullValue());
+        assertThat(item.getDescription(), nullValue());
+    }
 }

@@ -8,5 +8,6 @@ public enum Attribute {
     VITALITY,
     CONDITIONDAMAGE,
     CRITDAMAGE,
-    HEALING
+    HEALING,
+    CONDITIONDURATION
 }
