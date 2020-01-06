@@ -1,6 +1,20 @@
 package de.getsetsociety.gw2readr.v1.item;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.io.IOException;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import org.junit.Test;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import de.getsetsociety.gw2readr.general.ContentLoader;
 import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
@@ -14,17 +28,6 @@ import de.getsetsociety.gw2readr.v1.item.items.interfaces.IBag;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IConsumable;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ICraftingMaterial;
 import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
-import org.junit.Test;
-
-import java.io.IOException;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 public class TestJsonReading {
 
@@ -32,22 +35,22 @@ public class TestJsonReading {
 
     @Test
     public void testCraftingMaterialLemongrass() {
-        ICraftingMaterial cm = (ICraftingMaterial) reader.readItem(12546);
-        assertEquals(true, cm.getAvailableInActivity());
-        assertEquals(true, cm.getAvailableInDungeon());
-        assertEquals(true, cm.getAvailableInPvE());
-        assertEquals(false, cm.getAvailableInPvP());
-        assertEquals(false, cm.getAvailableInPvPLobby());
-        assertEquals(true, cm.getAvailableInWvW());
-        assertEquals("Ingredient", cm.getDescription());
-        assertTrue(cm.getFlags().isEmpty());
-        assertEquals(Integer.valueOf(219490), cm.getIconFileId());
-        assertEquals("DF5612F93A11DB5F53FECA523F50D15DBF5A9AA5", cm.getIconFileSignature());
-        assertEquals("Lemongrass", cm.getName());
-        assertEquals(Integer.valueOf(12546), cm.getId());
-        assertEquals(Integer.valueOf(80), cm.getLevel());
-        assertEquals(Rarity.BASIC, cm.getRarity());
-        assertEquals(Integer.valueOf(9), cm.getVendorValue());
+	    ICraftingMaterial cm = (ICraftingMaterial) reader.readItem(12546);
+	    assertThat(cm.getAvailableInActivity(), is(true));
+	    assertThat(cm.getAvailableInDungeon(), is(true));
+	    assertThat(cm.getAvailableInPvE(), is(true));
+	    assertThat(cm.getAvailableInPvP(), is(false));
+	    assertThat(cm.getAvailableInPvPLobby(), is(false));
+	    assertThat(cm.getAvailableInWvW(), is(true));
+	    assertThat(cm.getDescription(), is("Ingredient"));
+	    assertTrue(cm.getFlags().isEmpty());
+	    assertThat(cm.getIconFileId(), is(219490));
+	    assertThat(cm.getIconFileSignature(), is("DF5612F93A11DB5F53FECA523F50D15DBF5A9AA5"));
+	    assertThat(cm.getName(), is("Lemongrass"));
+	    assertThat(cm.getId(), is(12546));
+	    assertThat(cm.getLevel(), is(80));
+	    assertThat(cm.getRarity(), is(Rarity.BASIC));
+	    assertThat(cm.getVendorValue(), is(9));
     }
 
 
