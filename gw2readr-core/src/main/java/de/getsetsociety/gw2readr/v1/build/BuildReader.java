@@ -1,7 +1,7 @@
 package de.getsetsociety.gw2readr.v1.build;
 
 import java.io.IOException;
-import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -15,21 +15,21 @@ public class BuildReader {
 	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
 	public Integer readBuild() {
-		BuildJson build = null;
-		String content = null;
 		try {
-			content = ContentLoader.getBuildUrlContent();
-			build = OBJECT_MAPPER.readValue(content, BuildJson.class);
-			if (LOGGER.isDebugEnabled() && !build.getAdditionalProperties().isEmpty()) {
-				LOGGER.debug("Additional Information of : " + content);
-				for (Entry<String, Object> e : build.getAdditionalProperties().entrySet()) {
-					LOGGER.debug(e.getKey() + ": " + e.getValue());
-				}
+			String content = ContentLoader.getBuildUrlContent();
+			BuildJson build = OBJECT_MAPPER.readValue(content, BuildJson.class);
+			if (!build.getAdditionalProperties().isEmpty()) {
+				LOGGER.debug(() -> "Additional Information of : " + content);
+				LOGGER.debug(() -> build.getAdditionalProperties().entrySet()
+				                        .stream()
+				                        .map(e -> e.getKey() + ": " + e.getValue())
+				                        .collect(Collectors.joining("\n")));
 			}
+			return build.getBuildId();
 		} catch (IOException e) {
 			LOGGER.error("Caught exception", e);
 		}
-		return build != null? build.getBuildId(): -1;
+		return -1;
 	}
 
 }
