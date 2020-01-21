@@ -1,6 +1,27 @@
 package de.getsetsociety.gw2readr.v2.item.items;
 
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.nullValue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
+
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
+import org.apache.commons.io.IOUtils;
+import org.junit.Test;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
@@ -51,25 +72,6 @@ import de.getsetsociety.gw2readr.v2.item.items.json.TrinketJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.TrophyJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.UpgradeComponentJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.WeaponJson;
-import org.apache.commons.io.IOUtils;
-import org.junit.Test;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.hasItems;
-import static org.hamcrest.Matchers.instanceOf;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.nullValue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
 
 public class TestItems {
 
@@ -116,7 +118,7 @@ public class TestItems {
 		assertThat(entity.getAvailableInPvP(), is(false));
 		assertThat(entity.getAvailableInPvPLobby(), is(false));
 		assertThat(entity.getFlags().size(), is(1));
-		assertThat(entity.getFlags().contains(ItemFlags.SoulBindOnUse), is(true));
+		assertThat(entity.getFlags().contains(ItemFlags.SOUL_BIND_ON_USE), is(true));
 		assertThat(entity.getRestrictions().isEmpty(), is(true));
 		assertThat(entity.getId(), is(28445));
 		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/C6110F52DF5AFE0F00A56F9E143E9732176DDDE9/65015.png"));
@@ -179,8 +181,8 @@ public class TestItems {
 		assertThat(entity.getAvailableInPvP(), is(false));
 		assertThat(entity.getAvailableInPvPLobby(), is(false));
 		assertThat(entity.getFlags().size(), is(2));
-		assertThat(entity.getFlags().contains(ItemFlags.SoulBindOnUse), is(true));
-		assertThat(entity.getFlags().contains(ItemFlags.SoulbindOnAcquire), is(true));
+		assertThat(entity.getFlags().contains(ItemFlags.SOUL_BIND_ON_USE), is(true));
+		assertThat(entity.getFlags().contains(ItemFlags.SOUL_BIND_ON_ACQUIRE), is(true));
 		assertThat(entity.getRestrictions().isEmpty(), is(true));
 		assertThat(entity.getId(), is(57));
 		assertNull(entity.getSecondarySuffixItemId());
@@ -236,7 +238,7 @@ public class TestItems {
 		assertThat(entity.getAvailableInPvP(), is(false));
 		assertThat(entity.getAvailableInPvPLobby(), is(false));
 		assertThat(entity.getFlags().size(), is(1));
-		assertThat(entity.getFlags().contains(ItemFlags.NotUpgradeable), is(true));
+		assertThat(entity.getFlags().contains(ItemFlags.NOT_UPGRADEABLE), is(true));
 		assertThat(entity.getRestrictions().isEmpty(), is(true));
 		assertThat(entity.getId(), is(70));
 		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/5050F9A0AAA5324F0501B7944876F0FA29DCEB97/61008.png"));
@@ -291,9 +293,9 @@ public class TestItems {
 		assertThat(entity.getAvailableInPvP(), is(false));
 		assertThat(entity.getAvailableInPvPLobby(), is(false));
 		assertThat(entity.getFlags().size(), is(3));
-		assertThat(entity.getFlags().contains(ItemFlags.NoSell), is(true));
-		assertThat(entity.getFlags().contains(ItemFlags.SoulbindOnAcquire), is(true));
-		assertThat(entity.getFlags().contains(ItemFlags.SoulBindOnUse), is(true));
+		assertThat(entity.getFlags().contains(ItemFlags.NO_SELL), is(true));
+		assertThat(entity.getFlags().contains(ItemFlags.SOUL_BIND_ON_ACQUIRE), is(true));
+		assertThat(entity.getFlags().contains(ItemFlags.SOUL_BIND_ON_USE), is(true));
 
 		assertThat(entity.getRestrictions().isEmpty(), is(true));
 		assertThat(entity.getId(), is(2));
@@ -379,8 +381,8 @@ public class TestItems {
 		assertThat(entity.getAvailableInWvW(), is(true));
 		assertThat(entity.getAvailableInPvP(), is(false));
 		assertThat(entity.getAvailableInPvPLobby(), is(false));
-        List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSalvage,
-                ItemFlags.NoSell, ItemFlags.NotUpgradeable, ItemFlags.AccountBindOnUse);
+		List<ItemFlags> flags = Arrays.asList(ItemFlags.ACCOUNT_BOUND, ItemFlags.NO_SALVAGE,
+				ItemFlags.NO_SELL, ItemFlags.NOT_UPGRADEABLE, ItemFlags.ACCOUNT_BIND_ON_USE);
 		assertThat(entity.getFlags().size(), is(flags.size()));
 		assertThat(flags.containsAll(entity.getFlags()), is(true));
 		assertThat(entity.getRestrictions().isEmpty(), is(true));
@@ -422,8 +424,8 @@ public class TestItems {
 		assertThat(entity.getAvailableInWvW(), is(true));
 		assertThat(entity.getAvailableInPvP(), is(false));
 		assertThat(entity.getAvailableInPvPLobby(), is(false));
-        List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoMysticForge,
-                ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.AccountBindOnUse);
+		List<ItemFlags> flags = Arrays.asList(ItemFlags.ACCOUNT_BOUND, ItemFlags.NO_MYSTIC_FORGE,
+				ItemFlags.NO_SALVAGE, ItemFlags.NO_SELL, ItemFlags.ACCOUNT_BIND_ON_USE);
 		assertThat(entity.getFlags().size(), is(flags.size()));
 		assertThat(flags.containsAll(entity.getFlags()), is(true));
 		assertThat(entity.getRestrictions().isEmpty(), is(true));
@@ -463,8 +465,8 @@ public class TestItems {
 		assertThat(entity.getAvailableInWvW(), is(true));
 		assertThat(entity.getAvailableInPvP(), is(false));
 		assertThat(entity.getAvailableInPvPLobby(), is(false));
-        List<ItemFlags> flags = Arrays.asList(ItemFlags.NoSell, ItemFlags.SoulbindOnAcquire,
-                ItemFlags.SoulBindOnUse);
+		List<ItemFlags> flags = Arrays.asList(ItemFlags.NO_SELL, ItemFlags.SOUL_BIND_ON_ACQUIRE,
+				ItemFlags.SOUL_BIND_ON_USE);
 		assertThat(entity.getFlags().size(), is(flags.size()));
 		assertThat(flags.containsAll(entity.getFlags()), is(true));
 		assertThat(entity.getRestrictions().isEmpty(), is(true));
@@ -542,7 +544,7 @@ public class TestItems {
 		assertThat(entity.getAvailableInWvW(), is(true));
 		assertThat(entity.getAvailableInPvP(), is(false));
 		assertThat(entity.getAvailableInPvPLobby(), is(false));
-        List<ItemFlags> flags = Arrays.asList(ItemFlags.HideSuffix);
+		List<ItemFlags> flags = Arrays.asList(ItemFlags.HIDE_SUFFIX);
 		assertThat(entity.getFlags().size(), is(flags.size()));
 		assertThat(flags.containsAll(entity.getFlags()), is(true));
 		assertThat(entity.getRestrictions().isEmpty(), is(true));
@@ -592,7 +594,7 @@ public class TestItems {
 		assertThat(entity.getAvailableInWvW(), is(true));
 		assertThat(entity.getAvailableInPvP(), is(false));
 		assertThat(entity.getAvailableInPvPLobby(), is(false));
-        List<ItemFlags> flags = Arrays.asList(ItemFlags.NoSalvage, ItemFlags.NoSell);
+		List<ItemFlags> flags = Arrays.asList(ItemFlags.NO_SALVAGE, ItemFlags.NO_SELL);
 		assertThat(entity.getFlags().size(), is(flags.size()));
 		assertThat(flags.containsAll(entity.getFlags()), is(true));
 		assertThat(entity.getRestrictions().isEmpty(), is(true));
@@ -634,8 +636,8 @@ public class TestItems {
 		assertThat(entity.getAvailableInWvW(), is(true));
 		assertThat(entity.getAvailableInPvP(), is(false));
 		assertThat(entity.getAvailableInPvPLobby(), is(true));
-        List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell,
-                ItemFlags.AccountBindOnUse);
+		List<ItemFlags> flags = Arrays.asList(ItemFlags.ACCOUNT_BOUND, ItemFlags.NO_SALVAGE, ItemFlags.NO_SELL,
+				ItemFlags.ACCOUNT_BIND_ON_USE);
 		assertThat(entity.getFlags().size(), is(flags.size()));
 		assertThat(flags.containsAll(entity.getFlags()), is(true));
 		assertThat(entity.getRestrictions().isEmpty(), is(true));
@@ -678,8 +680,8 @@ public class TestItems {
 		assertThat(entity.getAvailableInWvW(), is(true));
 		assertThat(entity.getAvailableInPvP(), is(true));
 		assertThat(entity.getAvailableInPvPLobby(), is(true));
-        List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell,
-                ItemFlags.AccountBindOnUse);
+		List<ItemFlags> flags = Arrays.asList(ItemFlags.ACCOUNT_BOUND, ItemFlags.NO_SALVAGE, ItemFlags.NO_SELL,
+				ItemFlags.ACCOUNT_BIND_ON_USE);
 		assertThat(entity.getFlags().size(), is(flags.size()));
 		assertThat(flags.containsAll(entity.getFlags()), is(true));
 		assertThat(entity.getRestrictions().isEmpty(), is(true));
@@ -720,7 +722,7 @@ public class TestItems {
 		assertThat(entity.getAvailableInWvW(), is(true));
 		assertThat(entity.getAvailableInPvP(), is(false));
 		assertThat(entity.getAvailableInPvPLobby(), is(true));
-        List<ItemFlags> flags = Arrays.asList(ItemFlags.NoSell);
+		List<ItemFlags> flags = Arrays.asList(ItemFlags.NO_SELL);
 		assertThat(entity.getFlags().size(), is(flags.size()));
 		assertThat(flags.containsAll(entity.getFlags()), is(true));
 		assertThat(entity.getRestrictions().isEmpty(), is(true));
@@ -763,8 +765,8 @@ public class TestItems {
 		assertThat(entity.getAvailableInWvW(), is(true));
 		assertThat(entity.getAvailableInPvP(), is(false));
 		assertThat(entity.getAvailableInPvPLobby(), is(true));
-        List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSell,
-                ItemFlags.AccountBindOnUse);
+		List<ItemFlags> flags = Arrays.asList(ItemFlags.ACCOUNT_BOUND, ItemFlags.NO_SELL,
+				ItemFlags.ACCOUNT_BIND_ON_USE);
 		assertThat(entity.getFlags().size(), is(flags.size()));
 		assertThat(flags.containsAll(entity.getFlags()), is(true));
 		assertThat(entity.getRestrictions().isEmpty(), is(true));
@@ -806,8 +808,8 @@ public class TestItems {
 		assertThat(entity.getAvailableInWvW(), is(true));
 		assertThat(entity.getAvailableInPvP(), is(false));
 		assertThat(entity.getAvailableInPvPLobby(), is(false));
-        List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSell,
-                ItemFlags.AccountBindOnUse);
+		List<ItemFlags> flags = Arrays.asList(ItemFlags.ACCOUNT_BOUND, ItemFlags.NO_SELL,
+				ItemFlags.ACCOUNT_BIND_ON_USE);
 		assertThat(entity.getFlags().size(), is(flags.size()));
 		assertThat(flags.containsAll(entity.getFlags()), is(true));
 		assertThat(entity.getRestrictions().isEmpty(), is(true));
@@ -851,10 +853,10 @@ public class TestItems {
 		assertThat(entity.getAvailableInWvW(), is(true));
 		assertThat(entity.getAvailableInPvP(), is(false));
 		assertThat(entity.getAvailableInPvPLobby(), is(false));
-        List<ItemFlags> flags = Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSell, ItemFlags.AccountBindOnUse);
+		List<ItemFlags> flags = Arrays.asList(ItemFlags.ACCOUNT_BOUND, ItemFlags.NO_SELL, ItemFlags.ACCOUNT_BIND_ON_USE);
 		assertThat(entity.getFlags().size(), is(flags.size()));
 		assertThat(flags.containsAll(entity.getFlags()), is(true));
-        List<RestrictionType> restrictions = Arrays.asList(RestrictionType.Ranger);
+		List<RestrictionType> restrictions = Arrays.asList(RestrictionType.Ranger);
 		assertThat(entity.getRestrictions().size(), is(restrictions.size()));
 		assertThat(restrictions.containsAll(entity.getRestrictions()), is(true));
 		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/1B9503F466E464B34620340FEC65CFE7BBC69231/534278.png"));
@@ -892,11 +894,11 @@ public class TestItems {
 		assertThat(entity.getAvailableInWvW(), is(true));
 		assertThat(entity.getAvailableInPvP(), is(true));
 		assertThat(entity.getAvailableInPvPLobby(), is(true));
-        List<ItemFlags> flags = Arrays.asList(ItemFlags.NoSell, ItemFlags.AccountBound, ItemFlags.NoSalvage,
-                ItemFlags.AccountBindOnUse);
+		List<ItemFlags> flags = Arrays.asList(ItemFlags.NO_SELL, ItemFlags.ACCOUNT_BOUND, ItemFlags.NO_SALVAGE,
+				ItemFlags.ACCOUNT_BIND_ON_USE);
 		assertThat(entity.getFlags().size(), is(flags.size()));
 		assertThat(flags.containsAll(entity.getFlags()), is(true));
-        List<RestrictionType> restrictions = Arrays.asList(RestrictionType.Mesmer);
+		List<RestrictionType> restrictions = Arrays.asList(RestrictionType.Mesmer);
 		assertThat(entity.getRestrictions().size(), is(restrictions.size()));
 		assertThat(restrictions.containsAll(entity.getRestrictions()), is(true));
 		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/2DFB4EDF0408A8604100BB6A510D215CE637B03C/780409.png"));

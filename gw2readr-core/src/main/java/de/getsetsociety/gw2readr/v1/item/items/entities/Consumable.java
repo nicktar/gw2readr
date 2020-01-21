@@ -10,12 +10,14 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class Consumable extends Item implements IConsumable {
 
-    private ConsumableType consumableType;
-    private ConsumableUnlockType unlockType;
-    private Integer colorId;
-    private Integer durationMs;
-    private String description;
-    private Integer recipeId;
-    private Integer guildUpgradeId;
+	private ConsumableType consumableType;
+	private ConsumableUnlockType unlockType;
+	private Integer colorId;
+	private Integer durationMs;
+	private String description;
+	private Integer recipeId;
+	private Integer guildUpgradeId;
+	private Integer applyCount;
+	private String name;
 
 }

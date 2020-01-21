@@ -28,6 +28,8 @@ public class ConsumableJson extends ItemJson<IConsumable> {
 		item.setColorId(details.getColorId());
 		item.setDurationMs(details.getDurationMs());
 		item.setRecipeId(details.getRecipeId());
+		item.setApplyCount(details.getApplyCount());
+		item.setName(details.getName());
 		getAdditionalProperties().putAll(details.getAdditionalProperties());
 	}
 
@@ -38,7 +40,9 @@ public class ConsumableJson extends ItemJson<IConsumable> {
 		private Integer colorId;
 		private Integer durationMs;
 		private Integer recipeId;
-		private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+		private Integer applyCount;
+		private String name;
+		private Map<String, Object> additionalProperties = new HashMap<>();
 
 		@JsonProperty("type")
 		public ConsumableType getType() {
@@ -60,12 +64,12 @@ public class ConsumableJson extends ItemJson<IConsumable> {
 
 		@JsonAnyGetter
 		public Map<String, Object> getAdditionalProperties() {
-			return this.additionalProperties;
+			return additionalProperties;
 		}
 
 		@JsonAnySetter
 		public void setAdditionalProperty(String name, Object value) {
-			this.additionalProperties.put(name, value);
+			additionalProperties.put(name, value);
 		}
 
 		@JsonProperty("color_id")
@@ -95,6 +99,23 @@ public class ConsumableJson extends ItemJson<IConsumable> {
 			this.recipeId = recipeId;
 		}
 
+		@JsonProperty("apply_count")
+		public Integer getApplyCount() {
+			return applyCount;
+		}
+
+		public void setApplyCount(Integer applyCount) {
+			this.applyCount = applyCount;
+		}
+
+		@JsonProperty("name")
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
 	}
 
 }

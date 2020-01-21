@@ -1,23 +1,26 @@
 package de.getsetsociety.gw2readr.v2.item.items.json;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.apache.commons.lang3.StringUtils;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IItem;
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
@@ -102,9 +105,10 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 	}
 
 	public void setFlags(Set<String> flags) {
-		for (String flag : flags) {
-			getEntity().getFlags().add(ItemFlags.valueOf(flag));
-		}
+		Set<ItemFlags> itemFlags = flags.stream()
+		                                .map(ItemFlags::fromJsonString)
+		                                .collect(Collectors.toSet());
+		getEntity().getFlags().addAll(itemFlags);
 	}
 
 	@JsonProperty("restrictions")

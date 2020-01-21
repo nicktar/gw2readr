@@ -2,8 +2,6 @@ package de.getsetsociety.gw2readr.v1.item.items;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.getsetsociety.gw2readr.general.ContentLoader;
@@ -11,44 +9,29 @@ import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseItem;
 import de.getsetsociety.gw2readr.v1.item.items.entities.Item;
 import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public class ItemReader {
 
-	private static final Logger logger = Logger.getLogger(ItemReader.class);
-	private static final Object lock = new Object();
-	private volatile static ObjectMapper mapper;
-	{{
-		if (mapper == null) {
-			synchronized (lock) {
-				if (mapper == null) {
-					mapper = new ObjectMapper();
-				}
-			}
-		}
-	}}
+	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
 	public IBaseItem readItem(Integer id) {
 		return readItem(id, Language.English);
 	}
 
-	@SuppressWarnings("unchecked")
 	public IBaseItem readItem(Integer id, Language language) {
 		ItemJson<? extends Item> item = null;
 		try {
 			String content = ContentLoader.getV1ItemUrlContent(String.valueOf(id), language);
 
-			item = mapper.readValue(content, ItemJson.class);
+			item = OBJECT_MAPPER.readValue(content, ItemJson.class);
 			item.setLanguage(language);
 		} catch (IOException e) {
-			logger.error("Caught Exception", e);
-		}
-		
-		IBaseItem item2 = null;
-		if (item != null) {
-			item2 = item.getEntity();
+			LOGGER.error("Caught Exception", e);
 		}
 
-		return item2;
+		return item.getEntity();
 	}
 
 }

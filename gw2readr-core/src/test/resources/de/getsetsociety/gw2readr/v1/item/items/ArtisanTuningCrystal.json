@@ -1,0 +1,29 @@
+{
+  "item_id": "9472",
+  "name": "Artisan Tuning Crystal",
+  "type": "Consumable",
+  "level": "45",
+  "rarity": "Fine",
+  "vendor_value": "23",
+  "icon_file_id": "219371",
+  "icon_file_signature": "B670B12A2D1444920856944E1B98D60A4F28C17B",
+  "upgrade_recipes": [],
+  "game_types": [
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [],
+  "restrictions": [],
+  "consumable": {
+    "type": "Utility",
+    "duration_ms": "1800000",
+    "apply_count": 1,
+    "name": "Enhancement",
+    "icon": {
+      "file_id": 436368,
+      "signature": "64976F59BF060718C9109D36C27AD0F40F06BB32"
+    },
+    "description": "Gain Condition Damage Equal to 2% of Your Precision\nGain Condition Damage Equal to 3% of Your Expertise\n+10% Experience from Kills"
+  }
+}

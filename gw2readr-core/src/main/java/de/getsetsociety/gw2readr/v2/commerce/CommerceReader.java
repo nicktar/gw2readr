@@ -2,36 +2,25 @@ package de.getsetsociety.gw2readr.v2.commerce;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.getsetsociety.gw2readr.general.ContentLoader;
 import de.getsetsociety.gw2readr.v2.commerce.exchange.interfaces.IExchange;
 import de.getsetsociety.gw2readr.v2.commerce.exchange.json.ExchangeJson;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public class CommerceReader {
 
-	private static final Logger logger = Logger.getLogger(CommerceReader.class);
-	private static final Object lock = new Object();
-	private volatile static ObjectMapper mapper;
-	{{
-		if (mapper == null) {
-			synchronized (lock) {
-				if (mapper == null) {
-					mapper = new ObjectMapper();
-				}
-			}
-		}
-	}}
+	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
 	public IExchange readBuyCoins(Integer gems) {
 		ExchangeJson exchangeJson = null;
 		try {
 			String content = ContentLoader.getBuyCoinsUrlContent(gems);
-			exchangeJson = mapper.readValue(content, ExchangeJson.class);
+			exchangeJson = OBJECT_MAPPER.readValue(content, ExchangeJson.class);
 		} catch (IOException e) {
-			logger.error("Caught Exception", e);
+			LOGGER.error("Caught Exception", e);
 		}
 
 		IExchange exchange = null;
@@ -45,9 +34,9 @@ public class CommerceReader {
 		ExchangeJson exchangeJson = null;
 		try {
 			String content = ContentLoader.getBuyCoinsUrlContent(coins);
-			exchangeJson = mapper.readValue(content, ExchangeJson.class);
+			exchangeJson = OBJECT_MAPPER.readValue(content, ExchangeJson.class);
 		} catch (IOException e) {
-			logger.error("Caught Exception", e);
+			LOGGER.error("Caught Exception", e);
 		}
 
 		IExchange exchange = null;

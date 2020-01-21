@@ -3,8 +3,6 @@ package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableUnlockType;
 
-import java.util.List;
-
 public interface IBaseConsumable {
 
 	ConsumableUnlockType getUnlockType();
@@ -30,5 +28,13 @@ public interface IBaseConsumable {
 	Integer getGuildUpgradeId();
 
 	void setGuildUpgradeId(Integer guildUpgradeId);
+
+	String getName();
+
+	void setName(String name);
+
+	Integer getApplyCount();
+
+	void setApplyCount(Integer applyCount);
 
 }

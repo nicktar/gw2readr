@@ -1,15 +1,18 @@
 package de.getsetsociety.gw2readr.v1.item.items.json;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableUnlockType;
 import de.getsetsociety.gw2readr.v1.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.IConsumable;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class ConsumableJson extends ItemJson<IConsumable> {
 
@@ -26,7 +29,9 @@ public class ConsumableJson extends ItemJson<IConsumable> {
 		item.setConsumableType(details.getType());
 		item.setColorId(details.getColorId());
 		item.setDurationMs(details.getDurationMs());
-		item.setDescription(details.getDescription());
+		if (StringUtils.isNotEmpty(details.getDescription())) {
+			item.setDescription(details.getDescription());
+		}
 		item.setRecipeId(details.getRecipeId());
 		getAdditionalProperties().putAll(details.getAdditionalProperties());
 	}

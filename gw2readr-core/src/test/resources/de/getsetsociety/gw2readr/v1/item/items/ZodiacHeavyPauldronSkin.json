@@ -1,0 +1,34 @@
+{
+  "item_id": "43030",
+  "name": "Zodiac Heavy Pauldron Skin",
+  "description": "Double-click to apply this look to any other heavy shoulders.",
+  "type": "Consumable",
+  "level": "0",
+  "rarity": "Rare",
+  "vendor_value": "0",
+  "icon_file_id": "740310",
+  "icon_file_signature": "7103363125DE26136F03F4044DBD56CE60AD774F",
+  "upgrade_recipes": [],
+  "game_types": [
+    "PvpLobby",
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoMysticForge",
+    "NoSalvage",
+    "NoSell",
+    "DeleteWarning",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "consumable": {
+    "type": "Transmutation",
+    "skins": [
+      1348
+    ]
+  }
+}

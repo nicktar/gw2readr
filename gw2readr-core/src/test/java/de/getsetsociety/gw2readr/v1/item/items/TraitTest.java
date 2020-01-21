@@ -1,22 +1,24 @@
 package de.getsetsociety.gw2readr.v1.item.items;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.io.IOException;
+import java.util.Arrays;
+
+import org.junit.Test;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 import de.getsetsociety.gw2readr.v1.item.items.interfaces.ITrait;
 import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
 import de.getsetsociety.gw2readr.v1.item.items.json.TraitJson;
-import org.junit.Test;
-
-import java.io.IOException;
-import java.util.Arrays;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 public class TraitTest {
 
@@ -43,7 +45,7 @@ public class TraitTest {
 			assertTrue(trait.getAvailableInPvPLobby());
 			assertTrue(trait.getAvailableInWvW());
 			assertEquals(4, trait.getFlags().size());
-			assertTrue(trait.getFlags().containsAll(Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.AccountBindOnUse)));
+			assertTrue(trait.getFlags().containsAll(Arrays.asList(ItemFlags.ACCOUNT_BOUND, ItemFlags.NO_SALVAGE, ItemFlags.NO_SELL, ItemFlags.ACCOUNT_BIND_ON_USE)));
 			assertEquals(1, trait.getRestrictions().size());
 			assertTrue(trait.getRestrictions().containsAll(Arrays.asList(RestrictionType.Mesmer)));
 		} catch (IOException e) {
@@ -73,7 +75,7 @@ public class TraitTest {
 			assertTrue(trait.getAvailableInPvPLobby());
 			assertTrue(trait.getAvailableInWvW());
 			assertEquals(4, trait.getFlags().size());
-			assertTrue(trait.getFlags().containsAll(Arrays.asList(ItemFlags.AccountBound, ItemFlags.NoSalvage, ItemFlags.NoSell, ItemFlags.AccountBindOnUse)));
+			assertTrue(trait.getFlags().containsAll(Arrays.asList(ItemFlags.ACCOUNT_BOUND, ItemFlags.NO_SALVAGE, ItemFlags.NO_SELL, ItemFlags.ACCOUNT_BIND_ON_USE)));
 			assertEquals(1, trait.getRestrictions().size());
 			assertTrue(trait.getRestrictions().containsAll(Arrays.asList(RestrictionType.Warrior)));
 

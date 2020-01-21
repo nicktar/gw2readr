@@ -1,0 +1,36 @@
+{
+  "item_id": "8459",
+  "name": "Rejuvenation Booster",
+  "type": "Consumable",
+  "level": "0",
+  "rarity": "Masterwork",
+  "vendor_value": "0",
+  "icon_file_id": "434412",
+  "icon_file_signature": "0439C04FE14D6AEC802A47139F78DD6729EC63A0",
+  "upgrade_recipes": [],
+  "game_types": [
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoMysticForge",
+    "NoSalvage",
+    "NoSell",
+    "DeleteWarning",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "consumable": {
+    "type": "Immediate",
+    "duration_ms": "3600000",
+    "apply_count": 1,
+    "name": "Healthful Rejuvenation",
+    "icon": {
+      "file_id": 436370,
+      "signature": "160E9D583AA97D012042D9A92F77F8F0DFFEBE6C"
+    },
+    "description": "Regenerate health.\n<c=@reminder>Will be removed if you enter competitive PvP or a raid.</c>"
+  }
+}
