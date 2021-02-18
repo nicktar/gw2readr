@@ -136,40 +136,48 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
         return getEntity().getIconSignature();
     }
 
-	public void setIcon(String icon) {
+    public void setIcon(String icon) {
         getEntity().setIconSignature(icon);
     }
 
-	@JsonProperty("default_skin")
-	public Integer getDefaultSkin() {
-		return getEntity().getDefaultSkin();
-	}
+    @JsonProperty("default_skin")
+    public Integer getDefaultSkin() {
+        return getEntity().getDefaultSkin();
+    }
 
-	public void setDefaultSkin(Integer defaultSkin) {
-		getEntity().setDefaultSkin(defaultSkin);
-	}
+    public void setDefaultSkin(Integer defaultSkin) {
+        getEntity().setDefaultSkin(defaultSkin);
+    }
 
-	@JsonAnyGetter
-	public Map<String, Object> getAdditionalProperties() {
-		return additionalProperties;
-	}
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return additionalProperties;
+    }
 
-	@JsonAnySetter
-	public void setAdditionalProperty(String name, Object value) {
-		additionalProperties.put(name, value);
-	}
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        additionalProperties.put(name, value);
+    }
 
-	public void setLanguage(Language language) {
-		getEntity().setLanguage(language);
-	}
+    public void setLanguage(Language language) {
+        getEntity().setLanguage(language);
+    }
 
-	@JsonProperty("chat_link")
-	public String getChatLink() {
-		return getEntity().getChatLink();
-	}
+    @JsonProperty("chat_link")
+    public String getChatLink() {
+        return getEntity().getChatLink();
+    }
 
-	public void setChatLink(String chatLink) {
-		getEntity().setChatLink(chatLink);
-	}
+    public void setChatLink(String chatLink) {
+        getEntity().setChatLink(chatLink);
+    }
 
+//    protected IIcon mapIcon(IconJson icon) {
+//        return Optional.ofNullable(icon)
+//                       .map(i -> Icon.builder()
+//                                     .fileId(i.getFileId())
+//                                     .signature(i.getSignature())
+//                                     .build())
+//                       .orElse(null);
+//    }
 }

@@ -11,6 +11,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
@@ -24,77 +25,75 @@ import de.getsetsociety.gw2readr.v2.item.items.entities.AttributeModifier;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v2.item.items.json.ArmorJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
+
 public class ArmorTest {
 
-	private static ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper mapper = new ObjectMapper();
 
-	@Test
-	public void testArmor000077() {
-		String content = "{\"name\":\"Mighty Studded Coat\",\"type\":\"Armor\",\"level\":0,\"rarity\":\"Basic\",\"vendor_value\":7,\"default_skin\":17,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[\"NotUpgradeable\"],\"restrictions\":[],\"id\":77,\"icon\":\"https://render.guildwars2.com/file/5050F9A0AAA5324F0501B7944876F0FA29DCEB97/61008.png\",\"details\":{\"type\":\"Coat\",\"weight_class\":\"Medium\",\"defense\":26,\"infusion_slots\":[],\"infix_upgrade\":{\"attributes\":[{\"attribute\":\"Power\",\"modifier\":5}]},\"secondary_suffix_item_id\":\"\"}}";
-		try {
-			ItemJson<?> itemJson = mapper.readValue(content, ItemJson.class);
-			assertNotNull(itemJson);
-			assertTrue(itemJson instanceof ArmorJson);
-			IArmor armor = (IArmor)itemJson.getEntity();
-			assertEquals(ArmorType.Coat, armor.getArmorType());
-			assertTrue(armor.getAvailableInActivity());
-			assertTrue(armor.getAvailableInDungeon());
-			assertTrue(armor.getAvailableInPvE());
-			assertFalse(armor.getAvailableInPvP());
-			assertFalse(armor.getAvailableInPvPLobby());
-			assertTrue(armor.getAvailableInWvW());
-			assertEquals(Integer.valueOf(26), armor.getDefense());
-			assertNull(armor.getDescription());
-			assertFalse(armor.getFlags().isEmpty());
-			assertEquals(1, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.NOT_UPGRADEABLE)));
-			assertEquals(Integer.valueOf(77), armor.getId());
-			assertNotNull(armor.getInfixUpgrade());
-			assertEquals(1, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.POWER, 5))));
-			assertTrue(armor.getInfusionSlots().isEmpty());
-			assertEquals(Integer.valueOf(0), armor.getLevel());
-			assertEquals("Mighty Studded Coat", armor.getName());
-			assertEquals(Rarity.BASIC, armor.getRarity());
-			assertNull(armor.getSuffixItemId());
-			assertEquals(WeightClass.Medium, armor.getWeightClass());
-			assertEquals(Integer.valueOf(7), armor.getVendorValue());
-			assertTrue(armor.getRestrictions().isEmpty());
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail("Unexpected Exception");
-		}
-	}
-	@Test
-	public void testArmor000084() {
-		String content = "{\"name\":\"Zhed's Coat\",\"description\":\"\",\"type\":\"Armor\",\"level\":80,\"rarity\":\"Exotic\",\"vendor_value\":396,\"default_skin\":9,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[\"HideSuffix\",\"SoulBindOnUse\"],\"restrictions\":[],\"id\":84,\"icon\":\"https://render.guildwars2.com/file/FB0AA64F98303AE5112408EF3DC8C7307EA118F8/61011.png\",\"details\":{\"type\":\"Coat\",\"weight_class\":\"Light\",\"defense\":314,\"infusion_slots\":[],\"infix_upgrade\":{\"attributes\":[{\"attribute\":\"Power\",\"modifier\":101},{\"attribute\":\"Precision\",\"modifier\":72},{\"attribute\":\"CritDamage\",\"modifier\":72}]},\"suffix_item_id\":24788,\"secondary_suffix_item_id\":\"\"}}";
-		try {
-			ItemJson<?> itemJson = mapper.readValue(content, ItemJson.class);
-			assertNotNull(itemJson);
-			assertTrue(itemJson instanceof ArmorJson);
-			IArmor armor = (IArmor)itemJson.getEntity();
-			assertEquals(ArmorType.Coat, armor.getArmorType());
-			assertTrue(armor.getAvailableInActivity());
-			assertTrue(armor.getAvailableInDungeon());
-			assertTrue(armor.getAvailableInPvE());
-			assertFalse(armor.getAvailableInPvP());
-			assertFalse(armor.getAvailableInPvPLobby());
-			assertTrue(armor.getAvailableInWvW());
-			assertEquals(Integer.valueOf(314), armor.getDefense());
-			assertEquals("", armor.getDescription());
-			assertFalse(armor.getFlags().isEmpty());
-			assertEquals(2, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.HIDE_SUFFIX, ItemFlags.SOUL_BIND_ON_USE)));
-			assertEquals(Integer.valueOf(84), armor.getId());
-			assertNotNull(armor.getInfixUpgrade());
-			assertEquals(3, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.POWER, 101), new AttributeModifier(Attribute.PRECISION, 72), new AttributeModifier(Attribute.CRITDAMAGE, 72))));
-			assertTrue(armor.getInfusionSlots().isEmpty());
-			assertEquals(Integer.valueOf(80), armor.getLevel());
-			assertEquals("Zhed's Coat", armor.getName());
-			assertEquals(Rarity.EXOTIC, armor.getRarity());
-			assertEquals(Integer.valueOf(24788), armor.getSuffixItemId());
-			assertEquals(WeightClass.Light, armor.getWeightClass());
+    @Test
+    public void testArmor000077() throws JsonProcessingException {
+        String content = "{\"name\":\"Mighty Studded Coat\",\"type\":\"Armor\",\"level\":0,\"rarity\":\"Basic\",\"vendor_value\":7,\"default_skin\":17,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[\"NotUpgradeable\"],\"restrictions\":[],\"id\":77,\"icon\":\"https://render.guildwars2.com/file/5050F9A0AAA5324F0501B7944876F0FA29DCEB97/61008.png\",\"details\":{\"type\":\"Coat\",\"weight_class\":\"Medium\",\"defense\":26,\"infusion_slots\":[],\"infix_upgrade\":{\"attributes\":[{\"attribute\":\"Power\",\"modifier\":5}]},\"secondary_suffix_item_id\":\"\"}}";
+        ItemJson<?> itemJson = mapper.readValue(content, ItemJson.class);
+        assertNotNull(itemJson);
+        assertTrue(itemJson instanceof ArmorJson);
+        IArmor armor = (IArmor) itemJson.getEntity();
+        assertEquals(ArmorType.Coat, armor.getArmorType());
+        assertTrue(armor.getAvailableInActivity());
+        assertTrue(armor.getAvailableInDungeon());
+        assertTrue(armor.getAvailableInPvE());
+        assertFalse(armor.getAvailableInPvP());
+        assertFalse(armor.getAvailableInPvPLobby());
+        assertTrue(armor.getAvailableInWvW());
+        assertEquals(Integer.valueOf(26), armor.getDefense());
+        assertNull(armor.getDescription());
+        assertFalse(armor.getFlags().isEmpty());
+        assertEquals(1, armor.getFlags().size());
+        assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.NOT_UPGRADEABLE)));
+        assertEquals(Integer.valueOf(77), armor.getId());
+        assertNotNull(armor.getInfixUpgrade());
+        assertEquals(1, armor.getInfixUpgrade().getAttributes().size());
+        assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.POWER, 5))));
+        assertTrue(armor.getInfusionSlots().isEmpty());
+        assertEquals(Integer.valueOf(0), armor.getLevel());
+        assertEquals("Mighty Studded Coat", armor.getName());
+        assertEquals(Rarity.BASIC, armor.getRarity());
+        assertNull(armor.getSuffixItemId());
+        assertEquals(WeightClass.Medium, armor.getWeightClass());
+        assertEquals(Integer.valueOf(7), armor.getVendorValue());
+        assertTrue(armor.getRestrictions().isEmpty());
+
+    }
+
+    @Test
+    public void testArmor000084() {
+        String content = "{\"name\":\"Zhed's Coat\",\"description\":\"\",\"type\":\"Armor\",\"level\":80,\"rarity\":\"Exotic\",\"vendor_value\":396,\"default_skin\":9,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[\"HideSuffix\",\"SoulBindOnUse\"],\"restrictions\":[],\"id\":84,\"icon\":\"https://render.guildwars2.com/file/FB0AA64F98303AE5112408EF3DC8C7307EA118F8/61011.png\",\"details\":{\"type\":\"Coat\",\"weight_class\":\"Light\",\"defense\":314,\"infusion_slots\":[],\"infix_upgrade\":{\"attributes\":[{\"attribute\":\"Power\",\"modifier\":101},{\"attribute\":\"Precision\",\"modifier\":72},{\"attribute\":\"CritDamage\",\"modifier\":72}]},\"suffix_item_id\":24788,\"secondary_suffix_item_id\":\"\"}}";
+        try {
+            ItemJson<?> itemJson = mapper.readValue(content, ItemJson.class);
+            assertNotNull(itemJson);
+            assertTrue(itemJson instanceof ArmorJson);
+            IArmor armor = (IArmor) itemJson.getEntity();
+            assertEquals(ArmorType.Coat, armor.getArmorType());
+            assertTrue(armor.getAvailableInActivity());
+            assertTrue(armor.getAvailableInDungeon());
+            assertTrue(armor.getAvailableInPvE());
+            assertFalse(armor.getAvailableInPvP());
+            assertFalse(armor.getAvailableInPvPLobby());
+            assertTrue(armor.getAvailableInWvW());
+            assertEquals(Integer.valueOf(314), armor.getDefense());
+            assertEquals("", armor.getDescription());
+            assertFalse(armor.getFlags().isEmpty());
+            assertEquals(2, armor.getFlags().size());
+            assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.HIDE_SUFFIX, ItemFlags.SOUL_BIND_ON_USE)));
+            assertEquals(Integer.valueOf(84), armor.getId());
+            assertNotNull(armor.getInfixUpgrade());
+            assertEquals(3, armor.getInfixUpgrade().getAttributes().size());
+            assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.POWER, 101), new AttributeModifier(Attribute.PRECISION, 72), new AttributeModifier(Attribute.CRITDAMAGE, 72))));
+            assertTrue(armor.getInfusionSlots().isEmpty());
+            assertEquals(Integer.valueOf(80), armor.getLevel());
+            assertEquals("Zhed's Coat", armor.getName());
+            assertEquals(Rarity.EXOTIC, armor.getRarity());
+            assertEquals(Integer.valueOf(24788), armor.getSuffixItemId());
+            assertEquals(WeightClass.Light, armor.getWeightClass());
 			assertEquals(Integer.valueOf(396), armor.getVendorValue());
 			assertTrue(armor.getRestrictions().isEmpty());
 		} catch (Exception e) {

@@ -11,111 +11,61 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableUnlockType;
 import de.getsetsociety.gw2readr.v2.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IConsumable;
+import lombok.Data;
 
 public class ConsumableJson extends ItemJson<IConsumable> {
 
-	private IConsumable item = EntityFactoryProvider.getItemEntityFactory().newConsumable();
+    private final IConsumable item = EntityFactoryProvider.getItemEntityFactory().newConsumable();
 
-	@Override
-	public IConsumable getEntity() {
-		return item;
-	}
+    @Override
+    public IConsumable getEntity() {
+        return item;
+    }
 
-	@JsonProperty("details")
-	public void setConsumableDetails(ConsumableDetails details) {
-		item.setUnlockType(details.getUnlockType());
-		item.setConsumableType(details.getType());
-		item.setColorId(details.getColorId());
-		item.setDurationMs(details.getDurationMs());
-		item.setRecipeId(details.getRecipeId());
-		item.setApplyCount(details.getApplyCount());
-		item.setName(details.getName());
-		getAdditionalProperties().putAll(details.getAdditionalProperties());
-	}
+    @JsonProperty("details")
+    public void setConsumableDetails(ConsumableDetails details) {
+        item.setUnlockType(details.getUnlockType());
+        item.setConsumableType(details.getType());
+        item.setColorId(details.getColorId());
+        item.setDurationMs(details.getDurationMs());
+        item.setRecipeId(details.getRecipeId());
+        item.setApplyCount(details.getApplyCount());
+        item.setConsumableName(details.getName());
+        item.setIcon(details.getIcon());
+        getAdditionalProperties().putAll(details.getAdditionalProperties());
+    }
 
-	public static class ConsumableDetails {
+    @Data
+    public static class ConsumableDetails {
 
-		private ConsumableType type;
-		private ConsumableUnlockType unlockType;
-		private Integer colorId;
-		private Integer durationMs;
-		private Integer recipeId;
-		private Integer applyCount;
-		private String name;
-		private Map<String, Object> additionalProperties = new HashMap<>();
+        @JsonProperty("type")
+        private ConsumableType type;
+        @JsonProperty("unlock_type")
+        private ConsumableUnlockType unlockType;
+        @JsonProperty("color_id")
+        private Integer colorId;
+        @JsonProperty("duration_ms")
+        private Integer durationMs;
+        @JsonProperty("recipe_id")
+        private Integer recipeId;
+        @JsonProperty("apply_count")
+        private Integer applyCount;
+        @JsonProperty("name")
+        private String name;
+        @JsonProperty("icon")
+        private String icon;
+        private Map<String, Object> additionalProperties = new HashMap<>();
 
-		@JsonProperty("type")
-		public ConsumableType getType() {
-			return type;
-		}
 
-		public void setType(String type) {
-			this.type = ConsumableType.valueOf(type);
-		}
+        @JsonAnyGetter
+        public Map<String, Object> getAdditionalProperties() {
+            return additionalProperties;
+        }
 
-		@JsonProperty("unlock_type")
-		public ConsumableUnlockType getUnlockType() {
-			return unlockType;
-		}
-
-		public void setUnlockType(String unlockType) {
-			this.unlockType = ConsumableUnlockType.valueOf(unlockType);
-		}
-
-		@JsonAnyGetter
-		public Map<String, Object> getAdditionalProperties() {
-			return additionalProperties;
-		}
-
-		@JsonAnySetter
-		public void setAdditionalProperty(String name, Object value) {
-			additionalProperties.put(name, value);
-		}
-
-		@JsonProperty("color_id")
-		public Integer getColorId() {
-			return colorId;
-		}
-
-		public void setColorId(Integer colorId) {
-			this.colorId = colorId;
-		}
-
-		@JsonProperty("duration_ms")
-		public Integer getDurationMs() {
-			return durationMs;
-		}
-
-		public void setDurationMs(Integer durationMs) {
-			this.durationMs = durationMs;
-		}
-
-		@JsonProperty("recipe_id")
-		public Integer getRecipeId() {
-			return recipeId;
-		}
-
-		public void setRecipeId(Integer recipeId) {
-			this.recipeId = recipeId;
-		}
-
-		@JsonProperty("apply_count")
-		public Integer getApplyCount() {
-			return applyCount;
-		}
-
-		public void setApplyCount(Integer applyCount) {
-			this.applyCount = applyCount;
-		}
-
-		@JsonProperty("name")
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-	}
+        @JsonAnySetter
+        public void setAdditionalProperty(String name, Object value) {
+            additionalProperties.put(name, value);
+        }
+    }
 
 }

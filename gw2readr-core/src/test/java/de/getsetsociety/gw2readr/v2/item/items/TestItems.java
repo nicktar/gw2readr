@@ -122,20 +122,22 @@ public class TestItems {
         assertThat(entity.getRestrictions().isEmpty(), is(true));
         assertThat(entity.getId(), is(28445));
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/C6110F52DF5AFE0F00A56F9E143E9732176DDDE9/65015.png"));
-        assertThat(entity.getWeaponType(), is(WeaponType.LONGBOW));
-        assertThat(entity.getDamageType(), is(DamageType.PHYSICAL));
+        assertThat(entity.getWeaponType(), is(WeaponType.Longbow));
+        assertThat(entity.getDamageType(), is(DamageType.Physical));
         assertThat(entity.getMinPower(), is(385));
         assertThat(entity.getMaxPower(), is(452));
         assertThat(entity.getDefense(), is(0));
         assertThat(entity.getInfusionSlots().isEmpty(), is(true));
         assertThat(entity.getInfixUpgrade().getAttributes().size(), is(2));
-        AttributeModifier attributeModifier1 = new AttributeModifier();
-        attributeModifier1.setAttribute(Attribute.PRECISION);
-        attributeModifier1.setModifier(44);
+        AttributeModifier attributeModifier1 = AttributeModifier.builder()
+                                                                .attribute(Attribute.PRECISION)
+                                                                .modifier(44)
+                                                                .build();
         assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier1), is(true));
-        AttributeModifier attributeModifier2 = new AttributeModifier();
-        attributeModifier2.setAttribute(Attribute.POWER);
-        attributeModifier2.setModifier(62);
+        AttributeModifier attributeModifier2 = AttributeModifier.builder()
+                                                                .attribute(Attribute.POWER)
+                                                                .modifier(82)
+                                                                .build();
         assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier2), is(true));
         assertThat(entity.getSuffixItemId(), is(24547));
         assertNull(entity.getSecondarySuffixItemId());
@@ -189,13 +191,15 @@ public class TestItems {
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/6CF800ACB923E42F6CA40832C80694C7E0E9CB4D/61005.png"));
         assertThat(entity.getInfusionSlots().isEmpty(), is(true));
         assertThat(entity.getInfixUpgrade().getAttributes().size(), is(2));
-        AttributeModifier attributeModifier1 = new AttributeModifier();
-        attributeModifier1.setAttribute(Attribute.VITALITY);
-        attributeModifier1.setModifier(4);
+        AttributeModifier attributeModifier1 = AttributeModifier.builder()
+                                                                .attribute(Attribute.VITALITY)
+                                                                .modifier(4)
+                                                                .build();
         assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier1), is(true));
-        AttributeModifier attributeModifier2 = new AttributeModifier();
-        attributeModifier2.setAttribute(Attribute.TOUGHNESS);
-        attributeModifier2.setModifier(3);
+        AttributeModifier attributeModifier2 = AttributeModifier.builder()
+                                                                .attribute(Attribute.TOUGHNESS)
+                                                                .modifier(3)
+                                                                .build();
         assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier2), is(true));
         assertNull(entity.getSuffixItemId());
 
@@ -244,9 +248,10 @@ public class TestItems {
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/5050F9A0AAA5324F0501B7944876F0FA29DCEB97/61008.png"));
         assertThat(entity.getInfusionSlots().isEmpty(), is(true));
         assertThat(entity.getInfixUpgrade().getAttributes().size(), is(1));
-        AttributeModifier attributeModifier1 = new AttributeModifier();
-        attributeModifier1.setAttribute(Attribute.POWER);
-        attributeModifier1.setModifier(4);
+        AttributeModifier attributeModifier1 = AttributeModifier.builder()
+                                                                .attribute(Attribute.POWER)
+                                                                .modifier(4)
+                                                                .build();
         assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier1), is(true));
         assertNull(entity.getSuffixItemId());
         assertThat(entity.getArmorType(), is(ArmorType.Coat));
@@ -551,9 +556,10 @@ public class TestItems {
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/BA77541A56E7F639CCC5A379F4662EA2C55420BE/340120.png"));
         assertThat(entity.getTrinketType(), is(TrinketType.Amulet));
         assertThat(entity.getInfusionSlots().isEmpty(), is(true));
-        AttributeModifier am = new AttributeModifier();
-        am.setAttribute(Attribute.VITALITY);
-        am.setModifier(12);
+        AttributeModifier am = AttributeModifier.builder()
+                                                .attribute(Attribute.VITALITY)
+                                                .modifier(12)
+                                                .build();
         assertNotNull(entity.getInfixUpgrade());
         assertNotNull(entity.getInfixUpgrade().getAttributes());
         assertThat(entity.getInfixUpgrade().getAttributes().size(), is(1));
