@@ -1,7 +1,10 @@
 package de.getsetsociety.gw2readr.v1.item;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -17,6 +20,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.getsetsociety.gw2readr.general.ContentLoader;
 import de.getsetsociety.gw2readr.general.enums.Language;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v1.colors.AllColorsReader;
 import de.getsetsociety.gw2readr.v1.colors.interfaces.IColor;
@@ -31,7 +36,7 @@ import de.getsetsociety.gw2readr.v1.item.items.json.ItemJson;
 
 public class TestJsonReading {
 
-    private ItemReader reader = new ItemReader();
+    private final ItemReader reader = new ItemReader();
 
     @Test
     public void testCraftingMaterialLemongrass() {
@@ -66,6 +71,28 @@ public class TestJsonReading {
         IConsumable o = (IConsumable) reader.readItem(73344);
         assertNotNull(o);
 
+    }
+
+    @Test
+    public void testBloodOrange() {
+        IConsumable o = (IConsumable) reader.readItem(73351);
+        assertThat(o.getConsumableType(), is(ConsumableType.Food));
+        assertThat(o.getUnlockType(), nullValue());
+        assertThat(o.getDurationMs(), is(900000));
+        assertThat(o.getRecipeId(), nullValue());
+        assertThat(o.getName(), is("Blood Orange"));
+        assertThat(o.getLevel(), is(45));
+        assertThat(o.getRarity(), is(Rarity.EXOTIC));
+        assertThat(o.getVendorValue(), is(90));
+        assertThat(o.getAvailableInActivity(), is(true));
+        assertThat(o.getAvailableInDungeon(), is(true));
+        assertThat(o.getAvailableInPvE(), is(true));
+        assertThat(o.getAvailableInPvP(), is(false));
+        assertThat(o.getAvailableInPvPLobby(), is(false));
+        assertThat(o.getAvailableInWvW(), is(true));
+        assertThat(o.getConsumableName(), is("Nourishment"));
+        assertThat(o.getFlags(), containsInAnyOrder(ItemFlags.ACCOUNT_BIND_ON_USE, ItemFlags.ACCOUNT_BOUND, ItemFlags.DELETE_WARNING));
+        assertThat(o.getIcon(), notNullValue());
     }
 
     @Test

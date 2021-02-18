@@ -21,17 +21,17 @@ public class ItemReader {
 	}
 
 	public IBaseItem readItem(Integer id, Language language) {
-		ItemJson<? extends Item> item = null;
-		try {
-			String content = ContentLoader.getV1ItemUrlContent(String.valueOf(id), language);
+        try {
+            String content = ContentLoader.getV1ItemUrlContent(String.valueOf(id), language);
 
-			item = OBJECT_MAPPER.readValue(content, ItemJson.class);
-			item.setLanguage(language);
-		} catch (IOException e) {
-			LOGGER.error("Caught Exception", e);
-		}
+            ItemJson<? extends Item> item = OBJECT_MAPPER.readValue(content, ItemJson.class);
+            item.setLanguage(language);
+            return item.getEntity();
+        } catch (IOException e) {
+            LOGGER.error("Caught Exception", e);
+        }
 
-		return item.getEntity();
-	}
+        return null;
+    }
 
 }

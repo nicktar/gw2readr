@@ -1,7 +1,10 @@
 package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
+import java.util.Set;
+
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableUnlockType;
+import de.getsetsociety.gw2readr.v1.item.items.interfaces.IIcon;
 
 public interface IBaseConsumable {
 
@@ -27,14 +30,21 @@ public interface IBaseConsumable {
 
 	Integer getGuildUpgradeId();
 
-	void setGuildUpgradeId(Integer guildUpgradeId);
+    void setGuildUpgradeId(Integer guildUpgradeId);
 
-	String getName();
+    String getConsumableName();
 
-	void setName(String name);
+    void setConsumableName(String name);
 
-	Integer getApplyCount();
+    Integer getApplyCount();
 
-	void setApplyCount(Integer applyCount);
+    void setApplyCount(Integer applyCount);
 
+    IIcon getIcon();
+
+    void setIcon(IIcon icon);
+
+    void setExtraRecipeIds(Set<Integer> extraRecipeIds);
+
+    Set<Integer> getExtraRecipeIds();
 }

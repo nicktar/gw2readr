@@ -1,35 +1,35 @@
 package de.getsetsociety.gw2readr.v2.item.items.interfaces;
 
+import java.util.Set;
+
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseItem;
 
-import java.util.Set;
-
 public interface IItem extends IBaseItem {
 
 	Rarity getRarity();
 
-	void setRarity(Rarity rarity);
+    void setRarity(Rarity rarity);
 
-	Set<ItemFlags> getFlags();
+    Set<ItemFlags> getFlags();
 
-	void setFlags(Set<ItemFlags> flags);
+    void setFlags(Set<ItemFlags> flags);
 
-	Set<RestrictionType> getRestrictions();
+    Set<RestrictionType> getRestrictions();
 
-	void setRestrictions(Set<RestrictionType> restrictions);
+    void setRestrictions(Set<RestrictionType> restrictions);
 
-	String getIcon();
+    String getIconSignature();
 
-	void setIcon(String icon);
+    void setIconSignature(String iconSignature);
 
-	Integer getDefaultSkin();
+    Integer getDefaultSkin();
 
-	void setDefaultSkin(Integer defaultSkin);
+    void setDefaultSkin(Integer defaultSkin);
 
-	String getChatLink();
+    String getChatLink();
 
-	void setChatLink(String chatLink);
+    void setChatLink(String chatLink);
 }
