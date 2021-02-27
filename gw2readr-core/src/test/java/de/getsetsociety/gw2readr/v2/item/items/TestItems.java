@@ -125,7 +125,7 @@ class TestItems {
         assertThat(entity.getRestrictions().isEmpty(), is(true));
         assertThat(entity.getId(), is(28445));
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/C6110F52DF5AFE0F00A56F9E143E9732176DDDE9/65015.png"));
-        assertThat(entity.getWeaponType(), is(WeaponType.Longbow));
+        assertThat(entity.getWeaponType(), is(WeaponType.LONG_BOW));
         assertThat(entity.getDamageType(), is(DamageType.Physical));
         assertThat(entity.getMinPower(), is(385));
         assertThat(entity.getMaxPower(), is(452));
@@ -1023,6 +1023,19 @@ class TestItems {
         IWeapon item = ((WeaponJson) value).getEntity();
         assertThat(item.getName(), is("Primordus Staff"));
         assertThat(item.getStatChoices(), containsInAnyOrder(154, 158, 161));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
+    @Test
+    void testCarrionPrimordusLongbowForLongBow() throws IOException {
+        URL resource = getClass().getResource("13632.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(WeaponJson.class));
+        IWeapon item = ((WeaponJson) value).getEntity();
+        assertThat(item.getName(), is("Carrion Primordus Longbow"));
+        assertThat(item.getWeaponType(), is(WeaponType.LONG_BOW));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 }
