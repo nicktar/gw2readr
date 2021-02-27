@@ -8,29 +8,29 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum ConsumableType {
     @JsonProperty("Unlock")
-    Unlock,
+    UNLOCK,
     @JsonProperty("Transmutation")
-    Transmutation,
+    TRANSMUTATION,
     @JsonProperty("Food")
-    Food,
+    FOOD,
     @JsonProperty("Generic")
-    Generic,
+    GENERIC,
     @JsonProperty("Utility")
-    Utility,
+    UTILITY,
     @JsonProperty("Booze")
-    Booze,
+    BOOZE,
     @JsonProperty("UnTransmutation")
-    UnTransmutation,
+    UN_TRANSMUTATION,
     @JsonProperty("Halloween")
-    Halloween,
+    HALLOWEEN,
     @JsonProperty("AppearanceChange")
-    AppearanceChange,
+    APPEARANCE_CHANGE,
     @JsonProperty("ContractNpc")
-    ContractNpc,
+    CONTRACT_NPC,
     @JsonProperty("UpgradeRemoval")
-    UpgradeRemoval,
+    UPGRADE_REMOVAL,
     @JsonProperty("Immediate")
-    Immediate,
+    IMMEDIATE,
     @JsonProperty("Unknown")
-    Unknown
+    UNKNOWN
 }

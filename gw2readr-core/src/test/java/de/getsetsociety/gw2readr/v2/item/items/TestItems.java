@@ -308,7 +308,7 @@ class TestItems {
         assertThat(entity.getRestrictions().isEmpty(), is(true));
         assertThat(entity.getId(), is(2));
         assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/ED903431B97968C79AEC7FB21535FC015DBB0BBA/60981.png"));
-        assertThat(entity.getConsumableType(), is(ConsumableType.Food));
+        assertThat(entity.getConsumableType(), is(ConsumableType.FOOD));
     }
 
     @Test
@@ -1040,7 +1040,7 @@ class TestItems {
     }
 
     @Test
-    void testCarrionPrimordusGreatswordForgreatSword() throws IOException {
+    void testCarrionPrimordusGreatswordForGreatSword() throws IOException {
         URL resource = getClass().getResource("13695.json");
 
         ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
@@ -1049,6 +1049,19 @@ class TestItems {
         IWeapon item = ((WeaponJson) value).getEntity();
         assertThat(item.getName(), is("Carrion Primordus Greatsword"));
         assertThat(item.getWeaponType(), is(WeaponType.GREAT_SWORD));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
+    @Test
+    void testMiniBanditBruiserForMiniPet() throws IOException {
+        URL resource = getClass().getResource("20117.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(MiniPetJson.class));
+        IMiniPet item = ((MiniPetJson) value).getEntity();
+        assertThat(item.getName(), is("Mini Bandit Bruiser"));
+        assertThat(item.getMiniPet(), is(6));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 }

@@ -1,0 +1,26 @@
+{
+  "name": "Mini Bandit Bruiser",
+  "description": "Double-click to summon this mini to follow you around. Only one mini may be in use at a time.",
+  "type": "MiniPet",
+  "level": 0,
+  "rarity": "Masterwork",
+  "vendor_value": 100,
+  "game_types": [
+    "PvpLobby",
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "NoSell",
+    "DeleteWarning"
+  ],
+  "restrictions": [],
+  "id": 20117,
+  "chat_link": "[&AgGVTgAA]",
+  "icon": "https://render.guildwars2.com/file/D3F3C5BA926B0990FC30C0AAD37A3D57190B0B08/66056.png",
+  "details": {
+    "minipet_id": 6
+  }
+}
