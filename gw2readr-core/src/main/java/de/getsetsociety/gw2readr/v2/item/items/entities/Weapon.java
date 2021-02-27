@@ -26,4 +26,12 @@ public class Weapon extends Item implements IWeapon {
     private Integer secondarySuffixItemId;
     private Integer defaultSkin;
     private Double attributeAdjustment;
+    private Set<Integer> statChoices = new HashSet<>();
+
+    @Override
+    public void addAllStatChoices(Set<Integer> statChoices) {
+        if (statChoices != null) {
+            this.statChoices.addAll(statChoices);
+        }
+    }
 }

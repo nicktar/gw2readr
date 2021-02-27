@@ -1012,4 +1012,17 @@ class TestItems {
         assertThat(item.getSkins(), containsInAnyOrder(5586));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
+
+    @Test
+    void testPrimordusStaffForStatChoices() throws IOException {
+        URL resource = getClass().getResource("13585.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(WeaponJson.class));
+        IWeapon item = ((WeaponJson) value).getEntity();
+        assertThat(item.getName(), is("Primordus Staff"));
+        assertThat(item.getStatChoices(), containsInAnyOrder(154, 158, 161));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
 }
