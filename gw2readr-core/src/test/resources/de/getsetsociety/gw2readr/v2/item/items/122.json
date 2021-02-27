@@ -1,0 +1,37 @@
+{
+  "name": "Seer Coat of Rage",
+  "description": "",
+  "type": "Armor",
+  "level": 75,
+  "rarity": "Exotic",
+  "vendor_value": 372,
+  "default_skin": 9,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "SoulBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 122,
+  "chat_link": "[&AgF6AAAA]",
+  "icon": "https://render.guildwars2.com/file/FB0AA64F98303AE5112408EF3DC8C7307EA118F8/61011.png",
+  "details": {
+    "type": "Coat",
+    "weight_class": "Light",
+    "defense": 287,
+    "infusion_slots": [],
+    "attribute_adjustment": 350.1,
+    "suffix_item_id": 24717,
+    "stat_choices": [
+      161,
+      154,
+      158
+    ],
+    "secondary_suffix_item_id": ""
+  }
+}

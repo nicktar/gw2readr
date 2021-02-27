@@ -3,6 +3,7 @@ package de.getsetsociety.gw2readr.v2.item.items.json;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -35,6 +36,7 @@ public class ArmorJson extends ItemJson<IArmor> {
         item.setSuffixItemId(details.getSuffixItemId());
         item.setInfixUpgrade(details.getInfixUpgrade().getEntity());
         item.setAttributeAdjustment(details.getAttributeAdjustment());
+        item.addAllStatChoices(details.getStatChoices());
         getAdditionalProperties().putAll(details.getAdditionalProperties());
     }
 
@@ -57,6 +59,8 @@ public class ArmorJson extends ItemJson<IArmor> {
         private InfixUpgradeJson infixUpgrade = new InfixUpgradeJson();
         @JsonProperty("attribute_adjustment")
         private Double attributeAdjustment;
+        @JsonProperty("stat_choices")
+        private Set<Integer> statChoices;
 
         private Map<String, Object> additionalProperties = new HashMap<>();
 

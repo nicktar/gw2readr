@@ -1,6 +1,7 @@
 package de.getsetsociety.gw2readr.v2.item.items;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItems;
@@ -933,5 +934,17 @@ class TestItems {
         IArmor item = ((ArmorJson) value).getEntity();
         assertThat(item.getName(), is("Shirt"));
         assertThat(item.getAttributeAdjustment(), is(8.775d));
+    }
+
+    @Test
+    void testSeerCoatOfRageForStatChoices() throws IOException {
+        URL resource = getClass().getResource("122.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ArmorJson.class));
+        IArmor item = ((ArmorJson) value).getEntity();
+        assertThat(item.getName(), is("Seer Coat of Rage"));
+        assertThat(item.getStatChoices(), contains(161, 154, 158));
     }
 }

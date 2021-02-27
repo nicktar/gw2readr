@@ -23,9 +23,17 @@ public class Armor extends Item implements IArmor {
     private Integer secondarySuffixItemId;
     private IInfixUpgrade infixUpgrade;
     private Double attributeAdjustment;
+    private final Set<Integer> statChoices = new HashSet<>();
 
     @Override
     public void addInfusionSlot(InfusionSlotType infusionSlot) {
         infusionSlots.add(infusionSlot);
+    }
+
+    @Override
+    public void addAllStatChoices(Set<Integer> statChoices) {
+        if (statChoices != null) {
+            this.statChoices.addAll(statChoices);
+        }
     }
 }
