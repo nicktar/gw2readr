@@ -973,4 +973,15 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testTurquoiseCopperAmuletForAttributeAdjustment() throws IOException {
+        URL resource = getClass().getResource("13267.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(TrinketJson.class));
+        ITrinket item = ((TrinketJson) value).getEntity();
+        assertThat(item.getAttributeAdjustment(), is(42.112d));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
 }
