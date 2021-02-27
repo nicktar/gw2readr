@@ -1064,4 +1064,17 @@ class TestItems {
         assertThat(item.getMiniPet(), is(6));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
+
+    @Test
+    void testSigilOfLifeForAttributeAdjustment() throws IOException {
+        URL resource = getClass().getResource("21133.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(UpgradeComponentJson.class));
+        IUpgradeComponent item = ((UpgradeComponentJson) value).getEntity();
+        assertThat(item.getName(), is("Sigil of Life"));
+        assertThat(item.getAttributeAdjustment(), is(0d));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
 }
