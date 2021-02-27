@@ -32,6 +32,7 @@ public class ConsumableJson extends ItemJson<IConsumable> {
         item.setApplyCount(details.getApplyCount());
         item.setConsumableName(details.getName());
         item.setIcon(details.getIcon());
+        item.setDescription(details.getDescription());
         getAdditionalProperties().putAll(details.getAdditionalProperties());
     }
 
@@ -54,6 +55,8 @@ public class ConsumableJson extends ItemJson<IConsumable> {
         private String name;
         @JsonProperty("icon")
         private String icon;
+        @JsonProperty("description")
+        private String description;
         private Map<String, Object> additionalProperties = new HashMap<>();
 
 

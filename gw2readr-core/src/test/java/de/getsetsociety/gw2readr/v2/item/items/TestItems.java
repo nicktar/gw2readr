@@ -947,4 +947,18 @@ class TestItems {
         assertThat(item.getName(), is("Seer Coat of Rage"));
         assertThat(item.getStatChoices(), contains(161, 154, 158));
     }
+
+    @Test
+    void testCraftingBoosterForDescription() throws IOException {
+        URL resource = getClass().getResource("8439.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ConsumableJson.class));
+        IConsumable item = ((ConsumableJson) value).getEntity();
+        assertThat(item.getName(), is("Crafting Booster"));
+        assertThat(item.getDescription(), is("+50% chance of crafting critical experience gain."));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 }

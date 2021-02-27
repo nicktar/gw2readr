@@ -1,0 +1,32 @@
+{
+  "name": "Crafting Booster",
+  "type": "Consumable",
+  "level": 0,
+  "rarity": "Masterwork",
+  "vendor_value": 0,
+  "game_types": [
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoMysticForge",
+    "NoSalvage",
+    "NoSell",
+    "DeleteWarning",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 8439,
+  "chat_link": "[&AgH3IAAA]",
+  "icon": "https://render.guildwars2.com/file/46089D5AF06CEBA30DF72DBEB673BAC31D614A7E/66670.png",
+  "details": {
+    "type": "Immediate",
+    "duration_ms": 3600000,
+    "apply_count": 1,
+    "name": "+50% Crafting Critical Chance Boost",
+    "icon": "https://render.guildwars2.com/file/01140351276743B298037A0FCDFEE03616F4925F/436375.png",
+    "description": "+50% chance of crafting critical experience gain."
+  }
+}
