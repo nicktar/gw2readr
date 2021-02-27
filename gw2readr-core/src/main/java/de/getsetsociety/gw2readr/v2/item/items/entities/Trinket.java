@@ -20,5 +20,13 @@ public class Trinket extends Item implements ITrinket {
     private Integer suffixItemId;
     private Integer secondarySuffixItemId;
     private Double attributeAdjustment;
+    private final Set<Integer> statChoices = new HashSet<>();
 
+
+    @Override
+    public void addAllStatChoices(Set<Integer> statChoices) {
+        if (statChoices != null) {
+            this.statChoices.addAll(statChoices);
+        }
+    }
 }

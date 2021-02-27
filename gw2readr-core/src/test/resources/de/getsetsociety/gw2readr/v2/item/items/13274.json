@@ -1,0 +1,39 @@
+{
+  "name": "Sunstone Silver Pendant",
+  "description": "",
+  "type": "Trinket",
+  "level": 25,
+  "rarity": "Fine",
+  "vendor_value": 54,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "HideSuffix",
+    "AccountBound",
+    "SoulBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 13274,
+  "chat_link": "[&AgHaMwAA]",
+  "icon": "https://render.guildwars2.com/file/489E7C7ADB0F4274BDAC1AA202F8E439F6DA5BDB/340127.png",
+  "details": {
+    "type": "Amulet",
+    "infusion_slots": [],
+    "attribute_adjustment": 52.8,
+    "suffix_item_id": 24471,
+    "stat_choices": [
+      144,
+      145,
+      152,
+      142,
+      146,
+      149,
+      755
+    ],
+    "secondary_suffix_item_id": ""
+  }
+}

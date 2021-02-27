@@ -2,6 +2,7 @@ package de.getsetsociety.gw2readr.v2.item.items;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItems;
@@ -981,7 +982,21 @@ class TestItems {
 
         assertThat(value, instanceOf(TrinketJson.class));
         ITrinket item = ((TrinketJson) value).getEntity();
+        assertThat(item.getName(), is("Turquoise Copper Amulet"));
         assertThat(item.getAttributeAdjustment(), is(42.112d));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
+    @Test
+    void testSunstoneSilverPendantForStatChoices() throws IOException {
+        URL resource = getClass().getResource("13274.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(TrinketJson.class));
+        ITrinket item = ((TrinketJson) value).getEntity();
+        assertThat(item.getName(), is("Sunstone Silver Pendant"));
+        assertThat(item.getStatChoices(), containsInAnyOrder(142, 144, 145, 146, 149, 152, 755));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 }
