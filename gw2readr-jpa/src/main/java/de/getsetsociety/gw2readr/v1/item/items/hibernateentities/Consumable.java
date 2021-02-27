@@ -7,14 +7,12 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableUnlockType;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IConsumable;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IIcon;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IConsumable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -57,9 +55,13 @@ public class Consumable extends Item implements IConsumable {
     @Column
     private String name;
 
-    @OneToOne(targetEntity = Icon.class)
-    private IIcon icon;
+    @Column
+    private String icon;
 
     @ElementCollection
     private Set<Integer> extraRecipeIds;
+
+    @Column
+    private String iconSignature;
+
 }

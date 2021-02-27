@@ -6,7 +6,7 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
 
-public interface IBaseWeapon<T extends IBaseInfixUpgrade<? extends IBaseBuff, ? extends IBaseAttributeModifier>> {
+public interface IBaseWeapon<T extends IBaseInfixUpgrade<? extends IBaseBuff, ? extends IBaseAttributeModifier>> extends IAttributeAdjuster {
 
     DamageType getDamageType();
 
@@ -47,10 +47,6 @@ public interface IBaseWeapon<T extends IBaseInfixUpgrade<? extends IBaseBuff, ? 
     Integer getDefaultSkin();
 
     void setDefaultSkin(Integer defaultSkin);
-
-    void setAttributeAdjustment(Double attributeAdjustment);
-
-    Double getAttributeAdjustment();
 
 
 }

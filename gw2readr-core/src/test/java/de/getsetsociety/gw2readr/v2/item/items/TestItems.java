@@ -1,5 +1,6 @@
 package de.getsetsociety.gw2readr.v2.item.items;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItems;
@@ -7,18 +8,18 @@ import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -73,7 +74,7 @@ import de.getsetsociety.gw2readr.v2.item.items.json.TrophyJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.UpgradeComponentJson;
 import de.getsetsociety.gw2readr.v2.item.items.json.WeaponJson;
 
-public class TestItems {
+class TestItems {
 
     private static final ObjectMapper mapper = new ObjectMapper();
 
@@ -83,7 +84,7 @@ public class TestItems {
      * Precision(44) stats, no infusions, no restrictions, no secondary suffix)
      */
     @Test
-    public void testDemoJson() {
+    void testDemoJson() {
         String content = "{\"name\":\"Strong Soft Wood Longbow of Fire\",\"description\":\"\","
                 + "\"type\":\"Weapon\",\"level\":44,\"rarity\":\"Masterwork\",\"vendor_value\":120,"
                 + "\"default_skin\":\"3942\",\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\""
@@ -149,7 +150,7 @@ public class TestItems {
      * with Vitality(4) and Toughness(3) stats)
      */
     @Test
-    public void testReadingBackItem57() {
+    void testReadingBackItem57() {
         String content = "{\"name\":\"Hearty Back Brace\",\"description\":\"This equipment goes under armor and "
                 + "can hold an additional upgrade.\",\"type\":\"Back\",\"level\":0,\"rarity\":\"Basic\","
                 + "\"vendor_value\":16,\"default_skin\":\"2329\","
@@ -205,13 +206,13 @@ public class TestItems {
 
     }
 
-	/**
-	 * Tests readability of Item 70
-	 * The object is an Armor (Lvl.0 Basic Medium Coat with defense 25 worth 6 coins with Power(4) stats
-	 * that's not upgradeable)
-	 */
-	@Test
-	public void testReadingArmor70() {
+    /**
+     * Tests readability of Item 70
+     * The object is an Armor (Lvl.0 Basic Medium Coat with defense 25 worth 6 coins with Power(4) stats
+     * that's not upgradeable)
+     */
+    @Test
+    void testReadingArmor70() {
         String content = "{\"name\":\"Mighty Studded Coat\",\"type\":\"Armor\",\"level\":0,\"rarity\":\"Basic\","
                 + "\"vendor_value\":6,\"default_skin\":\"17\",\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],"
                 + "\"flags\":[\"NotUpgradeable\"],\"restrictions\":[],\"id\":70,\"icon\":\"https://render.guildwars2.com/"
@@ -260,56 +261,56 @@ public class TestItems {
         assertNull(entity.getSecondarySuffixItemId());
     }
 
-	/**
-	 * Tests the readability of Item 2
-	 * The object is a Consumable (Lvl. 0 Basic Assassin Pill that can't be sold, is soul bound on aquire and on use
-	 * and of type Food
-	 */
-	@Test
-	public void testConsumable2() {
-		String content = "{\"name\":\"Assassin Pill\",\"description\":\"Take this pill to participate in the next round of Assassin\","
-				+ "\"type\":\"Consumable\",\"level\":0,\"rarity\":\"Basic\",\"vendor_value\":0,"
-				+ "\"game_types\":[\"Dungeon\",\"Pve\",\"Wvw\"],"
-				+ "\"flags\":[\"NoSell\",\"SoulbindOnAcquire\",\"SoulBindOnUse\"],\"restrictions\":[],"
-				+ "\"id\":2,"
-				+ "\"icon\":\"https://render.guildwars2.com/file/ED903431B97968C79AEC7FB21535FC015DBB0BBA/60981.png\","
-				+ "\"details\":{\"type\":\"Food\"}}";
-		IConsumable entity = null;
-		try {
-			ItemJson<?> item = mapper.readValue(content, ItemJson.class);
-			assertNotNull(item);
-			assertThat("Expecting ConsumableJson, got " + item.getClass().getCanonicalName(), item instanceof ConsumableJson, is(true));
-			entity = ((ConsumableJson) item).getEntity();
-			assertNotNull(entity);
-			assertThat(item.getAdditionalProperties().isEmpty(), is(true));
-		} catch (IOException e) {
-			fail("Unexpected Exception");
-		}
-		assertThat(entity.getName(), is("Assassin Pill"));
-		assertThat(entity.getDescription(), is("Take this pill to participate in the next round of Assassin"));
-		assertThat(entity.getLevel(), is(0));
-		assertThat(entity.getRarity(), is(Rarity.BASIC));
-		assertThat(entity.getVendorValue(), is(0));
-		assertThat(entity.getId(), is(2));
-		assertThat(entity.getAvailableInActivity(), is(false));
-		assertThat(entity.getAvailableInDungeon(), is(true));
-		assertThat(entity.getAvailableInPvE(), is(true));
-		assertThat(entity.getAvailableInWvW(), is(true));
-		assertThat(entity.getAvailableInPvP(), is(false));
-		assertThat(entity.getAvailableInPvPLobby(), is(false));
-		assertThat(entity.getFlags().size(), is(3));
-		assertThat(entity.getFlags().contains(ItemFlags.NO_SELL), is(true));
-		assertThat(entity.getFlags().contains(ItemFlags.SOUL_BIND_ON_ACQUIRE), is(true));
-		assertThat(entity.getFlags().contains(ItemFlags.SOUL_BIND_ON_USE), is(true));
+    /**
+     * Tests the readability of Item 2
+     * The object is a Consumable (Lvl. 0 Basic Assassin Pill that can't be sold, is soul bound on aquire and on use
+     * and of type Food
+     */
+    @Test
+    void testConsumable2() {
+        String content = "{\"name\":\"Assassin Pill\",\"description\":\"Take this pill to participate in the next round of Assassin\","
+                + "\"type\":\"Consumable\",\"level\":0,\"rarity\":\"Basic\",\"vendor_value\":0,"
+                + "\"game_types\":[\"Dungeon\",\"Pve\",\"Wvw\"],"
+                + "\"flags\":[\"NoSell\",\"SoulbindOnAcquire\",\"SoulBindOnUse\"],\"restrictions\":[],"
+                + "\"id\":2,"
+                + "\"icon\":\"https://render.guildwars2.com/file/ED903431B97968C79AEC7FB21535FC015DBB0BBA/60981.png\","
+                + "\"details\":{\"type\":\"Food\"}}";
+        IConsumable entity = null;
+        try {
+            ItemJson<?> item = mapper.readValue(content, ItemJson.class);
+            assertNotNull(item);
+            assertThat("Expecting ConsumableJson, got " + item.getClass().getCanonicalName(), item instanceof ConsumableJson, is(true));
+            entity = ((ConsumableJson) item).getEntity();
+            assertNotNull(entity);
+            assertThat(item.getAdditionalProperties().isEmpty(), is(true));
+        } catch (IOException e) {
+            fail("Unexpected Exception");
+        }
+        assertThat(entity.getName(), is("Assassin Pill"));
+        assertThat(entity.getDescription(), is("Take this pill to participate in the next round of Assassin"));
+        assertThat(entity.getLevel(), is(0));
+        assertThat(entity.getRarity(), is(Rarity.BASIC));
+        assertThat(entity.getVendorValue(), is(0));
+        assertThat(entity.getId(), is(2));
+        assertThat(entity.getAvailableInActivity(), is(false));
+        assertThat(entity.getAvailableInDungeon(), is(true));
+        assertThat(entity.getAvailableInPvE(), is(true));
+        assertThat(entity.getAvailableInWvW(), is(true));
+        assertThat(entity.getAvailableInPvP(), is(false));
+        assertThat(entity.getAvailableInPvPLobby(), is(false));
+        assertThat(entity.getFlags().size(), is(3));
+        assertThat(entity.getFlags().contains(ItemFlags.NO_SELL), is(true));
+        assertThat(entity.getFlags().contains(ItemFlags.SOUL_BIND_ON_ACQUIRE), is(true));
+        assertThat(entity.getFlags().contains(ItemFlags.SOUL_BIND_ON_USE), is(true));
 
-		assertThat(entity.getRestrictions().isEmpty(), is(true));
-		assertThat(entity.getId(), is(2));
-		assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/ED903431B97968C79AEC7FB21535FC015DBB0BBA/60981.png"));
-		assertThat(entity.getConsumableType(), is(ConsumableType.Food));
-	}
+        assertThat(entity.getRestrictions().isEmpty(), is(true));
+        assertThat(entity.getId(), is(2));
+        assertThat(entity.getIcon(), is("https://render.guildwars2.com/file/ED903431B97968C79AEC7FB21535FC015DBB0BBA/60981.png"));
+        assertThat(entity.getConsumableType(), is(ConsumableType.Food));
+    }
 
-	@Test
-	public void testUpgradeComponent24654() throws IOException {
+    @Test
+    void testUpgradeComponent24654() throws IOException {
         String content = IOUtils.toString(getClass().getResource("SuperiorSigilOfDestroyerSlaying.json"));
         ItemJson<?> item = mapper.readValue(content, ItemJson.class);
         assertThat(item, not(nullValue()));
@@ -354,8 +355,8 @@ public class TestItems {
         assertThat(entity.getSuffix(), is("of Destroyer Slaying"));
     }
 
-	@Test
-	public void testTrophy8123() {
+    @Test
+    void testTrophy8123() {
         String content = "{\"name\":\"Race Track Voucher\",\"description\":"
                 + "\"Redeem this for your winnings by talking to Tigg.\",\"type\":\"Trophy\",\"level\":0,"
                 + "\"rarity\":\"Exotic\",\"vendor_value\":50,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],"
@@ -394,8 +395,8 @@ public class TestItems {
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/0FF3F1E574DCDEFA2CC60E04B22BF5291273EDC3/62856.png"));
     }
 
-	@Test
-	public void testContainer8468() {
+    @Test
+    void testContainer8468() {
         String content = "{\"name\":\"Zephyrite Rescue Pack\",\"description\":"
                 + "\"Double-click to receive the following items: 1 Speed Booster, 1 Zephyrite Color Swatch: Red, "
                 + "15 Black Lion Keys, 1 Aviator Cap Skin, 250 Piles of Sand.\",\"type\":\"Container\",\"level\":0,"
@@ -438,8 +439,8 @@ public class TestItems {
         assertThat(entity.getContainerType(), is(ContainerType.Default));
     }
 
-	@Test
-	public void testBag8932() {
+    @Test
+    void testBag8932() {
         String content = "{\"name\":\"Starter Backpack\",\"description\":\"A 20 slot bag for beginning characters.\","
                 + "\"type\":\"Bag\",\"level\":0,\"rarity\":\"Basic\",\"vendor_value\":11,"
                 + "\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],"
@@ -480,8 +481,8 @@ public class TestItems {
         assertThat(entity.getSize(), is(20));
     }
 
-	@Test
-	public void testCraftingMaterial12128() {
+    @Test
+    void testCraftingMaterial12128() {
         String content = "{\"name\":\"Omnomberry\",\"description\":\"Ingredient\",\"type\":\"CraftingMaterial\","
                 + "\"level\":80,\"rarity\":\"Basic\",\"vendor_value\":9,"
                 + "\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[],\"restrictions\":[],"
@@ -516,8 +517,8 @@ public class TestItems {
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/9C5457B024D9152906D808A53BFF67539BB94FA0/219396.png"));
     }
 
-	@Test
-	public void testTrinket13267() {
+    @Test
+    void testTrinket13267() {
         String content = "{\"name\":\"Turquoise Copper Amulet\",\"description\":\"\",\"type\":\"Trinket\",\"level\":20,"
                 + "\"rarity\":\"Fine\",\"vendor_value\":48,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],"
                 + "\"flags\":[\"HideSuffix\"],\"restrictions\":[],\"id\":13267,"
@@ -568,8 +569,8 @@ public class TestItems {
         assertNull(entity.getSecondarySuffixItemId());
     }
 
-	@Test
-	public void testTrophy19976() {
+    @Test
+    void testTrophy19976() {
         String content = "{\"name\":\"Mystic Coin\","
                 + "\"description\":\"Coins are used to create high level weapons at the mystic forge in Lion's Arch. \\n"
                 + "Part of Zommoros' favorite trades.\",\"type\":\"Trophy\",\"level\":0,\"rarity\":\"Rare\","
@@ -607,8 +608,8 @@ public class TestItems {
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/AB0317DF5B0E1BA47436A5420248660765154C08/62864.png"));
     }
 
-	@Test
-	public void testGizmo19980() {
+    @Test
+    void testGizmo19980() {
         String content = "{\"name\":\"Black Lion Chest Key\","
                 + "\"description\":\"This key will unlock one Black Lion Chest containing random Gem Store merchandise, "
                 + "including some rare items not sold separately.\\n\\n Black Lion Chests can be found randomly on enemies "
@@ -651,8 +652,8 @@ public class TestItems {
         assertThat(entity.getGizmoType(), is(GizmoType.ContainerKey));
     }
 
-	@Test
-	public void testTool19986() {
+    @Test
+    void testTool19986() {
         String content = "{\"name\":\"Black Lion Salvage Kit\","
                 + "\"description\":\"Double-click then select an item in your inventory to salvage for crafting materials. "
                 + "100% chance of recovering upgrades. 50% chance to get rarer materials.\",\"type\":\"Tool\","
@@ -696,8 +697,8 @@ public class TestItems {
         assertThat(entity.getCharges(), is(25));
     }
 
-	@Test
-	public void testMiniPet20117() {
+    @Test
+    void testMiniPet20117() {
         String content = "{\"name\":\"Mini Bandit Bruiser\","
                 + "\"description\":\"Double-click to summon this miniature to follow you around. "
                 + "Only one miniature may be in use at a time.\",\"type\":\"MiniPet\",\"level\":0,\"rarity\":\"Masterwork\","
@@ -735,8 +736,8 @@ public class TestItems {
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/D3F3C5BA926B0990FC30C0AAD37A3D57190B0B08/66056.png"));
     }
 
-	@Test
-	public void testContainer20313() {
+    @Test
+    void testContainer20313() {
         String content = "{\"name\":\"Black Lion Chest (Unlocked)\","
                 + "\"description\":\"Contains a random booster plus two more random items from the Black Lion Trading "
                 + "Company warehouse.\\nThese may include weapon tickets redeemable for unique skins and other rare items "
@@ -780,8 +781,8 @@ public class TestItems {
         assertThat(entity.getContainerType(), is(ContainerType.OpenUI));
     }
 
-	@Test
-	public void testGathering20324() {
+    @Test
+    void testGathering20324() {
         String content = "{\"name\":\"Black Lion Harvesting Sickle\","
                 + "\"description\":\"Extremely efficient at gathering resources and uncovering rare components.\","
                 + "\"type\":\"Gathering\",\"level\":0,\"rarity\":\"Rare\",\"vendor_value\":0,\"default_skin\":2385,"
@@ -823,8 +824,8 @@ public class TestItems {
         assertThat(entity.getGatheringType(), is(GatheringType.Foraging));
     }
 
-	@Test
-	public void testContainer54813() {
+    @Test
+    void testContainer54813() {
         String content = "{\"name\":\"Francisca\","
                 + "\"description\":\"A mysteriously light and well-balanced weapon that seems malleable to your "
                 + "wishes. Double-click to choose what form it should take.\",\"type\":\"Container\","
@@ -869,8 +870,8 @@ public class TestItems {
         assertThat(entity.getContainerType(), is(ContainerType.Default));
     }
 
-	@Test
-	public void testTrait65841() {
+    @Test
+    void testTrait65841() {
         String content = "{\"name\":\"Trait Guide [Prismatic Understanding]\",\"type\":\"Trait\",\"level\":0,"
                 + "\"rarity\":\"Rare\",\"vendor_value\":0,\"game_types\":[\"Dungeon\",\"Pve\",\"Pvp\",\"PvpLobby\",\"Wvw\"],"
                 + "\"flags\":[\"AccountBound\",\"NoSalvage\",\"NoSell\",\"AccountBindOnUse\"],\"restrictions\":[\"Mesmer\"],"
@@ -910,5 +911,15 @@ public class TestItems {
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/2DFB4EDF0408A8604100BB6A510D215CE637B03C/780409.png"));
     }
 
+    @Test
+    void testStrongBackBraceForAttributeAdjustment() throws IOException {
+        URL resource = getClass().getResource("56.json");
 
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(BackItemJson.class));
+        IBackItem item = ((BackItemJson) value).getEntity();
+        assertThat(item.getName(), is("Strong Back Brace"));
+        assertThat(item.getAttributeAdjustment(), is(13.585d));
+    }
 }

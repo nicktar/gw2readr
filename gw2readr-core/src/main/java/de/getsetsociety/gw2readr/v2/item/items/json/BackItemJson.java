@@ -11,19 +11,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import de.getsetsociety.gw2readr.v2.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBackItem;
+import lombok.Data;
 
 public class BackItemJson extends ItemJson<IBackItem> {
 
-    private IBackItem item = EntityFactoryProvider.getItemEntityFactory().newBackItem();
+    private final IBackItem item = EntityFactoryProvider.getItemEntityFactory().newBackItem();
 
     @JsonProperty("details")
-    public void setWeaponDetails(WeaponDetailsJson details) {
+    public void setBackItemDetails(BackItemDetails details) {
         for (InfusionSlotJson detail : details.getInfusionSlots()) {
             item.getInfusionSlots().addAll(detail.getFlags());
         }
         item.setSuffixItemId(details.getSuffixItemId());
         item.setSecondarySuffixItemId(details.getSecondarySuffixItemId());
         item.setInfixUpgrade(details.getInfixUpgrade().getEntity());
+        item.setAttributeAdjustment(details.getAttributeAdjustment());
         getAdditionalProperties().putAll(details.getAdditionalProperties());
     }
 
@@ -32,58 +34,30 @@ public class BackItemJson extends ItemJson<IBackItem> {
         return item;
     }
 
-    public class WeaponDetailsJson {
-
-        private List<InfusionSlotJson> infusionSlots = new ArrayList<>();
-        private Integer suffixItemId;
-        private Integer secondarySuffixItemId;
-        private InfixUpgradeJson infixUpgrade = new InfixUpgradeJson();
-        private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    @Data
+    private class BackItemDetails {
 
         @JsonProperty("infusion_slots")
-        public List<InfusionSlotJson> getInfusionSlots() {
-            return infusionSlots;
-        }
-
-        public void setInfusionSlots(List<InfusionSlotJson> infusionSlots) {
-            this.infusionSlots = infusionSlots;
-        }
-
+        private List<InfusionSlotJson> infusionSlots = new ArrayList<>();
         @JsonProperty("suffix_item_id")
-        public Integer getSuffixItemId() {
-            return suffixItemId;
-        }
-
-        public void setSuffixItemId(Integer suffix_item_id) {
-            this.suffixItemId = suffix_item_id;
-        }
-
-        @JsonProperty("infix_upgrade")
-        public InfixUpgradeJson getInfixUpgrade() {
-            return infixUpgrade;
-        }
-
-        public void setInfixUpgrade(InfixUpgradeJson infixUpgrade) {
-            this.infixUpgrade = infixUpgrade;
-        }
-
+        private Integer suffixItemId;
         @JsonProperty("secondary_suffix_item_id")
-        public Integer getSecondarySuffixItemId() {
-            return secondarySuffixItemId;
-        }
+        private Integer secondarySuffixItemId;
+        @JsonProperty("infix_upgrade")
+        private InfixUpgradeJson infixUpgrade = new InfixUpgradeJson();
+        @JsonProperty("attribute_adjustment")
+        private Double attributeAdjustment;
 
-        public void setSecondarySuffixItemId(Integer secondarySuffixItemId) {
-            this.secondarySuffixItemId = secondarySuffixItemId;
-        }
+        private Map<String, Object> additionalProperties = new HashMap<>();
 
         @JsonAnyGetter
         public Map<String, Object> getAdditionalProperties() {
-            return this.additionalProperties;
+            return additionalProperties;
         }
 
         @JsonAnySetter
         public void setAdditionalProperty(String name, Object value) {
-            this.additionalProperties.put(name, value);
+            additionalProperties.put(name, value);
         }
 
     }

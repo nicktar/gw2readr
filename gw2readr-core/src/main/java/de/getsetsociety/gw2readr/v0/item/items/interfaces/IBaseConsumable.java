@@ -4,31 +4,30 @@ import java.util.Set;
 
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableUnlockType;
-import de.getsetsociety.gw2readr.v1.item.items.interfaces.IIcon;
 
 public interface IBaseConsumable {
 
-	ConsumableUnlockType getUnlockType();
+    ConsumableUnlockType getUnlockType();
 
-	void setUnlockType(ConsumableUnlockType unlockType);
+    void setUnlockType(ConsumableUnlockType unlockType);
 
-	ConsumableType getConsumableType();
+    ConsumableType getConsumableType();
 
-	void setConsumableType(ConsumableType type);
+    void setConsumableType(ConsumableType type);
 
-	Integer getColorId();
+    Integer getColorId();
 
-	void setColorId(Integer colorId);
+    void setColorId(Integer colorId);
 
-	Integer getDurationMs();
+    Integer getDurationMs();
 
-	void setDurationMs(Integer durationMs);
+    void setDurationMs(Integer durationMs);
 
-	Integer getRecipeId();
+    Integer getRecipeId();
 
-	void setRecipeId(Integer recipeId);
+    void setRecipeId(Integer recipeId);
 
-	Integer getGuildUpgradeId();
+    Integer getGuildUpgradeId();
 
     void setGuildUpgradeId(Integer guildUpgradeId);
 
@@ -40,9 +39,9 @@ public interface IBaseConsumable {
 
     void setApplyCount(Integer applyCount);
 
-    IIcon getIcon();
+    String getIcon();
 
-    void setIcon(IIcon icon);
+    void setIcon(String icon);
 
     void setExtraRecipeIds(Set<Integer> extraRecipeIds);
 
