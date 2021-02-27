@@ -1,0 +1,22 @@
+{
+  "name": "Flask of Ooze Spirits",
+  "type": "Consumable",
+  "level": 0,
+  "rarity": "Basic",
+  "vendor_value": 2,
+  "game_types": [
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "BulkConsume"
+  ],
+  "restrictions": [],
+  "id": 8495,
+  "chat_link": "[&AgEvIQAA]",
+  "icon": "https://render.guildwars2.com/file/1C0AF9FCE9CCF6C844E3280DDD23AE36060A0AD8/63068.png",
+  "details": {
+    "type": "Booze"
+  }
+}
