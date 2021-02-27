@@ -1038,4 +1038,17 @@ class TestItems {
         assertThat(item.getWeaponType(), is(WeaponType.LONG_BOW));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
+
+    @Test
+    void testCarrionPrimordusGreatswordForgreatSword() throws IOException {
+        URL resource = getClass().getResource("13695.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(WeaponJson.class));
+        IWeapon item = ((WeaponJson) value).getEntity();
+        assertThat(item.getName(), is("Carrion Primordus Greatsword"));
+        assertThat(item.getWeaponType(), is(WeaponType.GREAT_SWORD));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
 }

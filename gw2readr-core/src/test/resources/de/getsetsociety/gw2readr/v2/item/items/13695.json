@@ -1,0 +1,49 @@
+{
+  "name": "Carrion Primordus Greatsword",
+  "description": "",
+  "type": "Weapon",
+  "level": 80,
+  "rarity": "Exotic",
+  "vendor_value": 396,
+  "default_skin": 3916,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "SoulBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 13695,
+  "chat_link": "[&AgF/NQAA]",
+  "icon": "https://render.guildwars2.com/file/A9C260563B665CE2532E6D333C344518ED03CBCD/534137.png",
+  "details": {
+    "type": "Greatsword",
+    "damage_type": "Physical",
+    "min_power": 995,
+    "max_power": 1100,
+    "defense": 0,
+    "infusion_slots": [],
+    "attribute_adjustment": 682.88,
+    "infix_upgrade": {
+      "id": 160,
+      "attributes": [
+        {
+          "attribute": "Power",
+          "modifier": 171
+        },
+        {
+          "attribute": "Vitality",
+          "modifier": 171
+        },
+        {
+          "attribute": "ConditionDamage",
+          "modifier": 239
+        }
+      ]
+    },
+    "secondary_suffix_item_id": ""
+  }
+}

@@ -9,7 +9,7 @@ public enum WeaponType {
     DAGGER,
     @JsonProperty("Focus")
     FOCUS,
-    @JsonProperty("GreatSword")
+    @JsonProperty("Greatsword")
     GREAT_SWORD,
     @JsonProperty("Hammer")
     HAMMER,
