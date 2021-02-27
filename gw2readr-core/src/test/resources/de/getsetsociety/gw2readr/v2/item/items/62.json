@@ -1,0 +1,37 @@
+{
+  "name": "Shirt",
+  "description": "",
+  "type": "Armor",
+  "level": 0,
+  "rarity": "Basic",
+  "vendor_value": 0,
+  "default_skin": 1043,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "NoSalvage",
+    "NoSell",
+    "SoulbindOnAcquire",
+    "SoulBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 62,
+  "chat_link": "[&AgE+AAAA]",
+  "icon": "https://render.guildwars2.com/file/A146C05DE3F7D9067204BD7EC80F5906B4212AE1/66608.png",
+  "details": {
+    "type": "Coat",
+    "weight_class": "Clothing",
+    "defense": 0,
+    "infusion_slots": [],
+    "attribute_adjustment": 8.775,
+    "infix_upgrade": {
+      "id": 112,
+      "attributes": []
+    },
+    "secondary_suffix_item_id": ""
+  }
+}

@@ -1,10 +1,13 @@
 package de.getsetsociety.gw2readr.v2.item.items.interfaces;
 
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IAttributeAdjuster;
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseArmor;
 
-public interface IArmor extends IItem, IBaseArmor<IInfixUpgrade> {
+public interface IArmor extends IItem, IBaseArmor<IInfixUpgrade>, IAttributeAdjuster {
 
-	public abstract Integer getSecondarySuffixItemId();
+    @Override
+    Integer getSecondarySuffixItemId();
 
-	public abstract void setSecondarySuffixItemId(Integer secondarySuffixItemId);
+    @Override
+    void setSecondarySuffixItemId(Integer secondarySuffixItemId);
 }

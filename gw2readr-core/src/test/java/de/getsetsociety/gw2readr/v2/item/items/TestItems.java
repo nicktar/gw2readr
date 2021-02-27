@@ -905,7 +905,7 @@ class TestItems {
                 ItemFlags.ACCOUNT_BIND_ON_USE);
         assertThat(entity.getFlags().size(), is(flags.size()));
         assertThat(flags.containsAll(entity.getFlags()), is(true));
-        List<RestrictionType> restrictions = Arrays.asList(RestrictionType.Mesmer);
+        List<RestrictionType> restrictions = List.of(RestrictionType.Mesmer);
         assertThat(entity.getRestrictions().size(), is(restrictions.size()));
         assertThat(restrictions.containsAll(entity.getRestrictions()), is(true));
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/2DFB4EDF0408A8604100BB6A510D215CE637B03C/780409.png"));
@@ -921,5 +921,17 @@ class TestItems {
         IBackItem item = ((BackItemJson) value).getEntity();
         assertThat(item.getName(), is("Strong Back Brace"));
         assertThat(item.getAttributeAdjustment(), is(13.585d));
+    }
+
+    @Test
+    void testShirtForAttributeAdjustment() throws IOException {
+        URL resource = getClass().getResource("62.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ArmorJson.class));
+        IArmor item = ((ArmorJson) value).getEntity();
+        assertThat(item.getName(), is("Shirt"));
+        assertThat(item.getAttributeAdjustment(), is(8.775d));
     }
 }

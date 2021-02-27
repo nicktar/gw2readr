@@ -1,10 +1,10 @@
 package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
+import java.util.Set;
+
 import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
-
-import java.util.Set;
 
 public interface IBaseArmor<S extends IBaseInfixUpgrade<? extends IBaseBuff, ? extends IBaseAttributeModifier>> extends IBaseItem {
 
@@ -22,7 +22,7 @@ public interface IBaseArmor<S extends IBaseInfixUpgrade<? extends IBaseBuff, ? e
 
     Set<InfusionSlotType> getInfusionSlots();
 
-    void setInfusionSlots(Set<InfusionSlotType> infusionSlots);
+    void addInfusionSlot(InfusionSlotType infusionSlot);
 
     S getInfixUpgrade();
 
