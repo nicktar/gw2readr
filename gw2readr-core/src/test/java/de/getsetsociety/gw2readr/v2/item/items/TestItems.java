@@ -999,4 +999,17 @@ class TestItems {
         assertThat(item.getStatChoices(), containsInAnyOrder(142, 144, 145, 146, 149, 152, 755));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
+
+    @Test
+    void testBelindasGreatswordSkinForSkins() throws IOException {
+        URL resource = getClass().getResource("8466.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ConsumableJson.class));
+        IConsumable item = ((ConsumableJson) value).getEntity();
+        assertThat(item.getName(), is("Belinda's Greatsword Skin"));
+        assertThat(item.getSkins(), containsInAnyOrder(5586));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
 }

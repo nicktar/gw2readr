@@ -2,6 +2,7 @@ package de.getsetsociety.gw2readr.v2.item.items.json;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -33,6 +34,7 @@ public class ConsumableJson extends ItemJson<IConsumable> {
         item.setConsumableName(details.getName());
         item.setIcon(details.getIcon());
         item.setDescription(details.getDescription());
+        item.addAllSkins(details.getSkins());
         getAdditionalProperties().putAll(details.getAdditionalProperties());
     }
 
@@ -57,6 +59,8 @@ public class ConsumableJson extends ItemJson<IConsumable> {
         private String icon;
         @JsonProperty("description")
         private String description;
+        @JsonProperty("skins")
+        private Set<Integer> skins;
         private Map<String, Object> additionalProperties = new HashMap<>();
 
 

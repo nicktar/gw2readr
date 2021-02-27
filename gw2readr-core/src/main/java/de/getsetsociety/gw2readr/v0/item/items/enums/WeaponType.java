@@ -13,7 +13,7 @@ public enum WeaponType {
     Rifle,
     Scepter,
     Shield,
-    Shortbow,
+    ShortBow,
     Speargun,
     Sword,
     Staff,
