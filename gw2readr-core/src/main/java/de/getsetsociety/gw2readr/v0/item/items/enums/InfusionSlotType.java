@@ -10,5 +10,7 @@ public enum InfusionSlotType {
     @JsonProperty("Utility")
     UTILITY,
     @JsonProperty("Infusion")
-    INFUSION
+    INFUSION,
+    @JsonProperty("Enrichment")
+    ENRICHMENT
 }

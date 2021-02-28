@@ -1232,5 +1232,20 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testThackerayFamilyCrestForEnrichmentInfusion() throws IOException {
+        URL resource = getClass().getResource("39264.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(TrinketJson.class));
+        ITrinket item = ((TrinketJson) value).getEntity();
+        assertThat(item.getName(), is("Thackeray Family Crest"));
+        assertThat(item.getInfusionSlots(), containsInAnyOrder(InfusionSlot.builder()
+                                                                           .flag(InfusionSlotType.ENRICHMENT)
+                                                                           .build()));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 
 }

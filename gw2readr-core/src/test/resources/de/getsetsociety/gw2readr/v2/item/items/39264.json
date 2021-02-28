@@ -1,0 +1,58 @@
+{
+  "name": "Thackeray Family Crest",
+  "description": "<c=@flavor>Family crest of the famous Thackerays.</c>",
+  "type": "Trinket",
+  "level": 80,
+  "rarity": "Ascended",
+  "vendor_value": 660,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "HideSuffix",
+    "AccountBound",
+    "NotUpgradeable",
+    "Unique",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 39264,
+  "chat_link": "[&AgFgmQAA]",
+  "icon": "https://render.guildwars2.com/file/A175C8D10C2A980FC900DCA81F4C0B3DC19705DC/534244.png",
+  "details": {
+    "type": "Amulet",
+    "infusion_slots": [
+      {
+        "flags": [
+          "Enrichment"
+        ]
+      }
+    ],
+    "attribute_adjustment": 358.512,
+    "infix_upgrade": {
+      "id": 586,
+      "buff": {
+        "skill_id": 15749,
+        "description": "+32 Power\n+18 Toughness\n+18 Vitality"
+      },
+      "attributes": [
+        {
+          "attribute": "Power",
+          "modifier": 157
+        },
+        {
+          "attribute": "Toughness",
+          "modifier": 108
+        },
+        {
+          "attribute": "Vitality",
+          "modifier": 108
+        }
+      ]
+    },
+    "secondary_suffix_item_id": ""
+  }
+}
