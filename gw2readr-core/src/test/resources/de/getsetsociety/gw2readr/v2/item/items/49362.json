@@ -1,0 +1,71 @@
+{
+  "name": "Koss on Koss (Infused)",
+  "description": "<c=@flavor>First edition. This book appears to be written in the author's own hand.</c>",
+  "type": "Back",
+  "level": 80,
+  "rarity": "Ascended",
+  "vendor_value": 330,
+  "default_skin": 2376,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "HideSuffix",
+    "AccountBound",
+    "NoSell",
+    "NotUpgradeable",
+    "Unique",
+    "AccountBindOnUse",
+    "Infused"
+  ],
+  "restrictions": [],
+  "id": 49362,
+  "chat_link": "[&AgHSwAAA]",
+  "icon": "https://render.guildwars2.com/file/22D31C930DFAFC955209201535DABB6C956DD7F0/511798.png",
+  "details": {
+    "infusion_slots": [
+      {
+        "flags": [
+          "Infusion"
+        ]
+      },
+      {
+        "flags": [
+          "Infusion"
+        ]
+      }
+    ],
+    "attribute_adjustment": 89.628,
+    "infix_upgrade": {
+      "id": 601,
+      "buff": {
+        "skill_id": 15757,
+        "description": "+32 Power\n+18 Toughness\n+18 Vitality\n+5 Agony Resistance"
+      },
+      "attributes": [
+        {
+          "attribute": "Power",
+          "modifier": 63
+        },
+        {
+          "attribute": "Toughness",
+          "modifier": 40
+        },
+        {
+          "attribute": "Vitality",
+          "modifier": 40
+        }
+      ]
+    },
+    "secondary_suffix_item_id": ""
+  },
+  "upgrades_from": [
+    {
+      "upgrade": "Infusion",
+      "item_id": 37001
+    }
+  ]
+}

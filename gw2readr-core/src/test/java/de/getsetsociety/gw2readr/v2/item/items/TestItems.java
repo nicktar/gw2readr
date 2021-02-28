@@ -1272,4 +1272,19 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testKossOnKossInfusedForInfusedFlag() throws IOException {
+        URL resource = getClass().getResource("49362.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(BackItemJson.class));
+        IBackItem item = ((BackItemJson) value).getEntity();
+        assertThat(item.getName(), is("Koss on Koss (Infused)"));
+        assertThat(item.getFlags(), containsInAnyOrder(ItemFlags.HIDE_SUFFIX, ItemFlags.ACCOUNT_BOUND,
+                ItemFlags.NO_SELL, ItemFlags.NOT_UPGRADEABLE, ItemFlags.UNIQUE, ItemFlags.ACCOUNT_BIND_ON_USE,
+                ItemFlags.INFUSED));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 }

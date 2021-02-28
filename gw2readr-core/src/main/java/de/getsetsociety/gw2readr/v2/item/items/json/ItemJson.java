@@ -109,11 +109,8 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
         return getEntity().getFlags();
     }
 
-    public void setFlags(Set<String> flags) {
-        Set<ItemFlags> itemFlags = flags.stream()
-                                        .map(ItemFlags::fromJsonString)
-                                        .collect(Collectors.toSet());
-        getEntity().getFlags().addAll(itemFlags);
+    public void setFlags(Set<ItemFlags> flags) {
+        getEntity().addAllFlags(flags);
     }
 
     @JsonProperty("restrictions")

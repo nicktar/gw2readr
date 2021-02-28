@@ -50,6 +50,11 @@ public class Item implements IItem {
     }
 
     @Override
+    public void addAllFlags(Set<ItemFlags> flags) {
+        this.flags.addAll(flags);
+    }
+
+    @Override
     public void addAllRestrictions(Collection<RestrictionType> restrictions) {
         this.restrictions.addAll(restrictions);
     }

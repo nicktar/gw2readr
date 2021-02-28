@@ -1,6 +1,9 @@
 package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
+import java.util.Set;
+
 import de.getsetsociety.gw2readr.general.enums.Language;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 
 public interface IBaseItem {
 
@@ -40,17 +43,19 @@ public interface IBaseItem {
 
 	void setAvailableInPvPLobby(Boolean availableInPvPLobby);
 
-	Boolean getAvailableInWvW();
+    Boolean getAvailableInWvW();
 
-	void setAvailableInWvW(Boolean availableInWvW);
+    void setAvailableInWvW(Boolean availableInWvW);
 
-	String getDescription();
+    String getDescription();
 
-	void setDescription(String description);
+    void setDescription(String description);
 
-	void string2GameType(String gameType);
+    void string2GameType(String gameType);
 
-	Language getLanguage();
-	
-	void setLanguage(Language language);
+    Language getLanguage();
+
+    void setLanguage(Language language);
+
+    void addAllFlags(Set<ItemFlags> flags);
 }
