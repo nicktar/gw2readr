@@ -31,6 +31,8 @@ public enum ConsumableType {
     UPGRADE_REMOVAL,
     @JsonProperty("Immediate")
     IMMEDIATE,
+    @JsonProperty("TeleportToFriend")
+    TELEPORT_TO_FRIEND,
     @JsonProperty("Unknown")
     UNKNOWN
 }

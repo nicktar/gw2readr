@@ -1,0 +1,28 @@
+{
+  "name": "Teleport to Friend",
+  "description": "Use to teleport to a party member's location.",
+  "type": "Consumable",
+  "level": 0,
+  "rarity": "Fine",
+  "vendor_value": 4,
+  "game_types": [
+    "PvpLobby",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoSalvage",
+    "NoSell",
+    "DeleteWarning",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 67280,
+  "chat_link": "[&AgHQBgEA]",
+  "icon": "https://render.guildwars2.com/file/064464D12F5BCB55B00FEE252C54E0B9A2FCE3CF/919365.png",
+  "details": {
+    "type": "TeleportToFriend"
+  }
+}

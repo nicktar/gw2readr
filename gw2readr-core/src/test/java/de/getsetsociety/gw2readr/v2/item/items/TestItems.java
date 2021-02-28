@@ -1204,4 +1204,17 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testTeleportToFriendForTeleportToFriendConsumableType() throws IOException {
+        URL resource = getClass().getResource("67280.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ConsumableJson.class));
+        IConsumable item = ((ConsumableJson) value).getEntity();
+        assertThat(item.getName(), is("Teleport to Friend"));
+        assertThat(item.getConsumableType(), is(ConsumableType.TELEPORT_TO_FRIEND));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 }
