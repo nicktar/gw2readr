@@ -1,11 +1,17 @@
 package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
+import java.util.Set;
+
 import de.getsetsociety.gw2readr.v0.item.items.enums.GizmoType;
 
 public interface IBaseGizmo {
 
-	public abstract GizmoType getGizmoType();
+    GizmoType getGizmoType();
 
-	public abstract void setGizmoType(GizmoType gizmoType);
+    void setGizmoType(GizmoType gizmoType);
+
+    void addAllVendors(Set<Integer> vendors);
+
+    Set<Integer> getVendors();
 
 }

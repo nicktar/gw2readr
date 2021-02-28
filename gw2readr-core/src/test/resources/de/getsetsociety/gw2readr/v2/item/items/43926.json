@@ -1,0 +1,29 @@
+{
+  "name": "Golden Fortune Scrap",
+  "description": "Take fortune scraps to a Black Lion Weapons Specialist or a Fortune Scrap Vendor to pick between a variety of Zephyrite goods.",
+  "type": "Gizmo",
+  "level": 0,
+  "rarity": "Exotic",
+  "vendor_value": 0,
+  "game_types": [
+    "PvpLobby",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoSell",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 43926,
+  "chat_link": "[&AgGWqwAA]",
+  "icon": "https://render.guildwars2.com/file/EBAF0EE72E08A258E6AF3E036A12673001160A59/603306.png",
+  "details": {
+    "type": "Default",
+    "vendor_ids": [
+      450
+    ]
+  }
+}

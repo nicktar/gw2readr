@@ -1260,4 +1260,16 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testGoldenFortuneScrapForVendor() throws IOException {
+        URL resource = getClass().getResource("43926.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(GizmoJson.class));
+        IGizmo item = ((GizmoJson) value).getEntity();
+        assertThat(item.getName(), is("Golden Fortune Scrap"));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 }
