@@ -11,8 +11,10 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IInfixUpgrade;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IWeapon;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Data
+@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class Weapon extends Item implements IWeapon {
 
@@ -27,7 +29,7 @@ public class Weapon extends Item implements IWeapon {
     private Integer secondarySuffixItemId;
     private Integer defaultSkin;
     private Double attributeAdjustment;
-    private Set<Integer> statChoices = new HashSet<>();
+    private final Set<Integer> statChoices = new HashSet<>();
 
     @Override
     public void addAllStatChoices(Collection<Integer> statChoices) {

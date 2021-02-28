@@ -1,8 +1,8 @@
 
 package de.getsetsociety.gw2readr.v2.item.items.json;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -25,8 +25,8 @@ public class InfixUpgradeJson implements IEntityWrapper<IInfixUpgrade> {
 
 
     @JsonProperty("attributes")
-    public List<AttributeModifierJson> getAttributes() {
-        List<AttributeModifierJson> jsonAttributes = new ArrayList<>();
+    public Set<AttributeModifierJson> getAttributes() {
+        Set<AttributeModifierJson> jsonAttributes = new HashSet<>();
         for (IAttributeModifier am : entity.getAttributes()) {
             jsonAttributes.add(new AttributeModifierJson(am));
         }
@@ -34,7 +34,7 @@ public class InfixUpgradeJson implements IEntityWrapper<IInfixUpgrade> {
 
     }
 
-    public void setAttributes(List<AttributeModifierJson> attributes) {
+    public void setAttributes(Set<AttributeModifierJson> attributes) {
         entity.getAttributes().clear();
         for (AttributeModifierJson amj : attributes) {
             entity.getAttributes().add(amj.getEntity());

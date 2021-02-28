@@ -28,7 +28,7 @@ public class Item implements IItem {
     private Boolean availableInPvPLobby = false;
     private Boolean availableInWvW = false;
     private Set<ItemFlags> flags = new HashSet<>();
-    private String description;
+    private String description = "";
     private final Set<RestrictionType> restrictions = new HashSet<>();
     private Language language;
     private Integer defaultSkin;

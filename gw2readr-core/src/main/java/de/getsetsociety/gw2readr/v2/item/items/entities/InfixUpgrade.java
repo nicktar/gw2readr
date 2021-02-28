@@ -1,18 +1,13 @@
 
 package de.getsetsociety.gw2readr.v2.item.items.entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IAttributeModifier;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBuff;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IInfixUpgrade;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Singular;
+import lombok.*;
 
 @Data
 @Builder
@@ -22,6 +17,6 @@ public class InfixUpgrade implements IInfixUpgrade {
 
     private Integer id;
     @Singular
-    private List<IAttributeModifier> attributes = new ArrayList<>();
+    private Set<IAttributeModifier> attributes = new HashSet<>();
     private IBuff buff;
 }

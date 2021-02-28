@@ -1,19 +1,19 @@
 package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
-import java.util.List;
+import java.util.Set;
 
 public interface IBaseInfixUpgrade<U extends IBaseBuff, V extends IBaseAttributeModifier> {
 
-	void setId(Integer id);
+    void setId(Integer id);
 
-	Integer getId();
+    Integer getId();
 
-	List<V> getAttributes();
+    Set<V> getAttributes();
 
-	void setAttributes(List<V> attributes);
+    void setAttributes(Set<V> attributes);
 
-	U getBuff();
+    U getBuff();
 
-	void setBuff(U buff);
+    void setBuff(U buff);
 
 }

@@ -1,17 +1,7 @@
 package de.getsetsociety.gw2readr.v2.item.items;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.hasItems;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.instanceOf;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -29,133 +19,20 @@ import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableUnlockType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ContainerType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.GatheringType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.GizmoType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionUpgradeFlag;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
-import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
-import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.ToolType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.TrinketType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentFlag;
-import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
+import de.getsetsociety.gw2readr.v0.item.items.enums.*;
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseAttributeModifier;
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseBuff;
 import de.getsetsociety.gw2readr.v2.item.items.entities.AttributeModifier;
 import de.getsetsociety.gw2readr.v2.item.items.entities.Buff;
 import de.getsetsociety.gw2readr.v2.item.items.entities.InfusionSlot;
 import de.getsetsociety.gw2readr.v2.item.items.entities.UpgradePath;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBackItem;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBag;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IConsumable;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IContainer;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.ICraftingMaterial;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IGathering;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IGizmo;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IMiniPet;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITool;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrait;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrinket;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrophy;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradeComponent;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IWeapon;
-import de.getsetsociety.gw2readr.v2.item.items.json.ArmorJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.BackItemJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.BagJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.ConsumableJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.ContainerJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.CraftingMaterialJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.GatheringJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.GizmoJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.MiniPetJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.ToolJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.TraitJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.TrinketJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.TrophyJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.UpgradeComponentJson;
-import de.getsetsociety.gw2readr.v2.item.items.json.WeaponJson;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.*;
+import de.getsetsociety.gw2readr.v2.item.items.json.*;
 
 class TestItems {
 
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    /**
-     * Tests readability of the demo Json-Reply found on the wiki
-     * Object is a Weapon (Lvl.44 Masterwork Longbow, worth 120 coins, power 385-452 with Power(62) and
-     * Precision(44) stats, no infusions, no restrictions, no secondary suffix)
-     */
-    @Test
-    void testDemoJson() {
-        String content = "{\"name\":\"Strong Soft Wood Longbow of Fire\",\"description\":\"\","
-                + "\"type\":\"Weapon\",\"level\":44,\"rarity\":\"Masterwork\",\"vendor_value\":120,"
-                + "\"default_skin\":\"3942\",\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\""
-                + "flags\":[\"SoulBindOnUse\"],\"restrictions\":[],\"id\":28445,"
-                + "\"icon\":\"https://render.guildwars2.com/file/C6110F52DF5AFE0F00A56F9E143E9732176DDDE9/65015.png\","
-                + "\"details\":{\"type\":\"LongBow\",\"damage_type\":\"Physical\",\"min_power\":385,"
-                + "\"max_power\":452,\"defense\":0,\"infusion_slots\":[],"
-                + "\"infix_upgrade\":{\"attributes\":[{\"attribute\":\"Power\",\"modifier\":62},"
-                + "{\"attribute\":\"Precision\",\"modifier\":44}]},\"suffix_item_id\":24547"
-                + ",\"secondary_suffix_item_id\":\"\"}}";
-        IWeapon entity = null;
-        try {
-            ItemJson<?> item = mapper.readValue(content, ItemJson.class);
-            assertNotNull(item);
-            assertThat("Expecting WeaponJson, got " + item.getClass().getCanonicalName(), item instanceof WeaponJson, is(true));
-            entity = ((WeaponJson) item).getEntity();
-            assertNotNull(entity);
-            assertThat(item.getAdditionalProperties().isEmpty(), is(true));
-        } catch (IOException e) {
-            fail("Unexpected Exception");
-        }
-        assertThat(entity.getName(), is("Strong Soft Wood Longbow of Fire"));
-        assertThat(entity.getDescription(), is(""));
-        assertThat(entity.getLevel(), is(44));
-        assertThat(entity.getRarity(), is(Rarity.MASTERWORK));
-        assertThat(entity.getVendorValue(), is(120));
-        assertThat(entity.getDefaultSkin(), is(3942));
-        assertThat(entity.getAvailableInActivity(), is(true));
-        assertThat(entity.getAvailableInDungeon(), is(true));
-        assertThat(entity.getAvailableInPvE(), is(true));
-        assertThat(entity.getAvailableInWvW(), is(true));
-        assertThat(entity.getAvailableInPvP(), is(false));
-        assertThat(entity.getAvailableInPvPLobby(), is(false));
-        assertThat(entity.getFlags().size(), is(1));
-        assertThat(entity.getFlags().contains(ItemFlags.SOUL_BIND_ON_USE), is(true));
-        assertThat(entity.getRestrictions().isEmpty(), is(true));
-        assertThat(entity.getId(), is(28445));
-        assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/C6110F52DF5AFE0F00A56F9E143E9732176DDDE9/65015.png"));
-        assertThat(entity.getWeaponType(), is(WeaponType.LONG_BOW));
-        assertThat(entity.getDamageType(), is(DamageType.Physical));
-        assertThat(entity.getMinPower(), is(385));
-        assertThat(entity.getMaxPower(), is(452));
-        assertThat(entity.getDefense(), is(0));
-        assertThat(entity.getInfusionSlots().isEmpty(), is(true));
-        assertThat(entity.getInfixUpgrade().getAttributes().size(), is(2));
-        AttributeModifier attributeModifier1 = AttributeModifier.builder()
-                                                                .attribute(Attribute.PRECISION)
-                                                                .modifier(44)
-                                                                .build();
-        assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier1), is(true));
-        AttributeModifier attributeModifier2 = AttributeModifier.builder()
-                                                                .attribute(Attribute.POWER)
-                                                                .modifier(82)
-                                                                .build();
-        assertThat(entity.getInfixUpgrade().getAttributes().contains(attributeModifier2), is(true));
-        assertThat(entity.getSuffixItemId(), is(24547));
-        assertNull(entity.getSecondarySuffixItemId());
-    }
 
     /**
      * Tests the readability of Item 57
