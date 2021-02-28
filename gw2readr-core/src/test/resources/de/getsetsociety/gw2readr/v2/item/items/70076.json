@@ -1,0 +1,32 @@
+{
+  "name": "Nika",
+  "description": "Consume to unlock this Mist Champion for your account.",
+  "type": "Consumable",
+  "level": 0,
+  "rarity": "Exotic",
+  "vendor_value": 0,
+  "game_types": [
+    "Pvp",
+    "PvpLobby",
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoMysticForge",
+    "NoSalvage",
+    "NoSell",
+    "DeleteWarning",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 70076,
+  "chat_link": "[&AgG8EQEA]",
+  "icon": "https://render.guildwars2.com/file/4602BDC15B73422011AC664425D93750707F04F3/1058576.png",
+  "details": {
+    "type": "Unlock",
+    "unlock_type": "Champion"
+  }
+}
