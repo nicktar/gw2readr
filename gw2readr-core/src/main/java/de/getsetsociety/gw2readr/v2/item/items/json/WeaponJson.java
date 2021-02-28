@@ -1,18 +1,21 @@
 package de.getsetsociety.gw2readr.v2.item.items.json;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
 import de.getsetsociety.gw2readr.v2.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IWeapon;
@@ -30,9 +33,11 @@ public class WeaponJson extends ItemJson<IWeapon> {
         item.setMinPower(details.getMinPower());
         item.setMaxPower(details.getMaxPower());
         item.setDefense(details.getDefense());
-        for (InfusionSlotJson detail : details.getInfusionSlots()) {
-            item.getInfusionSlots().addAll(detail.getFlags());
-        }
+        Set<InfusionSlotType> infusionSlots = details.getInfusionSlots().stream()
+                                                     .map(InfusionSlotJson::getFlags)
+                                                     .flatMap(Collection::stream)
+                                                     .collect(Collectors.toSet());
+        item.addAllInfusionSlots(infusionSlots);
         item.setSuffixItemId(details.getSuffixItemId());
         item.setAttributeAdjustment(details.getAttributeAdjustment());
         details.getInfixUpgrade()

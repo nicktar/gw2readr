@@ -35,6 +35,7 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.ContainerType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.GatheringType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.GizmoType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
@@ -1113,15 +1114,15 @@ class TestItems {
     }
 
     @Test
-    void testMinorSigilOfStrengthForNecromancerRestriction() throws IOException {
-        URL resource = getClass().getResource("24564.json");
+    void testFrostfangForInfusionTypeInfusion() throws IOException {
+        URL resource = getClass().getResource("30684.json");
 
         ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
 
-        assertThat(value, instanceOf(UpgradeComponentJson.class));
-        IUpgradeComponent item = ((UpgradeComponentJson) value).getEntity();
-        assertThat(item.getName(), is("Minor Sigil of Strength"));
-        assertThat(item.getRestrictions(), contains(RestrictionType.NECROMANCER));
+        assertThat(value, instanceOf(WeaponJson.class));
+        IWeapon item = ((WeaponJson) value).getEntity();
+        assertThat(item.getName(), is("Frostfang"));
+        assertThat(item.getInfusionSlots(), contains(InfusionSlotType.INFUSION));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 

@@ -1,8 +1,14 @@
 package de.getsetsociety.gw2readr.v0.item.items.enums;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum InfusionSlotType {
-	Offense,
-	Defense,
-	Utility
+    @JsonProperty("Offense")
+    OFFENSE,
+    @JsonProperty("Defense")
+    DEFENSE,
+    @JsonProperty("Utility")
+    UTILITY,
+    @JsonProperty("Infusion")
+    INFUSION
 }

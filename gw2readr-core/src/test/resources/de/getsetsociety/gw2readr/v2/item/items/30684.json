@@ -1,0 +1,80 @@
+{
+  "name": "Frostfang",
+  "type": "Weapon",
+  "level": 80,
+  "rarity": "Legendary",
+  "vendor_value": 100000,
+  "default_skin": 4674,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "HideSuffix",
+    "NoSalvage",
+    "NoSell",
+    "AccountBindOnUse",
+    "DeleteWarning"
+  ],
+  "restrictions": [],
+  "id": 30684,
+  "chat_link": "[&AgHcdwAA]",
+  "icon": "https://render.guildwars2.com/file/0F9C08DE12ADD1082A103DC6EF7401281B23985E/456009.png",
+  "details": {
+    "type": "Axe",
+    "damage_type": "Ice",
+    "min_power": 900,
+    "max_power": 1100,
+    "defense": 0,
+    "infusion_slots": [
+      {
+        "flags": [
+          "Infusion"
+        ]
+      }
+    ],
+    "attribute_adjustment": 358.512,
+    "suffix_item_id": 24555,
+    "stat_choices": [
+      161,
+      155,
+      159,
+      157,
+      158,
+      160,
+      153,
+      605,
+      700,
+      616,
+      154,
+      156,
+      162,
+      686,
+      559,
+      754,
+      753,
+      799,
+      1026,
+      1067,
+      628,
+      1032,
+      1111,
+      1109,
+      1123,
+      1140,
+      1085,
+      1153,
+      1118,
+      1131,
+      1222,
+      1344,
+      1363,
+      1364,
+      1559,
+      1556
+    ],
+    "secondary_suffix_item_id": ""
+  }
+}

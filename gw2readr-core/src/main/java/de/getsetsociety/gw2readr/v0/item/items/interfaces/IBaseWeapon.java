@@ -22,8 +22,6 @@ public interface IBaseWeapon<T extends IBaseInfixUpgrade<? extends IBaseBuff, ? 
 
     Set<InfusionSlotType> getInfusionSlots();
 
-    void setInfusionSlots(Set<InfusionSlotType> infusionSlots);
-
     Integer getMaxPower();
 
     void setMaxPower(Integer maxPower);

@@ -762,7 +762,7 @@ public class ArmorTest {
             assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.POWER, 17), new AttributeModifier(Attribute.PRECISION, 17), new AttributeModifier(Attribute.TOUGHNESS, 17), new AttributeModifier(Attribute.VITALITY, 17), new AttributeModifier(Attribute.HEALING, 17), new AttributeModifier(Attribute.CONDITION_DAMAGE, 17), new AttributeModifier(Attribute.CRIT_DAMAGE, 17))));
             assertFalse(armor.getInfusionSlots().isEmpty());
             assertEquals(1, armor.getInfusionSlots().size());
-            assertTrue(armor.getInfusionSlots().containsAll(Arrays.asList(InfusionSlotType.Defense)));
+            assertTrue(armor.getInfusionSlots().containsAll(Arrays.asList(InfusionSlotType.DEFENSE)));
             assertEquals(Integer.valueOf(80), armor.getLevel());
             assertEquals("Wupwup Striders", armor.getName());
             assertEquals(Rarity.ASCENDED, armor.getRarity());

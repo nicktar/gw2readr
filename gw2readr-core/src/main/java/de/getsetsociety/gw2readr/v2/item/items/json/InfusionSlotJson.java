@@ -10,32 +10,22 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
+import lombok.Data;
 
+@Data
 public class InfusionSlotJson {
 
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-	private List<InfusionSlotType> flags = new ArrayList<InfusionSlotType>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
+    @JsonProperty("flags")
+    private final List<InfusionSlotType> flags = new ArrayList<>();
 
-	@JsonProperty("flags")
-	public List<InfusionSlotType> getFlags() {
-		return flags;
-	}
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return additionalProperties;
+    }
 
-	@JsonProperty("flags")
-	public void setFlags(List<String> flags) {
-		for (String flag: flags) {
-			this.flags.add(InfusionSlotType.valueOf(flag));
-		}
-
-	}
-
-	@JsonAnyGetter
-	public Map<String, Object> getAdditionalProperties() {
-		return this.additionalProperties;
-	}
-
-	@JsonAnySetter
-	public void setAdditionalProperty(String name, Object value) {
-		this.additionalProperties.put(name, value);
-	}
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        additionalProperties.put(name, value);
+    }
 }
