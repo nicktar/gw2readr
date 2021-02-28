@@ -1,0 +1,63 @@
+{
+  "name": "Silver Doubloon",
+  "description": "Double-click to apply to an item with an unused upgrade slot.",
+  "type": "UpgradeComponent",
+  "level": 20,
+  "rarity": "Rare",
+  "vendor_value": 72,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [],
+  "restrictions": [],
+  "id": 24502,
+  "chat_link": "[&AgG2XwAA]",
+  "icon": "https://render.guildwars2.com/file/EA581B219A5937D31F145E3CD00CE7046216DE22/220942.png",
+  "details": {
+    "type": "Gem",
+    "flags": [
+      "ShortBow",
+      "HeavyArmor",
+      "LightArmor",
+      "Dagger",
+      "MediumArmor",
+      "Focus",
+      "Greatsword",
+      "Hammer",
+      "Trinket",
+      "Harpoon",
+      "Mace",
+      "Pistol",
+      "Rifle",
+      "Scepter",
+      "Shield",
+      "Speargun",
+      "Axe",
+      "Staff",
+      "Sword",
+      "Torch",
+      "Trident",
+      "Warhorn",
+      "LongBow"
+    ],
+    "infusion_upgrade_flags": [],
+    "attribute_adjustment": 0,
+    "infix_upgrade": {
+      "id": 358,
+      "buff": {
+        "skill_id": 44065,
+        "description": "+20 Concentration"
+      },
+      "attributes": [
+        {
+          "attribute": "BoonDuration",
+          "modifier": 20
+        }
+      ]
+    },
+    "suffix": "of Silver"
+  }
+}

@@ -2,53 +2,53 @@ package de.getsetsociety.gw2readr.v2.item.items.json;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
-import de.getsetsociety.gw2readr.v2.factories.EntityFactoryProvider;
+import de.getsetsociety.gw2readr.v2.item.items.entities.AttributeModifier;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IAttributeModifier;
-import org.apache.commons.lang3.StringUtils;
 
-public class AttributeModifierJson implements IEntityWrapper<IAttributeModifier>{
+public class AttributeModifierJson implements IEntityWrapper<IAttributeModifier> {
 
-	private final IAttributeModifier entity;
+    private final IAttributeModifier entity;
 
-	public AttributeModifierJson() {
-		entity = EntityFactoryProvider.getItemEntityFactory().newAttributeModifier();
-	}
+    public AttributeModifierJson() {
+        entity = new AttributeModifier();
+    }
 
-	public AttributeModifierJson(IAttributeModifier am) {
-		entity = am;
-	}
+    public AttributeModifierJson(IAttributeModifier am) {
+        entity = am;
+    }
 
-	@JsonProperty("id")
-	public Integer getId() {
-		return entity.getId();
-	}
+    @JsonProperty("id")
+    public Integer getId() {
+        return entity.getId();
+    }
 
-	public void setId(Integer id) {
-		entity.setId(id);
-	}
+    public void setId(Integer id) {
+        entity.setId(id);
+    }
 
-	@JsonProperty("attribute")
-	public Attribute getAttribute() {
-		return entity.getAttribute();
-	}
+    @JsonProperty("attribute")
+    public Attribute getAttribute() {
+        return entity.getAttribute();
+    }
 
-	@JsonProperty("attribute")
-	public void setAttribute(String attribute) {
-		entity.setAttribute(Attribute.valueOf(StringUtils.upperCase(attribute)));
-	}
+    @JsonProperty("attribute")
+    public void setAttribute(Attribute attribute) {
+        entity.setAttribute(attribute);
+    }
 
-	@JsonProperty("modifier")
-	public Integer getModifier() {
-		return entity.getModifier();
-	}
+    @JsonProperty("modifier")
+    public Integer getModifier() {
+        return entity.getModifier();
+    }
 
-	public void setModifier(Integer modifier) {
-		entity.setModifier(modifier);
-	}
+    public void setModifier(Integer modifier) {
+        entity.setModifier(modifier);
+    }
 
-	@Override
-	public IAttributeModifier getEntity() {
-		return entity;
-	}
+    @Override
+    public IAttributeModifier getEntity() {
+        return entity;
+    }
 }

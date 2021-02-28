@@ -9,6 +9,7 @@ import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -19,6 +20,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
@@ -41,6 +44,7 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentFlag;
 import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseAttributeModifier;
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseBuff;
 import de.getsetsociety.gw2readr.v2.item.items.entities.AttributeModifier;
 import de.getsetsociety.gw2readr.v2.item.items.entities.Buff;
@@ -1075,6 +1079,23 @@ class TestItems {
         IUpgradeComponent item = ((UpgradeComponentJson) value).getEntity();
         assertThat(item.getName(), is("Sigil of Life"));
         assertThat(item.getAttributeAdjustment(), is(0d));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
+    @Test
+    void testSilverDoubloonForBoonDuration() throws IOException {
+        URL resource = getClass().getResource("24502.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(UpgradeComponentJson.class));
+        IUpgradeComponent item = ((UpgradeComponentJson) value).getEntity();
+        assertThat(item.getName(), is("Silver Doubloon"));
+        assertThat(item.getInfixUpgrade(), notNullValue());
+        Set<Attribute> attributes = item.getInfixUpgrade().getAttributes().stream()
+                                        .map(IBaseAttributeModifier::getAttribute)
+                                        .collect(Collectors.toSet());
+        assertThat(attributes, contains(Attribute.BOON_DURATION));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 }
