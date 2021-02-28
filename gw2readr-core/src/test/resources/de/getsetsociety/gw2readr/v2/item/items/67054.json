@@ -1,0 +1,30 @@
+{
+  "name": "Heart of Thorns Glider",
+  "description": "This will unlock the glider skin in your account wardrobe.",
+  "type": "Consumable",
+  "level": 0,
+  "rarity": "Rare",
+  "vendor_value": 0,
+  "game_types": [
+    "PvpLobby",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoMysticForge",
+    "NoSalvage",
+    "NoSell",
+    "DeleteWarning",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 67054,
+  "chat_link": "[&AgHuBQEA]",
+  "icon": "https://render.guildwars2.com/file/43235F3AB4522637FEB3A6D4D293C2BC0F2AA978/1001218.png",
+  "details": {
+    "type": "Unlock",
+    "unlock_type": "GliderSkin"
+  }
+}

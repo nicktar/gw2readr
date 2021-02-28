@@ -19,5 +19,7 @@ public enum ConsumableUnlockType {
     @JsonProperty("BankTab")
     BANK_TAB,
     @JsonProperty("Outfit")
-    OUTFIT
+    OUTFIT,
+    @JsonProperty("GliderSkin")
+    GLIDER_SKIN
 }

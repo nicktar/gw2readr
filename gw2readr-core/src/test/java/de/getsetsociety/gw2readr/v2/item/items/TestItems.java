@@ -1178,4 +1178,17 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testHeartOfThornsGliderForGliderSkinUnlock() throws IOException {
+        URL resource = getClass().getResource("67054.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ConsumableJson.class));
+        IConsumable item = ((ConsumableJson) value).getEntity();
+        assertThat(item.getName(), is("Heart of Thorns Glider"));
+        assertThat(item.getUnlockType(), is(ConsumableUnlockType.GLIDER_SKIN));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 }
