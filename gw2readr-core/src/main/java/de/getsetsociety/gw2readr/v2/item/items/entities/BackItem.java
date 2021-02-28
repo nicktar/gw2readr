@@ -13,9 +13,20 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class BackItem extends Item implements IBackItem {
 
-    private Set<InfusionSlotType> infusionSlots = new HashSet<>();
+    private final Set<InfusionSlotType> infusionSlots = new HashSet<>();
     private IInfixUpgrade infixUpgrade;
     private Integer suffixItemId;
     private Integer secondarySuffixItemId;
     private Double attributeAdjustment;
+    private final Set<Integer> statChoices = new HashSet<>();
+
+    @Override
+    public void addAllStatChoices(Set<Integer> statChoices) {
+        this.statChoices.addAll(statChoices);
+    }
+
+    @Override
+    public void addAllInfusionSlots(Set<InfusionSlotType> infusionSlots) {
+        this.infusionSlots.addAll(infusionSlots);
+    }
 }

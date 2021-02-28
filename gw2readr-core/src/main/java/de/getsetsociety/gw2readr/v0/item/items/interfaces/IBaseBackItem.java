@@ -8,7 +8,7 @@ public interface IBaseBackItem<T extends IBaseInfixUpgrade<? extends IBaseBuff, 
 
     Set<InfusionSlotType> getInfusionSlots();
 
-    void setInfusionSlots(Set<InfusionSlotType> infusionSlots);
+    void addAllInfusionSlots(Set<InfusionSlotType> infusionSlots);
 
     T getInfixUpgrade();
 

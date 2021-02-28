@@ -1126,5 +1126,18 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testGhostlySpineguardForStatChoices() throws IOException {
+        URL resource = getClass().getResource("36683.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(BackItemJson.class));
+        IBackItem item = ((BackItemJson) value).getEntity();
+        assertThat(item.getName(), is("Ghostly Spineguard"));
+        assertThat(item.getStatChoices(), containsInAnyOrder(142, 144, 145, 146, 149, 152, 755));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 
 }

@@ -1,0 +1,38 @@
+{
+  "name": "Ghostly Spineguard",
+  "type": "Back",
+  "level": 35,
+  "rarity": "Masterwork",
+  "vendor_value": 68,
+  "default_skin": 2339,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "HideSuffix",
+    "AccountBound",
+    "SoulBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 36683,
+  "chat_link": "[&AgFLjwAA]",
+  "icon": "https://render.guildwars2.com/file/293AD0760A90135C36523956179423DE77D54C2E/511739.png",
+  "details": {
+    "infusion_slots": [],
+    "attribute_adjustment": 22.406,
+    "suffix_item_id": 24537,
+    "stat_choices": [
+      144,
+      145,
+      152,
+      142,
+      146,
+      149,
+      755
+    ],
+    "secondary_suffix_item_id": ""
+  }
+}
