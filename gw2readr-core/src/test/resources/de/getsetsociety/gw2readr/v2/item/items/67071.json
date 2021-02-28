@@ -1,0 +1,32 @@
+{
+  "name": "Shared Inventory Slot",
+  "description": "Double-click to add a shared inventory slot to every character on this account.",
+  "type": "Consumable",
+  "level": 0,
+  "rarity": "Rare",
+  "vendor_value": 0,
+  "game_types": [
+    "Pvp",
+    "PvpLobby",
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoMysticForge",
+    "NoSalvage",
+    "NoSell",
+    "DeleteWarning",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 67071,
+  "chat_link": "[&AgH/BQEA]",
+  "icon": "https://render.guildwars2.com/file/58085D0B0C10C3594E96046B95BE963B7A293BB5/1314214.png",
+  "details": {
+    "type": "Unlock",
+    "unlock_type": "SharedSlot"
+  }
+}

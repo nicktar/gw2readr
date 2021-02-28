@@ -21,5 +21,7 @@ public enum ConsumableUnlockType {
     @JsonProperty("Outfit")
     OUTFIT,
     @JsonProperty("GliderSkin")
-    GLIDER_SKIN
+    GLIDER_SKIN,
+    @JsonProperty("SharedSlot")
+    SHARED_SLOT
 }

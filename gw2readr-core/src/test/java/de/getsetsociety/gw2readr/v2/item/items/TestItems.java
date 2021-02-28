@@ -1191,4 +1191,17 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testSharedInventorySlotForSharedSlotUnlock() throws IOException {
+        URL resource = getClass().getResource("67071.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ConsumableJson.class));
+        IConsumable item = ((ConsumableJson) value).getEntity();
+        assertThat(item.getName(), is("Shared Inventory Slot"));
+        assertThat(item.getUnlockType(), is(ConsumableUnlockType.SHARED_SLOT));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 }
