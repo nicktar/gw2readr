@@ -32,6 +32,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Attribute;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableUnlockType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ContainerType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.GatheringType;
@@ -1284,6 +1285,19 @@ class TestItems {
         assertThat(item.getFlags(), containsInAnyOrder(ItemFlags.HIDE_SUFFIX, ItemFlags.ACCOUNT_BOUND,
                 ItemFlags.NO_SELL, ItemFlags.NOT_UPGRADEABLE, ItemFlags.UNIQUE, ItemFlags.ACCOUNT_BIND_ON_USE,
                 ItemFlags.INFUSED));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
+    @Test
+    void testPirateCaptainsOutfitForOutfitUnlock() throws IOException {
+        URL resource = getClass().getResource("64754.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ConsumableJson.class));
+        IConsumable item = ((ConsumableJson) value).getEntity();
+        assertThat(item.getName(), is("Pirate Captain's Outfit"));
+        assertThat(item.getUnlockType(), is(ConsumableUnlockType.OUTFIT));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
