@@ -1,9 +1,6 @@
 package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
-import java.util.Set;
-
 import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
-import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
 
 public interface IBaseWeapon<T extends IBaseInfixUpgrade<? extends IBaseBuff, ? extends IBaseAttributeModifier>> extends IAttributeAdjuster {
@@ -19,8 +16,6 @@ public interface IBaseWeapon<T extends IBaseInfixUpgrade<? extends IBaseBuff, ? 
     T getInfixUpgrade();
 
     void setInfixUpgrade(T infixUpgrade);
-
-    Set<InfusionSlotType> getInfusionSlots();
 
     Integer getMaxPower();
 

@@ -51,6 +51,7 @@ import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseAttributeModifier
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseBuff;
 import de.getsetsociety.gw2readr.v2.item.items.entities.AttributeModifier;
 import de.getsetsociety.gw2readr.v2.item.items.entities.Buff;
+import de.getsetsociety.gw2readr.v2.item.items.entities.InfusionSlot;
 import de.getsetsociety.gw2readr.v2.item.items.entities.UpgradePath;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBackItem;
@@ -1157,6 +1158,28 @@ class TestItems {
                                                                          .itemId(49365)
                                                                          .build()));
         assertThat(item.getUpgradesFrom(), empty());
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
+    @Test
+    void testRoyalSignetOfDoricInfusedForInfusionSlots() throws IOException {
+        URL resource = getClass().getResource("37098.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(TrinketJson.class));
+        ITrinket item = ((TrinketJson) value).getEntity();
+        assertThat(item.getName(), is("Royal Signet of Doric (Infused)"));
+        assertThat(item.getInfusionSlots(), hasSize(2));
+        assertThat(item.getInfusionSlots(), containsInAnyOrder(
+                InfusionSlot.builder()
+                            .flag(InfusionSlotType.INFUSION)
+                            .build(),
+                InfusionSlot.builder()
+                            .flag(InfusionSlotType.INFUSION)
+                            .item(49428)
+                            .build()
+        ));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 

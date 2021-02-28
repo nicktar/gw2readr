@@ -1,9 +1,11 @@
 package de.getsetsociety.gw2readr.v2.item.items.json;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -20,7 +22,9 @@ import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfusionSlot;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IItem;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IItemWithBaseDetails;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradePath;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
@@ -195,4 +199,19 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
         additionalProperties.put(name, value);
     }
 
+    protected void setBasicDetails(BasicJsonDetails details, IItemWithBaseDetails item) {
+        Collection<IInfusionSlot> slots = details.getInfusionSlots().stream()
+                                                 .map(InfusionSlotJson::getEntity)
+                                                 .collect(Collectors.toSet());
+        item.addAllInfusionSlots(slots);
+
+        item.setSuffixItemId(details.getSuffixItemId());
+        item.setSecondarySuffixItemId(details.getSecondarySuffixItemId());
+        item.setInfixUpgrade(details.getInfixUpgrade().getEntity());
+        item.setAttributeAdjustment(details.getAttributeAdjustment());
+        Optional.ofNullable(details.getStatChoices())
+                .ifPresent(item::addAllStatChoices);
+
+        getAdditionalProperties().putAll(details.getAdditionalProperties());
+    }
 }

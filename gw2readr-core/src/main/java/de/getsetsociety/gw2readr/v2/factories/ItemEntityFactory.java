@@ -1,5 +1,6 @@
 package de.getsetsociety.gw2readr.v2.factories;
 
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfusionSlot;
 import de.getsetsociety.gw2readr.v2.factories.interfaces.IItemEntityFactory;
 import de.getsetsociety.gw2readr.v2.item.items.entities.Armor;
 import de.getsetsociety.gw2readr.v2.item.items.entities.AttributeModifier;
@@ -12,6 +13,7 @@ import de.getsetsociety.gw2readr.v2.item.items.entities.CraftingMaterial;
 import de.getsetsociety.gw2readr.v2.item.items.entities.Gathering;
 import de.getsetsociety.gw2readr.v2.item.items.entities.Gizmo;
 import de.getsetsociety.gw2readr.v2.item.items.entities.InfixUpgrade;
+import de.getsetsociety.gw2readr.v2.item.items.entities.InfusionSlot;
 import de.getsetsociety.gw2readr.v2.item.items.entities.MiniPet;
 import de.getsetsociety.gw2readr.v2.item.items.entities.Tool;
 import de.getsetsociety.gw2readr.v2.item.items.entities.Trait;
@@ -135,6 +137,11 @@ public class ItemEntityFactory implements IItemEntityFactory {
     @Override
     public IUpgradePath newUpgradePath() {
         return new UpgradePath();
+    }
+
+    @Override
+    public IInfusionSlot newInfusionSlot() {
+        return new InfusionSlot();
     }
 
 }

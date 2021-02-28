@@ -1,5 +1,6 @@
 package de.getsetsociety.gw2readr.v2.factories.interfaces;
 
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfusionSlot;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IAttributeModifier;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBackItem;
@@ -59,4 +60,6 @@ public interface IItemEntityFactory {
     ITrait newTrait();
 
     IUpgradePath newUpgradePath();
+
+    IInfusionSlot newInfusionSlot();
 }

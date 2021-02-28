@@ -5,11 +5,11 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrait;
 
 public class TraitJson extends ItemJson<ITrait> {
 
-	private ITrait item = EntityFactoryProvider.getItemEntityFactory().newTrait();
+    private final ITrait item = EntityFactoryProvider.getItemEntityFactory().newTrait();
 
-	@Override
-	public ITrait getEntity() {
-		return item;
-	}
+    @Override
+    public ITrait getEntity() {
+        return item;
+    }
 
 }

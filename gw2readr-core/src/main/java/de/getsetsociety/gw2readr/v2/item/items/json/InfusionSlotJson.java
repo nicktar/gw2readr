@@ -1,23 +1,48 @@
 package de.getsetsociety.gw2readr.v2.item.items.json;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
-import lombok.Data;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfusionSlot;
+import de.getsetsociety.gw2readr.v2.factories.EntityFactoryProvider;
 
-@Data
-public class InfusionSlotJson {
+public class InfusionSlotJson implements IEntityWrapper<IInfusionSlot> {
+
+    private final IInfusionSlot entity = EntityFactoryProvider.getItemEntityFactory().newInfusionSlot();
 
     private final Map<String, Object> additionalProperties = new HashMap<>();
+
+    @Override
+    public IInfusionSlot getEntity() {
+        return entity;
+    }
+
     @JsonProperty("flags")
-    private final List<InfusionSlotType> flags = new ArrayList<>();
+    public Set<InfusionSlotType> getFlags() {
+        return entity.getFlags();
+    }
+
+    public void setFlags(Collection<InfusionSlotType> flags) {
+        if (flags != null) {
+            entity.addAllFlags(flags);
+        }
+    }
+
+    @JsonProperty("item_id")
+    public Integer getItemId() {
+        return entity.getItem();
+    }
+
+    public void setItemId(Integer itemId) {
+        entity.setItem(itemId);
+    }
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
@@ -28,4 +53,5 @@ public class InfusionSlotJson {
     public void setAdditionalProperty(String name, Object value) {
         additionalProperties.put(name, value);
     }
+
 }

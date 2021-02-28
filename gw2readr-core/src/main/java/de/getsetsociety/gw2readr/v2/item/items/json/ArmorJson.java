@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -11,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import de.getsetsociety.gw2readr.v0.item.items.enums.ArmorType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
+import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfusionSlot;
 import de.getsetsociety.gw2readr.v2.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
 import lombok.Data;
@@ -29,10 +31,10 @@ public class ArmorJson extends ItemJson<IArmor> {
         item.setArmorType(details.getArmorType());
         item.setWeightClass(details.getWeightClass());
         item.setDefense(details.getDefense());
-        details.getInfusionSlots().stream()
-               .map(InfusionSlotJson::getFlags)
-               .flatMap(List::stream)
-               .forEach(item::addInfusionSlot);
+        Set<IInfusionSlot> slots = details.getInfusionSlots().stream()
+                                          .map(InfusionSlotJson::getEntity)
+                                          .collect(Collectors.toSet());
+        item.addAllInfusionSlots(slots);
         item.setSuffixItemId(details.getSuffixItemId());
         item.setInfixUpgrade(details.getInfixUpgrade().getEntity());
         item.setAttributeAdjustment(details.getAttributeAdjustment());
