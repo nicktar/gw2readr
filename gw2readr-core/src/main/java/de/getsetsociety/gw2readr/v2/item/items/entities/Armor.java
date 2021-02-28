@@ -27,7 +27,7 @@ public class Armor extends Item implements IArmor {
     private final Set<Integer> statChoices = new HashSet<>();
 
     @Override
-    public void addAllInfusionSlots(Set<IInfusionSlot> infusionSlots) {
+    public void addAllInfusionSlots(Collection<IInfusionSlot> infusionSlots) {
         this.infusionSlots.addAll(infusionSlots);
     }
 

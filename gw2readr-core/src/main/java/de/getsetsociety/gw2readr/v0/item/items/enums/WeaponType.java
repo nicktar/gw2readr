@@ -41,7 +41,7 @@ public enum WeaponType {
     TRIDENT,
     @JsonProperty("Warhorn")
     WARHORN,
-    @JsonProperty("TwoHandedToy")
+    @JsonProperty("ToyTwoHanded")
     TWO_HANDED_TOY,
     @JsonProperty("Toy")
     TOY,

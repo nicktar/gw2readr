@@ -1219,5 +1219,18 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testRidingBroomForToyTwoHanded() throws IOException {
+        URL resource = getClass().getResource("39134.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(WeaponJson.class));
+        IWeapon item = ((WeaponJson) value).getEntity();
+        assertThat(item.getName(), is("Riding Broom"));
+        assertThat(item.getWeaponType(), is(WeaponType.TWO_HANDED_TOY));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 
 }

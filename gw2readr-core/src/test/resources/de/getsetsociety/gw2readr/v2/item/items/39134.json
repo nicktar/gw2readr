@@ -1,0 +1,38 @@
+{
+  "name": "Riding Broom",
+  "description": "Town clothes can no longer be equipped separately.\n\nSpeak to a Black Lion Armor Trader to exchange this for a portable bundle item.",
+  "type": "Weapon",
+  "level": 0,
+  "rarity": "Masterwork",
+  "vendor_value": 0,
+  "default_skin": 3241,
+  "game_types": [
+    "PvpLobby",
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoMysticForge",
+    "NoSell",
+    "NotUpgradeable",
+    "DeleteWarning",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 39134,
+  "chat_link": "[&AgHemAAA]",
+  "icon": "https://render.guildwars2.com/file/0B041363F2E8D23B9CF828C51A77B81F303626BA/534228.png",
+  "details": {
+    "type": "ToyTwoHanded",
+    "damage_type": "Physical",
+    "min_power": 0,
+    "max_power": 0,
+    "defense": 0,
+    "infusion_slots": [],
+    "attribute_adjustment": 11.832,
+    "secondary_suffix_item_id": ""
+  }
+}
