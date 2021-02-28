@@ -21,8 +21,9 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IItem;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradePath;
 
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
         @Type(value = CraftingMaterialJson.class, name = "CraftingMaterial"),
         @Type(value = WeaponJson.class, name = "Weapon"),
@@ -112,11 +113,11 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
     }
 
     @JsonProperty("restrictions")
-    public List<RestrictionType> getRestrictions() {
-        return new ArrayList<>();
+    public Set<RestrictionType> getRestrictions() {
+        return getEntity().getRestrictions();
     }
 
-    public void setRestrictions(List<RestrictionType> restrictions) {
+    public void setRestrictions(Set<RestrictionType> restrictions) {
         getEntity().addAllRestrictions(restrictions);
     }
 
@@ -147,16 +148,6 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
         getEntity().setDefaultSkin(defaultSkin);
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        additionalProperties.put(name, value);
-    }
-
     public void setLanguage(Language language) {
         getEntity().setLanguage(language);
     }
@@ -170,12 +161,38 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
         getEntity().setChatLink(chatLink);
     }
 
-//    protected IIcon mapIcon(IconJson icon) {
-//        return Optional.ofNullable(icon)
-//                       .map(i -> Icon.builder()
-//                                     .fileId(i.getFileId())
-//                                     .signature(i.getSignature())
-//                                     .build())
-//                       .orElse(null);
-//    }
+    public Set<IUpgradePath> getUpgradesInto() {
+        return getEntity().getUpgradesInto();
+    }
+
+    @JsonProperty("upgrades_into")
+    public void setUpgradesInto(Set<UpgradePathJson> upgradePath) {
+        Set<IUpgradePath> paths = upgradePath.stream()
+                                             .map(UpgradePathJson::getEntity)
+                                             .collect(Collectors.toSet());
+        getEntity().addAllUpgradesInto(paths);
+    }
+
+    public Set<IUpgradePath> getUpgradesFrom() {
+        return getEntity().getUpgradesFrom();
+    }
+
+    @JsonProperty("upgrades_from")
+    public void setUpgradesFrom(Set<UpgradePathJson> upgradePath) {
+        Set<IUpgradePath> paths = upgradePath.stream()
+                                             .map(UpgradePathJson::getEntity)
+                                             .collect(Collectors.toSet());
+        getEntity().addAllUpgradesFrom(paths);
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        additionalProperties.put(name, value);
+    }
+
 }

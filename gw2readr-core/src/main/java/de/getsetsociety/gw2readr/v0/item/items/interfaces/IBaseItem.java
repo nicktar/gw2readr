@@ -2,8 +2,6 @@ package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
 
-import java.util.List;
-
 public interface IBaseItem {
 
 	Integer getId();
@@ -29,11 +27,6 @@ public interface IBaseItem {
 	Boolean getAvailableInDungeon();
 
 	void setAvailableInDungeon(Boolean availableInDungeon);
-
-	List<String> getUpgradeRecipes();
-
-	void setUpgradeRecipes(List<String> upgradeRecipe);
-
 
 	Boolean getAvailableInPvE();
 

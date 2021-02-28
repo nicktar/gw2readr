@@ -1,0 +1,86 @@
+{
+  "name": "Quiver of a Thousand Arrows",
+  "description": "",
+  "type": "Back",
+  "level": 80,
+  "rarity": "Ascended",
+  "vendor_value": 330,
+  "default_skin": 2341,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "HideSuffix",
+    "AccountBound",
+    "NoSell",
+    "NotUpgradeable",
+    "Unique",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 37000,
+  "chat_link": "[&AgGIkAAA]",
+  "icon": "https://render.guildwars2.com/file/E61D97DD6D7B3872DB13A9D237A1CB3D80381E60/61756.png",
+  "details": {
+    "infusion_slots": [
+      {
+        "flags": [
+          "Infusion"
+        ]
+      }
+    ],
+    "attribute_adjustment": 89.628,
+    "stat_choices": [
+      584,
+      656,
+      658,
+      1119,
+      657,
+      1038,
+      1097,
+      659,
+      690,
+      583,
+      585,
+      1037,
+      586,
+      1035,
+      588,
+      1114,
+      1128,
+      1163,
+      1066,
+      1064,
+      660,
+      1430,
+      1436,
+      591,
+      581,
+      592,
+      1263,
+      1271,
+      1265,
+      1270,
+      1262,
+      1268,
+      1264,
+      1267,
+      1269,
+      1366,
+      1367,
+      1374,
+      1549,
+      1566
+    ],
+    "secondary_suffix_item_id": ""
+  },
+  "upgrades_into": [
+    {
+      "upgrade": "Infusion",
+      "item_id": 49365
+    }
+  ]
+}

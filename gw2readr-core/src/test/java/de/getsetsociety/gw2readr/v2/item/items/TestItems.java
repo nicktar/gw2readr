@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
@@ -43,12 +44,14 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.ToolType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.TrinketType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentFlag;
 import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeComponentType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.UpgradeType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeaponType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.WeightClass;
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseAttributeModifier;
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.IBaseBuff;
 import de.getsetsociety.gw2readr.v2.item.items.entities.AttributeModifier;
 import de.getsetsociety.gw2readr.v2.item.items.entities.Buff;
+import de.getsetsociety.gw2readr.v2.item.items.entities.UpgradePath;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBackItem;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBag;
@@ -1136,6 +1139,24 @@ class TestItems {
         IBackItem item = ((BackItemJson) value).getEntity();
         assertThat(item.getName(), is("Ghostly Spineguard"));
         assertThat(item.getStatChoices(), containsInAnyOrder(142, 144, 145, 146, 149, 152, 755));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
+    @Test
+    void testQuiverOfAThousandArrowsForUpgradePaths() throws IOException {
+        URL resource = getClass().getResource("37000.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(BackItemJson.class));
+        IBackItem item = ((BackItemJson) value).getEntity();
+        assertThat(item.getName(), is("Quiver of a Thousand Arrows"));
+        assertThat(item.getUpgradesInto(), hasSize(1));
+        assertThat(item.getUpgradesInto(), containsInAnyOrder(UpgradePath.builder()
+                                                                         .upgrade(UpgradeType.INFUSTION)
+                                                                         .itemId(49365)
+                                                                         .build()));
+        assertThat(item.getUpgradesFrom(), empty());
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 

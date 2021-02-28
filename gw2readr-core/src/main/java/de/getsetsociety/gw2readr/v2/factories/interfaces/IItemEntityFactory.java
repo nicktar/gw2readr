@@ -17,44 +17,46 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrait;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrinket;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrophy;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradeComponent;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradePath;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IWeapon;
 
 public interface IItemEntityFactory {
 
-	public abstract IArmor newArmor();
+    IArmor newArmor();
 
-	public abstract IAttributeModifier newAttributeModifier();
+    IAttributeModifier newAttributeModifier();
 
-	public abstract IBackItem newBackItem();
+    IBackItem newBackItem();
 
-	public abstract IBag newBag();
+    IBag newBag();
 
-	public abstract IBuff newBuff();
+    IBuff newBuff();
 
-	public abstract IConsumable newConsumable();
+    IConsumable newConsumable();
 
-	public abstract IContainer newContainer();
+    IContainer newContainer();
 
-	public abstract ICraftingMaterial newCraftingMaterial();
+    ICraftingMaterial newCraftingMaterial();
 
-	public abstract IGizmo newGizmo();
+    IGizmo newGizmo();
 
-	public abstract ITool newTool();
+    ITool newTool();
 
-	public abstract IGathering newGathering();
+    IGathering newGathering();
 
-	public abstract IInfixUpgrade newInfixUpgrade();
+    IInfixUpgrade newInfixUpgrade();
 
-	public abstract IMiniPet newMiniPet();
+    IMiniPet newMiniPet();
 
-	public abstract ITrinket newTrinklet();
+    ITrinket newTrinklet();
 
-	public abstract ITrophy newTrophy();
+    ITrophy newTrophy();
 
-	public abstract IUpgradeComponent newUpgradeComponent();
+    IUpgradeComponent newUpgradeComponent();
 
-	public abstract IWeapon newWeapon();
+    IWeapon newWeapon();
 
-	public abstract ITrait newTrait();
+    ITrait newTrait();
 
+    IUpgradePath newUpgradePath();
 }

@@ -2,7 +2,6 @@ package de.getsetsociety.gw2readr.v2.item.items.entities;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
@@ -10,6 +9,7 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IItem;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradePath;
 import lombok.Data;
 
 @Data
@@ -33,37 +33,34 @@ public class Item implements IItem {
     private Language language;
     private Integer defaultSkin;
     private String chatLink;
-    private List<String> upgradeRecipes;
+    private final Set<IUpgradePath> upgradesFrom = new HashSet<>();
+    private final Set<IUpgradePath> upgradesInto = new HashSet<>();
 
     @Override
     public void string2GameType(String gameType) {
         switch (gameType) {
-            case "Activity":
-                setAvailableInActivity(true);
-                break;
-            case "Dungeon":
-                setAvailableInDungeon(true);
-                break;
-            case "Pve":
-                setAvailableInPvE(true);
-                break;
-            case "Pvp":
-                setAvailableInPvP(true);
-                break;
-            case "PvpLobby":
-                setAvailableInPvPLobby(true);
-                break;
-            case "Wvw":
-                setAvailableInWvW(true);
-                break;
-            default:
-
-                System.out.println("Unknown game type: " + gameType);
+            case "Activity" -> setAvailableInActivity(true);
+            case "Dungeon" -> setAvailableInDungeon(true);
+            case "Pve" -> setAvailableInPvE(true);
+            case "Pvp" -> setAvailableInPvP(true);
+            case "PvpLobby" -> setAvailableInPvPLobby(true);
+            case "Wvw" -> setAvailableInWvW(true);
+            default -> System.out.println("Unknown game type: " + gameType);
         }
     }
 
     @Override
     public void addAllRestrictions(Collection<RestrictionType> restrictions) {
         this.restrictions.addAll(restrictions);
+    }
+
+    @Override
+    public void addAllUpgradesInto(Set<IUpgradePath> upgradePaths) {
+        upgradesInto.addAll(upgradePaths);
+    }
+
+    @Override
+    public void addAllUpgradesFrom(Set<IUpgradePath> upgradePaths) {
+        upgradesFrom.addAll(upgradePaths);
     }
 }

@@ -5,7 +5,7 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrophy;
 
 public class TrophyJson extends ItemJson<ITrophy> {
 
-    private ITrophy item = EntityFactoryProvider.getItemEntityFactory().newTrophy();
+    private final ITrophy item = EntityFactoryProvider.getItemEntityFactory().newTrophy();
 
     @Override
     public ITrophy getEntity() {

@@ -33,4 +33,13 @@ public interface IItem extends IBaseItem {
     void setChatLink(String chatLink);
 
     void addAllRestrictions(Collection<RestrictionType> restrictions);
+
+    Set<IUpgradePath> getUpgradesInto();
+
+    void addAllUpgradesInto(Set<IUpgradePath> upgradePath);
+
+    Set<IUpgradePath> getUpgradesFrom();
+
+    void addAllUpgradesFrom(Set<IUpgradePath> upgradePath);
+
 }
