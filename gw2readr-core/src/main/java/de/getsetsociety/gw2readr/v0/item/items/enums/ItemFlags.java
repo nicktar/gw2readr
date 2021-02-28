@@ -36,6 +36,8 @@ public enum ItemFlags {
     TONIC,
     @JsonProperty("BulkConsume")
     BULK_CONSUME,
+    @JsonProperty("Attuned")
+    ATTUNED,
     @JsonProperty("Infused")
     INFUSED
 

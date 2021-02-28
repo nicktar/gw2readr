@@ -1,0 +1,70 @@
+{
+  "name": "Attuned Rurik's Royal Signet Ring",
+  "description": "This item crackles with the infused energy of the Fractals of the Mists and is attuned to have a bonus agony infusion slot.",
+  "type": "Trinket",
+  "level": 80,
+  "rarity": "Ascended",
+  "vendor_value": 495,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "HideSuffix",
+    "AccountBound",
+    "NotUpgradeable",
+    "Unique",
+    "AccountBindOnUse",
+    "Attuned"
+  ],
+  "restrictions": [],
+  "id": 70487,
+  "chat_link": "[&AgFXEwEA]",
+  "icon": "https://render.guildwars2.com/file/5D37E17ED2A3A058166D02A170650D0F03A81CA3/511830.png",
+  "details": {
+    "type": "Ring",
+    "infusion_slots": [
+      {
+        "flags": [
+          "Infusion"
+        ]
+      },
+      {
+        "flags": [
+          "Infusion"
+        ]
+      }
+    ],
+    "attribute_adjustment": 268.884,
+    "infix_upgrade": {
+      "id": 583,
+      "buff": {
+        "skill_id": 15743,
+        "description": "+32 Toughness\n+18 Power\n+18 Ferocity"
+      },
+      "attributes": [
+        {
+          "attribute": "Power",
+          "modifier": 85
+        },
+        {
+          "attribute": "Toughness",
+          "modifier": 126
+        },
+        {
+          "attribute": "CritDamage",
+          "modifier": 85
+        }
+      ]
+    },
+    "secondary_suffix_item_id": ""
+  },
+  "upgrades_from": [
+    {
+      "upgrade": "Attunement",
+      "item_id": 37090
+    }
+  ]
+}

@@ -1230,4 +1230,18 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void tesAttunedRuriksRoyalSignetRingForAttunedFlag() throws IOException {
+        URL resource = getClass().getResource("70487.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(TrinketJson.class));
+        ITrinket item = ((TrinketJson) value).getEntity();
+        assertThat(item.getName(), is("Attuned Rurik's Royal Signet Ring"));
+        assertThat(item.getFlags(), containsInAnyOrder(ItemFlags.HIDE_SUFFIX, ItemFlags.ACCOUNT_BOUND,
+                ItemFlags.NOT_UPGRADEABLE, ItemFlags.UNIQUE, ItemFlags.ACCOUNT_BIND_ON_USE, ItemFlags.ATTUNED));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 }
