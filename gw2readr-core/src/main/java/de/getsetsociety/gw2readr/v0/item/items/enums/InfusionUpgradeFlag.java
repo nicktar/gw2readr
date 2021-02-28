@@ -8,5 +8,7 @@ public enum InfusionUpgradeFlag {
     @JsonProperty("Offense")
     OFFENSE,
     @JsonProperty("Utility")
-    UTILITY
+    UTILITY,
+    @JsonProperty("Infusion")
+    INFUSION
 }

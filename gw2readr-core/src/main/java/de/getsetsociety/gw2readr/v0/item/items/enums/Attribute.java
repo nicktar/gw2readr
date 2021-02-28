@@ -21,5 +21,7 @@ public enum Attribute {
     @JsonProperty("ConditionDuration")
     CONDITION_DURATION,
     @JsonProperty("BoonDuration")
-    BOON_DURATION
+    BOON_DURATION,
+    @JsonProperty("AgonyResistance")
+    AGONY_RESISTANCE
 }

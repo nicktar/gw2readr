@@ -37,6 +37,7 @@ import de.getsetsociety.gw2readr.v0.item.items.enums.DamageType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.GatheringType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.GizmoType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionSlotType;
+import de.getsetsociety.gw2readr.v0.item.items.enums.InfusionUpgradeFlag;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
 import de.getsetsociety.gw2readr.v0.item.items.enums.Rarity;
 import de.getsetsociety.gw2readr.v0.item.items.enums.RestrictionType;
@@ -1180,6 +1181,41 @@ class TestItems {
                             .item(49428)
                             .build()
         ));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
+    @Test
+    void testHealingPlusSevenAgonyInfusionForUpgradeFlagInfusion() throws IOException {
+        URL resource = getClass().getResource("37123.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(UpgradeComponentJson.class));
+        IUpgradeComponent item = ((UpgradeComponentJson) value).getEntity();
+        assertThat(item.getName(), is("Healing +7 Agony Infusion"));
+        assertThat(item.getInfusionUpgradeFlags(), containsInAnyOrder(InfusionUpgradeFlag.INFUSION));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
+    @Test
+    void testHealingPlusSevenAgonyInfusionForAgonyResistanceAttribute() throws IOException {
+        URL resource = getClass().getResource("37123.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(UpgradeComponentJson.class));
+        IUpgradeComponent item = ((UpgradeComponentJson) value).getEntity();
+        assertThat(item.getName(), is("Healing +7 Agony Infusion"));
+        assertThat(item.getInfixUpgrade(), notNullValue());
+        assertThat(item.getInfixUpgrade().getAttributes(), containsInAnyOrder(
+                AttributeModifier.builder()
+                                 .attribute(Attribute.HEALING)
+                                 .modifier(5)
+                                 .build(),
+                AttributeModifier.builder()
+                                 .attribute(Attribute.AGONY_RESISTANCE)
+                                 .modifier(7)
+                                 .build()));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
