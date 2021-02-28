@@ -1,6 +1,7 @@
 package de.getsetsociety.gw2readr.v2.item.items.json;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -35,6 +36,7 @@ public class ConsumableJson extends ItemJson<IConsumable> {
         item.setIcon(details.getIcon());
         item.setDescription(details.getDescription());
         item.addAllSkins(details.getSkins());
+        item.setGuildUpgradeId(details.getGuildUpgradeId());
         getAdditionalProperties().putAll(details.getAdditionalProperties());
     }
 
@@ -60,7 +62,9 @@ public class ConsumableJson extends ItemJson<IConsumable> {
         @JsonProperty("description")
         private String description;
         @JsonProperty("skins")
-        private Set<Integer> skins;
+        private Set<Integer> skins = new HashSet<>();
+        @JsonProperty("guild_upgrade_id")
+        private Integer guildUpgradeId;
         private Map<String, Object> additionalProperties = new HashMap<>();
 
 

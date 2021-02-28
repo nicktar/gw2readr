@@ -29,8 +29,6 @@ public class Consumable extends Item implements IConsumable {
 
     @Override
     public void addAllSkins(Set<Integer> skins) {
-        if (skins != null) {
-            this.skins.addAll(skins);
-        }
+        this.skins.addAll(skins);
     }
 }

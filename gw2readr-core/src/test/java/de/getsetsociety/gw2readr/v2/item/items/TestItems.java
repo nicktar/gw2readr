@@ -1231,7 +1231,7 @@ class TestItems {
     }
 
     @Test
-    void tesAttunedRuriksRoyalSignetRingForAttunedFlag() throws IOException {
+    void testAttunedRuriksRoyalSignetRingForAttunedFlag() throws IOException {
         URL resource = getClass().getResource("70487.json");
 
         ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
@@ -1241,6 +1241,19 @@ class TestItems {
         assertThat(item.getName(), is("Attuned Rurik's Royal Signet Ring"));
         assertThat(item.getFlags(), containsInAnyOrder(ItemFlags.HIDE_SUFFIX, ItemFlags.ACCOUNT_BOUND,
                 ItemFlags.NOT_UPGRADEABLE, ItemFlags.UNIQUE, ItemFlags.ACCOUNT_BIND_ON_USE, ItemFlags.ATTUNED));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
+    @Test
+    void testGreenTreeForGuildUpgrade() throws IOException {
+        URL resource = getClass().getResource("70526.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ConsumableJson.class));
+        IConsumable item = ((ConsumableJson) value).getEntity();
+        assertThat(item.getName(), is("Green Tree"));
+        assertThat(item.getGuildUpgradeId(), is(371));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
