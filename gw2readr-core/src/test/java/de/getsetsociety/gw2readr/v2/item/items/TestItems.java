@@ -1247,5 +1247,17 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testExperiencedEnrichmentForEnrichmentInfusion() throws IOException {
+        URL resource = getClass().getResource("39330.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(UpgradeComponentJson.class));
+        IUpgradeComponent item = ((UpgradeComponentJson) value).getEntity();
+        assertThat(item.getName(), is("Experienced Enrichment"));
+        assertThat(item.getInfusionUpgradeFlags(), containsInAnyOrder(InfusionUpgradeFlag.ENRICHMENT));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
 
 }

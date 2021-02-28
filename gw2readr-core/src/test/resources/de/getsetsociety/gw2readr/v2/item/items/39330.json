@@ -1,0 +1,44 @@
+{
+  "name": "Experienced Enrichment",
+  "description": "Double-click to apply to an unused enrichment slot.",
+  "type": "UpgradeComponent",
+  "level": 0,
+  "rarity": "Fine",
+  "vendor_value": 8,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoMysticForge",
+    "NoSalvage",
+    "NoSell",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 39330,
+  "chat_link": "[&AgGimQAA]",
+  "icon": "https://render.guildwars2.com/file/CB540FC0D1A0F52B2B68370378A4137F66350222/534270.png",
+  "details": {
+    "type": "Default",
+    "flags": [
+      "Trinket"
+    ],
+    "infusion_upgrade_flags": [
+      "Enrichment"
+    ],
+    "attribute_adjustment": 0,
+    "infix_upgrade": {
+      "id": 642,
+      "buff": {
+        "skill_id": 16977,
+        "description": "+20% Experience from Kills"
+      },
+      "attributes": []
+    },
+    "suffix": ""
+  }
+}
