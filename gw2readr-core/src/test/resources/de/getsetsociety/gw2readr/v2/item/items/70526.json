@@ -1,0 +1,29 @@
+{
+  "name": "Green Tree",
+  "description": "A decoration schematic that is processed by the guild's assembly device to make the decoration.",
+  "type": "Consumable",
+  "level": 0,
+  "rarity": "Basic",
+  "vendor_value": 0,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoMysticForge",
+    "NoSalvage",
+    "NoSell",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 70526,
+  "chat_link": "[&AgF+EwEA]",
+  "icon": "https://render.guildwars2.com/file/67D5E0280709A2F7DB23D89F5DF66EB97AC8244A/1228207.png",
+  "details": {
+    "type": "Generic",
+    "guild_upgrade_id": 371
+  }
+}
