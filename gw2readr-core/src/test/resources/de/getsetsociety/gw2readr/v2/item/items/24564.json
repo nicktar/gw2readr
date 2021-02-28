@@ -1,0 +1,56 @@
+{
+  "name": "Minor Sigil of Strength",
+  "description": "<c=@abilitytype>Element: </c>Enhancement<br>Double-click to apply to a weapon.",
+  "type": "UpgradeComponent",
+  "level": 0,
+  "rarity": "Masterwork",
+  "vendor_value": 16,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [],
+  "restrictions": [
+    "Necromancer"
+  ],
+  "id": 24564,
+  "chat_link": "[&AgH0XwAA]",
+  "icon": "https://render.guildwars2.com/file/08357DEE4E055A09F82A3D2DC94B9A1C96ED5404/220983.png",
+  "details": {
+    "type": "Sigil",
+    "flags": [
+      "ShortBow",
+      "Dagger",
+      "Focus",
+      "Greatsword",
+      "Hammer",
+      "Harpoon",
+      "Mace",
+      "Pistol",
+      "Rifle",
+      "Scepter",
+      "Shield",
+      "Speargun",
+      "Axe",
+      "Staff",
+      "Sword",
+      "Torch",
+      "Trident",
+      "Warhorn",
+      "LongBow"
+    ],
+    "infusion_upgrade_flags": [],
+    "attribute_adjustment": 0,
+    "infix_upgrade": {
+      "id": 205,
+      "buff": {
+        "skill_id": 9277,
+        "description": "Gain might for 5 seconds upon critically hitting a foe. <br><c=@reminder>(Cooldown: 1 Second)</c>"
+      },
+      "attributes": []
+    },
+    "suffix": "of Strength"
+  }
+}

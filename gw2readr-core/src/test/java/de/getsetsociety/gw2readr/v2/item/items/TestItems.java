@@ -869,7 +869,7 @@ class TestItems {
         List<ItemFlags> flags = Arrays.asList(ItemFlags.ACCOUNT_BOUND, ItemFlags.NO_SELL, ItemFlags.ACCOUNT_BIND_ON_USE);
         assertThat(entity.getFlags().size(), is(flags.size()));
         assertThat(flags.containsAll(entity.getFlags()), is(true));
-        List<RestrictionType> restrictions = Arrays.asList(RestrictionType.Ranger);
+        List<RestrictionType> restrictions = Arrays.asList(RestrictionType.RANGER);
         assertThat(entity.getRestrictions().size(), is(restrictions.size()));
         assertThat(restrictions.containsAll(entity.getRestrictions()), is(true));
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/1B9503F466E464B34620340FEC65CFE7BBC69231/534278.png"));
@@ -911,7 +911,7 @@ class TestItems {
                 ItemFlags.ACCOUNT_BIND_ON_USE);
         assertThat(entity.getFlags().size(), is(flags.size()));
         assertThat(flags.containsAll(entity.getFlags()), is(true));
-        List<RestrictionType> restrictions = List.of(RestrictionType.Mesmer);
+        List<RestrictionType> restrictions = List.of(RestrictionType.MESMER);
         assertThat(entity.getRestrictions().size(), is(restrictions.size()));
         assertThat(restrictions.containsAll(entity.getRestrictions()), is(true));
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/2DFB4EDF0408A8604100BB6A510D215CE637B03C/780409.png"));
@@ -1098,4 +1098,32 @@ class TestItems {
         assertThat(attributes, contains(Attribute.BOON_DURATION));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
+
+    @Test
+    void testMinorSigilOfStrengthForNecromancerRestriction() throws IOException {
+        URL resource = getClass().getResource("24564.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(UpgradeComponentJson.class));
+        IUpgradeComponent item = ((UpgradeComponentJson) value).getEntity();
+        assertThat(item.getName(), is("Minor Sigil of Strength"));
+        assertThat(item.getRestrictions(), contains(RestrictionType.NECROMANCER));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
+    @Test
+    void testMinorSigilOfStrengthForNecromancerRestriction() throws IOException {
+        URL resource = getClass().getResource("24564.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(UpgradeComponentJson.class));
+        IUpgradeComponent item = ((UpgradeComponentJson) value).getEntity();
+        assertThat(item.getName(), is("Minor Sigil of Strength"));
+        assertThat(item.getRestrictions(), contains(RestrictionType.NECROMANCER));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
+
 }

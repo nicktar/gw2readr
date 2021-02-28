@@ -1,5 +1,6 @@
 package de.getsetsociety.gw2readr.v2.item.items.entities;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -28,7 +29,7 @@ public class Item implements IItem {
     private Boolean availableInWvW = false;
     private Set<ItemFlags> flags = new HashSet<>();
     private String description;
-    private Set<RestrictionType> restrictions = new HashSet<>();
+    private final Set<RestrictionType> restrictions = new HashSet<>();
     private Language language;
     private Integer defaultSkin;
     private String chatLink;
@@ -56,8 +57,13 @@ public class Item implements IItem {
                 setAvailableInWvW(true);
                 break;
             default:
+
                 System.out.println("Unknown game type: " + gameType);
         }
     }
 
+    @Override
+    public void addAllRestrictions(Collection<RestrictionType> restrictions) {
+        this.restrictions.addAll(restrictions);
+    }
 }

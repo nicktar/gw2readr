@@ -1,5 +1,6 @@
 package de.getsetsociety.gw2readr.v2.item.items.interfaces;
 
+import java.util.Collection;
 import java.util.Set;
 
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
@@ -19,8 +20,6 @@ public interface IItem extends IBaseItem {
 
     Set<RestrictionType> getRestrictions();
 
-    void setRestrictions(Set<RestrictionType> restrictions);
-
     String getIconSignature();
 
     void setIconSignature(String iconSignature);
@@ -32,4 +31,6 @@ public interface IItem extends IBaseItem {
     String getChatLink();
 
     void setChatLink(String chatLink);
+
+    void addAllRestrictions(Collection<RestrictionType> restrictions);
 }

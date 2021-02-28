@@ -351,7 +351,7 @@ public class ArmorTest {
             assertEquals(Integer.valueOf(1000), armor.getVendorValue());
             assertFalse(armor.getRestrictions().isEmpty());
             assertEquals(1, armor.getRestrictions().size());
-            assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.Charr)));
+            assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.CHARR)));
         } catch (Exception e) {
             e.printStackTrace();
             fail("Unexpected Exception");
@@ -390,7 +390,7 @@ public class ArmorTest {
             assertEquals(Integer.valueOf(31250), armor.getVendorValue());
             assertFalse(armor.getRestrictions().isEmpty());
             assertEquals(1, armor.getRestrictions().size());
-            assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.Human)));
+            assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.HUMAN)));
         } catch (Exception e) {
             e.printStackTrace();
             fail("Unexpected Exception");
@@ -429,7 +429,7 @@ public class ArmorTest {
             assertEquals(Integer.valueOf(15000), armor.getVendorValue());
             assertFalse(armor.getRestrictions().isEmpty());
             assertEquals(1, armor.getRestrictions().size());
-            assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.Asura)));
+            assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.ASURA)));
         } catch (Exception e) {
             e.printStackTrace();
             fail("Unexpected Exception");
@@ -438,41 +438,41 @@ public class ArmorTest {
 	@Test
 	public void testArmor003566() {
 		String content = "{\"name\":\"Vigorous Wolfborn Boots\",\"type\":\"Armor\",\"level\":35,\"rarity\":\"Rare\",\"vendor_value\":425,\"default_skin\":452,\"game_types\":[\"Activity\",\"Dungeon\",\"Pve\",\"Wvw\"],\"flags\":[\"SoulbindOnAcquire\",\"SoulBindOnUse\"],\"restrictions\":[\"Norn\"],\"id\":3566,\"icon\":\"https://render.guildwars2.com/file/657FD112604B9148CE1BB5E6A2695B1179566530/414927.png\",\"details\":{\"type\":\"Boots\",\"weight_class\":\"Medium\",\"defense\":51,\"infusion_slots\":[],\"infix_upgrade\":{\"attributes\":[{\"attribute\":\"Power\",\"modifier\":10},{\"attribute\":\"Vitality\",\"modifier\":7}]},\"secondary_suffix_item_id\":\"\"}}";
-		try {
-			ItemJson<?> itemJson = mapper.readValue(content, ItemJson.class);
-			assertNotNull(itemJson);
-			assertTrue(itemJson instanceof ArmorJson);
-			IArmor armor = (IArmor)itemJson.getEntity();
-			assertEquals(ArmorType.Boots, armor.getArmorType());
-			assertTrue(armor.getAvailableInActivity());
-			assertTrue(armor.getAvailableInDungeon());
-			assertTrue(armor.getAvailableInPvE());
-			assertFalse(armor.getAvailableInPvP());
-			assertFalse(armor.getAvailableInPvPLobby());
-			assertTrue(armor.getAvailableInWvW());
-			assertEquals(Integer.valueOf(51), armor.getDefense());
-			assertNull(armor.getDescription());
-			assertFalse(armor.getFlags().isEmpty());
-			assertEquals(2, armor.getFlags().size());
-			assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.SOUL_BIND_ON_ACQUIRE, ItemFlags.SOUL_BIND_ON_USE)));
-			assertEquals(Integer.valueOf(3566), armor.getId());
-			assertNotNull(armor.getInfixUpgrade());
-			assertEquals(2, armor.getInfixUpgrade().getAttributes().size());
-			assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.POWER, 10), new AttributeModifier(Attribute.VITALITY, 7))));
-			assertTrue(armor.getInfusionSlots().isEmpty());
-			assertEquals(Integer.valueOf(35), armor.getLevel());
-			assertEquals("Vigorous Wolfborn Boots", armor.getName());
-			assertEquals(Rarity.RARE, armor.getRarity());
-			assertNull(armor.getSuffixItemId());
-			assertEquals(WeightClass.Medium, armor.getWeightClass());
-			assertEquals(Integer.valueOf(425), armor.getVendorValue());
-			assertFalse(armor.getRestrictions().isEmpty());
-			assertEquals(1, armor.getRestrictions().size());
-			assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.Norn)));
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail("Unexpected Exception");
-		}
+        try {
+            ItemJson<?> itemJson = mapper.readValue(content, ItemJson.class);
+            assertNotNull(itemJson);
+            assertTrue(itemJson instanceof ArmorJson);
+            IArmor armor = (IArmor) itemJson.getEntity();
+            assertEquals(ArmorType.Boots, armor.getArmorType());
+            assertTrue(armor.getAvailableInActivity());
+            assertTrue(armor.getAvailableInDungeon());
+            assertTrue(armor.getAvailableInPvE());
+            assertFalse(armor.getAvailableInPvP());
+            assertFalse(armor.getAvailableInPvPLobby());
+            assertTrue(armor.getAvailableInWvW());
+            assertEquals(Integer.valueOf(51), armor.getDefense());
+            assertNull(armor.getDescription());
+            assertFalse(armor.getFlags().isEmpty());
+            assertEquals(2, armor.getFlags().size());
+            assertTrue(armor.getFlags().containsAll(Arrays.asList(ItemFlags.SOUL_BIND_ON_ACQUIRE, ItemFlags.SOUL_BIND_ON_USE)));
+            assertEquals(Integer.valueOf(3566), armor.getId());
+            assertNotNull(armor.getInfixUpgrade());
+            assertEquals(2, armor.getInfixUpgrade().getAttributes().size());
+            assertTrue(armor.getInfixUpgrade().getAttributes().containsAll(Arrays.asList(new AttributeModifier(Attribute.POWER, 10), new AttributeModifier(Attribute.VITALITY, 7))));
+            assertTrue(armor.getInfusionSlots().isEmpty());
+            assertEquals(Integer.valueOf(35), armor.getLevel());
+            assertEquals("Vigorous Wolfborn Boots", armor.getName());
+            assertEquals(Rarity.RARE, armor.getRarity());
+            assertNull(armor.getSuffixItemId());
+            assertEquals(WeightClass.Medium, armor.getWeightClass());
+            assertEquals(Integer.valueOf(425), armor.getVendorValue());
+            assertFalse(armor.getRestrictions().isEmpty());
+            assertEquals(1, armor.getRestrictions().size());
+            assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.NORN)));
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail("Unexpected Exception");
+        }
 	}
 	@Test
 	public void testArmor003652() {
@@ -507,7 +507,7 @@ public class ArmorTest {
             assertEquals(Integer.valueOf(1875), armor.getVendorValue());
             assertFalse(armor.getRestrictions().isEmpty());
             assertEquals(1, armor.getRestrictions().size());
-            assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.Sylvari)));
+            assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.SYLVARI)));
         } catch (Exception e) {
             e.printStackTrace();
             fail("Unexpected Exception");
@@ -694,7 +694,7 @@ public class ArmorTest {
             assertEquals(Integer.valueOf(248), armor.getVendorValue());
             assertFalse(armor.getRestrictions().isEmpty());
             assertEquals(2, armor.getRestrictions().size());
-            assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.Guardian, RestrictionType.Warrior)));
+            assertTrue(armor.getRestrictions().containsAll(Arrays.asList(RestrictionType.GUARDIAN, RestrictionType.WARRIOR)));
         } catch (Exception e) {
             e.printStackTrace();
             fail("Unexpected Exception");

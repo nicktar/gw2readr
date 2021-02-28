@@ -84,55 +84,53 @@ public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 		return getEntity().getVendorValue();
 	}
 
-	public void setVendorValue(Integer vendorValue) {
-		getEntity().setVendorValue(vendorValue);
-	}
+    public void setVendorValue(Integer vendorValue) {
+        getEntity().setVendorValue(vendorValue);
+    }
 
-	@JsonProperty("game_types")
-	public List<String> getGameTypes() {
-		return new ArrayList<>();
-	}
+    @JsonProperty("game_types")
+    public List<String> getGameTypes() {
+        return new ArrayList<>();
+    }
 
-	public void setGameTypes(List<String> gameTypes) {
-		for (String gameType : gameTypes) {
-			getEntity().string2GameType(gameType);
-		}
-	}
+    public void setGameTypes(List<String> gameTypes) {
+        for (String gameType : gameTypes) {
+            getEntity().string2GameType(gameType);
+        }
+    }
 
-	@JsonProperty("flags")
-	public Set<ItemFlags> getFlags() {
-		return getEntity().getFlags();
-	}
+    @JsonProperty("flags")
+    public Set<ItemFlags> getFlags() {
+        return getEntity().getFlags();
+    }
 
-	public void setFlags(Set<String> flags) {
-		Set<ItemFlags> itemFlags = flags.stream()
-		                                .map(ItemFlags::fromJsonString)
-		                                .collect(Collectors.toSet());
-		getEntity().getFlags().addAll(itemFlags);
-	}
+    public void setFlags(Set<String> flags) {
+        Set<ItemFlags> itemFlags = flags.stream()
+                                        .map(ItemFlags::fromJsonString)
+                                        .collect(Collectors.toSet());
+        getEntity().getFlags().addAll(itemFlags);
+    }
 
-	@JsonProperty("restrictions")
-	public List<String> getRestrictions() {
-		return new ArrayList<>();
-	}
+    @JsonProperty("restrictions")
+    public List<RestrictionType> getRestrictions() {
+        return new ArrayList<>();
+    }
 
-	public void setRestrictions(List<String> restrictions) {
-		for (String restriction : restrictions) {
-			getEntity().getRestrictions().add(RestrictionType.valueOf(restriction));
-		}
-	}
+    public void setRestrictions(List<RestrictionType> restrictions) {
+        getEntity().addAllRestrictions(restrictions);
+    }
 
-	@JsonProperty("id")
-	public Integer getId() {
-		return getEntity().getId();
-	}
+    @JsonProperty("id")
+    public Integer getId() {
+        return getEntity().getId();
+    }
 
-	public void setId(Integer id) {
-		getEntity().setId(id);
-	}
+    public void setId(Integer id) {
+        getEntity().setId(id);
+    }
 
-	@JsonProperty("icon")
-	public String getIcon() {
+    @JsonProperty("icon")
+    public String getIcon() {
         return getEntity().getIconSignature();
     }
 
