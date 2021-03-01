@@ -1,0 +1,30 @@
+{
+  "name": "Recipe: Chiaroscuro Staffs",
+  "description": "Unlocks the following recipes:\n• Shimmering Staff\n• Tenebrous Staff",
+  "type": "Consumable",
+  "level": 0,
+  "rarity": "Exotic",
+  "vendor_value": 132,
+  "game_types": [
+    "PvpLobby",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 70553,
+  "chat_link": "[&AgGZEwEA]",
+  "icon": "https://render.guildwars2.com/file/B00E062899E80C806A7BB83DDCCDE213E19151B9/849329.png",
+  "details": {
+    "type": "Unlock",
+    "unlock_type": "CraftingRecipe",
+    "recipe_id": 9973,
+    "extra_recipe_ids": [
+      11549
+    ]
+  }
+}

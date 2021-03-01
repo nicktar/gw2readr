@@ -37,6 +37,7 @@ public class ConsumableJson extends ItemJson<IConsumable> {
         item.setDescription(details.getDescription());
         item.addAllSkins(details.getSkins());
         item.setGuildUpgradeId(details.getGuildUpgradeId());
+        item.setExtraRecipeIds(details.getExtraRecipeIds());
         getAdditionalProperties().putAll(details.getAdditionalProperties());
     }
 
@@ -65,6 +66,8 @@ public class ConsumableJson extends ItemJson<IConsumable> {
         private Set<Integer> skins = new HashSet<>();
         @JsonProperty("guild_upgrade_id")
         private Integer guildUpgradeId;
+        @JsonProperty("extra_recipe_ids")
+        private Set<Integer> extraRecipeIds = new HashSet<>();
         private Map<String, Object> additionalProperties = new HashMap<>();
 
 

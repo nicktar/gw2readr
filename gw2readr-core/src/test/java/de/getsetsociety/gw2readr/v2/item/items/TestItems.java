@@ -1257,4 +1257,17 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testRecipeChiaroscuroStaffsForExtraRecipeIds() throws IOException {
+        URL resource = getClass().getResource("70553.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ConsumableJson.class));
+        IConsumable item = ((ConsumableJson) value).getEntity();
+        assertThat(item.getName(), is("Recipe: Chiaroscuro Staffs"));
+        assertThat(item.getExtraRecipeIds(), contains(11549));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 }
