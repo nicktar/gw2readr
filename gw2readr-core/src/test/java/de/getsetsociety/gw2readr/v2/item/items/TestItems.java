@@ -1322,5 +1322,18 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testMiniHelmedMoaRacerForMiniPetUnlock() throws IOException {
+        URL resource = getClass().getResource("82122.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ConsumableJson.class));
+        IConsumable item = ((ConsumableJson) value).getEntity();
+        assertThat(item.getName(), is("Mini Helmed Moa Racer"));
+        assertThat(item.getUnlockType(), is(ConsumableUnlockType.MINI_PET));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 
 }

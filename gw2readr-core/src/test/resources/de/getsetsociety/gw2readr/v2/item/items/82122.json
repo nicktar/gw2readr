@@ -1,0 +1,25 @@
+{
+  "name": "Mini Helmed Moa Racer",
+  "type": "Consumable",
+  "level": 0,
+  "rarity": "Masterwork",
+  "vendor_value": 50,
+  "game_types": [
+    "PvpLobby",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 82122,
+  "chat_link": "[&AgHKQAEA]",
+  "icon": "https://render.guildwars2.com/file/2E095D7824C3260509267DC606CFF7F1A4D11136/591577.png",
+  "details": {
+    "type": "Unlock",
+    "unlock_type": "Minipet"
+  }
+}

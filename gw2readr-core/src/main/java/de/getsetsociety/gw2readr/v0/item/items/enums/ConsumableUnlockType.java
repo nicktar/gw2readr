@@ -25,5 +25,7 @@ public enum ConsumableUnlockType {
     @JsonProperty("SharedSlot")
     SHARED_SLOT,
     @JsonProperty("Champion")
-    CHAMPION
+    CHAMPION,
+    @JsonProperty("MiniPet")
+    MINI_PET
 }
