@@ -1371,4 +1371,17 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testMountAdoptionLicenseForRandomMountSkinUnlock() throws IOException {
+        URL resource = getClass().getResource("85580.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ConsumableJson.class));
+        IConsumable item = ((ConsumableJson) value).getEntity();
+        assertThat(item.getName(), is("Mount Adoption License"));
+        assertThat(item.getConsumableType(), is(ConsumableType.RANDOM_MOUNT_SKIN));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 }

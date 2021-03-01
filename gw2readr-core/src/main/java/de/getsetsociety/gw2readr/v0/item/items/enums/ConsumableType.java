@@ -37,6 +37,8 @@ public enum ConsumableType {
     CURRENCY,
     @JsonProperty("RandomUnlock")
     RANDOM_UNLOCK,
+    @JsonProperty("MountRandomUnlock")
+    RANDOM_MOUNT_SKIN,
     @JsonProperty("Unknown")
     UNKNOWN
 }
