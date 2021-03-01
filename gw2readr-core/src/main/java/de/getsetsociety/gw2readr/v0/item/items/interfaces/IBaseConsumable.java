@@ -5,7 +5,7 @@ import java.util.Set;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableType;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ConsumableUnlockType;
 
-public interface IBaseConsumable {
+public interface IBaseConsumable extends IGuildUpgrade {
 
     ConsumableUnlockType getUnlockType();
 
@@ -26,10 +26,6 @@ public interface IBaseConsumable {
     Integer getRecipeId();
 
     void setRecipeId(Integer recipeId);
-
-    Integer getGuildUpgradeId();
-
-    void setGuildUpgradeId(Integer guildUpgradeId);
 
     String getConsumableName();
 

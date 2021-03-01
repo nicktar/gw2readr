@@ -1,0 +1,29 @@
+{
+  "name": "Basic Candle",
+  "description": "Purchase to deposit this decoration into guild storage.",
+  "type": "Gizmo",
+  "level": 0,
+  "rarity": "Basic",
+  "vendor_value": 0,
+  "game_types": [
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoMysticForge",
+    "NoSalvage",
+    "NoSell",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 70689,
+  "chat_link": "[&AgEhFAEA]",
+  "icon": "https://render.guildwars2.com/file/201F64FFA6BF9AAD2080BE437171B60BF0344770/1227740.png",
+  "details": {
+    "type": "Default",
+    "guild_upgrade_id": 437
+  }
+}

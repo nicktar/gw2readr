@@ -8,12 +8,11 @@ import de.getsetsociety.gw2readr.general.ContentLoader;
 import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IItem;
 import de.getsetsociety.gw2readr.v2.item.items.json.ItemJson;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
-@Log4j2
+@Slf4j
 public class ItemReader {
 
-    private static final Object lock = new Object();
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     public IItem readItem(Integer id) {

@@ -1270,4 +1270,17 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testBasicCandleForGuildUpgradeIds() throws IOException {
+        URL resource = getClass().getResource("70689.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(GizmoJson.class));
+        IGizmo item = ((GizmoJson) value).getEntity();
+        assertThat(item.getName(), is("Basic Candle"));
+        assertThat(item.getGuildUpgradeId(), is(437));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 }

@@ -4,7 +4,7 @@ import java.util.Set;
 
 import de.getsetsociety.gw2readr.v0.item.items.enums.GizmoType;
 
-public interface IBaseGizmo {
+public interface IBaseGizmo extends IGuildUpgrade {
 
     GizmoType getGizmoType();
 

@@ -24,6 +24,7 @@ public class GizmoJson extends ItemJson<IGizmo> {
     public void setGizmoDetails(GizmoDetails details) {
         entity.setGizmoType(details.getType());
         entity.addAllVendors(details.getVendors());
+        entity.setGuildUpgradeId(details.getGuildUpgradeId());
         getAdditionalProperties().putAll(details.getAdditionalProperties());
     }
 
@@ -34,6 +35,8 @@ public class GizmoJson extends ItemJson<IGizmo> {
         private GizmoType type;
         @JsonProperty("vendor_ids")
         private Set<Integer> vendors = new HashSet<>();
+        @JsonProperty("guild_upgrade_id")
+        private Integer guildUpgradeId;
         private final Map<String, Object> additionalProperties = new HashMap<>();
 
         @JsonAnySetter
