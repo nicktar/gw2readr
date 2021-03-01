@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 
 public class TrinketJson extends ItemJson<ITrinket> {
 
-    private final ITrinket item = EntityFactoryProvider.getItemEntityFactory().newTrinklet();
+    private final ITrinket item = EntityFactoryProvider.getItemEntityFactory().newTrinket();
 
     @Override
     public ITrinket getEntity() {

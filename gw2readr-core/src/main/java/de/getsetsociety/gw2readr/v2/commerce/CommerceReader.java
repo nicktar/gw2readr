@@ -7,9 +7,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.getsetsociety.gw2readr.general.ContentLoader;
 import de.getsetsociety.gw2readr.v2.commerce.exchange.interfaces.IExchange;
 import de.getsetsociety.gw2readr.v2.commerce.exchange.json.ExchangeJson;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
-@Log4j2
+@Slf4j
 public class CommerceReader {
 
 	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();

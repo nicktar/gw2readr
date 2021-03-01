@@ -1,6 +1,7 @@
 
 package de.getsetsociety.gw2readr.v2.item.items.entities;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +17,12 @@ import lombok.*;
 public class InfixUpgrade implements IInfixUpgrade {
 
     private Integer id;
-    @Singular
-    private Set<IAttributeModifier> attributes = new HashSet<>();
+    @Builder.Default
+    private final Set<IAttributeModifier> attributes = new HashSet<>();
     private IBuff buff;
+
+    @Override
+    public void addAllAttributed(Collection<IAttributeModifier> attributes) {
+        this.attributes.addAll(attributes);
+    }
 }

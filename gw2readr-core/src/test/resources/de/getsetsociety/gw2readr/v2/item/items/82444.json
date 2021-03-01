@@ -1,0 +1,22 @@
+{
+  "name": "Florid Bouquet",
+  "description": "This item has no value outside of a collection and may be sold to vendors.\n\n<c=@Flavor>The Primeval gardens were full of rare flowers. An entire priesthood was devoted to finding and naming them.</c>",
+  "type": "Key",
+  "level": 0,
+  "rarity": "Exotic",
+  "vendor_value": 1000,
+  "game_types": [
+    "PvpLobby",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 82444,
+  "chat_link": "[&AgEMQgEA]",
+  "icon": "https://render.guildwars2.com/file/1F6D9A6B9C0E4975DFA5404A4D23D5DFF407154C/1766347.png"
+}

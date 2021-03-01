@@ -1,7 +1,8 @@
 package de.getsetsociety.gw2readr.general;
 
 import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParser.Feature;
+import com.fasterxml.jackson.core.JsonFactoryBuilder;
+import com.fasterxml.jackson.core.json.JsonReadFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ObjectMapperProvider {
@@ -17,10 +18,11 @@ public class ObjectMapperProvider {
 		if (mapper == null) {
 			synchronized (lock) {
 				if (mapper == null) {
-					JsonFactory jasonFactory = new JsonFactory();
-					jasonFactory.enable(Feature.ALLOW_UNQUOTED_CONTROL_CHARS);
-					mapper = new ObjectMapper(jasonFactory);
-				}
+                    JsonFactory factory = new JsonFactoryBuilder()
+                            .enable(JsonReadFeature.ALLOW_UNESCAPED_CONTROL_CHARS)
+                            .build();
+                    mapper = new ObjectMapper(factory);
+                }
 			}
 		}
 		return mapper;

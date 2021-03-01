@@ -1,22 +1,12 @@
 package de.getsetsociety.gw2readr.v2.item.items.json;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import de.getsetsociety.gw2readr.general.enums.Language;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ItemFlags;
@@ -43,7 +33,8 @@ import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradePath;
         @Type(value = MiniPetJson.class, name = "MiniPet"),
         @Type(value = TraitJson.class, name = "Trait"),
         @Type(value = ToolJson.class, name = "Tool"),
-        @Type(value = BackItemJson.class, name = "Back")})
+        @Type(value = BackItemJson.class, name = "Back"),
+        @Type(value = KeyJson.class, name = "Key")})
 public abstract class ItemJson<T extends IItem> implements IEntityWrapper<T> {
 
     private final Map<String, Object> additionalProperties = new HashMap<>();

@@ -440,9 +440,7 @@ class TestItems {
         assertThat(entity.getAvailableInWvW(), is(true));
         assertThat(entity.getAvailableInPvP(), is(false));
         assertThat(entity.getAvailableInPvPLobby(), is(false));
-        List<ItemFlags> flags = Arrays.asList(ItemFlags.HIDE_SUFFIX);
-        assertThat(entity.getFlags().size(), is(flags.size()));
-        assertThat(flags.containsAll(entity.getFlags()), is(true));
+        assertThat(entity.getFlags(), contains(ItemFlags.HIDE_SUFFIX));
         assertThat(entity.getRestrictions().isEmpty(), is(true));
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/BA77541A56E7F639CCC5A379F4662EA2C55420BE/340120.png"));
         assertThat(entity.getTrinketType(), is(TrinketType.Amulet));
@@ -1052,10 +1050,10 @@ class TestItems {
         assertThat(item.getInfusionSlots(), hasSize(2));
         assertThat(item.getInfusionSlots(), containsInAnyOrder(
                 InfusionSlot.builder()
-                            .flag(InfusionSlotType.INFUSION)
+                            .flags(Set.of(InfusionSlotType.INFUSION))
                             .build(),
                 InfusionSlot.builder()
-                            .flag(InfusionSlotType.INFUSION)
+                            .flags(Set.of(InfusionSlotType.INFUSION))
                             .item(49428)
                             .build()
         ));
@@ -1120,7 +1118,7 @@ class TestItems {
         ITrinket item = ((TrinketJson) value).getEntity();
         assertThat(item.getName(), is("Thackeray Family Crest"));
         assertThat(item.getInfusionSlots(), containsInAnyOrder(InfusionSlot.builder()
-                                                                           .flag(InfusionSlotType.ENRICHMENT)
+                                                                           .flags(Set.of(InfusionSlotType.ENRICHMENT))
                                                                            .build()));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
@@ -1332,6 +1330,18 @@ class TestItems {
         IConsumable item = ((ConsumableJson) value).getEntity();
         assertThat(item.getName(), is("Mini Helmed Moa Racer"));
         assertThat(item.getUnlockType(), is(ConsumableUnlockType.MINI_PET));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
+    @Test
+    void testFloridBouquetForKey() throws IOException {
+        URL resource = getClass().getResource("82444.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(KeyJson.class));
+        IKey item = ((KeyJson) value).getEntity();
+        assertThat(item.getName(), is("Florid Bouquet"));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 

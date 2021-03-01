@@ -1,25 +1,7 @@
 package de.getsetsociety.gw2readr.v2.factories.interfaces;
 
 import de.getsetsociety.gw2readr.v0.item.items.interfaces.IInfusionSlot;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IArmor;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IAttributeModifier;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBackItem;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBag;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IBuff;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IConsumable;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IContainer;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.ICraftingMaterial;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IGathering;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IGizmo;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IInfixUpgrade;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IMiniPet;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITool;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrait;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrinket;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.ITrophy;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradeComponent;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IUpgradePath;
-import de.getsetsociety.gw2readr.v2.item.items.interfaces.IWeapon;
+import de.getsetsociety.gw2readr.v2.item.items.interfaces.*;
 
 public interface IItemEntityFactory {
 
@@ -49,7 +31,7 @@ public interface IItemEntityFactory {
 
     IMiniPet newMiniPet();
 
-    ITrinket newTrinklet();
+    ITrinket newTrinket();
 
     ITrophy newTrophy();
 
@@ -62,4 +44,6 @@ public interface IItemEntityFactory {
     IUpgradePath newUpgradePath();
 
     IInfusionSlot newInfusionSlot();
+
+    IKey newKey();
 }

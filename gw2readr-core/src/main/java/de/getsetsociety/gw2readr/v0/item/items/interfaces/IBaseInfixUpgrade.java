@@ -1,5 +1,6 @@
 package de.getsetsociety.gw2readr.v0.item.items.interfaces;
 
+import java.util.Collection;
 import java.util.Set;
 
 public interface IBaseInfixUpgrade<U extends IBaseBuff, V extends IBaseAttributeModifier> {
@@ -10,7 +11,7 @@ public interface IBaseInfixUpgrade<U extends IBaseBuff, V extends IBaseAttribute
 
     Set<V> getAttributes();
 
-    void setAttributes(Set<V> attributes);
+    void addAllAttributed(Collection<V> attributes);
 
     U getBuff();
 
