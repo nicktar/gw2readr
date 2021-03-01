@@ -33,6 +33,8 @@ public enum ConsumableType {
     IMMEDIATE,
     @JsonProperty("TeleportToFriend")
     TELEPORT_TO_FRIEND,
+    @JsonProperty("Currency")
+    CURRENCY,
     @JsonProperty("Unknown")
     UNKNOWN
 }

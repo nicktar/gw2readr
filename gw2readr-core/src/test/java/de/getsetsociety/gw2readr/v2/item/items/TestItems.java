@@ -1283,4 +1283,17 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testMagnetiteShardForCurrency() throws IOException {
+        URL resource = getClass().getResource("77378.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ConsumableJson.class));
+        IConsumable item = ((ConsumableJson) value).getEntity();
+        assertThat(item.getName(), is("Magnetite Shard"));
+        assertThat(item.getConsumableType(), is(ConsumableType.CURRENCY));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 }
