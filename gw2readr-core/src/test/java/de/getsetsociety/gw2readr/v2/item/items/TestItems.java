@@ -1358,5 +1358,17 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testSpookyGriffonMountForMountSkinUnlock() throws IOException {
+        URL resource = getClass().getResource("85423.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ConsumableJson.class));
+        IConsumable item = ((ConsumableJson) value).getEntity();
+        assertThat(item.getName(), is("Spooky Griffon Mount"));
+        assertThat(item.getUnlockType(), is(ConsumableUnlockType.MOUNT_SKIN));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
 
 }

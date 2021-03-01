@@ -1,0 +1,29 @@
+{
+  "name": "Spooky Griffon Mount",
+  "description": "Double-click to unlock this mount for your account.",
+  "type": "Consumable",
+  "level": 0,
+  "rarity": "Masterwork",
+  "vendor_value": 0,
+  "game_types": [
+    "PvpLobby",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoSalvage",
+    "NoSell",
+    "DeleteWarning",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 85423,
+  "chat_link": "[&AgGvTQEA]",
+  "icon": "https://render.guildwars2.com/file/97EBA47F7A6FCBF1BC62CA617E39F5F62102C148/1862455.png",
+  "details": {
+    "type": "Unlock",
+    "unlock_type": "Ms"
+  }
+}
