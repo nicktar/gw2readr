@@ -1,0 +1,30 @@
+{
+  "name": "Equipment Template Expansion",
+  "description": "Add an extra Equipment Template tab to the character. Each character can unlock up to 4 additional Equipment Template tabs.\n\nEquipment Template tabs allow a character to swap to an additional set of equipment.",
+  "type": "Consumable",
+  "level": 0,
+  "rarity": "Masterwork",
+  "vendor_value": 0,
+  "game_types": [
+    "Pvp",
+    "PvpLobby",
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoSell",
+    "DeleteWarning",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 92203,
+  "chat_link": "[&AgEraAEA]",
+  "icon": "https://render.guildwars2.com/file/A615CE6395B4345715EEFA5BD242F54CE3E72EAA/2215701.png",
+  "details": {
+    "type": "Unlock",
+    "unlock_type": "GearLoadoutTab"
+  }
+}

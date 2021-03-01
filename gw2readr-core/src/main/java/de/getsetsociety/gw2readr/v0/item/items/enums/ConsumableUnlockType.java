@@ -29,5 +29,7 @@ public enum ConsumableUnlockType {
     @JsonProperty("Minipet")
     MINI_PET,
     @JsonProperty("Ms")
-    MOUNT_SKIN
+    MOUNT_SKIN,
+    @JsonProperty("GearLoadoutTab")
+    GEAR_LOADOUT_TAB
 }
