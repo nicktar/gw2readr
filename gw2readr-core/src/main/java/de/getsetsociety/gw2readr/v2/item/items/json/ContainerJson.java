@@ -10,46 +10,40 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import de.getsetsociety.gw2readr.v0.item.items.enums.ContainerType;
 import de.getsetsociety.gw2readr.v2.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v2.item.items.interfaces.IContainer;
+import lombok.Data;
 
 public class ContainerJson extends ItemJson<IContainer> {
 
-	private IContainer item = EntityFactoryProvider.getItemEntityFactory().newContainer();
+    private final IContainer item = EntityFactoryProvider.getItemEntityFactory().newContainer();
 
-	@Override
-	public IContainer getEntity() {
-		return item;
-	}
+    @Override
+    public IContainer getEntity() {
+        return item;
+    }
 
-	@JsonProperty("details")
-	public void setConsumableDetails(ConsumableDetails details) {
-		item.setContainerType(details.getType());
-		getAdditionalProperties().putAll(details.getAdditionalProperties());
-	}
+    @JsonProperty("details")
+    public void setConsumableDetails(ConsumableDetails details) {
+        item.setContainerType(details.getType());
+        getAdditionalProperties().putAll(details.getAdditionalProperties());
+    }
 
-	public static class ConsumableDetails {
+    @Data
+    private static class ConsumableDetails {
 
-		private ContainerType type;
-		private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+        @JsonProperty("type")
+        private ContainerType type;
+        private Map<String, Object> additionalProperties = new HashMap<>();
 
-		@JsonProperty("type")
-		public ContainerType getType() {
-			return type;
-		}
+        @JsonAnyGetter
+        public Map<String, Object> getAdditionalProperties() {
+            return additionalProperties;
+        }
 
-		public void setType(String type) {
-			this.type = ContainerType.valueOf(type);
-		}
+        @JsonAnySetter
+        public void setAdditionalProperty(String name, Object value) {
+            additionalProperties.put(name, value);
+        }
 
-		@JsonAnyGetter
-		public Map<String, Object> getAdditionalProperties() {
-			return this.additionalProperties;
-		}
-
-		@JsonAnySetter
-		public void setAdditionalProperty(String name, Object value) {
-			this.additionalProperties.put(name, value);
-		}
-
-	}
+    }
 
 }

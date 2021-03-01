@@ -326,7 +326,7 @@ class TestItems {
         assertThat(flags.containsAll(entity.getFlags()), is(true));
         assertThat(entity.getRestrictions().isEmpty(), is(true));
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/B80BE438007179E12B18B5EBDFCB1C61E2605DD6/824921.png"));
-        assertThat(entity.getContainerType(), is(ContainerType.Default));
+        assertThat(entity.getContainerType(), is(ContainerType.DEFAULT));
     }
 
     @Test
@@ -668,7 +668,7 @@ class TestItems {
         assertThat(flags.containsAll(entity.getFlags()), is(true));
         assertThat(entity.getRestrictions().isEmpty(), is(true));
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/48E4CEEAEEF8F3419A63D4F6295AB77136B86656/711974.png"));
-        assertThat(entity.getContainerType(), is(ContainerType.OpenUI));
+        assertThat(entity.getContainerType(), is(ContainerType.OPEN_UI));
     }
 
     @Test
@@ -757,7 +757,7 @@ class TestItems {
         assertThat(entity.getRestrictions().size(), is(restrictions.size()));
         assertThat(restrictions.containsAll(entity.getRestrictions()), is(true));
         assertThat(entity.getIconSignature(), is("https://render.guildwars2.com/file/1B9503F466E464B34620340FEC65CFE7BBC69231/534278.png"));
-        assertThat(entity.getContainerType(), is(ContainerType.Default));
+        assertThat(entity.getContainerType(), is(ContainerType.DEFAULT));
     }
 
     @Test
@@ -1308,5 +1308,19 @@ class TestItems {
         assertThat(item.getConsumableType(), is(ConsumableType.RANDOM_UNLOCK));
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
+
+    @Test
+    void testUnidentifiedZaishenWarPaintForImmediateContainer() throws IOException {
+        URL resource = getClass().getResource("81251.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ContainerJson.class));
+        IContainer item = ((ContainerJson) value).getEntity();
+        assertThat(item.getName(), is("Unidentified Zaishen War Paint"));
+        assertThat(item.getContainerType(), is(ContainerType.IMMEDIATE));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 
 }

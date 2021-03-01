@@ -1,0 +1,23 @@
+{
+  "name": "Unidentified Zaishen War Paint",
+  "description": "Grants 2-5 unidentified dyes",
+  "type": "Container",
+  "level": 0,
+  "rarity": "Masterwork",
+  "vendor_value": 0,
+  "game_types": [
+    "Pvp",
+    "PvpLobby",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [],
+  "restrictions": [],
+  "id": 81251,
+  "chat_link": "[&AgFjPQEA]",
+  "icon": "https://render.guildwars2.com/file/109A6B04C4E577D9266EEDA21CC30E6B800DD452/66587.png",
+  "details": {
+    "type": "Immediate"
+  }
+}
