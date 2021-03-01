@@ -1345,5 +1345,18 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testOrderOfShadowsIntelReportForFemaleRestriction() throws IOException {
+        URL resource = getClass().getResource("84141.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(TrophyJson.class));
+        ITrophy item = ((TrophyJson) value).getEntity();
+        assertThat(item.getName(), is("Order of Shadows Intel Report"));
+        assertThat(item.getRestrictions(), contains(RestrictionType.FEMALE));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 
 }

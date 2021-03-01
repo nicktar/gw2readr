@@ -22,5 +22,7 @@ public enum RestrictionType {
     @JsonProperty("Ranger")
     RANGER,
     @JsonProperty("Necromancer")
-    NECROMANCER
+    NECROMANCER,
+    @JsonProperty("Female")
+    FEMALE
 }
