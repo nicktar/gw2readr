@@ -35,6 +35,8 @@ public enum ConsumableType {
     TELEPORT_TO_FRIEND,
     @JsonProperty("Currency")
     CURRENCY,
+    @JsonProperty("RandomUnlock")
+    RANDOM_UNLOCK,
     @JsonProperty("Unknown")
     UNKNOWN
 }

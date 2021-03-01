@@ -1,0 +1,28 @@
+{
+  "name": "Guaranteed Wardrobe Unlock",
+  "description": "Consuming this will unlock one random wardrobe option that you do not already own in the following categories:\n* Equipment Skins (exotic or less)\n* Outfits\n* Dyes\n* Gliders\n* Minis\n* Finishers\n* Mail Carriers\nLast Update: January 2021.",
+  "type": "Consumable",
+  "level": 5,
+  "rarity": "Rare",
+  "vendor_value": 125,
+  "game_types": [
+    "PvpLobby",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoMysticForge",
+    "NoSell",
+    "DeleteWarning",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 79696,
+  "chat_link": "[&AgFQNwEA]",
+  "icon": "https://render.guildwars2.com/file/493706BEC3081BAC3C8075A280FBBF43D76039BC/1518934.png",
+  "details": {
+    "type": "RandomUnlock"
+  }
+}

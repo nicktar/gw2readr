@@ -1296,4 +1296,17 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testGuaranteedWardrobeUnlockForRandomUnlock() throws IOException {
+        URL resource = getClass().getResource("79696.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ConsumableJson.class));
+        IConsumable item = ((ConsumableJson) value).getEntity();
+        assertThat(item.getName(), is("Guaranteed Wardrobe Unlock"));
+        assertThat(item.getConsumableType(), is(ConsumableType.RANDOM_UNLOCK));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 }
