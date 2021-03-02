@@ -33,6 +33,8 @@ public enum ConsumableUnlockType {
     @JsonProperty("GearLoadoutTab")
     GEAR_LOADOUT_TAB,
     @JsonProperty("BuildLibrarySlot")
-    BUILD_LIBRARY_SLOT
+    BUILD_LIBRARY_SLOT,
+    @JsonProperty("BuildLoadoutTab")
+    BUILD_LOADOUT_TAB,
 
 }

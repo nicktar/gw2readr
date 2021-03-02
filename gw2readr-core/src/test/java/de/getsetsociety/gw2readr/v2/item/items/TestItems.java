@@ -1410,4 +1410,17 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testBuildTemplateExpansionForBuildLoadoutTab() throws IOException {
+        URL resource = getClass().getResource("92209.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ConsumableJson.class));
+        IConsumable item = ((ConsumableJson) value).getEntity();
+        assertThat(item.getName(), is("Build Template Expansion"));
+        assertThat(item.getUnlockType(), is(ConsumableUnlockType.BUILD_LOADOUT_TAB));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 }

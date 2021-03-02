@@ -1,0 +1,31 @@
+{
+  "name": "Build Template Expansion",
+  "description": "Add an extra Build Template tab to the character. Each character can unlock up to 3 additional Build Template tabs.\n\nBuild Template tabs allow a character to create and swap to an additional build.",
+  "type": "Consumable",
+  "level": 0,
+  "rarity": "Masterwork",
+  "vendor_value": 0,
+  "game_types": [
+    "Pvp",
+    "PvpLobby",
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoSalvage",
+    "NoSell",
+    "DeleteWarning",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 92209,
+  "chat_link": "[&AgExaAEA]",
+  "icon": "https://render.guildwars2.com/file/DA2B54C2B7F9F1804DAEB0F4A8E44A4459A20B04/2215700.png",
+  "details": {
+    "type": "Unlock",
+    "unlock_type": "BuildLoadoutTab"
+  }
+}
