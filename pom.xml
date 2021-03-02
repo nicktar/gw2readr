@@ -41,7 +41,7 @@
     </properties>
     <modules>
         <module>gw2readr-core</module>
-        <module>gw2readr-jpa</module>
+        <!--<module>gw2readr-jpa</module> -->
     </modules>
     <dependencyManagement>
         <dependencies>
