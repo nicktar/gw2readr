@@ -1,0 +1,32 @@
+{
+  "name": "Build Storage Expansion",
+  "description": "Double-click to add 3 spaces to this account's Build Storage.\n\nBuild Storage is the library where already existing builds may be saved, referenced, and copied by all characters on the account.",
+  "type": "Consumable",
+  "level": 0,
+  "rarity": "Masterwork",
+  "vendor_value": 0,
+  "game_types": [
+    "Pvp",
+    "PvpLobby",
+    "Activity",
+    "Wvw",
+    "Dungeon",
+    "Pve"
+  ],
+  "flags": [
+    "AccountBound",
+    "NoMysticForge",
+    "NoSalvage",
+    "NoSell",
+    "DeleteWarning",
+    "AccountBindOnUse"
+  ],
+  "restrictions": [],
+  "id": 92206,
+  "chat_link": "[&AgEuaAEA]",
+  "icon": "https://render.guildwars2.com/file/A7C0D0FAA827F5FA014DEE499FA71676093E29C4/2215699.png",
+  "details": {
+    "type": "Unlock",
+    "unlock_type": "BuildLibrarySlot"
+  }
+}

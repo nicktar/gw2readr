@@ -31,5 +31,8 @@ public enum ConsumableUnlockType {
     @JsonProperty("Ms")
     MOUNT_SKIN,
     @JsonProperty("GearLoadoutTab")
-    GEAR_LOADOUT_TAB
+    GEAR_LOADOUT_TAB,
+    @JsonProperty("BuildLibrarySlot")
+    BUILD_LIBRARY_SLOT
+
 }

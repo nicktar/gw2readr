@@ -1397,4 +1397,17 @@ class TestItems {
         assertThat(value.getAdditionalProperties().entrySet(), empty());
     }
 
+    @Test
+    void testBuildStorageExpansionForBuildLibrarySlot() throws IOException {
+        URL resource = getClass().getResource("92206.json");
+
+        ItemJson<?> value = mapper.readValue(resource, ItemJson.class);
+
+        assertThat(value, instanceOf(ConsumableJson.class));
+        IConsumable item = ((ConsumableJson) value).getEntity();
+        assertThat(item.getName(), is("Build Storage Expansion"));
+        assertThat(item.getUnlockType(), is(ConsumableUnlockType.BUILD_LIBRARY_SLOT));
+        assertThat(value.getAdditionalProperties().entrySet(), empty());
+    }
+
 }
