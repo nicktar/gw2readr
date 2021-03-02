@@ -1,5 +1,7 @@
 package  de.getsetsociety.gw2readr.v2.factories;
 
+import de.getsetsociety.gw2readr.v2.account.AccountEntityFactory;
+import de.getsetsociety.gw2readr.v2.account.interfaces.IAccountEntityFactory;
 import de.getsetsociety.gw2readr.v2.factories.interfaces.ICommerceEntityFactory;
 import de.getsetsociety.gw2readr.v2.factories.interfaces.IItemEntityFactory;
 import lombok.AccessLevel;
@@ -8,8 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class EntityFactoryProvider {
 
-    private static IItemEntityFactory ItemEntityFactory = new ItemEntityFactory();
-    private static ICommerceEntityFactory CommerceEntityFactory = new CommerceEntityFactory();
+    private static IItemEntityFactory itemEntityFactory = new ItemEntityFactory();
+    private static ICommerceEntityFactory commerceEntityFactory = new CommerceEntityFactory();
+    private static final IAccountEntityFactory accountEntityFactory = new AccountEntityFactory();
     //	private static IRecipeEntityFactory recipeEntityFactory = new RecipeEntityFactory();
     //	private static IColorsEntityFactory colorsEntityFactory = new ColorsEntityFactory();
     //	private static IFileInfoEntityFactory fileInfoEntityFactory = new FileInfoEntityFactory();
@@ -37,28 +40,32 @@ public class EntityFactoryProvider {
      * @return the ItemEntityFactory
      */
     public static IItemEntityFactory getItemEntityFactory() {
-        return ItemEntityFactory;
+        return itemEntityFactory;
     }
 
     /**
      * @param factory
      */
     public static void setItemEntityFactory(IItemEntityFactory factory) {
-        EntityFactoryProvider.ItemEntityFactory = factory;
+        EntityFactoryProvider.itemEntityFactory = factory;
     }
 
     /**
      * @return the CommerceEntityFactory
      */
     public static ICommerceEntityFactory getCommerceEntityFactory() {
-        return CommerceEntityFactory;
+        return commerceEntityFactory;
     }
 
     /**
      * @param factory
      */
     public static void setCommerceEntityFactory(ICommerceEntityFactory factory) {
-        EntityFactoryProvider.CommerceEntityFactory = factory;
+        EntityFactoryProvider.commerceEntityFactory = factory;
+    }
+
+    public static IAccountEntityFactory getAccountFactory() {
+        return accountEntityFactory;
     }
 
     /**

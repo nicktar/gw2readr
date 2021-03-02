@@ -6,6 +6,7 @@ import java.io.StringWriter;
 import java.net.Proxy;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.regex.Matcher;
 
@@ -17,6 +18,10 @@ import de.getsetsociety.gw2readr.general.enums.Language;
 public class ContentLoader {
 
     private static Proxy proxy;
+
+    public static String getV2StoredMaterialUrlContent(Language language, String apiKey) throws IOException {
+        return readFromProtectedUrl(String.format("account/materials/?lang=%s", language), apiKey);
+    }
 
     public static String getV1ItemUrlContent(String id, Language language) throws IOException {
         return readFromV1Url(String.format("item_details.json?item_id=%s&lang=%s", id, language));
@@ -110,23 +115,37 @@ public class ContentLoader {
         URL url = new URL("https", "api.guildwars2.com", version + urlpart);
         StringWriter writer = new StringWriter();
         if (proxy == null) {
-            IOUtils.copy((InputStream) url.getContent(), writer, "UTF-8");
+            IOUtils.copy((InputStream) url.getContent(), writer, StandardCharsets.UTF_8);
         } else {
             URLConnection uc = url.openConnection(proxy);
-            IOUtils.copy((InputStream) uc.getContent(), writer, "UTF-8");
+            IOUtils.copy((InputStream) uc.getContent(), writer, StandardCharsets.UTF_8);
         }
         return writer.toString();
     }
 
-	public static String maskControlSequences(String input) {
-		return input.replaceAll("\n", Matcher.quoteReplacement("\\n"));
-	}
+    private static String readFromProtectedUrl(String urlpart, String apiKey) throws IOException {
+        URL url = new URL("https", "api.guildwars2.com", "/v2/" + urlpart);
+        URLConnection connection;
+        if (proxy == null) {
+            connection = url.openConnection();
+        } else {
+            connection = url.openConnection(proxy);
+        }
+        connection.setRequestProperty("Authorization", "Bearer " + apiKey);
+        StringWriter writer = new StringWriter();
+        IOUtils.copy((InputStream) connection.getContent(), writer, StandardCharsets.UTF_8);
+        return writer.toString();
+    }
 
-	/**
-	 * @param proxy the proxy to set
-	 */
-	public static void setProxy(Proxy proxy) {
-		ContentLoader.proxy = proxy;
-	}
+    public static String maskControlSequences(String input) {
+        return input.replaceAll("\n", Matcher.quoteReplacement("\\n"));
+    }
+
+    /**
+     * @param proxy the proxy to set
+     */
+    public static void setProxy(Proxy proxy) {
+        ContentLoader.proxy = proxy;
+    }
 
 }
