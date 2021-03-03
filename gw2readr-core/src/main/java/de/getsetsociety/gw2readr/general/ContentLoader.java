@@ -19,12 +19,12 @@ public class ContentLoader {
 
     private static Proxy proxy;
 
-    public static String getV2StoredMaterialUrlContent(Language language, String apiKey) throws IOException {
-        return readFromProtectedUrl(String.format("account/materials/?lang=%s", language), apiKey);
+    public static String getV2StoredMaterialUrlContent(String apiKey) throws IOException {
+        return readFromProtectedUrl("account/materials/", apiKey);
     }
 
-    public static String getV1ItemUrlContent(String id, Language language) throws IOException {
-        return readFromV1Url(String.format("item_details.json?item_id=%s&lang=%s", id, language));
+    public static String getV2BankUrlContent(String apiKey) throws IOException {
+        return readFromProtectedUrl("account/bank/", apiKey);
     }
 
     public static String getV2ItemUrlContent(Language language, Integer id) throws IOException {

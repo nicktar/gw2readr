@@ -1,4 +1,4 @@
-package de.getsetsociety.gw2readr.v2.account.material;
+package de.getsetsociety.gw2readr.v2.account.inventory.materialstorage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
@@ -15,9 +15,10 @@ import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.getsetsociety.gw2readr.v2.account.material.entities.StoredMaterial;
-import de.getsetsociety.gw2readr.v2.account.material.enums.Binding;
-import de.getsetsociety.gw2readr.v2.account.material.interfaces.IStoredMaterial;
+import de.getsetsociety.gw2readr.v2.account.inventory.materialstorage.entities.StoredMaterial;
+import de.getsetsociety.gw2readr.v2.account.inventory.materialstorage.enums.Binding;
+import de.getsetsociety.gw2readr.v2.account.inventory.materialstorage.interfaces.IStoredMaterial;
+import de.getsetsociety.gw2readr.v2.account.inventory.materialstorage.json.StoredMaterialJson;
 
 class MaterialReadingTest {
 

@@ -1,9 +1,9 @@
-package de.getsetsociety.gw2readr.v2.account.material;
+package de.getsetsociety.gw2readr.v2.account.inventory.materialstorage.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import de.getsetsociety.gw2readr.v2.account.material.enums.Binding;
-import de.getsetsociety.gw2readr.v2.account.material.interfaces.IStoredMaterial;
+import de.getsetsociety.gw2readr.v2.account.inventory.materialstorage.enums.Binding;
+import de.getsetsociety.gw2readr.v2.account.inventory.materialstorage.interfaces.IStoredMaterial;
 import de.getsetsociety.gw2readr.v2.factories.EntityFactoryProvider;
 import de.getsetsociety.gw2readr.v2.item.items.json.IEntityWrapper;
 import lombok.Data;
